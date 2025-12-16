@@ -1,11 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import "./LoginButton.css"
 
 function LoginButton () {
-    const navigate = useNavigate();
-
     function handleClick() {
-        navigate("/home")
+        alert ('hi')
     }
 
     return (
