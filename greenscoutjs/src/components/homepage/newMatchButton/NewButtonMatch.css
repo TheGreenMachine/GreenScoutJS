@@ -1,0 +1,24 @@
+#newmatchbutton {
+    width: 50vw;
+    height: 8vh;
+    background-color: #9bcbfb;
+    border: 1px #cee5ff;
+    border-radius: 15px;
+    filter:drop-shadow(0px 4px 5px rgb(164, 164, 164));
+    color: #5f6167;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1;
+    outline: none;
+    font-size: smaller;
+    background-image: url(../../../assets/pencil.svg);
+    background-repeat: no-repeat;
+    background-position: 0px 50%;
+    background-size: 100% 40%;
+    margin: 0;
+    padding: 0;
+}
+
+button:hover {
+    cursor: pointer;
+    outline: none;
+}
