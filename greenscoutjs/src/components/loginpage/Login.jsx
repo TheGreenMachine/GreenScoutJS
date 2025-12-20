@@ -12,7 +12,7 @@ function Login () {
         <span id="body">
             <nav id="navbar"></nav>
             <span id="parent" className="text">
-                <h1 className="text">Login</h1>
+                <h1 className="textlogin">Login</h1>
                 <Username className="input" value={user} onChange={setUsername}></Username>
                 <Password className="input" value={pass} onChange={setPassword}></Password>
                 <LoginButton></LoginButton>

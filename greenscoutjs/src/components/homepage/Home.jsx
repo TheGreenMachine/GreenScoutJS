@@ -3,9 +3,16 @@ import NewButtonMatch from "./newMatchButton/NewButtonMatch";
 import NewButtonPit from "./newPitButton/NewButtonPit";
 
 function Home () {
+    function refreshPage() {
+        location.reload();
+    }
+
     return (
         <span id="body">
             <nav id="navbar"></nav>
+            <div id="refreshButtonContainer">
+                <button id="refreshButton" onClick={refreshPage}></button>
+            </div>
             <span id="parent" className="text">
                 <h1 className="text" padding="0">Create New Match Form</h1>
                 <NewButtonMatch></NewButtonMatch>
