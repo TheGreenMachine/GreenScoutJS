@@ -1,11 +1,11 @@
 import "./Autocheck.css"
 
-function Autocheck () {
+function Autocheck ({ children }) {
     return (
-        <div className="child" id="doesauto">
-            <p id="autotext" className="text">Can Do It?</p>
+        <div className="child divcheck">
+            <p className="textcheck">{children}</p>
             <label className="checkcontainer">
-                <input id="check" type="checkbox"/>
+                <input className="check" type="checkbox"/>
                 <span className="checkmark"></span>
             </label>
         </div>

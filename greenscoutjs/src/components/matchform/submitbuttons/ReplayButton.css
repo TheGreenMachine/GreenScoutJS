@@ -1,0 +1,44 @@
+.divReplay {
+  margin-left: 7.5vw;
+  margin-right: 7.5vw;
+  width: 80vw;
+  height: 8vh;
+  margin-bottom: 1vh;
+}
+
+.replayButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: none;
+  background-color: #9ccbff;
+  gap: 0px;
+}
+
+.replayButton:hover {
+  background-color: #8fbdef;
+}
+
+.replayText {
+  text-decoration: none;
+  color: black;
+  margin: none;
+  padding: none;
+  margin-top: -1vh;
+}
+
+#replayPOne {
+    margin-top: 2vh;
+}
+
+#replayCheck {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  top: 0;
+  right: 0;
+}

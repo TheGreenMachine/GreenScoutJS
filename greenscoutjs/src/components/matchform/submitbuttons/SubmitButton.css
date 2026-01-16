@@ -1,0 +1,41 @@
+.divSubmit {
+  margin-left: 7.5vw;
+  margin-right: 7.5vw;
+  width: 80vw;
+  height: 8vh;
+  margin-bottom: 1vh;
+}
+
+.submitButton {
+  display: grid;
+  justify-content: center;
+  grid-template-areas: "stack-layer";
+  width: 100%;
+  height: 100%;
+  padding: none;
+  background-color: #9ccbff;
+}
+
+.submitButton:hover {
+  background-color: #8fbdef;
+}
+
+.submitText {
+    margin-top: 1vh;
+  text-decoration: none;
+  color: black;
+  margin: none;
+  padding: none;
+}
+
+#submitImage {
+    margin-top: -1.5vh;
+  background-image: url("../../../assets/floppy-disk-solid-full.svg");
+}
+
+.submitImage {
+  height: 4.8vh;
+  width: 4.8vh;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

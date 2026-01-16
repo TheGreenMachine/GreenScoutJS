@@ -4,15 +4,34 @@ import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
 import Autocounter from "./auto/autocounter/Autocounter";
-import AutoHangCheck from "./auto/autocheck/AutoHangCheck";
 import Neutralcheck from "./collection/NeutralCheck";
 import HPCheck from "./collection/HPCheck";
 import CollectDrop from "./collection/CollectDrop";
 import ClimbTime from "./climbing/ClimbTime";
 import TriggerButton from "./climbing/TriggerButton";
 import ResetButton from "./climbing/ResetButton";
+import EndDropDown from "./auto/dropdown/EndDropDown";
+import SubmitButton from "./submitbuttons/SubmitButton";
+import ReplayButton from "./submitbuttons/ReplayButton";
 
 function Matchform() {
+  // const [formData, setFormData] = useState({
+  //   match: '',
+  //   team: '',
+  //   driverStation: '',
+  //   canAuto: '',
+  //   hangAuto: '',
+  //   autoScores: '',
+  //   autoMisses: '',
+  //   autoEjects: '',
+  // });
+
+  const [matchNum, setMatchNum] = useState(0);
+  const [teamNum, setTeamNum] = useState(0);
+
+  const [check, setCheck] = useState(false);
+  const [replay, setReplay] = useState("✘");
+
   const firstCount = "Scores";
   const secondCount = "Misses";
   const thirdCount = "Ejects";
@@ -33,6 +52,26 @@ function Matchform() {
     }
   };
 
+  const toggleCheck = (event) => {
+    if (event) event.preventDefault();
+    if (!check) {
+      setCheck(true);
+      setReplay("✔");
+    } else {
+      setCheck(false);
+      setReplay("✘");
+    }
+    console.log("Checked? " + { check });
+  };
+
+  const submitAll = (event) => {
+    if (event) event.preventDefault();
+    // setFormData({
+    //   match: matchNum,
+    //   team: teamNum
+    // })
+  };
+
   return (
     <span id="body">
       <NavComponent></NavComponent>
@@ -43,19 +82,21 @@ function Matchform() {
             type="text"
             className="child"
             id="matchNum"
+            onChange={setMatchNum}
           />
           <input
             placeholder="Team #"
             type="text"
             className="child"
             id="teamNum"
+            onChange={setTeamNum}
           />
           <Dropdown></Dropdown>
           <div className="child" id="headparent">
             <h1 className="header">Auto Mode</h1>
           </div>
-          <Autocheck></Autocheck>
-          <AutoHangCheck></AutoHangCheck>
+          <Autocheck>Can Do It?</Autocheck>
+          <Autocheck>Does Auto Hang?</Autocheck>
           <Autocounter name={firstCount}></Autocounter>
           <Autocounter name={secondCount}></Autocounter>
           <Autocounter name={thirdCount}></Autocounter>
@@ -68,8 +109,10 @@ function Matchform() {
           <Neutralcheck></Neutralcheck>
           <HPCheck></HPCheck>
           <CollectDrop></CollectDrop>
-          <div className="child" id="headparent">
-            <h1 className="header">Climbing</h1>
+          <div className="child" id="climbheadparent">
+            <h1 className="header" id="climbheadtext">
+              Climbing
+            </h1>
           </div>
           <ClimbTime
             runningBool={isRunning}
@@ -79,8 +122,40 @@ function Matchform() {
           <div className="child">
             <ResetButton onReset={triggerReset}></ResetButton>
           </div>
-          <div className="child" id="bottomspace"></div>
+          <div className="child" id="endheadparent">
+            <h1 className="header">End Game</h1>
+          </div>
+          <EndDropDown></EndDropDown>
+          <div className="child" id="headparent">
+            <h1 className="header">Misc.</h1>
+          </div>
+          <Autocheck>Was Their Robot Disconnected Or Disabled?</Autocheck>
+          <Autocheck>Did You Lose Track At Any Point?</Autocheck>
+          <div className="child" id="headparent">
+            <h1 className="header">Notes</h1>
+          </div>
+          <div className="child" id="notesdiv">
+            <input id="notesbox"></input>
+          </div>
+          <ReplayButton
+            idButton={"replayButtonId"}
+            idDiv={"replayButtonDiv"}
+            checked={check}
+            onTrigger={toggleCheck}
+            text={replay}
+          >
+            Is Replay?
+          </ReplayButton>
+          <SubmitButton
+            idButton={"submitButtonId"}
+            idDiv={"submitButtonDiv"}
+            idImage={"submitImage"}
+            submit={submitAll}
+          >
+            Save
+          </SubmitButton>
         </form>
+
         <div id="formScore" className="formElement">
           <TriggerButton onTrigger={toggleStopwatch}></TriggerButton>
         </div>

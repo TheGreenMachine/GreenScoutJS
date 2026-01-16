@@ -52,7 +52,7 @@
 .child {
     margin-left: 7.5vw;
     margin-right: 7.5vw;
-    width: 79vw;
+    width: 80vw;
 }
 
 #matchNum {
@@ -125,7 +125,31 @@
     align-items: center;
 }
 
+#climbheadparent {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#endheadparent {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #bottomspace {
     height: 18.4vh;
     background-color: #11111100;
+}
+
+#notesdiv {
+    height: 40vh;
+}
+
+#notesbox {
+    width: 100%;
+    height: 100%;
 }
