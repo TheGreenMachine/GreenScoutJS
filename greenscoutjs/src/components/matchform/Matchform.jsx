@@ -16,8 +16,8 @@ import ReplayButton from "./submitbuttons/ReplayButton";
 
 function Matchform() {
   const [formData, setFormData] = useState({
-    match: 0,
-    team: 0,
+    match: null,
+    team: null,
     driverStation: "",
     canAuto: false,
     hangAuto: false,
@@ -26,7 +26,7 @@ function Matchform() {
     autoEjects: 0,
     collectNeutral: false,
     collectHp: false,
-    fuelCapacity: 0,
+    fuelCapacity: "0",
     climbTimer: 0.0,
     park: "",
     disconnect: false,
@@ -35,27 +35,7 @@ function Matchform() {
     replayed: false,
   });
 
-  // const [matchNum, setMatchNum] = useState(0);
-  // const [teamNum, setTeamNum] = useState(0);
-  // const [driveStation, setDriveStation] = useState("");
-  // const [auto, setAuto] = useState(false);
-  // const [autoHang, setAutoHang] = useState(false);
-  // const [scoreAuto, setScoreAuto] = useState(0);
-  // const [missAuto, setMissAuto] = useState(0);
-  // const [ejectAuto, setEjectAuto] = useState(0);
-  // const [neutralCollect, setNeutralCollect] = useState(false);
-  // const [hpCollect, setHpCollect] = useState(false);
-  // const [fuelStorage, setFuelStorage] = useState(0);
-  // const [parkValue, setParkValue] = useState("");
-  // const [didDisconnect, setDidDisconnect] = useState(false);
-  // const [lostTrack, setLostTrack] = useState(false);
-  // const [notesContents, setNotesContents] = useState("");
-  // const [isReplay, setIsReplay] = useState(false);
-
   const [time, setTime] = useState(0);
-
-  const [check, setCheck] = useState(false);
-  const [replay, setReplay] = useState("✘");
 
   const firstCount = "Scores";
   const secondCount = "Misses";
@@ -72,27 +52,23 @@ function Matchform() {
   const triggerReset = (event) => {
     if (event) event.preventDefault();
     if (confirm("Reset The Climber?")) {
+      setTime(0);
       setResetKey((prev) => prev + 1);
       setIsRunning(false);
+      setFormData({
+        ...formData,
+        climbTimer: 0.0,
+      });
     }
-  };
-
-  const toggleCheck = (event) => {
-    if (event) event.preventDefault();
-    if (!check) {
-      setCheck(true);
-      setReplay("✔");
-    } else {
-      setCheck(false);
-      setReplay("✘");
-    }
-    console.log("Checked? " + { check });
   };
 
   const handleChange = (e) => {
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
   };
 
@@ -125,6 +101,7 @@ function Matchform() {
             type="text"
             className="child"
             id="matchNum"
+            name="match"
             value={formData.match}
             onChange={handleChange}
           />
@@ -133,36 +110,49 @@ function Matchform() {
             type="text"
             className="child"
             id="teamNum"
+            name="team"
             value={formData.team}
             onChange={handleChange}
           />
           <Dropdown
             value={formData.driverStation}
             onChange={handleChange}
+            name="driverStation"
           ></Dropdown>
           <div className="child" id="headparent">
             <h1 className="header">Auto Mode</h1>
           </div>
-          <Autocheck value={formData.canAuto} onChange={handleChange}>
+          <Autocheck
+            name="canAuto"
+            value={formData.canAuto}
+            onChange={handleChange}
+          >
             Can Do It?
           </Autocheck>
-          <Autocheck value={formData.hangAuto} onChange={handleChange}>
+          <Autocheck
+            name="hangAuto"
+            value={formData.hangAuto}
+            onChange={handleChange}
+          >
             Does Auto Hang?
           </Autocheck>
           <Autocounter
             value={formData.autoScores}
             onChange={handleChange}
-            name={firstCount}
+            nameText={firstCount}
+            name="autoScores"
           ></Autocounter>
           <Autocounter
             value={formData.autoMisses}
             onChange={handleChange}
-            name={secondCount}
+            nameText={secondCount}
+            name="autoMisses"
           ></Autocounter>
           <Autocounter
             value={formData.autoEjects}
             onChange={handleChange}
-            name={thirdCount}
+            nameText={thirdCount}
+            name="autoEjects"
           ></Autocounter>
           <div className="child" id="headparent">
             <h1 className="header">Cycles</h1>
@@ -173,10 +163,16 @@ function Matchform() {
           <Neutralcheck
             value={formData.collectNeutral}
             onChange={handleChange}
+            name="collectNeutral"
           ></Neutralcheck>
-          <HPCheck value={formData.collectHp} onChange={handleChange}></HPCheck>
+          <HPCheck
+            name="collectHp"
+            value={formData.collectHp}
+            onChange={handleChange}
+          ></HPCheck>
           <CollectDrop
             value={formData.fuelCapacity}
+            name="fuelCapacity"
             onChange={handleChange}
           ></CollectDrop>
           <div className="child" id="climbheadparent">
@@ -191,6 +187,7 @@ function Matchform() {
             time={time}
             setTime={setTime}
             value={formData.climbTimer}
+            name="climbTimer"
             onChange={handleChange}
           ></ClimbTime>
           <div className="child">
@@ -200,16 +197,25 @@ function Matchform() {
             <h1 className="header">End Game</h1>
           </div>
           <EndDropDown
+            name="park"
             value={formData.park}
             onChange={handleChange}
           ></EndDropDown>
           <div className="child" id="headparent">
             <h1 className="header">Misc.</h1>
           </div>
-          <Autocheck value={formData.disconnect} onChange={handleChange}>
+          <Autocheck
+            name="disconnect"
+            value={formData.disconnect}
+            onChange={handleChange}
+          >
             Was Their Robot Disconnected Or Disabled?
           </Autocheck>
-          <Autocheck value={formData.loseTrack} onChange={handleChange}>
+          <Autocheck
+            name="loseTrack"
+            value={formData.loseTrack}
+            onChange={handleChange}
+          >
             Did You Lose Track At Any Point?
           </Autocheck>
           <div className="child" id="headparent">
@@ -217,6 +223,7 @@ function Matchform() {
           </div>
           <div className="child" id="notesdiv">
             <input
+              name="notes"
               value={formData.notes}
               onChange={handleChange}
               id="notesbox"
@@ -225,9 +232,7 @@ function Matchform() {
           <ReplayButton
             idButton={"replayButtonId"}
             idDiv={"replayButtonDiv"}
-            checked={check}
-            onTrigger={toggleCheck}
-            text={replay}
+            name="replayed"
             value={formData.replayed}
             onChange={handleChange}
           >

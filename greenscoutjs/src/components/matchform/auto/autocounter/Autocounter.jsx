@@ -1,31 +1,41 @@
-import "./Autocounter.css"
-import { useState } from 'react';
+import "./Autocounter.css";
 
-function Autocounter ({ name }) {
-    const [count, setCount] = useState(0);
+function Autocounter({ nameText, value, onChange, name }) {
+  const subtract = (event) => {
+    event.preventDefault();
+    if (value > 0) {
+      onChange({
+        target: {
+          name: name,
+          value: value - 1,
+        },
+      });
+    }
+  };
 
-    const subtract = (event) => {
-        event.preventDefault();
-        setCount(count => {
-            if (count > 0) {
-                return count - 1;
-            }
-            return count
-        });
-    };
+  const add = (event) => {
+    event.preventDefault();
+    onChange({
+      target: {
+        name: name,
+        value: value + 1,
+      },
+    });
+  };
 
-    const add = (event) => {
-        event.preventDefault();
-        setCount(count + 1);
-    };
-
-    return (
-        <div className="child text">
-            <p id="autocounttext" className="text">{name}</p>
-            <button onClick={subtract} className="text" id="remove">-</button>
-            <button onClick={add} className="text" id="addto">{count}</button>
-        </div>
-    )
+  return (
+    <div className="child text">
+      <p id="autocounttext" className="text">
+        {nameText}
+      </p>
+      <button onClick={subtract} className="text" id="remove">
+        -
+      </button>
+      <button onClick={add} className="text" id="addto">
+        {value}
+      </button>
+    </div>
+  );
 }
 
 export default Autocounter;
