@@ -1,8 +1,7 @@
 import "./climbtimer.css";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-function ClimbTime({ runningBool }) {
-  const [time, setTime] = useState(0);
+function ClimbTime({ runningBool, time, setTime }) {
   const timerRef = useRef(null);
   const startRef = useRef(null);
 
