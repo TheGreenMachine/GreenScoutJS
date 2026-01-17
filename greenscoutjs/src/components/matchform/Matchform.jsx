@@ -16,8 +16,8 @@ import ReplayButton from "./submitbuttons/ReplayButton";
 
 function Matchform() {
   const [formData, setFormData] = useState({
-    match: null,
-    team: null,
+    match: "",
+    team: "",
     driverStation: "",
     canAuto: false,
     hangAuto: false,
@@ -206,14 +206,14 @@ function Matchform() {
           </div>
           <Autocheck
             name="disconnect"
-            value={formData.disconnect}
+            checked={formData.disconnect}
             onChange={handleChange}
           >
             Was Their Robot Disconnected Or Disabled?
           </Autocheck>
           <Autocheck
             name="loseTrack"
-            value={formData.loseTrack}
+            checked={formData.loseTrack}
             onChange={handleChange}
           >
             Did You Lose Track At Any Point?

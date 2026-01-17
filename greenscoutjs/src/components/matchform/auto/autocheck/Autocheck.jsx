@@ -1,6 +1,6 @@
 import "./Autocheck.css";
 
-function Autocheck({ children, value, onChange, name }) {
+function Autocheck({ children, checked, onChange, name }) {
   return (
     <div className="child divcheck">
       <p className="textcheck">{children}</p>
@@ -8,7 +8,7 @@ function Autocheck({ children, value, onChange, name }) {
         <input
           className="check"
           type="checkbox"
-          checked={value}
+          checked={checked}
           onChange={onChange}
           name={name}
         />
