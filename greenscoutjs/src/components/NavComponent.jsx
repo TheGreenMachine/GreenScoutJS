@@ -5,18 +5,18 @@ function NavComponent() {
   const navigate = useNavigate();
 
   function navHome() {
-    navigate("/home");
+    navigate("/GreenScoutJS/home");
   }
 
   function navForm() {
-    navigate("/match");
+    navigate("/GreenScoutJS/match");
   }
 
   return (
     <span>
       <input type="checkbox" id="nav-toggle" />
-      <label for="nav-toggle" class="hamburger"></label>
-      <nav class="side-nav">
+      <label htmlFor="nav-toggle" className="hamburger"></label>
+      <nav className="side-nav">
         <div id="usertile">
           <div id="userimage"></div>
           <div id="usertext">

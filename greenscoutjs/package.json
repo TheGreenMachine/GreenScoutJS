@@ -7,8 +7,8 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --base /GreenScoutJS",
+    "build": "vite build --base /GreenScoutJS",
     "start": "react-scripts start",
     "lint": "eslint .",
     "preview": "vite preview"

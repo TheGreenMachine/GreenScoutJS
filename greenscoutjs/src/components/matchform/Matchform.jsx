@@ -7,12 +7,13 @@ import Autocounter from "./auto/autocounter/Autocounter";
 import Neutralcheck from "./collection/NeutralCheck";
 import HPCheck from "./collection/HPCheck";
 import CollectDrop from "./collection/CollectDrop";
-import ClimbTime from "./climbing/ClimbTime";
-import TriggerButton from "./climbing/TriggerButton";
-import ResetButton from "./climbing/ResetButton";
+import ClimbTime from "./climbing-timer/ClimbTime";
+import TriggerButton from "./climbing-timer/TriggerButton";
+import ResetButton from "./climbing-timer/ResetButton";
 import EndDropDown from "./auto/dropdown/EndDropDown";
 import SubmitButton from "./submitbuttons/SubmitButton";
 import ReplayButton from "./submitbuttons/ReplayButton";
+import Cycles from "./teleopcycles/Cycles";
 
 function Matchform() {
   const [formData, setFormData] = useState({
@@ -43,6 +44,10 @@ function Matchform() {
 
   const [isRunning, setIsRunning] = useState(false);
   const [resetKey, setResetKey] = useState(0);
+
+  const [cycleList, setCycleList] = useState([]);
+
+  // const sideButtons = ["Cycles", "Score", "Shuttle"];
 
   const toggleStopwatch = (event) => {
     if (event) event.preventDefault();
@@ -89,6 +94,10 @@ function Matchform() {
 
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+  };
+
+  const addCycleEvent = (eventName) => {
+    setCycleList((prevList) => [...prevList, eventName]);
   };
 
   return (
@@ -157,6 +166,7 @@ function Matchform() {
           <div className="child" id="headparent">
             <h1 className="header">Cycles</h1>
           </div>
+          <Cycles list={cycleList}></Cycles>
           <div className="child" id="headparent">
             <h1 className="header">Collection Ability</h1>
           </div>
@@ -250,6 +260,7 @@ function Matchform() {
 
         <div id="formScore" className="formElement">
           <TriggerButton onTrigger={toggleStopwatch}></TriggerButton>
+          {/* <TriggerButton onTrigger={() => addCycleEvent("E")}></TriggerButton> */}
         </div>
       </span>
     </span>

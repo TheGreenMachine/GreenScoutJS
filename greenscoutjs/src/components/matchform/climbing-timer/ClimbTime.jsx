@@ -16,7 +16,6 @@ function ClimbTime({ runningBool, time, setTime, name, onChange }) {
       }, 10);
     } else {
       clearInterval(timerRef.current);
-      // Only update formData when timer stops and time is greater than 0
       if (lastTimeRef.current > 0) {
         onChange({
           target: {

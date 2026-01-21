@@ -5,10 +5,18 @@ import LoginButton from "./loginButton/LoginButton";
 import { useState } from "react";
 import GuestButton from "./loginButton/GuestButton";
 import NavComponentLogin from "../NavComponentLogin";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [user, setUsername] = useState("");
   const [pass, setPassword] = useState("");
+
+  function handleLogin() {
+    // console.log("Hello");
+    navigate("/GreenScoutJS/home");
+  }
+
   return (
     <span id="body">
       <NavComponentLogin></NavComponentLogin>
@@ -24,7 +32,7 @@ function Login() {
           value={pass}
           onChange={setPassword}
         ></Password>
-        <LoginButton></LoginButton>
+        <LoginButton onClick={handleLogin}></LoginButton>
         <GuestButton></GuestButton>
       </span>
     </span>

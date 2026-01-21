@@ -1,16 +1,8 @@
-import "./LoginButton.css"
+import "./LoginButton.css";
 import { Navigate, useNavigate } from "react-router-dom";
 
-function LoginButton () {
-    const navigate = useNavigate();
-
-    function handleClick() {
-        navigate("/home")
-    }
-
-    return (
-        <button onClick={handleClick}>Continue</button>
-    )
+function LoginButton({ onClick}) {
+  return <button onClick={onClick}>Continue</button>;
 }
 
 export default LoginButton;
