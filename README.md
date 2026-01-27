@@ -3,7 +3,7 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
 
 * How to update GH Pages: 
     * Open la terminal
-        * 0. First time:
+        * 1. First time:
             * Create App:
                 * npm install -g create-vite
                 * npm create vite@latest greenscoutjs -- --template react
@@ -19,8 +19,8 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
             * if broke:
                 *rm -Force .\node_modules\.cache\gh-pages\
 
-        * 1. cd .\greenscoutjs\
+        * 2. cd .\greenscoutjs\
 
-        * 2. vite build --base /GreenScoutJS
+        * 3. vite build --base /GreenScoutJS
 
-        * 3. gh-pages -d dist
+        * 4. gh-pages -d dist
