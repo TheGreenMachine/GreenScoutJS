@@ -18,8 +18,8 @@
 }
 
 #sideButtonTrigger.active {
-  background-color: #ceffdc;
-  border-color: #ceffdc;
+  background-color: lightcoral;
+  border-color: lightcoral;
 }
 
 #sideButtonTrigger.inactive {
@@ -30,10 +30,17 @@
 #stopbuttonimg {
   height: 2vw;
   width: 2vw;
-  background-image: url("../../../assets/stopwatch.svg");
   background-size: 2vw 2vw;
   background-repeat: no-repeat;
   background-position: 1px 0px;
+}
+
+.act {
+  background-image: url("../../../assets/square-solid-full.svg");
+}
+
+.inact {
+  background-image: url("../../../assets/stopwatch.svg");
 }
 
 #resetbutton {

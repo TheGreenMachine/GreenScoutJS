@@ -7,7 +7,7 @@ function TriggerButton({ onTrigger, active }) {
       className={active ? "active" : "inactive"}
       onClick={onTrigger}
     >
-      <div id="stopbuttonimg"></div>
+      <div className={active ? "act" : "inact"} id="stopbuttonimg"></div>
       Climb
     </button>
   );
