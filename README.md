@@ -1,7 +1,7 @@
 # GreenScoutJS
 FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
 
-How to update GH Pages: 
+* How to update GH Pages: 
     * Open la terminal
         * 0. First time:
             * Create App:
