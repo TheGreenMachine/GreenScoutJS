@@ -15,7 +15,8 @@ const Cycles = ({
     if (numValue <= 15) return "6-10";
     if (numValue <= 20) return "11-15";
     if (numValue <= 25) return "16-20";
-    return "21+";
+    if (numValue <= 30) return "21-25";
+    return "26+";
   };
 
   const handleAccuracyChange = (index, value) => {
@@ -54,7 +55,7 @@ const Cycles = ({
               <input
                 type="range"
                 min={1}
-                max={26}
+                max={31}
                 step={5}
                 className="accSlider"
                 value={item.accuracy || 1}

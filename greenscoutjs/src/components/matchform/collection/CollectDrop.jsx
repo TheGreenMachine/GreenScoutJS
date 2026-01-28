@@ -19,7 +19,8 @@ function CollectDrop({ value, onChange, name }) {
         <option>6-10</option>
         <option>11-15</option>
         <option>16-20</option>
-        <option>21+</option>
+        <option>21-25</option>
+        <option>26+</option>
       </select>
     </div>
   );
