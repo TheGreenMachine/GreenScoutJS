@@ -164,7 +164,7 @@
   overflow-x: hidden;
 }
 
-.Score {
+.cycle-item.Score {
   width: 80vw;
   height: 9vh;
   text-align: center;
@@ -177,12 +177,12 @@
   margin-bottom: 1vw;
 }
 
-.Score:hover {
+.cycle-item.Score:hover {
   background-color: #cee5ff;
   cursor: pointer;
 }
 
-.Score > .cycleElementImg {
+.cycle-item.Score > .cycleElementImg {
   left: 0;
   position: relative;
   height: 3vw;
@@ -200,7 +200,15 @@
   background-color: #d6e9ff;
 }
 
-.Shuttle {
+.accSlider {
+  margin-top: 0.75vw;
+  width: 10vw;
+  height: 3vw;
+  margin-right: 10vw;
+  background-color: black;
+}
+
+.cycle-item.Shuttle {
   width: 80vw;
   height: 9vh;
   text-align: center;
@@ -213,12 +221,12 @@
   margin-bottom: 1vw;
 }
 
-.Shuttle:hover {
+.cycle-item.Shuttle:hover {
   background-color: #cee5ff;
   cursor: pointer;
 }
 
-.Shuttle > .cycleElementImg {
+.cycle-item.Shuttle > .cycleElementImg {
   left: 0;
   position: relative;
   height: 3vw;
@@ -232,19 +240,29 @@
   border-radius: 20%;
 }
 
-.Shuttle:hover > .cycleElementImg {
+.cycle-item.Shuttle:hover > .cycleElementImg {
   background-color: #d6e9ff;
 }
 
-.cycleElementText {
+.Score.cycleElementText {
   padding-top: 2.765vw;
   padding-right: 4vw;
-  width: 75vw;
+  width: 20.5vw;
+  height: inherit;
+  padding-left: 24.5vw;
+}
+
+.Shuttle.cycleElementText {
+  padding-top: 2.765vw;
+  padding-right: 4vw;
+  padding-left: 4.5vw;
+  width: 60.5vw;
   height: inherit;
 }
 
 .deleteButton {
   left: 0;
+  margin-left: 0;
   position: relative;
   height: 3vw;
   width: 4vw;
@@ -259,4 +277,9 @@
 
 .deleteButton:hover {
   background-color: lightcoral;
+}
+
+.accuracyLabel {
+  width: 3vw;
+  height: 3vw;
 }

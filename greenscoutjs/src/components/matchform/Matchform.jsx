@@ -85,7 +85,12 @@ function Matchform() {
   const submitAll = (event) => {
     event.preventDefault();
 
-    const jsonString = JSON.stringify(formData, null, 2);
+    const dataToSubmit = {
+      ...formData,
+      cyclesLists: cycleList,
+    };
+
+    const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
     const blob = new Blob([jsonString], { type: "application/json" });
 
@@ -111,12 +116,24 @@ function Matchform() {
     }
   };
 
+  const updateCycleAccuracy = (index, newAccuracy) => {
+    setCycleList((prevList) =>
+      prevList.map((item, i) =>
+        i === index ? { ...item, accuracy: parseInt(newAccuracy) } : item,
+      ),
+    );
+  };
+
   const addCycleEvent = (eventName) => {
     if (isCycleRunning) {
       const currentTime = (cycleTime / 1000).toFixed(2);
       setCycleList((prevList) => [
         ...prevList,
-        { event: eventName, time: currentTime },
+        {
+          event: eventName,
+          time: currentTime,
+          accuracy: eventName === "Score" ? 1 : null,
+        },
       ]);
     }
   };
@@ -201,6 +218,7 @@ function Matchform() {
             setTime={setCycleTime}
             onChange={handleChange}
             onTrigger={removeCycleEvent}
+            onUpdateAccuracy={updateCycleAccuracy}
           ></Cycles>
           <div className="child" id="headparent">
             <h1 className="header">Collection Ability</h1>
