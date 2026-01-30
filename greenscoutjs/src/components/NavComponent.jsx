@@ -1,7 +1,9 @@
 import "./NavComponent.css";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../UseAuth";
 
 function NavComponent() {
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   function navHome() {
@@ -11,6 +13,11 @@ function NavComponent() {
   function navForm() {
     navigate("/GreenScoutJS/match");
   }
+
+  const handleLogout = () => {
+    logout();
+    navigate("/GreenScoutJS");
+  };
 
   return (
     <span>
@@ -30,8 +37,10 @@ function NavComponent() {
         <p className="textp" onClick={navForm}>
           Match Form
         </p>
+        <p id="logout" className="textp" onClick={handleLogout}>
+          Log Out
+        </p>
       </nav>
-
       <nav id="navbar"></nav>
     </span>
   );

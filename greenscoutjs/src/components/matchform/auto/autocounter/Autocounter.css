@@ -10,10 +10,6 @@
   text-decoration: none;
 }
 
-.text:hover {
-  cursor: default;
-}
-
 .child {
   margin-left: 7.5vw;
   margin-right: 7.5vw;
@@ -47,6 +43,14 @@
   width: 20vw;
   margin-bottom: 5vh;
   margin-left: 1vw;
+}
+
+#addto:hover {
+  cursor: pointer;
+}
+
+#remove:hover {
+  cursor: pointer;
 }
 
 #remove {
