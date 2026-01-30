@@ -1,8 +1,8 @@
 import "./LoginButton.css";
 
-function LoginButton({ onClick }) {
+function LoginButton({ type = "button" }) {
   return (
-    <button id="loginButton" onClick={onClick}>
+    <button type={type} id="loginButton">
       Continue
     </button>
   );

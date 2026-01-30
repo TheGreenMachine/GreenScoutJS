@@ -1,15 +1,21 @@
-import "./password.css"
+import "./password.css";
 
-function Password ({ onPasswordChange }) {
-    const handleChange = (e) => {
-        onPasswordChange(e.target.value);
-    }
+function Password({ onPasswordChange, value }) {
+  const handleChange = (e) => {
+    onPasswordChange(e.target.value);
+  };
 
-    return (
-        <form>
-            <input placeholder="Password" type="password" onChange={handleChange} id="pass" />
-        </form>
-    )
+  return (
+    <div>
+      <input
+        placeholder="Password"
+        type="password"
+        onChange={handleChange}
+        id="pass"
+        value={value}
+      />
+    </div>
+  );
 }
 
 export default Password;

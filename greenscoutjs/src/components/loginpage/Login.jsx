@@ -22,7 +22,7 @@ function Login({ accountList }) {
   }, [user, navigate]);
 
   const handleLogin = (e) => {
-    if(e) e.preventDefault();
+    e.preventDefault();
 
     const account = accountList.find(
       (acc) => acc.user === username && acc.pass === password,
@@ -36,6 +36,8 @@ function Login({ accountList }) {
       navigate("/GreenScoutJS/home");
     } else {
       setError("This Account Does Not Exist");
+      setUsername("");
+      setPassword("");
     }
   };
 
@@ -52,22 +54,18 @@ function Login({ accountList }) {
     navigate("/GreenScoutJS/home");
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleLogin();
-    }
-  };
-
   return (
     <div id="body">
       <NavComponentLogin></NavComponentLogin>
-      <div id="parent" className="text" onKeyPress={handleKeyPress}>
+      <div id="parent" className="text">
         <h1 className="textlogin">Login</h1>
-        <Username className="input" onUserChange={setUsername}></Username>
-        <Password className="input" onPasswordChange={setPassword}></Password>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <LoginButton onClick={handleLogin}></LoginButton>
-        <GuestButton onClick={handleGuestLogin}></GuestButton>
+        <form id="loginPageForm" onSubmit={handleLogin}>
+          <Username className="input" onUserChange={setUsername} value={username}></Username>
+          <Password className="input" onPasswordChange={setPassword} value={password}></Password>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          <LoginButton type="submit"></LoginButton>
+          <GuestButton onClick={handleGuestLogin} type="button"></GuestButton>
+        </form>
       </div>
     </div>
   );
