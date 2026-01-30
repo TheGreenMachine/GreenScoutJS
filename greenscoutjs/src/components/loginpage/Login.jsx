@@ -35,7 +35,7 @@ function Login({ accountList }) {
 
       navigate("/GreenScoutJS/home");
     } else {
-      setError("This Account Does Not Exist");
+      setError("Invalid Credentials");
       setUsername("");
       setPassword("");
     }
