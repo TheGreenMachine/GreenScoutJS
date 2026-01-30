@@ -8,12 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../UseAuth";
 
-function Login({ accountList }) {
+function Login() {
   const { login, user } = useAuth();
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -21,23 +22,37 @@ function Login({ accountList }) {
     }
   }, [user, navigate]);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
 
-    const account = accountList.find(
-      (acc) => acc.user === username && acc.pass === password,
-    );
+    try {
+      const response = await fetch("https://your-backend-url.com/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    if (account) {
-      const token = "mock-token-" + Date.now();
+      const data = await response.json();
 
-      login(account, token);
-
-      navigate("/GreenScoutJS/home");
-    } else {
-      setError("Invalid Credentials");
+      if (response.ok && data.token) {
+        login(data.user, data.token);
+        navigate("/GreenScoutJS/home");
+      } else {
+        setError(data.message || "Invalid username or password");
+        setUsername("");
+        setPassword("");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("Failed to connect to server");
       setUsername("");
       setPassword("");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,12 +74,24 @@ function Login({ accountList }) {
       <NavComponentLogin></NavComponentLogin>
       <div id="parent" className="text">
         <h1 className="textlogin">Login</h1>
-        <form id="loginPageForm" onSubmit={handleLogin}>
-          <Username className="input" onUserChange={setUsername} value={username}></Username>
-          <Password className="input" onPasswordChange={setPassword} value={password}></Password>
+        <form onSubmit={handleLogin}>
+          <Username
+            className="input"
+            onUserChange={setUsername}
+            value={username}
+          ></Username>
+          <Password
+            className="input"
+            onPasswordChange={setPassword}
+            value={password}
+          ></Password>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <LoginButton type="submit"></LoginButton>
-          <GuestButton onClick={handleGuestLogin} type="button"></GuestButton>
+          <div className="button-container">
+            <LoginButton type="submit" disabled={loading}>
+              {loading ? "Loading..." : "Login"}
+            </LoginButton>
+            <GuestButton onClick={handleGuestLogin} type="button"></GuestButton>
+          </div>
         </form>
       </div>
     </div>

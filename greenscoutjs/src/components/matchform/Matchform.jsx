@@ -17,8 +17,11 @@ import Cycles from "./teleopcycles/Cycles";
 import CycleTimerToggle from "./teleopcycles/CycleTimerToggle";
 import ScoreButton from "./teleopcycles/ScoreButton";
 import ShuttleButton from "./teleopcycles/ShuttleButton";
+import { api } from "../../api";
+import { useAuth } from "../../UseAuth";
 
 function Matchform() {
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
     match: "",
     team: "",
@@ -38,6 +41,7 @@ function Matchform() {
     notes: "",
     replayed: false,
   });
+  const [loading, setLoading] = useState(false);
 
   const [time, setTime] = useState(0);
   const [cycleTime, setCycleTime] = useState(0);
@@ -80,6 +84,30 @@ function Matchform() {
       ...formData,
       [e.target.name]: value,
     });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await api.post("/matches", {
+        ...matchData,
+        scoutedBy: user.user,
+        userId: user.id,
+      });
+
+      console.log("Match submitted successfully:", response);
+      setMatchData({
+        teamNumber: "",
+        matchNumber: "",
+      });
+    } catch (error) {
+      console.error("Failed to submit match:", error);
+      alert("Failed to submit match data");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const submitAll = (event) => {
@@ -149,7 +177,7 @@ function Matchform() {
     <span id="body">
       <NavComponent></NavComponent>
       <span id="form">
-        <form id="formBody" className="formElement">
+        <form onSubmit={handleSubmit} id="formBody" className="formElement">
           <input
             placeholder="Match #"
             type="text"
@@ -306,8 +334,10 @@ function Matchform() {
             idDiv={"submitButtonDiv"}
             idImage={"submitImage"}
             submit={submitAll}
+            type="submit"
+            disabled={loading}
           >
-            Save
+            {loading ? "Submitting..." : "Submit Match"}
           </SubmitButton>
           <div id="bottomspace"></div>
         </form>
