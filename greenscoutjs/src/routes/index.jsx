@@ -39,7 +39,7 @@ const Routes = ({ accounts }) => {
   const routesForNotAuthenticatedOnly = [
     {
       path: "/GreenScoutJS/login",
-      element: <Login />,
+      element: <Login accounts={accounts} />,
     },
   ];
 

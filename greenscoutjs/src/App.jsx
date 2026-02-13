@@ -5,11 +5,7 @@ import Routes from "./routes";
 function App() {
   const accounts = [
     {
-      id: 1,
-      user: "Noah",
-      role: "Admin",
-      matchesLogged: 9999999999999,
-      pass: "1816",
+      
     },
   ];
 

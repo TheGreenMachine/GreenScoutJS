@@ -39,3 +39,9 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
+
+.error-message {
+  color: #d32f2f;
+  margin: 10px 0;
+  font-size: 14px;
+}
