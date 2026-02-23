@@ -6,7 +6,7 @@ import Matchform from "../components/matchform/Matchform";
 import Login from "../components/loginpage/Login";
 import Logout from "../components/loginpage/Logout";
 
-const Routes = ({ accounts }) => {
+const RoutesList = ({ accounts }) => {
   const { token } = useAuth();
 
   const routesForPublic = [];
@@ -52,4 +52,4 @@ const Routes = ({ accounts }) => {
   return <RouterProvider router={router} />;
 };
 
-export default Routes;
+export default RoutesList;

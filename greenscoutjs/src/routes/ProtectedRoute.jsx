@@ -1,15 +1,36 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../provider/authContext";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
-export const ProtectedRoute = () => {
-  const { token } = useAuth();
+const ProtectedRoute = ({ children, requireAdmin = false }) => {
+  const { isAuthenticated, isLoading, isAdmin } = useAuth();
 
   // Check if the user is authenticated
-  if (!token) {
-    // If not authenticated, redirect to the login page
-    return <Navigate to="/GreenScoutJS/login" />;
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <div>Loading...</div>
+      </div>
+    );
   }
 
-  // If authenticated, render the child routes
-  return <Outlet />;
+  // Redirect to login if not authenticated
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  // Check admin requirement
+  if (requireAdmin && !isAdmin()) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return children;
 };
+
+export default ProtectedRoute;
