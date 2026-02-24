@@ -11,6 +11,7 @@ import PublicRoute from "./routes/PublicRoute";
 import Login from "./components/loginpage/Login";
 import Home from "./components/homepage/Home";
 import Logout from "./components/loginpage/Logout";
+import Matchform from "./components/matchform/Matchform";
 
 function App() {
   return (
@@ -52,8 +53,7 @@ function App() {
             path="/scout"
             element={
               <ProtectedRoute>
-                {/* <ScoutingForm /> */}
-                <div>Scouting Form - Protected Route</div>
+                <Matchform />
               </ProtectedRoute>
             }
           />

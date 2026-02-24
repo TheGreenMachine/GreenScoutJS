@@ -7,16 +7,15 @@ function NavComponent() {
   const navigate = useNavigate();
 
   function navHome() {
-    navigate("/GreenScoutJS/home");
+    navigate("/home");
   }
 
   function navForm() {
-    navigate("/GreenScoutJS/match");
+    navigate("/scout");
   }
 
   const handleLogout = () => {
     logout();
-    navigate("/GreenScoutJS");
   };
 
   return (
