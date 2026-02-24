@@ -23,13 +23,14 @@ function NavComponent() {
       <input type="checkbox" id="nav-toggle" />
       <label htmlFor="nav-toggle" className="hamburger"></label>
       <nav className="side-nav">
-        <div id="usertile">
+        {/* Add back later */}
+        {/* <div id="usertile">
           <div id="userimage"></div>
           <div id="usertext">
             <h1>Guest</h1>
             <p>User</p>
           </div>
-        </div>
+        </div> */}
         <p className="textp" onClick={navHome}>
           Home
         </p>

@@ -3,11 +3,11 @@ import "./CollectDrop.css";
 function CollectDrop({ value, onChange, name }) {
   return (
     <div className="collectchild" id="collectdrop">
-      <p id="collectdtext" className="text">
+      <p id="collectdtext" className="textCollectDrop">
         How Much Fuel Can They Hold? (Estimate)
       </p>
       <select
-        className="text"
+        className="textCollectDrop"
         id="collectdropdown"
         name={name}
         value={value}

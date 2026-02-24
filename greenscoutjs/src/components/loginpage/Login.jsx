@@ -51,60 +51,6 @@ const Login = () => {
   };
 
   return (
-    // <div id="body">
-    //   <NavComponentLogin />
-    //   <div id="parent" className="text">
-    //     <h1 className="textlogin">Login</h1>
-    //     <form id="loginPageForm" onSubmit={handleSubmit}>
-    //       <Username
-    //         className="input"
-    //         onUserChange={handleUsernameChange}
-    //         value={username}
-    //         disabled={isLoading}
-    //       />
-    //       <Password
-    //         className="input"
-    //         onPasswordChange={handlePasswordChange}
-    //         value={password}
-    //         disabled={isLoading}
-    //       />
-    //       {error && (
-    //         <div className="error-message">
-    //           <span className="error-icon">⚠</span>
-    //           {error}
-    //         </div>
-    //       )}{" "}
-    //       <LoginButton type="submit" disabled={isLoading}>
-    //         {isLoading ? (
-    //           <>
-    //             <span className="spinner"></span>Logging in...
-    //           </>
-    //         ) : (
-    //           "Sign In"
-    //         )}
-    //       </LoginButton>
-    //     </form>
-    //     <div className="test-credentials">
-    //       <details>
-    //         <summary>Test Credentials</summary>
-    //         <div className="credentials-list">
-    //           <div className="credential-item">
-    //             <strong>Admin Account:</strong>
-    //             <code>admin / greenscout2024</code>
-    //           </div>
-    //           <div className="credential-item">
-    //             <strong>Scout Account:</strong>
-    //             <code>scout1 / scout123</code>
-    //           </div>
-    //           <div className="credential-item">
-    //             <strong>Team Lead:</strong>
-    //             <code>teamlead / lead1816</code>
-    //           </div>
-    //         </div>
-    //       </details>
-    //     </div>
-    //   </div>
-    // </div>
     <div id="body">
       <NavComponentLogin />
       <div id="parent" className="text">
@@ -144,7 +90,12 @@ const Login = () => {
             </div>
           )}
 
-          <button type="submit" className="login-button" disabled={isLoading}>
+          <button
+            type="submit"
+            id="loginButton"
+            className="login-button"
+            disabled={isLoading}
+          >
             {isLoading ? (
               <>
                 <span className="spinner"></span>

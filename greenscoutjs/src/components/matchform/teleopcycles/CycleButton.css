@@ -5,7 +5,7 @@
   border: 1px #cee5ff;
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: #5f6167;
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;
@@ -13,7 +13,7 @@
   height: 6.5vh;
   position: absolute;
   top: 4vh;
-  font-size: 10px;
+  font-size: 1.8vh;
   text-align: center;
 }
 
@@ -32,24 +32,24 @@
   height: 6.5vh;
   position: absolute;
   top: 4vh;
-  font-size: 10px;
+  font-size: 1.8vh;
   text-align: center;
 }
 
 #cycleImg {
-  height: 2vw;
-  width: 2vw;
+  height: 2vh;
+  width: 100%;
   background-image: url("../../../assets/play-solid-full.svg");
-  background-size: 1.7vw 1.7vw;
+  background-size: 1.7vh 1.7vh;
   background-repeat: no-repeat;
-  background-position: 4px 1px;
+  background-position: 2vh 0vh;
 }
 
 #stopImg {
-  height: 2vw;
-  width: 2vw;
+  height: 2vh;
+  width: 100%;
   background-image: url("../../../assets/square-solid-full.svg");
-  background-size: 1.7vw 1.7vw;
+  background-size: 1.7vh 1.7vh;
   background-repeat: no-repeat;
-  background-position: 4px 1px;
+  background-position: 2vh 0vh;
 }

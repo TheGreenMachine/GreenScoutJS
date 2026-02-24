@@ -152,7 +152,7 @@ function Matchform() {
         <form id="formBody" className="formElement">
           <input
             placeholder="Match #"
-            type="text"
+            type="textMatchForm"
             className="child"
             id="matchNum"
             name="match"
@@ -161,7 +161,7 @@ function Matchform() {
           />
           <input
             placeholder="Team #"
-            type="text"
+            type="textMatchForm"
             className="child"
             id="teamNum"
             name="team"
@@ -311,7 +311,7 @@ function Matchform() {
           </SubmitButton>
           <div id="bottomspace"></div>
         </form>
-        <div id="formScore" className="formElement">
+        <div id="formScore">
           <CycleTimerToggle
             active={isButtonActive}
             isCycleRunning={isCycleRunning}

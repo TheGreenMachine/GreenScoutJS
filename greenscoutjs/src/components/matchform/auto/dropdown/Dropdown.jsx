@@ -3,11 +3,11 @@ import "./Dropdown.css";
 function Dropdown({ value, onChange, name }) {
   return (
     <div className="child" id="driverStation">
-      <p id="dtext" className="text">
+      <p id="dtext" className="textDropdown">
         Driver Station
       </p>
       <select
-        className="text"
+        className="textDropdown"
         id="dropdown"
         name={name}
         value={value}

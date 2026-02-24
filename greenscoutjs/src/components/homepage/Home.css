@@ -1,19 +1,18 @@
-.text {
+.textHome {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   color: #1e2226;
-  font-size: 16px;
+  font-size: 3vh;
   padding: 0;
   margin-bottom: 0;
   padding-top: 5px;
-  height: 30px;
 }
 
-.text2 {
+.textHome2 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   color: #1e2226;
-  font-size: 23px;
+  font-size: 3vh;
 }
 
 #assigned {

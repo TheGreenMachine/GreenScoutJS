@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   height: 8vh;
+  width: 100vw;
   background-color: #9bcbfb;
 }
 
@@ -15,25 +16,21 @@
 .hamburger {
   margin-top: 1.3vw;
   margin-left: 0.8vw;
-  height: 2vw;
-  width: 2vw;
+  height: 3.5vh;
+  width: 3.5vh;
   background-image: url("../assets/bars-solid-full.svg");
-  background-size: 2vw 2vw;
+  background-size: fill;
   background-repeat: no-repeat;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.hamburger {
-  font-size: 30px;
   cursor: pointer;
   padding: 15px;
   position: fixed;
   top: -6px;
   z-index: 1001;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 #nav-toggle {
@@ -68,9 +65,9 @@ body {
 
 .textp {
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+  font-weight: bold;
   color: black;
-  font-size: 16px;
+  font-size: 3vh;
   padding-left: 1vw;
   text-decoration: none;
   margin-bottom: 0;
@@ -78,7 +75,8 @@ body {
   height: 30px;
 }
 
-#usertile {
+/* CSS for later user tile implementation */
+/* #usertile {
   width: 15vw;
   height: 5vh;
   display: flex;
@@ -94,7 +92,7 @@ body {
   background-size: 3vw 3vw;
 }
 
-#usertext {
+ #usertext {
   width: 3vw;
   height: 3vw;
 }
@@ -112,4 +110,4 @@ body {
   font-size: 1.5vh;
   text-decoration: none;
   color: black;
-}
+} */

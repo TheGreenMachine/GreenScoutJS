@@ -1,13 +1,13 @@
-.text {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-    color: #1e2226;
-    font-size: 16px;
-    padding: 0;
-    margin-bottom: 0;
-    padding-top: 5px;
-    height: 30px;
-    text-decoration: none;
+.textCollectCheck {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: #1e2226;
+  font-size: 16px;
+  padding: 0;
+  margin-bottom: 0;
+  padding-top: 5px;
+  height: 30px;
+  text-decoration: none;
 }
 
 .text:hover {
@@ -15,27 +15,27 @@
 }
 
 #doesneutral {
-    margin-top: 3vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 6.2vh;
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 6.2vh;
 }
 
 #doesneutral:focus {
-    outline: none;
+  outline: none;
 }
 
 #doeshp {
-    margin-top: -2vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 6.2vh;
+  margin-top: -2vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 6.2vh;
 }
 
 #doeshp:focus {
-    outline: none;
+  outline: none;
 }
 
 #autohangtext {

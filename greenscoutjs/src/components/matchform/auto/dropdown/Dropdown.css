@@ -1,55 +1,55 @@
-.text {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-    color: #1e2226;
-    font-size: 16px;
-    padding: 0;
-    margin-bottom: 0;
-    padding-top: 5px;
-    height: 30px;
-    text-decoration: none;
+.textDropdown {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: #1e2226;
+  font-size: 16px;
+  padding: 0;
+  margin-bottom: 0;
+  padding-top: 5px;
+  height: 30px;
+  text-decoration: none;
 }
 
-.text:hover {
-    cursor: default;
+.textDropdown:hover {
+  cursor: default;
 }
 
 .child {
-    margin-left: 7.5vw;
-    margin-right: 7.5vw;
-    width: 80vw;
+  margin-left: 7.5vw;
+  margin-right: 7.5vw;
+  width: 80vw;
 }
 
 #driverStation {
-    margin-top: 1vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 6.2vh;
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 6.2vh;
 }
 
 #dtext {
-    height: 3.1vh;
-    width: 70vw;
-    font-size: normal;
+  height: 3.1vh;
+  width: 70vw;
+  font-size: normal;
 }
 
 #dropdown {
-    margin-top: 3vh;
-    padding-bottom: 0.5vh;
-    height: 5.2vh;
-    right: 0;
-    border: none;
-    border-bottom: gray solid 1px;
-    font-size: small;
-    color: #2e2e2f;
+  margin-top: 3vh;
+  padding-bottom: 0.5vh;
+  height: 5.2vh;
+  right: 0;
+  border: none;
+  border-bottom: gray solid 1px;
+  font-size: small;
+  color: #2e2e2f;
 }
 
 #dropdown:focus {
-    outline: none;
-    cursor: pointer;
+  outline: none;
+  cursor: pointer;
 }
 
 #dropdown:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
