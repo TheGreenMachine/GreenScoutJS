@@ -40,31 +40,10 @@ function App() {
           />
 
           <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                {/* <Dashboard /> */}
-                <div>Dashboard - Protected Route</div>
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
             path="/scout"
             element={
               <ProtectedRoute>
                 <Matchform />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* Admin-only routes */}
-          <Route
-            path="/admin-dashboard"
-            element={
-              <ProtectedRoute requireAdmin={true}>
-                {/* <AdminDashboard /> */}
-                <div>Admin Dashboard - Admin Only</div>
               </ProtectedRoute>
             }
           />
