@@ -3,6 +3,7 @@ import { authenticateUser } from "../../api/mockApi";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import "./Login.css";
+import { useAuth } from "../../AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +11,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,8 +24,7 @@ const Login = () => {
 
       if (result.success) {
         // Store user data in localStorage
-        localStorage.setItem("greenscout_user", JSON.stringify(result.user));
-        localStorage.setItem("greenscout_auth", "true");
+        login(result.user);
 
         console.log("Login successful:", result.user);
 

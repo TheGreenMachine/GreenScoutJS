@@ -1,20 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../provider/authContext";
+import { useAuth } from "../../AuthContext";
+import { useEffect } from "react";
 
 const Logout = () => {
-  const { setToken } = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setToken();
-    navigate("/", { replace: true });
-  };
+  useEffect(() => {
+    logout();
+    navigate("/login", { replace: true });
+  }, []);
 
-  setTimeout(() => {
-    handleLogout();
-  }, 1 * 1);
-
-  return <div></div>;
+  return null;
 };
 
 export default Logout;

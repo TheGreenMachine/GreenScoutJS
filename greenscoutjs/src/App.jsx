@@ -1,6 +1,5 @@
 import "./App.css";
 import { AuthProvider } from "./AuthContext";
-// import RoutesList from "./routes";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,8 +7,10 @@ import {
   Navigate,
 } from "react-router-dom";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import PublicRoute from "./routes/PublicRoute";
 import Login from "./components/loginpage/Login";
 import Home from "./components/homepage/Home";
+import Logout from "./components/loginpage/Logout";
 
 function App() {
   return (
@@ -18,7 +19,14 @@ function App() {
         {/* <RoutesList /> */}
         <Routes>
           {/* Public routes */}
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
 
           {/* Protected routes - require authentication */}
           <Route
@@ -62,7 +70,16 @@ function App() {
           />
 
           {/* Redirect root to home */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
+
+          <Route
+            path="/logout"
+            element={
+              <ProtectedRoute>
+                <Logout />
+              </ProtectedRoute>
+            }
+          />
 
           {/* 404 route */}
           <Route path="*" element={<div>404 - Page Not Found</div>} />
