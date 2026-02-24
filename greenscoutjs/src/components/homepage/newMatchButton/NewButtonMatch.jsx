@@ -5,7 +5,7 @@ function NewButtonMatch() {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate("/GreenScoutJS/match");
+    navigate("/scout");
   }
   return <button onClick={handleClick} id="newmatchbutton"></button>;
 }

@@ -1,46 +1,46 @@
 import "./App.css";
-import Login from "./components/loginpage/Login";
-import Home from "./components/homepage/Home";
+import { AuthProvider } from "./AuthContext";
 import {
   BrowserRouter as Router,
-  Route,
   Routes,
+  Route,
   Navigate,
 } from "react-router-dom";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import PublicRoute from "./routes/PublicRoute";
+import Login from "./components/loginpage/Login";
+import Home from "./components/homepage/Home";
+import Logout from "./components/loginpage/Logout";
 import Matchform from "./components/matchform/Matchform";
-import { AuthProvider } from "./AuthProvider";
-import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
-  const accounts = [
-    {
-      id: 1,
-      user: "Noah",
-      role: "Admin",
-      matchesLogged: 9999999999999,
-      pass: "1816",
-    },
-  ];
-
   return (
-    <AuthProvider>
-      <Router>
+    <Router basename="/GreenScoutJS">
+      <AuthProvider>
+        {/* <RoutesList /> */}
         <Routes>
+          {/* Public routes */}
           <Route
-            exact
-            path="/GreenScoutJS"
-            element={<Login accountList={accounts} />}
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
           />
+
+          {/* Protected routes - require authentication */}
           <Route
-            path="/GreenScoutJS/home"
+            path="/home"
             element={
               <ProtectedRoute>
                 <Home />
               </ProtectedRoute>
             }
           />
+
           <Route
-            path="/GreenScoutJS/match"
+            path="/scout"
             element={
               <ProtectedRoute>
                 <Matchform />
@@ -48,10 +48,23 @@ function App() {
             }
           />
 
-          <Route path="*" element={<Navigate to="/GreenScoutJS" replace />} />
+          {/* Redirect root to home */}
+          <Route path="/" element={<Navigate to="/home" replace />} />
+
+          <Route
+            path="/logout"
+            element={
+              <ProtectedRoute>
+                <Logout />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* 404 route */}
+          <Route path="*" element={<div>404 - Page Not Found</div>} />
         </Routes>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

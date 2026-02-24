@@ -1,22 +1,21 @@
 import "./NavComponent.css";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useAuth } from "../UseAuth";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 function NavComponent() {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
   function navHome() {
-    navigate("/GreenScoutJS/home");
+    navigate("/home");
   }
 
   function navForm() {
-    navigate("/GreenScoutJS/match");
+    navigate("/scout");
   }
 
   const handleLogout = () => {
     logout();
-    navigate("/GreenScoutJS");
   };
 
   return (
