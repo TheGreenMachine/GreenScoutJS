@@ -1,11 +1,11 @@
 #sideButtonCycleTrigger.true {
   margin-top: 5.7vh;
   margin-bottom: 4.4vh;
-  background-color: #cee5ff;
-  border: 1px #cee5ff;
+  background-color: var(--accent-color3);
+  border: 1px var(--accent-color3);
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: black;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;
@@ -20,11 +20,11 @@
 #sideButtonCycleTrigger.false {
   margin-top: 5.7vh;
   margin-bottom: 4.4vh;
-  background-color: lightcoral;
-  border: 1px lightcoral;
+  background-color: var(--error-color);
+  border: 1px var(--error-color);
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: black;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;

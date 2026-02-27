@@ -1,7 +1,7 @@
 .textcheck {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
+  color: var(--font-color);
   font-size: 2.5vh;
   padding: 0;
   margin-bottom: 0;
@@ -59,15 +59,15 @@
   left: 1vw;
   height: 2.5vh;
   width: 2.5vh;
-  background-color: #eee;
+  background-color: var(--checkbox-default-color);
 }
 
 .checkcontainer:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: var(--checkbox-hover-color);
 }
 
 .checkcontainer input:checked ~ .checkmark {
-  background-color: #2f628d;
+  background-color: var(--check-background-color);
 }
 
 .checkmark:after {

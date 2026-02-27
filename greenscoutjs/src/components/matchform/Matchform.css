@@ -1,7 +1,7 @@
 .textMatchForm {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
+  color: var(--font-color);
   font-size: 2.5vh;
   padding: 0;
   margin-bottom: 0;
@@ -17,7 +17,7 @@
 .text2 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
+  color: var(--font-color);
   font-size: 2.5vh;
 }
 
@@ -51,7 +51,7 @@
   padding: 0;
   margin: 0;
   border-left: rgba(0, 0, 0, 0.132) 1px solid;
-  background-color: white;
+  background-color: var(--background-color);
 }
 
 /* Body */
@@ -77,26 +77,26 @@
   height: 6.2vh;
   width: calc(100% - 15vw);
   border-radius: 5px;
-  color: #1e2226;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2.5vh;
-  border: solid 0.25vh #93979f;
+  border: solid 0.25vh var(--border-color-gray);
   text-align: center;
 }
 
 #matchNum:focus {
-  border: solid 0.4vh #417096;
+  border: solid 0.4vh var(--border-color-blue);
   outline: 0;
 }
 
 #matchNum::placeholder {
-  color: #1e2226;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
 }
 
 #matchNum:focus::placeholder {
-  color: white;
+  color: var(--background-color);
 }
 
 #teamNum {
@@ -105,32 +105,32 @@
   margin-top: 1.5vh;
   height: 6.2vh;
   border-radius: 5px;
-  color: #1e2226;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
-  border: solid 0.25vh #93979f;
+  border: solid 0.25vh var(--border-color-gray);
   text-align: center;
 }
 
 #teamNum:focus {
-  border: solid 0.4vh #417096;
+  border: solid 0.4vh var(--border-color-blue);
   outline: 0;
 }
 
 #teamNum::placeholder {
-  color: #1e2226;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
 }
 
 #teamNum:focus::placeholder {
-  color: white;
+  color: var(--background-color);
 }
 
 .header {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
+  color: var(--font-color);
   font-size: 2.5vh;
   padding: 0;
   padding-top: 5px;
@@ -159,11 +159,6 @@
   align-items: center;
 }
 
-#bottomspace {
-  height: 18.4vh;
-  background-color: #11111100;
-}
-
 #notesdiv {
   height: 40vh;
 }
@@ -187,7 +182,7 @@
   width: 100%;
   height: 9vh;
   text-align: center;
-  color: black;
+  color: var(--font-color);
   text-decoration: none;
   font-size: 2.5vh;
   display: flex;
@@ -197,7 +192,7 @@
 }
 
 .cycle-item.Score:hover {
-  background-color: #cee5ff;
+  background-color: var(--accent-color3);
   cursor: pointer;
 }
 
@@ -211,12 +206,12 @@
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  border: black 0.5px solid;
+  border: var(--font-color) 0.5px solid;
   border-radius: 20%;
 }
 
 .Score:hover > .cycleElementImg {
-  background-color: #d6e9ff;
+  background-color: var(--accent-color3);
 }
 
 .accSlider {
@@ -225,7 +220,7 @@
   height: 1vh;
   margin-right: 10%;
   appearance: none;
-  background: #4cbb17;
+  background: var(--kelly-green);
   border-radius: 10rem;
   cursor: pointer;
 }
@@ -244,7 +239,7 @@
 }
 
 .cycle-item.Shuttle:hover {
-  background-color: #cee5ff;
+  background-color: var(--accent-color3);
   cursor: pointer;
 }
 
@@ -263,7 +258,7 @@
 }
 
 .cycle-item.Shuttle:hover > .cycleElementImg {
-  background-color: #d6e9ff;
+  background-color: var(--accent-color3);
 }
 
 .Score.cycleElementText {
@@ -315,7 +310,7 @@
 }
 
 .deleteButton:hover {
-  background-color: lightcoral;
+  background-color: var(--error-color);
 }
 
 .accuracyLabel {

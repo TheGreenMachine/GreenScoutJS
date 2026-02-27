@@ -1,7 +1,7 @@
 .textAutoCounter {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
+  color: var(--font-color);
   font-size: 2.5vh;
   padding: 0;
   margin-bottom: 0;
@@ -30,11 +30,11 @@
 
 #addto {
   margin-top: 5.7vh;
-  background-color: #cee5ff;
-  border: 1px #cee5ff;
+  background-color: var(--accent-color3);
+  border: 1px var(--accent-color3);
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: #5f6167;
+  color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;
@@ -55,11 +55,11 @@
 
 #remove {
   margin-top: 5.7vh;
-  background-color: #cee5ff;
-  border: 1px #cee5ff;
+  background-color: var(--accent-color3);
+  border: 1px var(--accent-color3);
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: #5f6167;
+  color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;

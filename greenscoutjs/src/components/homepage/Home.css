@@ -1,7 +1,7 @@
 .textHome {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
+  color: var(--font-color);
   font-size: 3vh;
   padding: 0;
   margin-bottom: 0;
@@ -11,7 +11,7 @@
 .textHome2 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
+  color: var(--font-color);
   font-size: 3vh;
 }
 
@@ -30,17 +30,17 @@
 #refreshButton {
   margin-top: 5.7vh;
   margin-bottom: 4.4vh;
-  border: 1px #cee5ff;
+  border: 1px var(--accent-color3);
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: #5f6167;
+  color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;
   font-size: smaller;
   width: 7.9vh;
   height: 7.9vh;
-  background-color: #9bcbfb;
+  background-color: var(--accent-color);
   background-image: url("../../assets/reload.svg");
   background-size: 3vh 3vh;
   background-position: 50% 50%;
@@ -49,9 +49,9 @@
 }
 
 #refreshButton:hover {
-  background-color: #8fbdeb;
+  background-color: var(--accent-color);
 }
 
 button:hover {
-  background-color: #8fbdeb;
+  background-color: var(--accent-color);
 }

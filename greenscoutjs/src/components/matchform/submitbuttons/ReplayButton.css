@@ -9,7 +9,7 @@
 .replayButton {
   margin-top: 5.7vh;
   margin-bottom: 4.4vh;
-  border: 1px #cee5ff;
+  border: 1px var(--accent-color3);
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   color: black;
@@ -22,18 +22,18 @@
   width: 100%;
   height: 100%;
   padding: none;
-  background-color: #9ccbff;
+  background-color: var(--accent-color);
   gap: 0px;
   font-size: 2.5vh;
 }
 
 .replayButton:hover {
-  background-color: #8fbdef;
+  background-color: var(--accent-color2);
 }
 
 .replayText {
   text-decoration: none;
-  color: black;
+  color: var(--font-color);
   margin: none;
   padding: none;
   margin-top: -1vh;

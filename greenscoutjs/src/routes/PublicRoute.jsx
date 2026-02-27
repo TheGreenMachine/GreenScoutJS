@@ -18,7 +18,7 @@ const PublicRoute = ({ children }) => {
           alignItems: "center",
           minHeight: "100vh",
           fontSize: "24px",
-          color: "#2d8b2d",
+          color: "var(--kelly-green)",
         }}
       >
         <div>Loading...</div>
