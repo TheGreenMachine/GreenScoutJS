@@ -31,15 +31,16 @@
 }
 
 .submitText {
-  margin-top: 1vh;
   text-decoration: none;
   color: black;
   margin: none;
+  margin-top: 0;
   padding: none;
+  font-size: 2vh;
 }
 
 #submitImage {
-  margin-top: -1.5vh;
+  margin-top: -3.5vh;
   background-image: url("../../../assets/floppy-disk-solid-full.svg");
 }
 

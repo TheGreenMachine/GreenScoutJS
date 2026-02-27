@@ -13,7 +13,7 @@ function CollectDrop({ value, onChange, name }) {
         value={value}
         onChange={onChange}
       >
-        <option>Select a Fuel Amount</option>
+        <option>Select</option>
         <option>None</option>
         <option>1-5</option>
         <option>6-10</option>

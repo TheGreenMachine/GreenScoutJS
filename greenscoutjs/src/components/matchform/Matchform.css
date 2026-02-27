@@ -27,10 +27,14 @@
   width: 100vw;
   height: 92vh;
   overflow: hidden;
+  overflow-y: hidden;
+  padding: none;
+  margin: none;
 }
 
 #formScore {
   z-index: 99999999999999999999999;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,11 +47,19 @@
   background-color: white;
 }
 
+#body {
+  width: 100vw;
+  height: 100vh;
+  margin: none;
+  padding: none;
+  overflow: hidden;
+}
+
 /* Body */
 
 #formBody {
   height: 92vh;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-gutter: stable;
 }
@@ -155,6 +167,7 @@
 #notesbox {
   width: 100%;
   height: 100%;
+  font-size: 2.5vh;
 }
 
 #cycleContainer {
@@ -187,10 +200,10 @@
 .cycle-item.Score > .cycleElementImg {
   left: 0;
   position: relative;
-  height: 3vw;
-  width: 4vw;
+  height: 4vh;
+  width: 5vh;
   background-image: url("../../assets/meteor-solid-full.svg");
-  background-size: 3vw 3vw;
+  background-size: 3.5vh 3.5vh;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
@@ -203,11 +216,14 @@
 }
 
 .accSlider {
-  margin-top: 0.75vw;
-  width: 10vw;
-  height: 3vw;
+  -webkit-appearance: none;
+  width: 10vh;
+  height: 1vh;
   margin-right: 10vw;
-  background-color: black;
+  appearance: none;
+  background: #4CBB17;
+  border-radius: 10rem;
+  cursor: pointer;
 }
 
 .cycle-item.Shuttle {
@@ -231,10 +247,11 @@
 .cycle-item.Shuttle > .cycleElementImg {
   left: 0;
   position: relative;
-  height: 3vw;
-  width: 4vw;
+  left: -0.3vh;
+  height: 4vh;
+  width: 3vh;
   background-image: url("../../assets/bus-side-solid-full.svg");
-  background-size: 3vw 3vw;
+  background-size: 3vh 3vh;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
@@ -252,6 +269,7 @@
   width: 20.5vw;
   height: inherit;
   padding-left: 24.5vw;
+  font-size: 2.3vh;
 }
 
 .Shuttle.cycleElementText {
@@ -260,14 +278,30 @@
   padding-left: 4.5vw;
   width: 60.5vw;
   height: inherit;
+  font-size: 2.3vh;
 }
 
-.deleteButton {
+.Score.deleteButton {
   left: 0;
   margin-left: 0;
   position: relative;
-  height: 3vw;
-  width: 4vw;
+  height: 3vh;
+  width: 3vh;
+  background-image: url("../../assets/xmark-solid-full.svg");
+  background-size: 3vw 3vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0px 4px 5px rgb(164, 164, 164);
+  border: black 0.5px solid;
+  border-radius: 20%;
+}
+
+.Shuttle.deleteButton {
+  left: 0;
+  margin-left: 0;
+  position: relative;
+  height: 3vh;
+  width: 2vh;
   background-image: url("../../assets/xmark-solid-full.svg");
   background-size: 3vw 3vw;
   background-repeat: no-repeat;
@@ -282,6 +316,6 @@
 }
 
 .accuracyLabel {
-  width: 3vw;
-  height: 3vw;
+  width: 10vh;
+  height: 3vh;
 }

@@ -1,9 +1,9 @@
-import "./CollectCheck.css";
+import "../auto/autocheck/Autocheck.css";
 
 function HPCheck({ name, value, onChange }) {
   return (
     <div className="child" id="doeshp">
-      <p id="autotext" className="textCollectCheck">
+      <p id="autotext" className="textcheck">
         Collect From Human Player?
       </p>
       <label className="checkcontainer">

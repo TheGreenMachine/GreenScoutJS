@@ -1,9 +1,9 @@
-import "./CollectCheck.css";
+import "../auto/autocheck/Autocheck.css";
 
 function Neutralcheck({ name, value, onChange }) {
   return (
     <div className="child" id="doesneutral">
-      <p id="autotext" className="textCollectCheck">
+      <p id="autotext" className="textcheck">
         Collect From Neutral Zone?
       </p>
       <label className="checkcontainer">

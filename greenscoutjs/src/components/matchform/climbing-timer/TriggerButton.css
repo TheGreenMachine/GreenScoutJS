@@ -44,15 +44,13 @@
 }
 
 #resetbutton {
-  margin-top: 5.7vh;
-  margin-bottom: 4.4vh;
   background-color: #cee5ff;
   border: 1px #cee5ff;
   color: #5f6167;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
+  font-size: 2.5vh;
   outline: none;
-  font-size: smaller;
   width: 100%;
   height: 8vh;
   box-shadow: none;

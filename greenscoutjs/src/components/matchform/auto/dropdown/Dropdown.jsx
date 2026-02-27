@@ -13,7 +13,7 @@ function Dropdown({ value, onChange, name }) {
         value={value}
         onChange={onChange}
       >
-        <option>Select a Driver Station</option>
+        <option>Select</option>
         <option>Red 1</option>
         <option>Red 2</option>
         <option>Red 3</option>
