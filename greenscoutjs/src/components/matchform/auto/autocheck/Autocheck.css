@@ -8,7 +8,7 @@
   height: 30px;
   text-decoration: none;
   padding-top: 1vh;
-  width: 80vw;
+  width: calc(100% - 15vw);
 }
 
 .text:hover {
@@ -98,6 +98,8 @@
   flex-direction: row;
   align-items: center;
   height: 6.2vh;
+  width: calc(100% - 15vw);
+  margin-left: 7.5vw;
 }
 
 #doesneutral:focus {
@@ -105,11 +107,12 @@
 }
 
 #doeshp {
-  margin-top: -2vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 6.2vh;
+  width: calc(100% - 15vw);
+  margin-left: 7.5vw;
 }
 
 #doeshp:focus {

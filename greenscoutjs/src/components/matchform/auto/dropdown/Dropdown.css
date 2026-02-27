@@ -14,18 +14,15 @@
   cursor: default;
 }
 
-.child {
-  margin-left: 7.5vw;
-  margin-right: 7.5vw;
-  width: 80vw;
-}
-
 #driverStation {
   margin-top: 1vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 6.2vh;
+  margin-left: 7.5vw;
+  margin-right: 7.5vw;
+  width: calc(100% - 15vw);
 }
 
 #dtext {

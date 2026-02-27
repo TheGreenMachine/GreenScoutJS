@@ -17,11 +17,11 @@
 .collectchild {
   margin-left: 7.5vw;
   margin-right: 7.5vw;
-  width: 80vw;
+  width: calc(100% - 15vw);
 }
 
 #collectdrop {
-  margin-top: -1vh;
+  margin-top: 3%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,7 +35,7 @@
 }
 
 #collectdropdown {
-  margin-top: 3vh;
+  margin-top: 16%;
   padding-bottom: 0.5vh;
   height: 5.2vh;
   right: 0;
