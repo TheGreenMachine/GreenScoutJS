@@ -19,7 +19,7 @@ function NavComponent() {
   };
 
   return (
-    <span>
+    <div id="navWrapper">
       <input type="checkbox" id="nav-toggle" />
       <label htmlFor="nav-toggle" className="hamburger"></label>
       <nav className="side-nav">
@@ -42,7 +42,7 @@ function NavComponent() {
         </p>
       </nav>
       <nav id="navbar"></nav>
-    </span>
+    </div>
   );
 }
 
