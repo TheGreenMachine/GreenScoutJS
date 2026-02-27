@@ -1,8 +1,8 @@
-.text {
+.textMatchForm {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
-  font-size: 16px;
+  color: var(--font-color);
+  font-size: 2.5vh;
   padding: 0;
   margin-bottom: 0;
   padding-top: 5px;
@@ -17,106 +17,124 @@
 .text2 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
-  font-size: 23px;
+  color: var(--font-color);
+  font-size: 2.5vh;
+}
+
+#body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 #form {
   display: grid;
-  grid-template-columns: 94.8vw 5.2vw;
-  width: 100vw;
-  height: 92vh;
+  grid-template-columns: 1fr 8vh;
+  width: 100%;
+  flex: 1;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
+  min-height: 0;
 }
 
 #formScore {
-  z-index: 99999999999999999999999;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 92vh;
   padding: 0;
   margin: 0;
   border-left: rgba(0, 0, 0, 0.132) 1px solid;
-  background-color: white;
+  background-color: var(--background-color);
 }
 
 /* Body */
 
 #formBody {
-  height: 92vh;
-  overflow-y: auto;
+  height: 100%;
+  overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-gutter: stable;
+  box-sizing: border-box;
+  min-height: 0;
 }
 
 .child {
   margin-left: 7.5vw;
   margin-right: 7.5vw;
-  width: 80vw;
+  width: calc(100% - 15vw);
+  box-sizing: border-box;
 }
 
 #matchNum {
   margin-top: 2.5vh;
   height: 6.2vh;
+  width: calc(100% - 15vw);
   border-radius: 5px;
-  color: #1e2226;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 1;
-  border: solid 0.25vh #93979f;
+  font-size: 2.5vh;
+  border: solid 0.25vh var(--border-color-gray);
   text-align: center;
 }
 
 #matchNum:focus {
-  border: solid 0.4vh #417096;
-  outline: none;
+  border: solid 0.4vh var(--border-color-blue);
+  outline: 0;
 }
 
 #matchNum::placeholder {
-  color: #1e2226;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
 }
 
 #matchNum:focus::placeholder {
-  color: white;
+  color: var(--background-color);
 }
 
 #teamNum {
+  width: calc(100% - 15vw);
+  font-size: 2.5vh;
   margin-top: 1.5vh;
   height: 6.2vh;
   border-radius: 5px;
-  color: #1e2226;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
-  border: solid 0.25vh #93979f;
+  border: solid 0.25vh var(--border-color-gray);
   text-align: center;
 }
 
 #teamNum:focus {
-  border: solid 0.4vh #417096;
-  outline: none;
+  border: solid 0.4vh var(--border-color-blue);
+  outline: 0;
 }
 
 #teamNum::placeholder {
-  color: #1e2226;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
 }
 
 #teamNum:focus::placeholder {
-  color: white;
+  color: var(--background-color);
 }
 
 .header {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
-  font-size: 16px;
+  color: var(--font-color);
+  font-size: 2.5vh;
   padding: 0;
   padding-top: 5px;
   text-decoration: none;
-  font-size: large;
   text-align: center;
 }
 
@@ -141,11 +159,6 @@
   align-items: center;
 }
 
-#bottomspace {
-  height: 18.4vh;
-  background-color: #11111100;
-}
-
 #notesdiv {
   height: 40vh;
 }
@@ -153,11 +166,12 @@
 #notesbox {
   width: 100%;
   height: 100%;
+  font-size: 2.5vh;
 }
 
 #cycleContainer {
   height: 40vh;
-  width: 80vw;
+  width: calc(100% - 15vw);
   margin-left: 7.5vw;
   margin-right: 7.5vw;
   overflow-y: auto;
@@ -165,12 +179,12 @@
 }
 
 .cycle-item.Score {
-  width: 80vw;
+  width: 100%;
   height: 9vh;
   text-align: center;
-  color: black;
+  color: var(--font-color);
   text-decoration: none;
-  font-size: large;
+  font-size: 2.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,43 +192,46 @@
 }
 
 .cycle-item.Score:hover {
-  background-color: #cee5ff;
+  background-color: var(--accent-color3);
   cursor: pointer;
 }
 
 .cycle-item.Score > .cycleElementImg {
   left: 0;
   position: relative;
-  height: 3vw;
-  width: 4vw;
+  height: 40%;
+  width: 10%;
   background-image: url("../../assets/meteor-solid-full.svg");
-  background-size: 3vw 3vw;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  border: black 0.5px solid;
+  border: var(--font-color) 0.5px solid;
   border-radius: 20%;
 }
 
 .Score:hover > .cycleElementImg {
-  background-color: #d6e9ff;
+  background-color: var(--accent-color3);
 }
 
 .accSlider {
-  margin-top: 0.75vw;
-  width: 10vw;
-  height: 3vw;
-  margin-right: 10vw;
-  background-color: black;
+  -webkit-appearance: none;
+  width: 70%;
+  height: 1vh;
+  margin-right: 10%;
+  appearance: none;
+  background: var(--kelly-green);
+  border-radius: 10rem;
+  cursor: pointer;
 }
 
 .cycle-item.Shuttle {
-  width: 80vw;
+  width: 100%;
   height: 9vh;
   text-align: center;
   color: black;
   text-decoration: none;
-  font-size: large;
+  font-size: 2.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,17 +239,17 @@
 }
 
 .cycle-item.Shuttle:hover {
-  background-color: #cee5ff;
+  background-color: var(--accent-color3);
   cursor: pointer;
 }
 
 .cycle-item.Shuttle > .cycleElementImg {
   left: 0;
   position: relative;
-  height: 3vw;
-  width: 4vw;
+  height: 40%;
+  width: 13%;
   background-image: url("../../assets/bus-side-solid-full.svg");
-  background-size: 3vw 3vw;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
@@ -241,33 +258,50 @@
 }
 
 .cycle-item.Shuttle:hover > .cycleElementImg {
-  background-color: #d6e9ff;
+  background-color: var(--accent-color3);
 }
 
 .Score.cycleElementText {
-  padding-top: 2.765vw;
-  padding-right: 4vw;
-  width: 20.5vw;
+  padding-top: 5%;
+  padding-right: 20%;
+  width: 25%;
   height: inherit;
-  padding-left: 24.5vw;
+  padding-left: 10%;
+  font-size: 2.3vh;
 }
 
 .Shuttle.cycleElementText {
-  padding-top: 2.765vw;
-  padding-right: 4vw;
-  padding-left: 4.5vw;
-  width: 60.5vw;
+  padding-top: 9%;
+  padding-right: 39%;
+  padding-left: 16%;
+  width: 25%;
   height: inherit;
+  font-size: 2.3vh;
 }
 
-.deleteButton {
+.Score.deleteButton {
   left: 0;
   margin-left: 0;
   position: relative;
-  height: 3vw;
-  width: 4vw;
+  height: 30%;
+  width: 10%;
   background-image: url("../../assets/xmark-solid-full.svg");
-  background-size: 3vw 3vw;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0px 4px 5px rgb(164, 164, 164);
+  border: black 0.5px solid;
+  border-radius: 20%;
+}
+
+.Shuttle.deleteButton {
+  left: 0;
+  margin-left: 0;
+  position: relative;
+  height: 30%;
+  width: 10%;
+  background-image: url("../../assets/xmark-solid-full.svg");
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
@@ -276,10 +310,10 @@
 }
 
 .deleteButton:hover {
-  background-color: lightcoral;
+  background-color: var(--error-color);
 }
 
 .accuracyLabel {
-  width: 3vw;
-  height: 3vw;
+  width: 10vh;
+  height: 3vh;
 }

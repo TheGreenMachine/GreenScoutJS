@@ -24,14 +24,14 @@ function Autocounter({ nameText, value, onChange, name }) {
   };
 
   return (
-    <div className="child text">
-      <p id="autocounttext" className="text">
+    <div className="child textAutoCounter">
+      <p id="autocounttext" className="textAutoCounter">
         {nameText}
       </p>
-      <button onClick={subtract} className="text" id="remove">
+      <button onClick={subtract} className="textAutoCounter" id="remove">
         -
       </button>
-      <button onClick={add} className="text" id="addto">
+      <button onClick={add} className="textAutoCounter" id="addto">
         {value}
       </button>
     </div>

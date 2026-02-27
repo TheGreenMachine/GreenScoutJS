@@ -1,0 +1,19 @@
+/* Kelly Green is the Edina Green Machine's Color */
+:root {
+  --background-color: #f8f9fe;
+  --accent-color: #9bcbfb;
+  --accent-color2: #8fbdeb;
+  --accent-color3: #cee5ff;
+  --error-color: lightcoral;
+  --disabled-color: #a1a2a6;
+  --font-color: #1e2226;
+  --sidenav-hover-color: #444;
+  --faded-text-color: #5f6167;
+  --kelly-green: #4cbb17;
+  --error-message-color: #d32f2f;
+  --check-background-color: #2f628d;
+  --checkbox-default-color: #eee;
+  --checkbox-hover-color: #ccc;
+  --border-color-gray: #93979f;
+  --border-color-blue: #417096;
+}

@@ -1,8 +1,8 @@
-.text {
+.textAutoCounter {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  color: #1e2226;
-  font-size: 16px;
+  color: var(--font-color);
+  font-size: 2.5vh;
   padding: 0;
   margin-bottom: 0;
   padding-top: 5px;
@@ -13,7 +13,7 @@
 .child {
   margin-left: 7.5vw;
   margin-right: 7.5vw;
-  width: 80vw;
+  width: calc(100% - 15vw);
   display: flex;
   flex-direction: row;
   height: 6.2vh;
@@ -23,24 +23,24 @@
 
 #autocounttext {
   height: 6.2vh;
-  width: 60vw;
+  width: calc(100% - 15vw);
   margin-bottom: 5vh;
   margin-top: 0vh;
 }
 
 #addto {
   margin-top: 5.7vh;
-  background-color: #cee5ff;
-  border: 1px #cee5ff;
+  background-color: var(--accent-color3);
+  border: 1px var(--accent-color3);
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: #5f6167;
+  color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;
   font-size: smaller;
   height: 5.2vh;
-  width: 20vw;
+  width: 40%;
   margin-bottom: 5vh;
   margin-left: 1vw;
 }
@@ -55,17 +55,17 @@
 
 #remove {
   margin-top: 5.7vh;
-  background-color: #cee5ff;
-  border: 1px #cee5ff;
+  background-color: var(--accent-color3);
+  border: 1px var(--accent-color3);
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: #5f6167;
+  color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;
   font-size: smaller;
   height: 5.2vh;
-  width: 15vw;
+  width: 30%;
   margin-bottom: 5vh;
   margin-left: 1vw;
 }

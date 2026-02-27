@@ -30,10 +30,8 @@ function ClimbTime({ runningBool, time, setTime, name, onChange }) {
   }, [runningBool, name, onChange, setTime]);
 
   return (
-    <div className="child text" id="climbtimehead">
-      <p id="climbtimetext" className="text">
-        {(time / 1000).toFixed(2)} secs
-      </p>
+    <div className="child" id="climbtimehead">
+      <p id="climbtimetext">{(time / 1000).toFixed(2)} secs</p>
     </div>
   );
 }

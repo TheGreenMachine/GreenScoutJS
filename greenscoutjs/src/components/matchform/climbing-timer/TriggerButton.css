@@ -3,7 +3,7 @@
   margin-bottom: 4.4vh;
   border-radius: 15px;
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: #5f6167;
+  color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
   outline: none;
@@ -11,28 +11,28 @@
   height: 6.5vh;
   position: absolute;
   bottom: 0;
-  font-size: 10px;
+  font-size: 1.8vh;
   text-align: center;
   border: 1px solid;
   transition: background-color 0.2s ease;
 }
 
 #sideButtonTrigger.active {
-  background-color: lightcoral;
-  border-color: lightcoral;
+  background-color: var(--error-color);
+  border-color: var(--error-color);
 }
 
 #sideButtonTrigger.inactive {
-  background-color: #cee5ff;
-  border-color: #cee5ff;
+  background-color: var(--accent-color3);
+  border-color: var(--accent-color3);
 }
 
 #stopbuttonimg {
-  height: 2vw;
-  width: 2vw;
-  background-size: 2vw 2vw;
+  height: 2vh;
+  width: 100%;
+  background-size: 1.7vh 1.7vh;
   background-repeat: no-repeat;
-  background-position: 1px 0px;
+  background-position: 2vh 0vh;
 }
 
 .act {
@@ -44,20 +44,18 @@
 }
 
 #resetbutton {
-  margin-top: 5.7vh;
-  margin-bottom: 4.4vh;
-  background-color: #cee5ff;
-  border: 1px #cee5ff;
-  color: #5f6167;
+  background-color: var(--accent-color3);
+  border: 1px var(--accent-color3);
+  color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
+  font-size: 2.5vh;
   outline: none;
-  font-size: smaller;
   width: 100%;
   height: 8vh;
   box-shadow: none;
 }
 
 #resetbutton:hover {
-  background-color: #bed5ef;
+  background-color: var(--accent-color3);
 }

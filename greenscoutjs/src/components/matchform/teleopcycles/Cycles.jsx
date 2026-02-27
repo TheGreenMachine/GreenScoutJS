@@ -67,7 +67,7 @@ const Cycles = ({
             </div>
           )}
           <button
-            className="deleteButton"
+            className={`deleteButton ${item.event}`}
             onClick={(event) => remove(index, event)}
           ></button>
         </div>
