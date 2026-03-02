@@ -12,5 +12,12 @@ export default defineConfig({
     // Optional: set the host to 0.0.0.0 to listen on all network interfaces
     // this allows access from other devices on the network
     host: "0.0.0.0",
+    proxy: {
+      "/api": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
 });

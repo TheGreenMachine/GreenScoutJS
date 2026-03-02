@@ -2,7 +2,7 @@
 // Place this file in: greenscoutjs/src/context/AuthContext.jsx
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-// import { getUserById } from "./api/mockApi";
+import { logoutUser } from "./api/api";
 
 const AuthContext = createContext(null);
 
@@ -40,7 +40,8 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("greenscout_auth", "true");
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await logoutUser();
     setUser(null);
     setIsAuthenticated(false);
     localStorage.removeItem("greenscout_user");
