@@ -12,8 +12,10 @@ import Login from "./components/loginpage/Login";
 import Home from "./components/homepage/Home";
 import Logout from "./components/loginpage/Logout";
 import Matchform from "./components/matchform/Matchform";
+import { useState } from "react";
 
 function App() {
+  const [backendURL] = useState("");
   return (
     <Router basename="/GreenScoutJS">
       <AuthProvider>
@@ -43,7 +45,7 @@ function App() {
             path="/scout"
             element={
               <ProtectedRoute>
-                <Matchform />
+                <Matchform backendURL={backendURL} />
               </ProtectedRoute>
             }
           />
