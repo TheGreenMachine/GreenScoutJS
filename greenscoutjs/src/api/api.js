@@ -53,3 +53,12 @@ export const authenticateUser = async (username, password) => {
 export const logoutUser = async () => {
   await axios.post(`${SERVER}/logout`);
 }
+
+export const submitMatchform = async (formData) => {
+  await axios.post(`${SERVER}/dataEntry`, formData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+}

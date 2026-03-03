@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-// import { authenticateUser } from "../../api/mockApi";
-import { authenticateUser } from "../../api/api";
+
+import { authenticateUser } from "../../api";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import "./Login.css";
