@@ -88,6 +88,21 @@ export const authenticateUser = (username, password) => {
   };
 };
 
+export const submitMatchform = async (formData) => {
+  const blob = new Blob([formData], { type: "application/json" });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "form-data.json";
+
+  document.body.appendChild(link);
+  link.click();
+
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
 /**
  * Get user by ID (without password)
  * @param {number} id - User ID

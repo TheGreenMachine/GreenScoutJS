@@ -1,5 +1,6 @@
 import "./Matchform.css";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import { useAuth } from "../../AuthContext";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -17,8 +18,14 @@ import Cycles from "./teleopcycles/Cycles";
 import CycleTimerToggle from "./teleopcycles/CycleTimerToggle";
 import ScoreButton from "./teleopcycles/ScoreButton";
 import ShuttleButton from "./teleopcycles/ShuttleButton";
+import { data } from "react-router-dom";
+
+import { submitMatchform } from "../../api";
+
 
 function Matchform() {
+        const { user } = useAuth();
+
         const [formData, setFormData] = useState({
                 match: "",
                 team: "",
@@ -28,8 +35,10 @@ function Matchform() {
                 autoScores: 0,
                 autoMisses: 0,
                 autoEjects: 0,
-                collectNeutral: false,
-                collectHp: false,
+                pickupGround: false,
+                pickupSource: false,
+                pickupAGround: false,
+                pickupASource: false,
                 fuelCapacity: "0",
                 climbTimer: 0.0,
                 park: "",
@@ -37,6 +46,7 @@ function Matchform() {
                 loseTrack: false,
                 notes: "",
                 replayed: false,
+                rescouting: false,
         });
 
         const [time, setTime] = useState(0);
@@ -72,38 +82,89 @@ function Matchform() {
                 }
         };
 
-        const handleChange = (e) => {
-                const value =
-                        e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        const handleChange = useCallback((e) => {
+                const { name, type, checked, value } = e.target;
+                const newValue = type === "checkbox" ? checked : value;
 
-                setFormData({
-                        ...formData,
-                        [e.target.name]: value,
-                });
-        };
+                setFormData((prev) => ({
+                        ...prev,
+                        [name]: newValue,
+                }));
+        }, []);
 
-        const submitAll = (event) => {
+        const submitAll = async (event) => {
                 event.preventDefault();
 
+                const prettyInt = (str) => {
+                        const parsed = parseInt(str.toString().replace(/[^\d.]/g, ""));
+                        return isNaN(parsed) ? 1 : parsed;
+                };
+
+                const expandCycles = () => {
+                        if (cycleList.length === 0) {
+                                return [{ "Time": 0, "Type": "None", "Success": false }];
+                        }
+                        return cycleList.map((cycle) => ({
+                                "Time": parseFloat(cycle.time),
+                                "Type": cycle.event,
+                                "Success": cycle.accuracy === 1,
+                        }));
+                };
+
                 const dataToSubmit = {
-                        ...formData,
-                        cyclesLists: cycleList,
+                        "Team": formData.team === "" ? 1 : prettyInt(formData.team),
+                        "Match": {
+                                "Number": formData.match === "" ? 1 : prettyInt(formData.match),
+                                "isReplay": formData.replayed,
+                        },
+                        "Driver Station": {
+                                "Is Blue": formData.driverStation.includes("Blue"),
+                                "Number": prettyInt(formData.driverStation),
+                        },
+                        "Scouter": user?.user ?? "",
+                        "Cycles": expandCycles(),
+                        "Pickup Locations": {
+                                "Coral Ground": formData.pickupGround,
+                                "Coral Source": formData.pickupSource,
+                                "Algae Ground": formData.pickupAGround,
+                                "Algae Source": formData.pickupASource,
+                        },
+                        "Auto": {
+                                "Can": formData.canAuto,
+                                "Scores": formData.autoScores,
+                                "Misses": formData.autoMisses,
+                                "Ejects": formData.autoEjects,
+                        },
+                        "Endgame": {
+                                "Parking Status": prettyInt(formData.park),
+                                "Time": parseFloat(formData.climbTimer),
+                        },
+                        "Misc": {
+                                "Lost Communication Or Disabled": formData.disconnect,
+                                "User Lost Track": formData.loseTrack,
+                        },
+                        "Penalties": [],
+                        "Mangled": false,
+                        "Rescouting": formData.rescouting,
+                        "Notes": formData.notes,
                 };
 
                 const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
-                const blob = new Blob([jsonString], { type: "application/json" });
+                await submitMatchform(jsonString);
 
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "form-data.json";
+                // const blob = new Blob([jsonString], { type: "application/json" });
 
-                document.body.appendChild(link);
-                link.click();
+                // const url = URL.createObjectURL(blob);
+                // const link = document.createElement("a");
+                // link.href = url;
+                // link.download = "form-data.json";
 
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
+                // document.body.appendChild(link);
+                // link.click();
+
+                // document.body.removeChild(link);
+                // URL.revokeObjectURL(url);
         };
 
         const toggleCycleStopwatch = (event) => {
