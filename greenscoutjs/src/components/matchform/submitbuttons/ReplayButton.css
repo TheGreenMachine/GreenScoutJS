@@ -24,7 +24,7 @@
   padding: none;
   background-color: var(--accent-color);
   gap: 0px;
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
 }
 
 .replayButton:hover {
