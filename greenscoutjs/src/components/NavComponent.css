@@ -24,11 +24,6 @@ body {
   overflow: hidden;
 }
 
-#logout {
-  position: absolute;
-  bottom: 10vh;
-}
-
 .hamburger {
   margin-top: 1.3vw;
   margin-left: 0.8vw;
@@ -60,9 +55,28 @@ body {
   left: -55vw;
   width: 55vw;
   height: 100%;
-  background: white;
+  background: var(--background-color);
+  background: linear-gradient(
+    90deg,
+    var(--background-color) 0%,
+    var(--background-color) 96%,
+    rgba(0, 0, 0, 1) 100%
+  );
   padding-top: 60px;
   transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.invis-nav {
+  position: fixed;
+  top: 0;
+  left: 100vw;
+  width: 45vw;
+  height: 100%;
+  background: transparent;
+  z-index: 999;
 }
 
 .side-nav a {
@@ -80,6 +94,10 @@ body {
   left: 0;
 }
 
+#nav-toggle:checked ~ .invis-nav {
+  left: 55vw;
+}
+
 .textp {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -87,9 +105,17 @@ body {
   font-size: 3vh;
   padding-left: 1vw;
   text-decoration: none;
-  margin-bottom: 0;
   padding-top: 5px;
-  height: 30px;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 15%;
+  border-radius: 1em;
+}
+
+#logout {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 10vh;
 }
 
 /* CSS for later user tile implementation */

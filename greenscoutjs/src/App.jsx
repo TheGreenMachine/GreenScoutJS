@@ -12,6 +12,7 @@ import Login from "./components/loginpage/Login";
 import Home from "./components/homepage/Home";
 import Logout from "./components/loginpage/Logout";
 import Matchform from "./components/matchform/Matchform";
+import LeaderBoard from "./components/leader board/leaderBoard";
 
 function App() {
   return (
@@ -44,6 +45,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Matchform />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/leaderBoard"
+            element={
+              <ProtectedRoute>
+                <LeaderBoard />
               </ProtectedRoute>
             }
           />
