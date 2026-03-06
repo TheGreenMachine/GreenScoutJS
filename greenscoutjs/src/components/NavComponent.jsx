@@ -20,6 +20,10 @@ function NavComponent() {
     navigate("/leaderBoard");
   }
 
+  function navSettings() {
+    navigate("/settings");
+  }
+
   const handleLogout = () => {
     logout();
   };
@@ -42,18 +46,25 @@ function NavComponent() {
             <p>User</p>
           </div>
         </div> */}
-        <button className="textp" onClick={navHome}>
-          Home
-        </button>
-        <button className="textp" onClick={navForm}>
-          Match Form
-        </button>
-        <button className="textp" onClick={navLeaderBoard}>
-          Leader board
-        </button>
-        <button id="logout" className="textp" onClick={handleLogout}>
-          Log Out
-        </button>
+        <nav className="side-nav-top">
+          <button className="textp" onClick={navHome}>
+            Home
+          </button>
+          <button className="textp" onClick={navForm}>
+            Match Form
+          </button>
+          <button className="textp" onClick={navLeaderBoard}>
+            Leaderboard
+          </button>
+        </nav>
+        <nav className="side-nav-bottom">
+          <button id="settings" className="textp" onClick={navSettings}>
+            Settings
+          </button>
+          <button id="logout" className="textp" onClick={handleLogout}>
+            Log Out
+          </button>
+        </nav>
       </nav>
       <div className="invis-nav" onClick={toggleCheck}></div>
       <nav id="navbar"></nav>

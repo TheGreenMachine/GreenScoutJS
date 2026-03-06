@@ -13,6 +13,10 @@ import Home from "./components/homepage/Home";
 import Logout from "./components/loginpage/Logout";
 import Matchform from "./components/matchform/Matchform";
 import LeaderBoard from "./components/leader board/leaderBoard";
+import Settings from "./components/Settings";
+import SettingsDebug from "./components/settings sub pages/debug/SettingsDebug";
+import SettingsLayout from "./components/settings sub pages/layout/SettingsMatchForm";
+import SettingsThemes from "./components/settings sub pages/themes/SettingsThemes";
 
 function App() {
   return (
@@ -60,6 +64,42 @@ function App() {
 
           {/* Redirect root to home */}
           <Route path="/" element={<Navigate to="/home" replace />} />
+
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/settings/layout"
+            element={
+              <ProtectedRoute>
+                <SettingsLayout />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/settings/theme"
+            element={
+              <ProtectedRoute>
+                <SettingsThemes />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/settings/debug"
+            element={
+              <ProtectedRoute>
+                <SettingsDebug />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/logout"
