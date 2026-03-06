@@ -17,8 +17,25 @@ import Settings from "./components/Settings";
 import SettingsDebug from "./components/settings sub pages/debug/SettingsDebug";
 import SettingsLayout from "./components/settings sub pages/layout/SettingsMatchForm";
 import SettingsThemes from "./components/settings sub pages/themes/SettingsThemes";
+import { useState } from "react";
 
 function App() {
+  const getIpAddress = async () => {
+    try {
+      const response = await fetch("https://api.ipify.org?format=json");
+      const data = await response.json();
+      return data.ip;
+    } catch (err) {
+      console.warn("Failed to fetch IP:", err);
+      return null;
+    }
+  };
+
+  const [ip] = useState(getIpAddress());
+  const [eventData, setEventData] = useState("");
+  const [UUID, setUUID] = useState("");
+  const [certificate, setCertificate] = useState("");
+
   return (
     <Router basename="/GreenScoutJS">
       <AuthProvider>
@@ -96,7 +113,13 @@ function App() {
             path="/settings/debug"
             element={
               <ProtectedRoute>
-                <SettingsDebug />
+                <SettingsDebug
+                  ip={ip}
+                  eventData={eventData}
+                  uuid={UUID}
+                  certificate={certificate}
+                />{" "}
+                {/* Temporary values replace with backend values */}
               </ProtectedRoute>
             }
           />

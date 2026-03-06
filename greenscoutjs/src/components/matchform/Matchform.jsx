@@ -90,20 +90,31 @@ function Matchform() {
       cyclesLists: cycleList,
     };
 
-    const jsonString = JSON.stringify(dataToSubmit, null, 2);
+    const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
+    try {
+      const existingCache = JSON.parse(
+        localStorage.getItem("matchFormCache") || "[]",
+      );
+      existingCache.push({
+        key: cacheKey,
+        timestamp: Date.now(),
+        data: dataToSubmit,
+      });
+      localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
+    } catch (err) {
+      console.warn("Failed to cache form data:", err);
+    }
 
-    const blob = new Blob([jsonString], { type: "application/json" });
-
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "form-data.json";
-
-    document.body.appendChild(link);
-    link.click();
-
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // const jsonString = JSON.stringify(dataToSubmit, null, 2);
+    // const blob = new Blob([jsonString], { type: "application/json" });
+    // const url = URL.createObjectURL(blob);
+    // const link = document.createElement("a");
+    // link.href = url;
+    // link.download = `match_${formData.match}_team_${formData.team}.json`;
+    // document.body.appendChild(link);
+    // link.click();
+    // link.remove();
+    // URL.revokeObjectURL(url);
   };
 
   const toggleCycleStopwatch = (event) => {
