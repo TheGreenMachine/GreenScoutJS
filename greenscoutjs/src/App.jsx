@@ -12,11 +12,11 @@ import Login from "./components/loginpage/Login";
 import Home from "./components/homepage/Home";
 import Logout from "./components/loginpage/Logout";
 import Matchform from "./components/matchform/Matchform";
-import LeaderBoard from "./components/leader board/leaderBoard";
+import LeaderBoard from "./components/leaderboard/leaderBoard";
 import Settings from "./components/Settings";
-import SettingsDebug from "./components/settings sub pages/debug/SettingsDebug";
-import SettingsLayout from "./components/settings sub pages/layout/SettingsMatchForm";
-import SettingsThemes from "./components/settings sub pages/themes/SettingsThemes";
+import SettingsDebug from "./components/settings-sub-pages/debug/SettingsDebug";
+import SettingsLayout from "./components/settings-sub-pages/layout/SettingsMatchForm";
+import SettingsThemes from "./components/settings-sub-pages/themes/SettingsThemes";
 import { useState } from "react";
 
 function App() {
