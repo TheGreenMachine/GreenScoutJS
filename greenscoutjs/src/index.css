@@ -1,5 +1,5 @@
-/* Kelly Green is the Edina Green Machine's Color */
 :root {
+  /* Color Variables */
   --background-color: #f8f9fe;
   --accent-color: #9bcbfb;
   --accent-color2: #8fbdeb;
@@ -9,11 +9,59 @@
   --font-color: #1e2226;
   --sidenav-hover-color: #444;
   --faded-text-color: #5f6167;
-  --kelly-green: #4cbb17;
+  --kelly-green: #4cbb17; /* Kelly Green is the color of Edina's "The Green Machine" */
   --error-message-color: #d32f2f;
   --check-background-color: #2f628d;
   --checkbox-default-color: #eee;
   --checkbox-hover-color: #ccc;
   --border-color-gray: #93979f;
   --border-color-blue: #417096;
+  --sidenav-button-color: #dfdfdf;
+  /* General Sizing Variables */
+  --font-size-large: 3vh;
+  --font-size-small: 2.5vh;
+  --page-height: 100vh;
+  --page-width: 100vw;
+  --content-height: calc(var(--page-height) - var(--navbar-height));
+  --content-width: var(var(--page-width));
+  /* Navbar Sizing Variables */
+  --sidenav-width: 70vw;
+  --navbar-height: 8vh;
+  --sidenav-usertile-height: 0%; /* Set to 0 while user tile is diabled */
+  --sidenav-usertile-width: 15vh;
+  --sidenav-section-height: calc((100% - var(--sidenav-usertile-height)) / 2);
+  /* Login Sizing Variables */
+
+  /* Match Form Sizing Variables */
+
+  /* Match Form Checkbox Sizing Variables */
+
+  /* Match Form Counter Sizing Variables */
+
+  /* Match Form Dropdown Sizing Variables */
+
+  /* Match Form Trigger Sizing Variables */
+
+  /* Match Form Submit/Replay Sizing Variables */
+
+  /* General Cycles Sizing Variables */
+  --font-size-cycle: 1.8vh;
+  /* Cycle Start/Stop Button Sizing Variables */
+
+  /* Score Cycle Sizing Variables */
+
+  /* Shuttle Cycle Sizing Variables */
+
+  /* Home Page Sizing Variables */
+  --refresh-button-size: 7.9vh;
+  --new-matchpit-button-height: 8vh;
+  /* Sizing Variables */
+
+  /* Leader Board Sizing Variables */
+  --leader-board-element-height: 5vh;
+
+  /* Settings Sizing Variables */
+  --settings-element-width: 80%;
+  --settings-element-height: calc(var(--font-size-large) * 2);
+  --settings-element-spacing: calc(var(--font-size-small) / 2);
 }

@@ -1,6 +1,6 @@
 #newmatchbutton {
   width: 50vw;
-  height: 8vh;
+  height: var(--new-matchpit-button-height);
   background-color: var(--accent-color);
   border: 1px var(--accent-color);
   border-radius: 15px;
@@ -9,7 +9,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;
-  font-size: smaller;
+  font-size: var(--font-size-small);
   background-image: url(../../../assets/pencil.svg);
   background-repeat: no-repeat;
   background-position: 0px 50%;

@@ -1,4 +1,4 @@
-.textCollectDrop {
+.textThemeDrop {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   color: var(--font-color);
@@ -10,34 +10,38 @@
   text-decoration: none;
 }
 
-.textCollectDrop:hover {
+.textThemeDrop:hover {
   cursor: default;
 }
 
-.collectchild {
+.themechild {
   margin-left: 7.5vw;
   margin-right: 7.5vw;
-  width: calc(100% - 15vw);
-}
-
-#collectdrop {
-  margin-top: 3%;
+  height: var(--settings-element-height);
+  width: var(--settings-element-width);
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 6.2vh;
+  justify-content: space-between;
 }
 
-#collectdtext {
-  height: 3.1vh;
+#themedrop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: var(--settings-element-height);
+}
+
+#themedtext {
+  height: var(--settings-element-height);
   width: 70vw;
   font-size: var(--font-size-small);
 }
 
-#collectdropdown {
-  margin-top: 16%;
+#themedropdown {
+  margin-top: 10%;
   padding-bottom: 0.5vh;
-  height: 5.2vh;
+  height: calc(var(--settings-element-height) / 1.5);
   right: 0;
   border: none;
   border-bottom: gray solid 1px;
@@ -45,11 +49,11 @@
   color: var(--font-color);
 }
 
-#collectdropdown:focus {
+#themedropdown:focus {
   outline: none;
   cursor: pointer;
 }
 
-#collectdropdown:hover {
+#themedropdown:hover {
   cursor: pointer;
 }
