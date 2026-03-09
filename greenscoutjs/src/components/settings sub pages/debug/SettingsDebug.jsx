@@ -81,7 +81,7 @@ function SettingsDebug({ ip, eventData, uuid, certificate }) {
           </div>
         </button>
         <div id="settingsDebugCachedMatches">
-          <h1>Cached Matches</h1>
+          <h1 className="settingsh1">Cached Matches</h1>
           {matches.length === 0 && (
             <div className="settingsDebugCachedMatchesButton noneFound">
               <span>No cached matches found.</span>
@@ -106,8 +106,8 @@ function SettingsDebug({ ip, eventData, uuid, certificate }) {
               <button onClick={() => forceSend(entry)}>Force Send</button>
             </div>
           ))}
-          <h1>End</h1>
-          <h1>Of Matches</h1>
+          <h1 className="settingsh1">End</h1>
+          <h1 className="settingsh1">Of Matches</h1>
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@ const Login = () => {
     <div id="body">
       <NavComponentLogin />
       <div id="parent" className="text">
-        <h1 className="textlogin">Login</h1>
+        <h1 className="textlogin loginh1">Login</h1>
         <form id="loginPageForm" onSubmit={handleSubmit}>
           <div>
             <input

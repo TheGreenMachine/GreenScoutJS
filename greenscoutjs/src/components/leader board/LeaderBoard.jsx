@@ -6,23 +6,23 @@ const MOCK_DATA = [
   {
     Username: "NoahE",
     DisplayName: "Noah Engelkes",
-    Score: 1,
-    LifeScore: 2,
-    HighScore: 3,
+    Score: 0,
+    LifeScore: 0,
+    HighScore: 0,
   },
   {
     Username: "Jose",
     DisplayName: "Jose",
-    Score: 3,
-    LifeScore: 1,
-    HighScore: 2,
+    Score: 0,
+    LifeScore: 0,
+    HighScore: 0,
   },
   {
     Username: "Landon",
     DisplayName: "Landon",
-    Score: 2,
-    LifeScore: 3,
-    HighScore: 1,
+    Score: 0,
+    LifeScore: 0,
+    HighScore: 0,
   },
 ];
 

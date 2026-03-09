@@ -7,7 +7,7 @@ function SettingsThemes() {
     <div className="settingsBody">
       <NavComponentSettings />
       <div id="settingsContainer">
-        <h1>Themes</h1>
+        <h1 className="settingsh1">Themes</h1>
         <ThemeDrop />
       </div>
     </div>

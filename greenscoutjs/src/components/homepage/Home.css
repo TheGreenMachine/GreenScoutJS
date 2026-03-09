@@ -1,3 +1,18 @@
+#homeBody {
+  width: var(--page-width);
+  height: var(--page-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#homeBody > * {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+}
+
 .textHome {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;

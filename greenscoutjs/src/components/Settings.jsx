@@ -21,7 +21,7 @@ function Settings() {
     <div className="settingsBody">
       <NavComponent />
       <div id="settingsContainer">
-        <h1>Settings</h1>
+        <h1 className="settingsh1">Settings</h1>
         <button className="settingButton" onClick={navMatchForm}>
           <div className="image matchImage"></div>
           Match Form Layout
