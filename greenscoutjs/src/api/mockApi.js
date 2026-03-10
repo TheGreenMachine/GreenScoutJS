@@ -1,6 +1,11 @@
 // mockApi.js - Mock API for GreenScout authentication
 // Place this file in: greenscoutjs/src/api/mockApi.js
 
+import axios from 'axios';
+import forge from 'node-forge';
+
+const SERVER = 'http://localhost:8080';
+
 /**
  * Mock user database for GreenScout
  * Each user has: id, username, password, role, matchesLogged
@@ -57,36 +62,77 @@ export const users = [
   },
 ];
 
+async function getPublicKey() {
+  const response = await axios.get(`${SERVER}/pub`);
+  return forge.pki.publicKeyFromPem(response.data);
+}
+
+async function encryptPassword(plaintext) {
+  const publicKey = await getPublicKey();
+
+  const encrypted = publicKey.encrypt(plaintext, 'RSAES-PKCS1-V1_5');
+  return forge.util.encode64(encrypted);
+}
+
+export const authenticateUser = async (username, password) => {
+  const encryptedPassword = await encryptPassword(password);
+
+  const response = await axios.post(
+    `${SERVER}/login`,
+    JSON.stringify({
+      Username: username.toLowerCase(),
+      EncryptedPassword: encryptedPassword,
+    }),
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Certificate: '',
+        uuid: '',
+      },
+    }
+  );
+
+  const role = response.headers['role'];
+  const uuid = response.headers['uuid'];
+  const certificate = response.headers['certificate'];
+
+  if (role === 'Not accepted nuh uh') {
+    throw new Error('Invalid password or username');
+  }
+
+  return { role, uuid, certificate };
+}
+
 /**
  * Authenticate a user with username and password
  * @param {string} username - The username to authenticate
  * @param {string} password - The password to verify
  * @returns {Object} Authentication result with success status and user data (without password)
  */
-export const authenticateUser = (username, password) => {
-  // Find user with matching username and password
-  const user = users.find(
-    (u) =>
-      u.username.toLowerCase() === username.toLowerCase() &&
-      u.password === password,
-  );
+// export const authenticateUser = (username, password) => {
+//   // Find user with matching username and password
+//   const user = users.find(
+//     (u) =>
+//       u.username.toLowerCase() === username.toLowerCase() &&
+//       u.password === password,
+//   );
 
-  if (user) {
-    // Return user data without password for security
-    const { password: _, ...userWithoutPassword } = user;
-    return {
-      success: true,
-      user: userWithoutPassword,
-      message: "Authentication successful",
-    };
-  }
+//   if (user) {
+//     // Return user data without password for security
+//     const { password: _, ...userWithoutPassword } = user;
+//     return {
+//       success: true,
+//       user: userWithoutPassword,
+//       message: "Authentication successful",
+//     };
+//   }
 
-  return {
-    success: false,
-    user: null,
-    message: "Invalid username or password",
-  };
-};
+//   return {
+//     success: false,
+//     user: null,
+//     message: "Invalid username or password",
+//   };
+// };
 
 /**
  * Get user by ID (without password)
