@@ -17,8 +17,10 @@ import Cycles from "./teleopcycles/Cycles";
 import CycleTimerToggle from "./teleopcycles/CycleTimerToggle";
 import ScoreButton from "./teleopcycles/ScoreButton";
 import ShuttleButton from "./teleopcycles/ShuttleButton";
+import { useNavigate } from "react-router-dom";
 
 function Matchform() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     match: "",
     team: "",
@@ -101,6 +103,7 @@ function Matchform() {
         data: dataToSubmit,
       });
       localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
+      navigate("/home");
     } catch (err) {
       console.warn("Failed to cache form data:", err);
     }
