@@ -45,6 +45,8 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
     localStorage.removeItem("greenscout_user");
     localStorage.removeItem("greenscout_auth");
+    localStorage.removeItem("UUID");
+    localStorage.removeItem("Certificate");
   };
 
   const updateUser = (updatedData) => {

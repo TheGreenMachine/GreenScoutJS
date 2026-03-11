@@ -1,36 +1,19 @@
 import { useState } from "react";
 import "./leaderBoard.css";
 import NavComponent from "../NavComponent";
+import { getAllUsers } from "../../api/mockApi";
 
-const MOCK_DATA = [
-  {
-    Username: "NoahE",
-    DisplayName: "Noah Engelkes",
-    Score: 0,
-    LifeScore: 0,
-    HighScore: 0,
-  },
-  {
-    Username: "Jose",
-    DisplayName: "Jose",
-    Score: 0,
-    LifeScore: 0,
-    HighScore: 0,
-  },
-  {
-    Username: "Landon",
-    DisplayName: "Landon",
-    Score: 0,
-    LifeScore: 0,
-    HighScore: 0,
-  },
-];
+const MOCK_DATA = getAllUsers().map((user) => ({
+  Username: user.username,
+  DisplayName: user.DisplayName,
+  Score: user.Score,
+  LifeScore: user.LifeScore,
+}));
 
 const SORT_KEYS = ["Score", "LifeScore"];
 const SORT_LABELS = {
   Score: "Score",
   LifeScore: "Lifetime",
-  HighScore: "High Score",
 };
 
 export default function Leaderboard({ data = MOCK_DATA }) {

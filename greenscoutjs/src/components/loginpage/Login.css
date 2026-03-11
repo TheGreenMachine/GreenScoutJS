@@ -59,7 +59,7 @@ loginh1 {
   border: solid 0.25vh var(--border-color-gray);
   margin-top: 6vh;
   margin-bottom: 1.5vh;
-  background: url(../../../assets/user.svg) no-repeat scroll 0px 0px;
+  background: url(../../assets/user.svg) no-repeat scroll 0px 0px;
   background-size: 25px;
   background-position: 4px 1.5vh;
   font-size: var(--font-size-large);
@@ -94,7 +94,7 @@ loginh1 {
   font-weight: 1;
   border: solid 0.25vh var(--border-color-gray);
   padding-left: 35px;
-  background: url(../../../assets/pass.svg) no-repeat scroll 0px 0vh;
+  background: url(../../assets/pass.svg) no-repeat scroll 0px 0vh;
   background-size: 25px;
   background-position: 5px 1.7vh;
   font-size: var(--font-size-large);
