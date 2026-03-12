@@ -113,8 +113,13 @@
   padding: 0;
 }
 
+@media only screen and (max-width: 1000px) {
+  .image.debug {
+    margin-left: -2vh;
+  }
+}
+
 .image.debug {
-  margin-left: -2vh;
   margin-right: 2vh;
 }
 
@@ -160,6 +165,8 @@
 
 .settingsDebugCachedMatchesButton.noneFound {
   justify-content: center;
+  align-items: center;
+  margin-left: 0;
 }
 
 .settingsDebugCachedMatchesButton > button {
