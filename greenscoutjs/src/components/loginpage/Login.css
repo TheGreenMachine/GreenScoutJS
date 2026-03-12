@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 92vh;
-  width: 100vw;
+  height: var(--content-height);
+  width: var(--content-width);
   padding: 0;
   margin: 0;
   border: none;
@@ -15,17 +15,17 @@
   color: var(--font-color);
 }
 
-h1 {
+loginh1 {
   margin-top: 4vh;
   color: var(--background-color);
   height: 5vh;
-  font-size: 3.6vh;
+  font-size: var(--font-size-large);
 }
 
 #body {
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  width: var(--page-width);
+  height: var(--page-height);
   margin: 0;
   background-color: var(--background-color);
 }
@@ -43,7 +43,7 @@ h1 {
 .error-message {
   color: var(--error-message-color);
   margin: 10px 0;
-  font-size: 3.6vh;
+  font-size: var(--font-size-large);
 }
 
 /* Username Box */
@@ -59,10 +59,10 @@ h1 {
   border: solid 0.25vh var(--border-color-gray);
   margin-top: 6vh;
   margin-bottom: 1.5vh;
-  background: url(../../../assets/user.svg) no-repeat scroll 0px 0px;
+  background: url(../../assets/user.svg) no-repeat scroll 0px 0px;
   background-size: 25px;
   background-position: 4px 1.5vh;
-  font-size: 3vh;
+  font-size: var(--font-size-large);
 }
 
 #user:focus {
@@ -76,7 +76,7 @@ h1 {
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
-  font-size: 3vh;
+  font-size: var(--font-size-large);
 }
 
 #user:focus::placeholder {
@@ -94,17 +94,17 @@ h1 {
   font-weight: 1;
   border: solid 0.25vh var(--border-color-gray);
   padding-left: 35px;
-  background: url(../../../assets/pass.svg) no-repeat scroll 0px 0vh;
+  background: url(../../assets/pass.svg) no-repeat scroll 0px 0vh;
   background-size: 25px;
   background-position: 5px 1.7vh;
-  font-size: 3vh;
+  font-size: var(--font-size-large);
 }
 
 #pass::placeholder {
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
-  font-size: 3vh;
+  font-size: var(--font-size-large);
 }
 
 #pass:focus {
@@ -131,7 +131,7 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1;
   outline: none;
-  font-size: 3vh;
+  font-size: var(--font-size-large);
 }
 
 #loginButton:hover {

@@ -18,9 +18,10 @@ import Cycles from "./teleopcycles/Cycles";
 import CycleTimerToggle from "./teleopcycles/CycleTimerToggle";
 import ScoreButton from "./teleopcycles/ScoreButton";
 import ShuttleButton from "./teleopcycles/ShuttleButton";
+import { submitMatchform } from "../../api";
+
 import { data } from "react-router-dom";
 
-import { submitMatchform } from "../../api";
 
 
 function Matchform() {
@@ -151,21 +152,24 @@ function Matchform() {
 
                 const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
-                await submitMatchform(jsonString);
 
-                // const blob = new Blob([jsonString], { type: "application/json" });
-
-                // const url = URL.createObjectURL(blob);
-                // const link = document.createElement("a");
-                // link.href = url;
-                // link.download = "form-data.json";
-
-                // document.body.appendChild(link);
-                // link.click();
-
-                // document.body.removeChild(link);
-                // URL.revokeObjectURL(url);
-        };
+    await submitMatchform(jsonString);
+    const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
+    try {
+      const existingCache = JSON.parse(
+        localStorage.getItem("matchFormCache") || "[]",
+      );
+      existingCache.push({
+        key: cacheKey,
+        timestamp: Date.now(),
+        data: dataToSubmit,
+      });
+      localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
+      navigate("/home");
+    } catch (err) {
+      console.warn("Failed to cache form data:", err);
+    }
+  };
 
         const toggleCycleStopwatch = (event) => {
                 if (event) event.preventDefault();

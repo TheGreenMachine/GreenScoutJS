@@ -2,7 +2,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   color: var(--font-color);
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
   padding: 0;
   margin-bottom: 0;
   padding-top: 5px;
@@ -18,18 +18,19 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   color: var(--font-color);
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
 }
 
 #body {
   width: 100%;
-  height: 100vh;
+  height: var(--page-height);
   margin: 0;
   padding: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 #form {
@@ -57,12 +58,12 @@
 /* Body */
 
 #formBody {
-  height: 100%;
+  height: var(--content-height);
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-gutter: stable;
   box-sizing: border-box;
-  min-height: 0;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .child {
@@ -73,13 +74,13 @@
 }
 
 #matchNum {
-  margin-top: 2.5vh;
+  margin-top: var(--font-size-small);
   height: 6.2vh;
   width: calc(100% - 15vw);
   border-radius: 5px;
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
   border: solid 0.25vh var(--border-color-gray);
   text-align: center;
 }
@@ -101,7 +102,7 @@
 
 #teamNum {
   width: calc(100% - 15vw);
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
   margin-top: 1.5vh;
   height: 6.2vh;
   border-radius: 5px;
@@ -131,7 +132,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   color: var(--font-color);
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
   padding: 0;
   padding-top: 5px;
   text-decoration: none;
@@ -166,7 +167,7 @@
 #notesbox {
   width: 100%;
   height: 100%;
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
 }
 
 #cycleContainer {
@@ -184,7 +185,7 @@
   text-align: center;
   color: var(--font-color);
   text-decoration: none;
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -231,7 +232,7 @@
   text-align: center;
   color: black;
   text-decoration: none;
-  font-size: 2.5vh;
+  font-size: var(--font-size-small);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -267,7 +268,7 @@
   width: 25%;
   height: inherit;
   padding-left: 10%;
-  font-size: 2.3vh;
+  font-size: var(--font-size-small);
 }
 
 .Shuttle.cycleElementText {
@@ -276,7 +277,7 @@
   padding-left: 16%;
   width: 25%;
   height: inherit;
-  font-size: 2.3vh;
+  font-size: var(--font-size-small);
 }
 
 .Score.deleteButton {
@@ -316,4 +317,9 @@
 .accuracyLabel {
   width: 10vh;
   height: 3vh;
+}
+
+#bottomspace {
+  height: 15vh;
+  min-height: 80px;
 }

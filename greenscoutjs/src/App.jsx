@@ -12,10 +12,37 @@ import Login from "./components/loginpage/Login";
 import Home from "./components/homepage/Home";
 import Logout from "./components/loginpage/Logout";
 import Matchform from "./components/matchform/Matchform";
+
+import LeaderBoard from "./components/leaderboard/LeaderBoard";
+import Settings from "./components/Settings";
+import SettingsDebug from "./components/settings-sub-pages/debug/SettingsDebug";
+import SettingsLayout from "./components/settings-sub-pages/layout/SettingsMatchForm";
+import SettingsThemes from "./components/settings-sub-pages/themes/SettingsThemes";
 import { useState } from "react";
+import { getUUID, getCertificate } from "./api/mockApi";
 
 function App() {
-  const [backendURL] = useState("");
+  const getIpAddress = async () => {
+    try {
+      const response = await fetch("https://api.ipify.org?format=json");
+      const data = await response.json();
+      return data.ip;
+    } catch (err) {
+      console.warn("Failed to fetch IP:", err);
+      return null;
+    }
+  };
+
+  const [ip] = useState(getIpAddress());
+  const [eventData, setEventData] = useState("");
+  const [UUID, setUUID] = useState("");
+  const [certificate, setCertificate] = useState("");
+  const [user, setUser] = useState("");
+
+  const getUser = () => {
+    setUUID(getUUID(user));
+    setCertificate(getCertificate(user));
+  };
   return (
     <Router basename="/GreenScoutJS">
       <AuthProvider>
@@ -26,7 +53,12 @@ function App() {
             path="/login"
             element={
               <PublicRoute>
-                <Login />
+                <Login
+                  user={user}
+                  setUser={setUser}
+                  setID={setUUID}
+                  setCertificate={setCertificate}
+                />
               </PublicRoute>
             }
           />
@@ -50,8 +82,59 @@ function App() {
             }
           />
 
+          <Route
+            path="/leaderBoard"
+            element={
+              <ProtectedRoute>
+                <LeaderBoard />
+              </ProtectedRoute>
+            }
+          />
+
           {/* Redirect root to home */}
           <Route path="/" element={<Navigate to="/home" replace />} />
+
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/settings/layout"
+            element={
+              <ProtectedRoute>
+                <SettingsLayout />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/settings/theme"
+            element={
+              <ProtectedRoute>
+                <SettingsThemes />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/settings/debug"
+            element={
+              <ProtectedRoute>
+                <SettingsDebug
+                  ip={ip}
+                  eventData={eventData}
+                  uuid={UUID}
+                  certificate={certificate}
+                />{" "}
+                {/* Temporary values replace with backend values */}
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/logout"
