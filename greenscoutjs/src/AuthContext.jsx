@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("greenscout_auth");
     localStorage.removeItem("UUID");
     localStorage.removeItem("Certificate");
-  };
+  });
 
   const updateUser = useCallback((updatedData) => {
     setUser((prev) => {

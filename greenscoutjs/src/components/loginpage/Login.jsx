@@ -19,7 +19,6 @@ const Login = ({ setUser, setID, setCertificate }) => {
     setError("");
     setIsLoading(true);
 
-    // Simulate API delay for realistic UX
     const result = await authenticateUser(username, password);
     console.log("Authentication result:", result);
 

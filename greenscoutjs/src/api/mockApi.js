@@ -1,5 +1,4 @@
 // mockApi.js - Mock API for GreenScout authentication
-// Place this file in: greenscoutjs/src/api/mockApi.js
 
 /**
  * Mock user database for GreenScout
@@ -92,7 +91,8 @@ export const submitMatchform = async (formData) => {
 
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
-}
+};
+
 export const getUUID = (username) => {
   const user = users.find(
     (u) => u.username.toLowerCase() === username.toLowerCase(),
@@ -140,53 +140,6 @@ export const getAllUsers = () => {
 };
 
 /**
- * Update matches logged for a user
- * @param {number} userId - User ID
- * @param {number} newCount - New matches logged count
- * @returns {Object} Update result
- */
-export const updateMatchesLogged = (userId, newCount) => {
-  const user = users.find((u) => u.id === userId);
-  if (user) {
-    user.matchesLogged = newCount;
-    const { password: _, ...userWithoutPassword } = user;
-    return {
-      success: true,
-      user: userWithoutPassword,
-      message: "Matches logged updated successfully",
-    };
-  }
-  return {
-    success: false,
-    user: null,
-    message: "User not found",
-  };
-};
-
-/**
- * Increment matches logged for a user
- * @param {number} userId - User ID
- * @returns {Object} Update result
- */
-export const incrementMatchesLogged = (userId) => {
-  const user = users.find((u) => u.id === userId);
-  if (user) {
-    user.matchesLogged += 1;
-    const { password: _, ...userWithoutPassword } = user;
-    return {
-      success: true,
-      user: userWithoutPassword,
-      message: "Match logged successfully",
-    };
-  }
-  return {
-    success: false,
-    user: null,
-    message: "User not found",
-  };
-};
-
-/**
  * Check if user has admin role
  * @param {number} userId - User ID
  * @returns {boolean} True if user is admin
@@ -195,3 +148,5 @@ export const isAdmin = (userId) => {
   const user = users.find((u) => u.id === userId);
   return user ? user.role === "admin" : false;
 };
+
+export const logoutUser = async () => {};

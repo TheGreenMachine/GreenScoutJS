@@ -1,1 +1,8 @@
-export { authenticateUser, submitMatchform } from "@api";
+export {
+  authenticateUser,
+  submitMatchform,
+  getAllUsers,
+  getUUID,
+  getCertificate,
+  logoutUser,
+} from "@api";

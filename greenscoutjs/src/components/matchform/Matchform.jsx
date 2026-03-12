@@ -19,13 +19,13 @@ import CycleTimerToggle from "./teleopcycles/CycleTimerToggle";
 import ScoreButton from "./teleopcycles/ScoreButton";
 import ShuttleButton from "./teleopcycles/ShuttleButton";
 import { submitMatchform } from "../../api";
-
-import { data } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 
 function Matchform() {
         const { user } = useAuth();
+
+        const navigate = useNavigate();
 
         const [formData, setFormData] = useState({
                 match: "",
@@ -153,23 +153,23 @@ function Matchform() {
                 const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
 
-    await submitMatchform(jsonString);
-    const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
-    try {
-      const existingCache = JSON.parse(
-        localStorage.getItem("matchFormCache") || "[]",
-      );
-      existingCache.push({
-        key: cacheKey,
-        timestamp: Date.now(),
-        data: dataToSubmit,
-      });
-      localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
-      navigate("/home");
-    } catch (err) {
-      console.warn("Failed to cache form data:", err);
-    }
-  };
+                await submitMatchform(jsonString);
+                const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
+                try {
+                        const existingCache = JSON.parse(
+                                localStorage.getItem("matchFormCache") || "[]",
+                        );
+                        existingCache.push({
+                                key: cacheKey,
+                                timestamp: Date.now(),
+                                data: dataToSubmit,
+                        });
+                        localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
+                        navigate("/home");
+                } catch (err) {
+                        console.warn("Failed to cache form data:", err);
+                }
+        };
 
         const toggleCycleStopwatch = (event) => {
                 if (event) event.preventDefault();

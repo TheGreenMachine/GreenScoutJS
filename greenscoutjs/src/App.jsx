@@ -19,7 +19,7 @@ import SettingsDebug from "./components/settings-sub-pages/debug/SettingsDebug";
 import SettingsLayout from "./components/settings-sub-pages/layout/SettingsMatchForm";
 import SettingsThemes from "./components/settings-sub-pages/themes/SettingsThemes";
 import { useState } from "react";
-import { getUUID, getCertificate } from "./api/mockApi";
+import { getCertificate, getUUID } from "./api";
 
 function App() {
   const getIpAddress = async () => {
@@ -77,7 +77,7 @@ function App() {
             path="/scout"
             element={
               <ProtectedRoute>
-                <Matchform backendURL={backendURL} />
+                <Matchform  />
               </ProtectedRoute>
             }
           />

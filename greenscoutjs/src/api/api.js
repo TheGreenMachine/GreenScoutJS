@@ -1,7 +1,7 @@
-import axios from 'axios';
-import forge from 'node-forge';
+import axios from "axios";
+import forge from "node-forge";
 
-const SERVER = '/api';
+const SERVER = "/api";
 
 async function getPublicKey() {
   const response = await axios.get(`${SERVER}/pub`);
@@ -11,7 +11,7 @@ async function getPublicKey() {
 async function encryptPassword(plaintext) {
   const publicKey = await getPublicKey();
 
-  const encrypted = publicKey.encrypt(plaintext, 'RSAES-PKCS1-V1_5');
+  const encrypted = publicKey.encrypt(plaintext, "RSAES-PKCS1-V1_5");
   return forge.util.encode64(encrypted);
 }
 
@@ -27,15 +27,15 @@ export const authenticateUser = async (username, password) => {
     }),
     {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-    }
+    },
   );
 
-  const role = response.headers['role'];
+  const role = response.headers["role"];
 
-  if (role === 'Not accepted nuh uh') {
-    console.error('Authentication failed: Invalid username or password');
+  if (role === "Not accepted nuh uh") {
+    console.error("Authentication failed: Invalid username or password");
     return {
       success: false,
       user: null,
@@ -48,17 +48,29 @@ export const authenticateUser = async (username, password) => {
     user: username.toLowerCase(),
     success: true,
   };
-}
+};
+
+export const getAllUsers = () => {
+  return null;
+};
+
+export const getUUID = (username) => {
+  return null;
+};
+
+export const getCertificate = (username) => {
+  return null;
+};
 
 export const logoutUser = async () => {
   await axios.post(`${SERVER}/logout`);
-}
+};
 
 export const submitMatchform = async (formData) => {
   await axios.post(`${SERVER}/dataEntry`, formData, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  );
-}
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
