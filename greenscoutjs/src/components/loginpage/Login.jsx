@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { authenticateUser, getCertificate, getUUID } from "../../api/mockApi";
+import { authenticateUser } from "../../api/mockApi";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import "./Login.css";
 import { useAuth } from "../../AuthContext";
 
-const Login = ({ setUser, setID, setCertificate }) => {
+const Login = ({ getUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,11 +24,7 @@ const Login = ({ setUser, setID, setCertificate }) => {
 
       if (result.success) {
         // Store user data in localStorage
-        setUser(username);
-        let id = getUUID(username);
-        let certificate = getCertificate(username);
-        setID(id);
-        setCertificate(certificate);
+        getUser(username);
 
         login(result.user);
 
