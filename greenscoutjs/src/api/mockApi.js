@@ -7,53 +7,44 @@
  */
 export const users = [
   {
-    id: 1,
+    uuid: 0,
+    certificate: 0,
+    role: "admin",
     username: "admin",
     password: "gs2024",
+    DisplayName: "Admin",
+    Score: 1000000,
+    LifeScore: 231,
+  },
+  {
+    uuid: 1,
+    certificate: 1,
     role: "admin",
-    matchesLogged: 156,
+    username: "NoahE",
+    password: "password",
+    DisplayName: "Noah Engelkes",
+    Score: 3,
+    LifeScore: 2,
   },
   {
-    id: 2,
-    username: "scout1",
-    password: "scout123",
+    uuid: 2,
+    certificate: 2,
     role: "user",
-    matchesLogged: 42,
+    username: "Jose",
+    password: "password",
+    DisplayName: "Jose R",
+    Score: 2,
+    LifeScore: 1,
   },
   {
-    id: 3,
-    username: "teamlead",
-    password: "lead1816",
-    role: "admin",
-    matchesLogged: 89,
-  },
-  {
-    id: 4,
-    username: "sarah_chen",
-    password: "password456",
+    uuid: 3,
+    certificate: 3,
     role: "user",
-    matchesLogged: 23,
-  },
-  {
-    id: 5,
-    username: "mike_jones",
-    password: "scout2024",
-    role: "user",
-    matchesLogged: 67,
-  },
-  {
-    id: 6,
-    username: "coordinator",
-    password: "coord1816",
-    role: "admin",
-    matchesLogged: 134,
-  },
-  {
-    id: 7,
-    username: "rookie_scout",
-    password: "firstyear",
-    role: "user",
-    matchesLogged: 5,
+    username: "NoahD",
+    password: "password",
+    DisplayName: "Noah D",
+    Score: 1,
+    LifeScore: 3,
   },
 ];
 
@@ -86,6 +77,30 @@ export const authenticateUser = (username, password) => {
     user: null,
     message: "Invalid username or password",
   };
+};
+
+export const getUUID = (username) => {
+  const user = users.find(
+    (u) => u.username.toLowerCase() === username.toLowerCase(),
+  );
+
+  if (user) {
+    return user.uuid;
+  }
+
+  return null;
+};
+
+export const getCertificate = (username) => {
+  const user = users.find(
+    (u) => u.username.toLowerCase() === username.toLowerCase(),
+  );
+
+  if (user) {
+    return user.certificate;
+  }
+
+  return null;
 };
 
 /**

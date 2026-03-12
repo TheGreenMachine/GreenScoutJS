@@ -21,19 +21,19 @@ function Settings() {
     <div className="settingsBody">
       <NavComponent />
       <div id="settingsContainer">
-        <h1>Settings</h1>
-        <div className="settingButton" onClick={navMatchForm}>
-          <div className="image match"></div>
+        <h1 className="settingsh1">Settings</h1>
+        <button className="settingButton" onClick={navMatchForm}>
+          <div className="image matchImage"></div>
           Match Form Layout
-        </div>
-        <div className="settingButton" onClick={navTheme}>
-          <div className="image theme"></div>
+        </button>
+        <button className="settingButton" onClick={navTheme}>
+          <div className="image themeImage"></div>
           Themes (Work In Progress)
-        </div>
-        <div className="settingButton" onClick={navDebug}>
-          <div className="image debug"></div>
+        </button>
+        <button className="settingButton" onClick={navDebug}>
+          <div className="image debugImage"></div>
           Debug Info
-        </div>
+        </button>
       </div>
     </div>
   );

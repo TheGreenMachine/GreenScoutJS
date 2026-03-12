@@ -9,7 +9,7 @@ function refreshPage() {
 
 function Home() {
   return (
-    <span id="body">
+    <span id="homeBody">
       <NavComponent></NavComponent>
       <div id="refreshButtonContainer">
         <button id="refreshButton" onClick={refreshPage}></button>

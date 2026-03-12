@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { authenticateUser } from "../../api/mockApi";
+import { authenticateUser, getCertificate, getUUID } from "../../api/mockApi";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import "./Login.css";
 import { useAuth } from "../../AuthContext";
 
-const Login = () => {
+const Login = ({ setUser, setID, setCertificate }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,6 +24,12 @@ const Login = () => {
 
       if (result.success) {
         // Store user data in localStorage
+        setUser(username);
+        let id = getUUID(username);
+        let certificate = getCertificate(username);
+        setID(id);
+        setCertificate(certificate);
+
         login(result.user);
 
         console.log("Login successful:", result.user);
@@ -54,7 +60,7 @@ const Login = () => {
     <div id="body">
       <NavComponentLogin />
       <div id="parent" className="text">
-        <h1 className="textlogin">Login</h1>
+        <h1 className="textlogin loginh1">Login</h1>
         <form id="loginPageForm" onSubmit={handleSubmit}>
           <div>
             <input

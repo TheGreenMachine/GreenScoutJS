@@ -6,7 +6,7 @@ function SettingsLayout() {
     <div className="settingsBody">
       <NavComponentSettings />
       <div id="settingsContainer">
-        <h1>Match Form Layout</h1>
+        <h1 className="settingsh1">Match Form Layout</h1>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ function Dropdown({ name, value, onChange }) {
   return (
     <div className="child" id="endDropDown">
       <p id="dtext" className="textDropdown">
-        Park Status
+        Climb Status
       </p>
       <select
         className="textDropdown"
@@ -14,8 +14,7 @@ function Dropdown({ name, value, onChange }) {
         onChange={onChange}
       >
         <option>Select</option>
-        <option>Didn't Attempt To Park</option>
-        <option>Failed Attempt To Park</option>
+        <option>Didn't Attempt To Climb</option>
         <option>Failed Attempt Climb Low</option>
         <option>Failed Attempt Climb Medium</option>
         <option>Failed Attempt Climb High</option>
