@@ -42,8 +42,6 @@ function App() {
     setUser(username);
     setUUID(getUUID(username));
     setCertificate(getCertificate(username));
-    localStorage.setItem("UUID", getUUID(username));
-    localStorage.setItem("Certificate", getCertificate(username));
   };
 
   return (
