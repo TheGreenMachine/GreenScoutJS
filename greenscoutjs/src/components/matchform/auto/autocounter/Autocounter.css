@@ -5,44 +5,43 @@
   font-size: var(--font-size-small);
   padding: 0;
   margin-bottom: 0;
-  padding-top: 5px;
-  height: 30px;
+  padding-top: var(--counter-text-padding-top);
+  height: var(--counter-text-height);
   text-decoration: none;
 }
 
 .child {
-  margin-left: 7.5vw;
-  margin-right: 7.5vw;
+  margin-left: var(--matchform-child-margin-side);
+  margin-right: var(--matchform-child-margin-side);
   width: calc(100% - 15vw);
   display: flex;
   flex-direction: row;
-  height: 6.2vh;
-  margin-bottom: 3vh;
-  margin-top: 3vh;
+  height: var(--matchform-element-height);
+  margin-top: var(--counter-child-margin-vertical);
+  margin-bottom: var(--counter-child-margin-vertical);
 }
 
 #autocounttext {
-  height: 6.2vh;
-  width: calc(100% - 15vw);
-  margin-bottom: 5vh;
+  height: var(--matchform-element-height);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
+  margin-bottom: var(--counter-text-margin-bottom);
   margin-top: 0vh;
 }
 
 #addto {
-  margin-top: 5.7vh;
   background-color: var(--accent-color3);
   border: 1px var(--accent-color3);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 1;
+  font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-small);
-  height: 5.2vh;
-  width: 40%;
-  margin-bottom: 5vh;
-  margin-left: 1vw;
+  height: var(--counter-button-height);
+  width: var(--counter-add-width);
+  margin-bottom: var(--counter-text-margin-bottom);
+  margin-left: var(--counter-button-margin-left);
 }
 
 #addto:hover {
@@ -54,20 +53,19 @@
 }
 
 #remove {
-  margin-top: 5.7vh;
   background-color: var(--accent-color3);
   border: 1px var(--accent-color3);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 1;
+  font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-small);
-  height: 5.2vh;
-  width: 30%;
-  margin-bottom: 5vh;
-  margin-left: 1vw;
+  height: var(--counter-button-height);
+  width: var(--counter-subtract-width);
+  margin-bottom: var(--counter-text-margin-bottom);
+  margin-left: var(--counter-button-margin-left);
 }
 
 #addto,

@@ -20,7 +20,7 @@
   font-size: var(--font-size-large);
   padding: 0;
   margin-bottom: 0;
-  padding-top: 5px;
+  padding-top: var(--home-text-padding-top);
 }
 
 .textHome2 {
@@ -32,25 +32,25 @@
 
 #assigned {
   margin-bottom: 0;
-  padding-top: 10px;
+  padding-top: var(--home-assigned-h-padding-top);
 }
 
 #refreshButtonContainer {
   position: fixed;
-  bottom: -14px;
-  right: 17px;
+  bottom: var(--home-refresh-container-bottom);
+  right: var(--home-refresh-container-right);
   margin: 0;
 }
 
 #refreshButton {
-  margin-top: 5.7vh;
-  margin-bottom: 4.4vh;
+  margin-top: var(--home-refresh-button-margin-top);
+  margin-bottom: var(--home-refresh-button-margin-bottom);
   border: 1px var(--accent-color3);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 1;
+  font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-small);
   width: var(--refresh-button-size);

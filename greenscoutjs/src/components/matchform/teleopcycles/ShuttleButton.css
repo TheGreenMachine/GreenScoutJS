@@ -1,46 +1,46 @@
 #shuttleButton.false {
-  margin-top: 5.7vh;
-  margin-bottom: 4.4vh;
+  margin-top: var(--cycle-margin-top);
+  margin-bottom: var(--cycle-margin-bottom);
   background-color: var(--accent-color3);
   border: 1px var(--accent-color3);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 1;
+  font-weight: var(--font-weight);
   outline: none;
-  width: 6.5vh;
-  height: 6.5vh;
+  width: var(--cycle-size);
+  height: var(--cycle-size);
   position: absolute;
-  top: 22vh;
+  top: var(--shuttle-top);
   font-size: var(--font-size-cycle);
   text-align: center;
 }
 
 #shuttleButton.true {
-  margin-top: 5.7vh;
-  margin-bottom: 4.4vh;
+  margin-top: var(--cycle-margin-top);
+  margin-bottom: var(--cycle-margin-bottom);
   background-color: var(--disabled-color);
   border: 1px var(--disabled-color);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 1;
+  font-weight: var(--font-weight);
   outline: none;
-  width: 6.5vh;
-  height: 6.5vh;
+  width: var(--cycle-size);
+  height: var(--cycle-size);
   position: absolute;
-  top: 22vh;
+  top: var(--shuttle-top);
   font-size: var(--font-size-cycle);
   text-align: center;
 }
 
 #shuttleButtonImg {
-  height: 2vh;
+  height: var(--cycle-image-height);
   width: 100%;
   background-image: url("../../../assets/bus-side-solid-full.svg");
-  background-size: 1.7vh 1.7vh;
+  background-size: var(--cycle-image-background-size);
   background-repeat: no-repeat;
-  background-position: 2vh 0vh;
+  background-position: var(--cycle-image-background-position);
 }

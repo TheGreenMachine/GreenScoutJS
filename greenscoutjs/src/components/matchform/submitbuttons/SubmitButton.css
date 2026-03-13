@@ -1,20 +1,20 @@
 .divSubmit {
-  margin-left: 7.5vw;
-  margin-right: 7.5vw;
-  width: calc(100% - 15vw);
-  height: 8vh;
-  margin-bottom: 1vh;
+  margin-left: var(--matchform-child-margin-side);
+  margin-right: var(--matchform-child-margin-side);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
+  height: var(--submitreplay-div-height);
+  margin-bottom: var(--submitreplay-div-margin-bottom);
 }
 
 .submitButton {
-  margin-top: 5.7vh;
-  margin-bottom: 4.4vh;
+  margin-top: var(--submitreplay-button-margin-top);
+  margin-bottom: var(--submitreplay-button-margin-bottom);
   border: 1px var(--accent-color3);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 1;
+  font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-small);
   display: grid;
@@ -40,13 +40,13 @@
 }
 
 #submitImage {
-  margin-top: -3.5vh;
+  margin-top: var(--submit-image-margin-top);
   background-image: url("../../../assets/floppy-disk-solid-full.svg");
 }
 
 .submitImage {
-  height: 4.8vh;
-  width: 4.8vh;
+  height: var(--submit-image-size);
+  width: var(--submit-image-size);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }

@@ -1,13 +1,13 @@
 #newpitbutton {
-  width: 50vw;
+  width: var(--new-matchpit-button-width);
   height: var(--new-matchpit-button-height);
   background-color: var(--accent-color3);
   border: 1px var(--accent-color3);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 1;
+  font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-small);
   background-image: url(../../../assets/pitscout.svg);

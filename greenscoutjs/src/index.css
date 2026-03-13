@@ -21,10 +21,13 @@
   --border-radius: 1em;
   --font-size-large: 3vh;
   --font-size-small: 2.5vh;
+  --font-weight: 1;
   --page-height: 100vh;
   --page-width: 100vw;
   --content-height: calc(var(--page-height) - var(--navbar-height));
   --content-width: var(--page-width);
+  --element-height: 6.2vh; /* Not used universally, but use a lot */
+
   /* Navbar Sizing Variables */
   --sidenav-width: 70vw;
   --navbar-height: 8vh;
@@ -39,31 +42,176 @@
   --sidenav-usertext-h1-margin-top: 1.7vh;
   --sidenav-usertext-p-margin-top: -4.3vh;
   --sidenav-usertext-p-margin-left: 0.2vw;
+  --sidenav-padding-top: 60px;
   /* Login Sizing Variables */
+  --login-h1-height: 3vh;
+  --login-h1-margin-top: 4vh;
+  --login-error-message-margin: 10px 0;
+
+  --login-box-width: 30vh;
+  --login-box-margin-top: 5vh;
+  --login-box-margin-bottom: 1.5vh;
+  --login-box-padding-left: calc(var(--login-box-background-size) + 1vh);
+  --login-box-background-size: 3vh;
+  --login-box-background-position: 5px 1.2vh;
+
+  --login-button-width: 30vh;
+  --login-button-height: 6vh;
 
   /* Match Form Sizing Variables */
+  --matchform-text-padding-top: 5px;
+  --matchform-text-height: 30px;
+
+  --matchform-side-panel-width: 8vh;
+  --matchform-grid-template: 1fr var(--matchform-side-panel-width);
+
+  --matchform-child-margin-side: 7.5vw; /* Used Throughout Child Components */
+  --matchform-child-width-to-subtract: 15vw; /* Used Throughout Child Components */
+
+  --matchform-element-height: 6.2vh; /* Replace throughout with element-height */
+  --matchform-matchteam-margin-top: 1.5vh;
+
+  --matchform-header-padding-top: 5px;
+  --matchform-header-end-margin-top: 10vh;
+
+  --matchform-notes-height: 40vh;
+
+  --matchform-cycle-container-height: 40vh;
+  --matchform-cycle-item-height: 9vh;
+  --matchform-cycle-item-margin-bottom: 1vw;
+  --matchform-cycle-item-image-height: 40%;
+  --matchform-cycle-item-image-width: 10%;
+  --matchform-cycle-delete-height: 30%;
+  --matchform-cycle-delete-width: 10%;
+
+  --matchform-cycle-text-padding-top: 5%;
+  --matchform-cycle-text-padding-right: 20%;
+  --matchform-cycle-text-padding-left: 10%;
+  --matchform-cycle-text-width: 25;
+
+  --matchform-acclabel-width: 10vh;
+  --matchform-acclabel-height: 3vh;
+  --matchform-accslider-width: 70%;
+  --matchform-accslider-height: 2vh;
+  --matchform-accslider-margin-right: 10%;
+  --matchform-accslider-thumb-size: 50px;
+
+  --matchform-bottomspace-height: 15vh;
+  --matchform-bottomspace-max-height: 80px;
 
   /* Match Form Checkbox Sizing Variables */
+  --check-text-height: 30px;
+  --check-padding-top: 1vh;
+
+  --check-div-margin-top: 3vh;
+
+  --check-size: 2.5vh;
+
+  --check-container-padding-left: 35px;
+  --check-container-margin-bottom: 12px;
+
+  --check-mark-top: 1.5vh;
+  --check-mark-left: 1vw;
+
+  --check-mark-after-left: 9px;
+  --check-mark-after-top: 5px;
+  --check-mark-after-size: 1.2vh;
+
+  --check-special-margin-left: 7.5vw;
+
+  --check-auto-text-padding-top: 1vh;
+  --check-auto-text-width: 80vw;
 
   /* Match Form Counter Sizing Variables */
+  --counter-text-padding-top: 5px;
+  --counter-text-height: 30px;
+  --counter-text-margin-bottom: 5vh;
+
+  --counter-child-margin-vertical: 3vh;
+
+  --counter-button-height: 5.2vh;
+  --counter-add-width: 40%;
+  --counter-subtract-width: 30%;
+  --counter-button-margin-left: 1vw;
 
   /* Match Form Dropdown Sizing Variables */
+  --dropdown-margin-top: 3vh;
+  --dropdown-padding-bottom: 0.5vh;
+  --dropdown-height: 5.2vh;
+  --dropdown-width: 15vh;
+
+  --dropdown-text-padding-top: 5px;
+  --dropdown-text-height: 30px;
+
+  --dropdown-driverstation-margin-top: 1vh;
+
+  --dropdown-dtext-height: 3.1vh;
+  --dropdown-dtext-width: 70vw;
+
+  --dropdown-collect-container-margin-top: 3%;
+
+  --dropdown-dtext-collect-width: 70vw;
+
+  --dropdown-collect-margin-top: 16%;
+  --dropdown-collect-padding-bottom: 0.5vh;
 
   /* Match Form Trigger Sizing Variables */
+  --trigger-margin-top: 5.7vh;
+  --trigger-margin-bottom: 4.4vh;
+  --trigger-size: 6.5vh;
+
+  --trigger-stop-image-height: 2vh;
+  --trigger-stop-image-background-size: 1.7vh 1.7vh;
+  --trigger-stop-image-background-position: 2vh 0vh;
+
+  --trigger-reset-height: 8vh;
 
   /* Match Form Submit/Replay Sizing Variables */
+  --submitreplay-div-height: 8vh;
+  --submitreplay-div-margin-bottom: 1vh;
+
+  --submitreplay-button-margin-top: 5.7vh;
+  --submitreplay-button-margin-bottom: 4.4vh;
+
+  --submitreplay-text-margin-top: -1vh;
+
+  --submitreplay-label-margin-top: 2vh;
+
+  --submit-image-margin-top: -3.5vh;
+  --submit-image-size: 4.8vh;
 
   /* General Cycles Sizing Variables */
   --font-size-cycle: 1.8vh;
+
   /* Cycle Start/Stop Button Sizing Variables */
+  --cycle-margin-top: 5.7vh;
+  --cycle-margin-bottom: 4.4vh;
+  --cycle-size: 6.5vh;
+  --cycle-top: 4vh;
+
+  --cycle-image-height: 2vh;
+  --cycle-image-background-size: 1.7vh 1.7vh;
+  --cycle-image-background-position: 2vh 0vh;
 
   /* Score Cycle Sizing Variables */
+  --score-top: 13vh;
+  --score-image-height: 3vh;
 
   /* Shuttle Cycle Sizing Variables */
+  --shuttle-top: 22vh;
 
   /* Home Page Sizing Variables */
-  --refresh-button-size: 7.9vh;
   --new-matchpit-button-height: 8vh;
+  --new-matchpit-button-width: 50vw;
+
+  --home-text-padding-top: 5px;
+  --home-assigned-h-padding-top: 10px;
+  --home-refresh-container-bottom: -14px;
+  --home-refresh-container-right: 17px;
+  --home-refresh-button-margin-top: 5.7vh;
+  --home-refresh-button-margin-bottom: 4.4vh;
+  --refresh-button-size: 7.9vh;
+
   /* Sizing Variables */
 
   /* Leader Board Sizing Variables */
@@ -74,4 +222,10 @@
   --settings-element-height: calc(var(--font-size-large) * 2);
   --settings-element-spacing: calc(var(--font-size-small) / 2);
   --settings-debug-image-offset: 2vh;
+
+  --settings-themedrop-padding-top: 5px;
+  --settings-themedrop-height: 30px;
+  --settings-themedrop-text-width: 70vw;
+  --settings-themedrop-margin-top: 10%;
+  --settings-themedrop-padding-bottom: 0.5vh;
 }

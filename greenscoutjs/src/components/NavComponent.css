@@ -78,6 +78,7 @@ body {
     var(--background-color) 96%,
     rgba(0, 0, 0, 1) 100%
   );
+  padding-top: var(--sidenav-padding-top);
   transition: left 0.3s ease;
   display: flex;
   flex-direction: column;
