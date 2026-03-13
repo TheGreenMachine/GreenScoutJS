@@ -17,7 +17,6 @@ async function encryptPassword(plaintext) {
 
 export const authenticateUser = async (username, password) => {
   const encryptedPassword = await encryptPassword(password);
-  console.log("Encrypted password:", encryptedPassword);
 
   const response = await axios.post(
     `${SERVER}/login`,
