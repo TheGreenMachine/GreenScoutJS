@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { authenticateUser, getCertificate, getUUID } from "../../api/mockApi";
+
+import { authenticateUser, getCertificate, getUUID } from "../../api";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import "./Login.css";
@@ -18,9 +19,8 @@ const Login = ({ setUser, setID, setCertificate }) => {
     setError("");
     setIsLoading(true);
 
-    // Simulate API delay for realistic UX
-    setTimeout(() => {
-      const result = authenticateUser(username, password);
+    const result = await authenticateUser(username, password);
+    console.log("Authentication result:", result);
 
       if (result.success) {
         // Store user data in localStorage
@@ -32,16 +32,15 @@ const Login = ({ setUser, setID, setCertificate }) => {
 
         login(result.user);
 
-        console.log("Login successful:", result.user);
+      console.log("Login successful:", result.user);
 
-        // Navigate to home page
-        navigate("/home");
-      } else {
-        setError(result.message);
-      }
+      // Navigate to home page
+      navigate("/home");
+    } else {
+      setError(result.message);
+    }
 
-      setIsLoading(false);
-    }, 500);
+    setIsLoading(false);
   };
 
   const handleUsernameChange = (e) => {

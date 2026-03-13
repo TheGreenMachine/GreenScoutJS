@@ -1,8 +1,8 @@
 // AuthContext.jsx - Context provider for authentication state
 // Place this file in: greenscoutjs/src/context/AuthContext.jsx
 
-import React, { createContext, useContext, useState, useEffect } from "react";
-// import { getUserById } from "./api/mockApi";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { logoutUser } from "./api/api";
 
 const AuthContext = createContext(null);
 
@@ -33,27 +33,30 @@ export const AuthProvider = ({ children }) => {
     checkAuth();
   }, []);
 
-  const login = (userData) => {
+  const login = useCallback((userData) => {
     setUser(userData);
     setIsAuthenticated(true);
     localStorage.setItem("greenscout_user", JSON.stringify(userData));
     localStorage.setItem("greenscout_auth", "true");
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(async () => {
+    await logoutUser();
     setUser(null);
     setIsAuthenticated(false);
     localStorage.removeItem("greenscout_user");
     localStorage.removeItem("greenscout_auth");
     localStorage.removeItem("UUID");
     localStorage.removeItem("Certificate");
-  };
+  });
 
-  const updateUser = (updatedData) => {
-    const newUser = { ...user, ...updatedData };
-    setUser(newUser);
-    localStorage.setItem("greenscout_user", JSON.stringify(newUser));
-  };
+  const updateUser = useCallback((updatedData) => {
+    setUser((prev) => {
+      const newUser = { ...prev, ...updatedData };
+      localStorage.setItem("greenscout_user", JSON.stringify(newUser));
+      return newUser;
+    });
+  }, []);
 
   const isAdmin = () => {
     return user?.role === "admin";
