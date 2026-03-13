@@ -49,10 +49,6 @@ export const authenticateUser = async (username, password) => {
   };
 };
 
-export const getAllUsers = () => {
-  return null;
-};
-
 export const getUUID = (username) => {
   return null;
 };
@@ -73,3 +69,12 @@ export const submitMatchform = async (formData) => {
   });
 };
 
+export const getLeaderboard = async (scoreType) => {
+  const response = await axios.get(`${SERVER}/leaderboard`, {
+    headers: {
+      'type': scoreType
+    }
+  });
+
+  return response.data;
+};

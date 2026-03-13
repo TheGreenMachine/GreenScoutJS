@@ -1,8 +1,8 @@
 export {
   authenticateUser,
   submitMatchform,
-  getAllUsers,
   getUUID,
   getCertificate,
   logoutUser,
+  getLeaderboard,
 } from "@api";
