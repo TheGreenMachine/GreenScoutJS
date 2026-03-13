@@ -46,11 +46,12 @@
 #boardContainer {
   display: flex;
   flex-direction: column;
-  gap: 8%;
+  gap: 1%;
   max-width: 90%;
   margin: 3% auto;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
+  height: calc(100vh - 8vh - 60px - 60px);
 }
 
 .leaderBoardTile {
@@ -58,8 +59,7 @@
   align-items: center;
   overflow: hidden;
   gap: 8%;
-  margin-bottom: 3%;
-  padding: 1% 1%;
+  padding: 2.5% 2.5%;
   background-color: var(--background-color);
   border: 0.15vh solid var(--accent-color);
   border-radius: var(--border-radius);
