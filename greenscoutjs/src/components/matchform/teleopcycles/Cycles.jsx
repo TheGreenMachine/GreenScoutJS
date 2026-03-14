@@ -8,15 +8,19 @@ const Cycles = ({
   onTrigger,
   onUpdateAccuracy,
 }) => {
-  const getAccuracyLabel = (value) => {
+  const getAccuracyLabelScore = (value) => {
     const numValue = Number(value);
-    if (numValue <= 5) return "Miss";
-    if (numValue <= 10) return "1-5";
-    if (numValue <= 15) return "6-10";
-    if (numValue <= 20) return "11-15";
-    if (numValue <= 25) return "16-20";
-    if (numValue <= 30) return "21-25";
-    return "26+";
+    if (numValue <= 0) return "Miss";
+    if (numValue <= 25) return "25%";
+    if (numValue <= 50) return "50%";
+    if (numValue <= 75) return "75%";
+    return "100%";
+  };
+
+  const getAccuracyLabelShuttle = (value) => {
+    const numValue = Number(value);
+    if (numValue === 0) return "Shot";
+    return "Drove";
   };
 
   const handleAccuracyChange = (index, value) => {
@@ -54,15 +58,31 @@ const Cycles = ({
             <div className="accuracy-control">
               <input
                 type="range"
-                min={1}
-                max={31}
-                step={5}
+                min={0}
+                max={100}
+                step={25}
                 className="accSlider"
-                value={item.accuracy || 1}
+                value={item.accuracy || 0}
                 onChange={(e) => handleAccuracyChange(index, e.target.value)}
               />
               <div className="accuracyLabel">
-                {getAccuracyLabel(item.accuracy || 1)}
+                {getAccuracyLabelScore(item.accuracy || 0)}
+              </div>
+            </div>
+          )}
+          {item.event === "Shuttle" && (
+            <div className="accuracy-control">
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={1}
+                className="accSlider"
+                value={item.accuracy || 0}
+                onChange={(e) => handleAccuracyChange(index, e.target.value)}
+              />
+              <div className="accuracyLabel">
+                {getAccuracyLabelShuttle(item.accuracy || 0)}
               </div>
             </div>
           )}

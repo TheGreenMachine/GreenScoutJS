@@ -31,18 +31,14 @@
   font-size: var(--font-size-small);
 }
 
-#dropdown {
-  margin-top: var(--dropdown-margin-top);
-  padding-bottom: var(--dropdown-padding-bottom);
-  height: var(--dropdown-height);
-  right: 0;
-  border: none;
-  border-bottom: gray solid 1px;
-  color: var(--font-color);
-  width: var(--dropdown-width);
+#endtext {
+  height: var(--dropdown-dtext-height);
+  width: var(--dropdown-dtext-width);
+  font-size: var(--font-size-small);
+  padding-top: var(--dropdown-park-text-padding-top);
 }
 
-#endDropdown {
+#dropdown {
   margin-top: var(--dropdown-margin-top);
   padding-bottom: var(--dropdown-padding-bottom);
   height: var(--dropdown-height);

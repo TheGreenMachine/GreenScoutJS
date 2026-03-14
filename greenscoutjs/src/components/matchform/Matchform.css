@@ -104,7 +104,7 @@
   width: calc(100% - 15vw);
   font-size: var(--font-size-small);
   margin-top: var(--matchform-matchteam-margin-top);
-  height: var(--matchform-matchteam-height);
+  height: var(--matchform-element-height);
   border-radius: var(--border-radius);
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
@@ -159,9 +159,9 @@
   flex-direction: column;
   align-items: center;
 }
-
-#notesdiv {
+.child.notesdiv {
   height: var(--matchform-notes-height);
+  vertical-align: top;
 }
 
 #notesbox {
@@ -172,8 +172,6 @@
 
 #cycleContainer {
   height: var(--matchform-cycle-container-height);
-  width: calc(100% - 15vw);
-  margin-left: var(--matchform-child-margin-side);
   margin-right: var(--matchform-child-margin-side);
   overflow-y: auto;
   overflow-x: hidden;
@@ -192,11 +190,6 @@
   margin-bottom: var(--matchform-cycle-item-margin-bottom);
 }
 
-.cycle-item.Score:hover {
-  background-color: var(--accent-color3);
-  cursor: pointer;
-}
-
 .cycle-item.Score > .cycleElementImg {
   left: 0;
   position: relative;
@@ -209,10 +202,6 @@
   box-shadow: 0px 4px 5px rgb(164, 164, 164);
   border: var(--font-color) 0.5px solid;
   border-radius: var(--border-radius);
-}
-
-.Score:hover > .cycleElementImg {
-  background-color: var(--accent-color3);
 }
 
 .accSlider {
@@ -244,11 +233,6 @@
   margin-bottom: var(--matchform-cycle-item-margin-bottom);
 }
 
-.cycle-item.Shuttle:hover {
-  background-color: var(--accent-color3);
-  cursor: pointer;
-}
-
 .cycle-item.Shuttle > .cycleElementImg {
   left: 0;
   position: relative;
@@ -263,13 +247,8 @@
   border-radius: var(--border-radius);
 }
 
-.cycle-item.Shuttle:hover > .cycleElementImg {
-  background-color: var(--accent-color3);
-}
-
 .Score.cycleElementText {
   padding-top: var(--matchform-cycle-text-padding-top);
-  padding-right: var(--matchform-cycle-text-padding-right);
   padding-left: var(--matchform-cycle-text-padding-left);
   width: var(--matchform-cycle-text-width);
   height: inherit;
@@ -278,8 +257,6 @@
 
 .Shuttle.cycleElementText {
   padding-top: var(--matchform-cycle-text-padding-top);
-  padding-right: var(--matchform-cycle-text-padding-right);
-  padding-left: var(--matchform-cycle-text-padding-left);
   width: var(--matchform-cycle-text-width);
   height: inherit;
   font-size: var(--font-size-small);
