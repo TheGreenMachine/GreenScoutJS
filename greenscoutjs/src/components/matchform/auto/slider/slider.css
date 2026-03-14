@@ -1,0 +1,47 @@
+.divAutoAccLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 0;
+  width: 100%;
+  margin-bottom: var(--slider-container-margin-bottom);
+}
+
+.divAutoAccLabel:focus {
+  outline: none;
+}
+
+.textAutoAccLabel {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: var(--font-color);
+  font-size: var(--font-size-small);
+  padding: 0;
+  text-decoration: none;
+  margin-top: 0;
+  max-width: calc(100% - var(--slider-container-width));
+}
+
+.autoAccContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: var(--slider-container-width);
+}
+
+.autoAccSlider {
+  -webkit-appearance: none;
+  width: var(--matchform-accslider-width);
+  height: var(--matchform-accslider-height);
+  margin-right: var(--matchform-accslider-margin-right);
+  appearance: none;
+  background: var(--kelly-green);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.autoAccSlider::-webkit-slider-thumb {
+  height: var(--matchform-accslider-thumb-size);
+  width: var(--matchform-accslider-thumb-size);
+}

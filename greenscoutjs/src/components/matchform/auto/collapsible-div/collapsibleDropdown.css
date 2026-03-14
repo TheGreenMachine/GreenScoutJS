@@ -1,0 +1,42 @@
+.collapsibleDropdown {
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
+  margin-left: var(--matchform-child-margin-side);
+  margin-right: var(--matchform-child-margin-side);
+}
+
+.collapsibleDropdown__trigger {
+  width: 100%;
+  padding: var(--collapsible-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-small);
+}
+
+.collapsibleDropdown__arrow {
+  transition: transform 0.2s;
+}
+
+.collapsibleDropdown__arrow--open {
+  transform: rotate(180deg);
+}
+
+.collapsibleDropdown__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.collapsibleDropdown__content--open {
+  max-height: var(--collapsible-open-max-height);
+  border-top: 1px solid #ccc;
+}
+
+.collapsibleDropdown__inner {
+  padding: var(--collapsible-padding);
+}

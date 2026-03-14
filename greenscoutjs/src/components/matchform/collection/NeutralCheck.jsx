@@ -2,7 +2,7 @@ import "../auto/autocheck/Autocheck.css";
 
 function Neutralcheck({ name, value, onChange }) {
   return (
-    <div id="doesneutral">
+    <div className="child divcheck">
       <p id="autotext" className="textcheck">
         Collect From Neutral Zone?
       </p>
