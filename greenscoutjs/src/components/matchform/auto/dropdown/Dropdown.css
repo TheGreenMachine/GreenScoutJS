@@ -5,8 +5,8 @@
   font-size: var(--font-size-small);
   padding: 0;
   margin-bottom: 0;
-  padding-top: 5px;
-  height: 30px;
+  padding-top: var(--dropdown-text-padding-top);
+  height: var(--dropdown-text-height);
   text-decoration: none;
 }
 
@@ -15,42 +15,38 @@
 }
 
 #driverStation {
-  margin-top: 1vh;
+  margin-top: var(--dropdown-driverstation-margin-top);
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 6.2vh;
-  margin-left: 7.5vw;
-  margin-right: 7.5vw;
-  width: calc(100% - 15vw);
+  height: var(--matchform-element-height);
+  margin-left: var(--matchform-child-margin-side);
+  margin-right: var(--matchform-child-margin-side);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
 }
 
 #dtext {
-  height: 3.1vh;
-  width: 70vw;
+  height: var(--dropdown-dtext-height);
+  width: var(--dropdown-dtext-width);
   font-size: var(--font-size-small);
 }
 
-#dropdown {
-  margin-top: 3vh;
-  padding-bottom: 0.5vh;
-  height: 5.2vh;
-  right: 0;
-  border: none;
-  border-bottom: gray solid 1px;
-  color: var(--font-color);
-  width: 15vh;
+#endtext {
+  height: var(--dropdown-dtext-height);
+  width: var(--dropdown-dtext-width);
+  font-size: var(--font-size-small);
+  padding-top: var(--dropdown-park-text-padding-top);
 }
 
-#endDropdown {
-  margin-top: 2vh;
-  padding-bottom: 0.5vh;
-  height: 5.2vh;
+#dropdown {
+  margin-top: var(--dropdown-margin-top);
+  padding-bottom: var(--dropdown-padding-bottom);
+  height: var(--dropdown-height);
   right: 0;
   border: none;
   border-bottom: gray solid 1px;
   color: var(--font-color);
-  width: 15vh;
+  width: var(--dropdown-width);
 }
 
 #dropdown:focus {

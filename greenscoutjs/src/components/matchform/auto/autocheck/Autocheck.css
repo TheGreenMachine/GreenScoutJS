@@ -3,24 +3,21 @@
   font-weight: lighter;
   color: var(--font-color);
   font-size: var(--font-size-small);
-  padding: 0;
-  margin-bottom: 0;
-  height: 30px;
-  text-decoration: none;
-  padding-top: 1vh;
-  width: calc(100% - 15vw);
+  height: var(--check-text-height);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
 }
 
 .text:hover {
   cursor: default;
 }
 
-.divcheck {
-  margin-top: 3vh;
+.child.divcheck {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 6.2vh;
+  height: var(--check-div-height);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
+  margin-left: var(--check-special-margin-left);
 }
 
 .divcheck:focus {
@@ -28,15 +25,15 @@
 }
 
 .check {
-  height: 2.5vh;
-  width: 2.5vh;
+  height: var(--check-size);
+  width: var(--check-size);
 }
 
 .checkcontainer {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
+  padding-left: var(--check-container-padding-left);
+  margin-bottom: var(--check-container-margin-bottom);
   cursor: pointer;
   font-size: var(--font-size-small);
   -webkit-user-select: none;
@@ -55,10 +52,9 @@
 
 .checkmark {
   position: absolute;
-  top: 1.5vh;
-  left: 1vw;
-  height: 2.5vh;
-  width: 2.5vh;
+  left: var(--check-mark-left);
+  height: var(--check-size);
+  width: var(--check-size);
   background-color: var(--checkbox-default-color);
 }
 
@@ -81,10 +77,10 @@
 }
 
 .checkcontainer .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 1.2vh;
-  height: 1.2vh;
+  left: var(--check-mark-after-left);
+  top: var(--check-mark-after-top);
+  width: var(--check-mark-after-size);
+  height: var(--check-mark-after-size);
   border: solid white;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
@@ -92,34 +88,6 @@
   transform: rotate(45deg);
 }
 
-#doesneutral {
-  margin-top: 3vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 6.2vh;
-  width: calc(100% - 15vw);
-  margin-left: 7.5vw;
-}
-
-#doesneutral:focus {
-  outline: none;
-}
-
-#doeshp {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 6.2vh;
-  width: calc(100% - 15vw);
-  margin-left: 7.5vw;
-}
-
-#doeshp:focus {
-  outline: none;
-}
-
 #autotext {
-  padding-top: 1vh;
-  width: 80vw;
+  width: var(--check-auto-text-width);
 }

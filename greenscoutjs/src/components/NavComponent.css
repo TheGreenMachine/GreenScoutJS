@@ -34,9 +34,9 @@ body {
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
-  padding: 15px;
+  padding: var(--navbar-hamburger-padding);
   position: fixed;
-  top: -6px;
+  top: var(--navbar-hamburger-top-distance);
   z-index: 1001;
 }
 
@@ -50,9 +50,9 @@ body {
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
-  padding: 15px;
+  padding: var(--navbar-hamburger-padding);
   position: fixed;
-  top: -6px;
+  top: var(--navbar-hamburger-top-distance);
   z-index: 1001;
 }
 
@@ -78,7 +78,7 @@ body {
     var(--background-color) 96%,
     rgba(0, 0, 0, 1) 100%
   );
-  padding-top: 60px;
+  padding-top: var(--sidenav-padding-top);
   transition: left 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -109,7 +109,6 @@ body {
   width: inherit;
   height: var(--sidenav-section-height);
   background: transparent;
-  padding-top: 60px;
   transition: left 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -132,7 +131,6 @@ body {
 
 .side-nav a {
   display: block;
-  padding: 15px;
   color: var(--font-color);
   text-decoration: none;
 }
@@ -163,13 +161,12 @@ body {
   font-weight: bold;
   color: var(--font-color);
   font-size: var(--font-size-large);
-  padding-left: 1vw;
   text-decoration: none;
-  padding-top: 5px;
+  padding-top: var(--navbar-text-padding-top);
   width: calc(0.6 * var(--sidenav-width));
   margin-left: calc(0.2 * var(--sidenav-width));
   margin-top: calc(var(--sidenav-section-height) * 0.1);
-  border-radius: 1em;
+  border-radius: var(--border-radius);
 }
 
 /* CSS for later user tile implementation */
@@ -178,32 +175,32 @@ body {
   height: var(--sidenav-usertile-height);
   display: flex;
   justify-content: start;
-  margin-bottom: 3vw;
+  margin-bottom: var(--sidenav-usertile-margin-bottom);
 }
 
 #userimage {
-  width: 3vw;
-  height: 3vw;
+  width: var(--sidenav-userimage-size);
+  height: var(--sidenav-userimage-size);
   background-image: url("../assets/circle-user-solid-full.svg");
   background-repeat: no-repeat;
-  background-size: 3vw 3vw;
+  background-size: var(--sidenav-userimage-size) var(--sidenav-userimage-size);
 }
 
 #usertext {
-  width: 3vw;
-  height: 3vw;
+  width: var(--font-size-large);
+  height: var(--font-size-large);
 }
 
 #usertext h1 {
   text-decoration: none;
   color: var(--font-color);
   font-size: var(--font-size-large);
-  margin-top: 1.7vh;
+  margin-top: var(--sidenav-usertext-h1-margin-top);
 }
 
 #usertext p {
-  margin-top: -4.3vh;
-  margin-left: 0.2vw;
+  margin-top: var(--sidenav-usertext-p-margin-top);
+  margin-left: var(--sidenav-usertext-p-margin-left);
   font-size: var(--font-size-small);
   text-decoration: none;
   color: var(--font-color);

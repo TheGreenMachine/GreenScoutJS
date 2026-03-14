@@ -2,7 +2,7 @@ import "../auto/autocheck/Autocheck.css";
 
 function HPCheck({ name, value, onChange }) {
   return (
-    <div id="doeshp">
+    <div className="child divcheck">
       <p id="autotext" className="textcheck">
         Collect From Human Player?
       </p>

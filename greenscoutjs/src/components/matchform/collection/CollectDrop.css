@@ -5,8 +5,8 @@
   font-size: var(--font-size-small);
   padding: 0;
   margin-bottom: 0;
-  padding-top: 5px;
-  height: 30px;
+  padding-top: var(--dropdown-text-padding-top);
+  height: var(--dropdown-text-height);
   text-decoration: none;
 }
 
@@ -15,29 +15,29 @@
 }
 
 .collectchild {
-  margin-left: 7.5vw;
-  margin-right: 7.5vw;
-  width: calc(100% - 15vw);
+  margin-left: var(--matchform-child-margin-side);
+  margin-right: var(--matchform-child-margin-side);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
 }
 
 #collectdrop {
-  margin-top: 3%;
+  margin-top: var(--dropdown-collect-container-margin-top);
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 6.2vh;
+  height: var(--element-height);
 }
 
 #collectdtext {
-  height: 3.1vh;
-  width: 70vw;
+  height: var(--font-size-large);
+  width: var(--dropdown-dtext-collect-width);
   font-size: var(--font-size-small);
 }
 
 #collectdropdown {
-  margin-top: 16%;
-  padding-bottom: 0.5vh;
-  height: 5.2vh;
+  margin-top: var(--dropdown-collect-margin-top);
+  padding-bottom: var(--dropdown-collect-padding-bottom);
+  height: var(--dropdown-height);
   right: 0;
   border: none;
   border-bottom: gray solid 1px;

@@ -39,9 +39,10 @@ function App() {
   const [certificate, setCertificate] = useState("");
   const [user, setUser] = useState("");
 
-  const getUser = () => {
-    setUUID(getUUID(user));
-    setCertificate(getCertificate(user));
+  const getUser = (username) => {
+    setUser(username);
+    setUUID(getUUID(username));
+    setCertificate(getCertificate(username));
   };
   return (
     <Router basename="/GreenScoutJS">
@@ -58,6 +59,7 @@ function App() {
                   setUser={setUser}
                   setID={setUUID}
                   setCertificate={setCertificate}
+                  getUser={getUser}
                 />
               </PublicRoute>
             }

@@ -16,7 +16,6 @@
 
 #leaderBoardBody {
   width: 100%;
-  margin-top: 8vh;
   height: calc(100% - 8vh);
   padding: 0;
   overflow: hidden;
@@ -33,7 +32,7 @@
 
 .lb-sort-btn {
   padding: 1% 1%;
-  border-radius: 1em;
+  border-radius: var(--border-radius);
   border: none;
   background: var(--accent-color3);
   cursor: pointer;
@@ -48,11 +47,12 @@
 #boardContainer {
   display: flex;
   flex-direction: column;
-  gap: 8%;
+  gap: 1%;
   max-width: 90%;
   margin: 3% auto;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
+  height: calc(100vh - 8vh - 60px - 60px);
 }
 
 .leaderBoardTile {
@@ -60,23 +60,18 @@
   align-items: center;
   overflow: hidden;
   gap: 8%;
-  margin-bottom: 3%;
-  padding: 1% 1%;
+  padding: 2.5% 2.5%;
   background-color: var(--background-color);
   border: 0.15vh solid var(--accent-color);
-  border-radius: 1em;
+  border-radius: var(--border-radius);
   height: var(--leader-board-element-height);
   font-size: var(--font-size-small);
-}
-
-.lb-rank {
-  width: 28;
 }
 
 .lb-name {
   flex: 1;
 }
 
-.lb-score {
+.lb-rank {
   font-weight: bold;
 }

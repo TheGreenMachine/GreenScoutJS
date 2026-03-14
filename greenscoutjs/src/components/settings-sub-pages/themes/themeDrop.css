@@ -5,8 +5,8 @@
   font-size: var(--font-size-small);
   padding: 0;
   margin-bottom: 0;
-  padding-top: 5px;
-  height: 30px;
+  padding-top: var(--settings-themedrop-padding-top);
+  height: var(--settings-themedrop-height);
   text-decoration: none;
 }
 
@@ -15,8 +15,8 @@
 }
 
 .themechild {
-  margin-left: 7.5vw;
-  margin-right: 7.5vw;
+  margin-left: var(--matchform-child-margin-side);
+  margin-right: var(--matchform-child-margin-side);
   height: var(--settings-element-height);
   width: var(--settings-element-width);
   display: flex;
@@ -34,13 +34,13 @@
 
 #themedtext {
   height: var(--settings-element-height);
-  width: 70vw;
+  width: var(--settings-themedrop-text-width);
   font-size: var(--font-size-small);
 }
 
 #themedropdown {
-  margin-top: 10%;
-  padding-bottom: 0.5vh;
+  margin-top: var(--settings-themedrop-margin-top);
+  padding-bottom: var(--settings-themedrop-padding-bottom);
   height: calc(var(--settings-element-height) / 1.5);
   right: 0;
   border: none;

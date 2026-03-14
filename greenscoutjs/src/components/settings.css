@@ -22,7 +22,7 @@
   width: var(--settings-element-width);
   height: var(--settings-element-height);
   margin-left: calc((100% - var(--settings-element-width)) / 2);
-  border-radius: 1em;
+  border-radius: var(--border-radius);
   background-color: var(--sidenav-button-color);
   display: flex;
   flex-direction: row;
@@ -113,9 +113,14 @@
   padding: 0;
 }
 
+@media only screen and (max-width: 1000px) {
+  .image.debug {
+    margin-left: calc(var(--settings-debug-image-offset) * -1);
+  }
+}
+
 .image.debug {
-  margin-left: -2vh;
-  margin-right: 2vh;
+  margin-right: var(--settings-debug-image-offset);
 }
 
 .image.debug.ipAddress {
@@ -160,11 +165,13 @@
 
 .settingsDebugCachedMatchesButton.noneFound {
   justify-content: center;
+  align-items: center;
+  margin-left: 0;
 }
 
 .settingsDebugCachedMatchesButton > button {
   height: 80%;
   width: 20%;
-  padding: 5px;
+  padding: 0;
   right: 0;
 }
