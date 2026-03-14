@@ -1,24 +1,91 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./leaderBoard.css";
 import NavComponent from "../NavComponent";
-import { getAllUsers } from "../../api/mockApi";
+import { getLeaderboard } from "../../api";
 
-const MOCK_DATA = getAllUsers().map((user) => ({
-  Username: user.username,
-  DisplayName: user.DisplayName,
-  Score: user.Score,
-  LifeScore: user.LifeScore,
-}));
-
-const SORT_KEYS = ["Score", "LifeScore"];
+const SORT_KEYS = ["Score", "LifeScore", "HighScore"];
 const SORT_LABELS = {
-  Score: "Score",
+  Score: "Season",
   LifeScore: "Lifetime",
+  HighScore: "High",
 };
 
-export default function Leaderboard({ data = MOCK_DATA }) {
+function normalizeLeaderboardData(rawData) {
+  if (!Array.isArray(rawData)) {
+    return [];
+  }
+
+  return rawData.map((user) => ({
+    Username: user.username ?? user.Username,
+    DisplayName: user.DisplayName,
+    Score: user.Score,
+    LifeScore: user.LifeScore,
+    HighScore: user.HighScore,
+  }));
+}
+
+export default function Leaderboard({ data }) {
   const [sortKey, setSortKey] = useState("Score");
-  const sorted = [...data].sort((a, b) => b[sortKey] - a[sortKey]);
+  const [leaderboardData, setLeaderboardData] = useState(
+    normalizeLeaderboardData(data),
+  );
+  const [isLoading, setIsLoading] = useState(!Array.isArray(data));
+  const [error, setError] = useState("");
+
+  const sortedLeaderboardData = useMemo(
+    () =>
+      [...leaderboardData].sort(
+        (a, b) => (b[sortKey] ?? 0) - (a[sortKey] ?? 0),
+      ),
+    [leaderboardData, sortKey],
+  );
+
+  useEffect(() => {
+    let isMounted = true;
+
+    if (Array.isArray(data)) {
+      setLeaderboardData(normalizeLeaderboardData(data));
+      setIsLoading(false);
+      return () => {
+        isMounted = false;
+      };
+    }
+
+    const fetchLeaderboard = async () => {
+      setIsLoading(true);
+      setError("");
+
+      try {
+        const response = await getLeaderboard(sortKey);
+        const leaderboardResponse = Array.isArray(response)
+          ? response
+          : response?.data;
+
+        if (!isMounted) {
+          return;
+        }
+
+        setLeaderboardData(normalizeLeaderboardData(leaderboardResponse));
+      } catch (fetchError) {
+        if (!isMounted) {
+          return;
+        }
+
+        setLeaderboardData([]);
+        setError(fetchError?.message ?? "Failed to load leaderboard.");
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    fetchLeaderboard();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [sortKey, data]);
 
   return (
     <div id="leaderBody">
@@ -37,19 +104,28 @@ export default function Leaderboard({ data = MOCK_DATA }) {
             key={key}
             onClick={() => setSortKey(key)}
           >
-            {key === "Score" ? "Season" : SORT_LABELS[key]}
+            {SORT_LABELS[key]}
           </button>
         ))}
       </div>
 
       <div id="boardContainer">
-        {sorted.map((user, index) => (
-          <div key={user.Username} className="leaderBoardTile">
-            <span className="lb-rank">{index + 1}.</span>
-            <span className="lb-name">{user.DisplayName}</span>
-            <span className="lb-score">{user[sortKey]}</span>
-          </div>
-        ))}
+        {isLoading ? (
+          <div className="leaderBoardTile">Loading leaderboards...</div>
+        ) : error ? (
+          <div className="leaderBoardTile">{error}</div>
+        ) : (
+          sortedLeaderboardData.map((user, index) => (
+            <div
+              key={user.Username ?? `${user.DisplayName}-${index}`}
+              className="leaderBoardTile"
+            >
+              <span className="lb-rank">{index + 1}.</span>
+              <span className="lb-name">{user.DisplayName}</span>
+              <span className="lb-score">{user[sortKey] ?? "-"}</span>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

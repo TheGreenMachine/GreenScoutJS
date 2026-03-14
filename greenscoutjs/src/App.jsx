@@ -12,13 +12,14 @@ import Login from "./components/loginpage/Login";
 import Home from "./components/homepage/Home";
 import Logout from "./components/loginpage/Logout";
 import Matchform from "./components/matchform/Matchform";
+
 import LeaderBoard from "./components/leaderboard/LeaderBoard";
 import Settings from "./components/Settings";
 import SettingsDebug from "./components/settings-sub-pages/debug/SettingsDebug";
 import SettingsLayout from "./components/settings-sub-pages/layout/SettingsMatchForm";
 import SettingsThemes from "./components/settings-sub-pages/themes/SettingsThemes";
 import { useState } from "react";
-import { getUUID, getCertificate } from "./api/mockApi";
+import { getCertificate, getUUID } from "./api";
 
 function App() {
   const getIpAddress = async () => {
@@ -43,7 +44,6 @@ function App() {
     setUUID(getUUID(username));
     setCertificate(getCertificate(username));
   };
-
   return (
     <Router basename="/GreenScoutJS">
       <AuthProvider>
@@ -79,7 +79,7 @@ function App() {
             path="/scout"
             element={
               <ProtectedRoute>
-                <Matchform />
+                <Matchform  />
               </ProtectedRoute>
             }
           />

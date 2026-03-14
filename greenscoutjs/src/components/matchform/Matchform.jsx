@@ -1,5 +1,6 @@
 import "./Matchform.css";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import { useAuth } from "../../AuthContext";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -17,11 +18,13 @@ import Cycles from "./teleopcycles/Cycles";
 import CycleTimerToggle from "./teleopcycles/CycleTimerToggle";
 import ScoreButton from "./teleopcycles/ScoreButton";
 import ShuttleButton from "./teleopcycles/ShuttleButton";
+import { submitMatchform } from "../../api";
 import { useNavigate } from "react-router-dom";
 import Slider from "./auto/slider/Slider";
 import CollapsibleDropdown from "./auto/collapsible-div/CollapsibleDropdown";
 import BotTypeDropdown from "./auto/dropdown/BotTypeDropdown";
 import PlaystyleDropdown from "./auto/dropdown/playstyleDrodown";
+
 
 function Matchform() {
   const navigate = useNavigate();
@@ -66,102 +69,133 @@ function Matchform() {
     replayed: false,
   });
 
-  const [time, setTime] = useState(0);
-  const [cycleTime, setCycleTime] = useState(0);
+        const [cycleList, setCycleList] = useState([]);
 
-  const firstCount = "Scores";
-  const secondCount = "Misses";
-  const thirdCount = "Ejects";
+        const [isButtonActive, setIsButtonActive] = useState("true");
 
-  const [isRunning, setIsRunning] = useState(false);
-  const [isCycleRunning, setIsCycleRunning] = useState(false);
-  const [resetKey, setResetKey] = useState(0);
+        const toggleStopwatch = (event) => {
+                if (event) event.preventDefault();
+                setIsRunning(!isRunning);
+        };
 
-  const [cycleList, setCycleList] = useState([]);
+        const triggerReset = (event) => {
+                if (event) event.preventDefault();
+                if (confirm("Reset The Climber?")) {
+                        setTime(0);
+                        setResetKey((prev) => prev + 1);
+                        setIsRunning(false);
+                        setFormData({
+                                ...formData,
+                                climbTimer: 0.0,
+                        });
+                }
+        };
 
-  const [isButtonActive, setIsButtonActive] = useState("true");
+        const handleChange = useCallback((e) => {
+                const { name, type, checked, value } = e.target;
+                const newValue = type === "checkbox" ? checked : value;
 
-  const toggleStopwatch = (event) => {
-    if (event) event.preventDefault();
-    setIsRunning(!isRunning);
-  };
+                setFormData((prev) => ({
+                        ...prev,
+                        [name]: newValue,
+                }));
+        }, []);
 
-  const triggerReset = (event) => {
-    if (event) event.preventDefault();
-    if (confirm("Reset The Climber?")) {
-      setTime(0);
-      setResetKey((prev) => prev + 1);
-      setIsRunning(false);
-      setFormData({
-        ...formData,
-        climbTimer: 0.0,
-      });
-    }
-  };
+        const submitAll = async (event) => {
+                event.preventDefault();
 
-  const handleChange = (e) => {
-    const value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+                const prettyInt = (str) => {
+                        const parsed = parseInt(str.toString().replace(/[^\d.]/g, ""));
+                        return isNaN(parsed) ? 1 : parsed;
+                };
 
-    setFormData({
-      ...formData,
-      [e.target.name]: value,
-    });
-  };
+                const expandCycles = () => {
+                        if (cycleList.length === 0) {
+                                return [{ "Time": 0, "Type": "None", "Success": false }];
+                        }
+                        return cycleList.map((cycle) => ({
+                                "Time": parseFloat(cycle.time),
+                                "Type": cycle.event,
+                                "Success": cycle.accuracy === 1,
+                        }));
+                };
 
-  const submitAll = (event) => {
-    event.preventDefault();
+                const dataToSubmit = {
+                        "Team": formData.team === "" ? 1 : prettyInt(formData.team),
+                        "Match": {
+                                "Number": formData.match === "" ? 1 : prettyInt(formData.match),
+                                "isReplay": formData.replayed,
+                        },
+                        "Driver Station": {
+                                "Is Blue": formData.driverStation.includes("Blue"),
+                                "Number": prettyInt(formData.driverStation),
+                        },
+                        "Scouter": user?.user ?? "",
+                        "Cycles": expandCycles(),
+                        "Pickup Locations": {
+                                "Coral Ground": formData.pickupGround,
+                                "Coral Source": formData.pickupSource,
+                                "Algae Ground": formData.pickupAGround,
+                                "Algae Source": formData.pickupASource,
+                        },
+                        "Auto": {
+                                "Can": formData.canAuto,
+                                "Scores": formData.autoScores,
+                                "Misses": formData.autoMisses,
+                                "Ejects": formData.autoEjects,
+                        },
+                        "Endgame": {
+                                "Parking Status": prettyInt(formData.park),
+                                "Time": parseFloat(formData.climbTimer),
+                        },
+                        "Misc": {
+                                "Lost Communication Or Disabled": formData.disconnect,
+                                "User Lost Track": formData.loseTrack,
+                        },
+                        "Penalties": [],
+                        "Mangled": false,
+                        "Rescouting": formData.rescouting,
+                        "Notes": formData.notes,
+                };
 
-    const dataToSubmit = {
-      ...formData,
-      cyclesLists: cycleList,
-    };
+                const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
-    const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
-    try {
-      const existingCache = JSON.parse(
-        localStorage.getItem("matchFormCache") || "[]",
-      );
-      existingCache.push({
-        key: cacheKey,
-        timestamp: Date.now(),
-        data: dataToSubmit,
-      });
-      localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
-      navigate("/home");
-    } catch (err) {
-      console.warn("Failed to cache form data:", err);
-    }
 
-    // const jsonString = JSON.stringify(dataToSubmit, null, 2);
-    // const blob = new Blob([jsonString], { type: "application/json" });
-    // const url = URL.createObjectURL(blob);
-    // const link = document.createElement("a");
-    // link.href = url;
-    // link.download = `match_${formData.match}_team_${formData.team}.json`;
-    // document.body.appendChild(link);
-    // link.click();
-    // link.remove();
-    // URL.revokeObjectURL(url);
-  };
+                await submitMatchform(jsonString);
+                const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
+                try {
+                        const existingCache = JSON.parse(
+                                localStorage.getItem("matchFormCache") || "[]",
+                        );
+                        existingCache.push({
+                                key: cacheKey,
+                                timestamp: Date.now(),
+                                data: dataToSubmit,
+                        });
+                        localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
+                        navigate("/home");
+                } catch (err) {
+                        console.warn("Failed to cache form data:", err);
+                }
+        };
 
-  const toggleCycleStopwatch = (event) => {
-    if (event) event.preventDefault();
-    setIsCycleRunning(!isCycleRunning);
-    if (isCycleRunning) {
-      setIsButtonActive("true");
-    } else {
-      setIsButtonActive("false");
-    }
-  };
+        const toggleCycleStopwatch = (event) => {
+                if (event) event.preventDefault();
+                setIsCycleRunning(!isCycleRunning);
+                if (isCycleRunning) {
+                        setIsButtonActive("true");
+                } else {
+                        setIsButtonActive("false");
+                }
+        };
 
-  const updateCycleAccuracy = (index, newAccuracy) => {
-    setCycleList((prevList) =>
-      prevList.map((item, i) =>
-        i === index ? { ...item, accuracy: parseInt(newAccuracy) } : item,
-      ),
-    );
-  };
+        const updateCycleAccuracy = (index, newAccuracy) => {
+                setCycleList((prevList) =>
+                        prevList.map((item, i) =>
+                                i === index ? { ...item, accuracy: parseInt(newAccuracy) } : item,
+                        ),
+                );
+        };
 
   const addCycleEvent = (eventName) => {
     if (isCycleRunning) {
@@ -177,12 +211,12 @@ function Matchform() {
     }
   };
 
-  const removeCycleEvent = (indexRemoval) => {
-    setCycleList((prevList) => [
-      ...prevList.slice(0, indexRemoval),
-      ...prevList.slice(indexRemoval + 1),
-    ]);
-  };
+        const removeCycleEvent = (indexRemoval) => {
+                setCycleList((prevList) => [
+                        ...prevList.slice(0, indexRemoval),
+                        ...prevList.slice(indexRemoval + 1),
+                ]);
+        };
 
   return (
     <span id="body">

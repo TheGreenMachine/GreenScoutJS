@@ -1,5 +1,4 @@
 // mockApi.js - Mock API for GreenScout authentication
-// Place this file in: greenscoutjs/src/api/mockApi.js
 
 /**
  * Mock user database for GreenScout
@@ -15,6 +14,7 @@ export const users = [
     DisplayName: "Admin",
     Score: 1000000,
     LifeScore: 231,
+    HighScore: 67,
   },
   {
     uuid: 1,
@@ -25,6 +25,7 @@ export const users = [
     DisplayName: "Noah Engelkes",
     Score: 3,
     LifeScore: 2,
+    HighScore: 41,
   },
   {
     uuid: 2,
@@ -35,6 +36,7 @@ export const users = [
     DisplayName: "Jose R",
     Score: 2,
     LifeScore: 1,
+    HighScore: 17,
   },
   {
     uuid: 3,
@@ -45,6 +47,7 @@ export const users = [
     DisplayName: "Noah D",
     Score: 1,
     LifeScore: 3,
+    HighScore: 38,
   },
 ];
 
@@ -77,6 +80,21 @@ export const authenticateUser = (username, password) => {
     user: null,
     message: "Invalid username or password",
   };
+};
+
+export const submitMatchform = async (formData) => {
+  const blob = new Blob([formData], { type: "application/json" });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "form-data.json";
+
+  document.body.appendChild(link);
+  link.click();
+
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 };
 
 export const getUUID = (username) => {
@@ -121,55 +139,22 @@ export const getUserById = (id) => {
  * Get all users (without passwords)
  * @returns {Array} Array of user objects without passwords
  */
-export const getAllUsers = () => {
-  return users.map(({ password: _, ...user }) => user);
-};
+export const getLeaderboard = async (scoreType) => {
+  const scoreKey = (() => {
+    switch (scoreType) {
+      case "LifeScore":
+        return "LifeScore";
+      case "HighScore":
+        return "HighScore";
+      default:
+        return "Score";
+    }
+  })();
 
-/**
- * Update matches logged for a user
- * @param {number} userId - User ID
- * @param {number} newCount - New matches logged count
- * @returns {Object} Update result
- */
-export const updateMatchesLogged = (userId, newCount) => {
-  const user = users.find((u) => u.id === userId);
-  if (user) {
-    user.matchesLogged = newCount;
-    const { password: _, ...userWithoutPassword } = user;
-    return {
-      success: true,
-      user: userWithoutPassword,
-      message: "Matches logged updated successfully",
-    };
-  }
-  return {
-    success: false,
-    user: null,
-    message: "User not found",
-  };
-};
-
-/**
- * Increment matches logged for a user
- * @param {number} userId - User ID
- * @returns {Object} Update result
- */
-export const incrementMatchesLogged = (userId) => {
-  const user = users.find((u) => u.id === userId);
-  if (user) {
-    user.matchesLogged += 1;
-    const { password: _, ...userWithoutPassword } = user;
-    return {
-      success: true,
-      user: userWithoutPassword,
-      message: "Match logged successfully",
-    };
-  }
-  return {
-    success: false,
-    user: null,
-    message: "User not found",
-  };
+  const sortedUsers = [...users].sort(
+    (a, b) => (b[scoreKey] ?? 0) - (a[scoreKey] ?? 0),
+  );
+  return sortedUsers.map(({ password: _, ...user }) => user);
 };
 
 /**
@@ -181,3 +166,5 @@ export const isAdmin = (userId) => {
   const user = users.find((u) => u.id === userId);
   return user ? user.role === "admin" : false;
 };
+
+export const logoutUser = async () => {};
