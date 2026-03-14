@@ -1,6 +1,6 @@
 import "./Dropdown.css";
 
-function Dropdown({ name, value, onChange }) {
+function EndDropdown({ name, value, onChange }) {
   return (
     <div className="child" id="dropDown">
       <p id="endtext" className="textDropdown">
@@ -26,4 +26,4 @@ function Dropdown({ name, value, onChange }) {
   );
 }
 
-export default Dropdown;
+export default EndDropdown;
