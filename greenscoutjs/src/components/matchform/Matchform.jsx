@@ -18,6 +18,10 @@ import CycleTimerToggle from "./teleopcycles/CycleTimerToggle";
 import ScoreButton from "./teleopcycles/ScoreButton";
 import ShuttleButton from "./teleopcycles/ShuttleButton";
 import { useNavigate } from "react-router-dom";
+import Slider from "./auto/slider/Slider";
+import CollapsibleDropdown from "./auto/collapsible-div/CollapsibleDropdown";
+import BotTypeDropdown from "./auto/dropdown/BotTypeDropdown";
+import PlaystyleDropdown from "./auto/dropdown/playstyleDrodown";
 
 function Matchform() {
   const navigate = useNavigate();
@@ -30,14 +34,35 @@ function Matchform() {
     autoScores: 0,
     autoMisses: 0,
     autoEjects: 0,
+    autoHPAccuracy: 0,
+    autoRobotAccuracy: 0,
+    autoWon: false,
+    autoFieldLeft: false,
+    autoFieldMid: false,
+    autoFieldTop: false,
+    autoFieldBump: false,
+    autoFieldTrench: false,
+    autoFieldDidntCross: false,
+    autoFieldHP: false,
+    autoFieldFuel: false,
     collectNeutral: false,
     collectHp: false,
     fuelCapacity: "0",
     climbTimer: 0.0,
+    teleFieldBump: false,
+    teleFieldTrench: false,
     park: "",
+    endgameShoot: false,
+    botType: "",
+    playstyle: "",
     disconnect: false,
     loseTrack: false,
-    notes: "",
+    everBeached: false,
+    autoNotes: "",
+    teleNotes: "",
+    perfNotes: "",
+    eventsNotes: "",
+    commentsNotes: "",
     replayed: false,
   });
 
@@ -146,7 +171,7 @@ function Matchform() {
         {
           event: eventName,
           time: currentTime,
-          accuracy: eventName === "Score" ? 1 : null,
+          accuracy: eventName === "Score" ? 0 : null,
         },
       ]);
     }
@@ -195,7 +220,7 @@ function Matchform() {
             value={formData.canAuto}
             onChange={handleChange}
           >
-            Can Do It?
+            Robot Moves?
           </Autocheck>
           <Autocheck
             name="hangAuto"
@@ -222,18 +247,98 @@ function Matchform() {
             nameText={thirdCount}
             name="autoEjects"
           ></Autocounter>
-          <div className="child" id="headparent">
-            <h1 className="header">Cycles</h1>
-          </div>
-          <Cycles
-            list={cycleList}
-            runningBool={isCycleRunning}
-            time={cycleTime}
-            setTime={setCycleTime}
+          <Slider
+            value={formData.autoHPAccuracy}
             onChange={handleChange}
-            onTrigger={removeCycleEvent}
-            onUpdateAccuracy={updateCycleAccuracy}
-          ></Cycles>
+            nameText="Human Player Accuracy:"
+            name="autoHPAccuracy"
+          ></Slider>
+          <Slider
+            value={formData.autoRobotAccuracy}
+            onChange={handleChange}
+            nameText="Robot Accuracy:"
+            name="autoRobotAccuracy"
+          ></Slider>
+          <Autocheck
+            name="autoWon"
+            value={formData.autoWon}
+            onChange={handleChange}
+          >
+            Won Auto?
+          </Autocheck>
+          <CollapsibleDropdown title="Auto Field Coverage">
+            <p>&emsp;Went To:</p>
+            <Autocheck
+              name="autoFieldLeft"
+              value={formData.autoFieldLeft}
+              onChange={handleChange}
+            >
+              Left Of Field
+            </Autocheck>
+            <Autocheck
+              name="autoFieldMid"
+              value={formData.autoFieldMid}
+              onChange={handleChange}
+            >
+              Middle Of Field
+            </Autocheck>
+            <Autocheck
+              name="autoFieldRight"
+              value={formData.autoFieldRight}
+              onChange={handleChange}
+            >
+              Right Of Field
+            </Autocheck>
+            <Autocheck
+              name="autoFieldBump"
+              value={formData.autoFieldBump}
+              onChange={handleChange}
+            >
+              Over Bump
+            </Autocheck>
+            <Autocheck
+              name="autoFieldTrench"
+              value={formData.autoFieldTrench}
+              onChange={handleChange}
+            >
+              Under Trench
+            </Autocheck>
+            <Autocheck
+              name="autoFieldDidntCross"
+              value={formData.autoFieldDidntCross}
+              onChange={handleChange}
+            >
+              Didn't Cross
+            </Autocheck>
+            <Autocheck
+              name="autoFieldHP"
+              value={formData.autoFieldHP}
+              onChange={handleChange}
+            >
+              HP Station
+            </Autocheck>
+            <Autocheck
+              name="autoFieldFuel"
+              value={formData.autoFieldFuel}
+              onChange={handleChange}
+            >
+              Fuel Station
+            </Autocheck>
+          </CollapsibleDropdown>
+          <div className="child" id="headparent">
+            <h1 className="header">TeleOp Mode</h1>
+          </div>
+          <CollapsibleDropdown title="Cycles">
+            <Cycles
+              list={cycleList}
+              runningBool={isCycleRunning}
+              time={cycleTime}
+              setTime={setCycleTime}
+              onChange={handleChange}
+              onTrigger={removeCycleEvent}
+              onUpdateAccuracy={updateCycleAccuracy}
+            ></Cycles>
+          </CollapsibleDropdown>
           <div className="child" id="headparent">
             <h1 className="header">Collection Ability</h1>
           </div>
@@ -254,7 +359,7 @@ function Matchform() {
           ></CollectDrop>
           <div className="child" id="climbheadparent">
             <h1 className="header" id="climbheadtext">
-              Climbing
+              Hang
             </h1>
           </div>
           <ClimbTime
@@ -270,6 +375,24 @@ function Matchform() {
           <div className="child">
             <ResetButton onReset={triggerReset}></ResetButton>
           </div>
+          <div className="child" id="headparent"></div>
+          <CollapsibleDropdown title="TeleOp Field Coverage">
+            <p>&emsp;Went:</p>
+            <Autocheck
+              name="teleFieldBump"
+              value={formData.teleFieldBump}
+              onChange={handleChange}
+            >
+              Over Bump
+            </Autocheck>
+            <Autocheck
+              name="teleFieldTrench"
+              value={formData.teleFieldTrench}
+              onChange={handleChange}
+            >
+              Under Trench
+            </Autocheck>
+          </CollapsibleDropdown>
           <div className="child" id="endheadparent">
             <h1 className="header">End Game</h1>
           </div>
@@ -278,9 +401,26 @@ function Matchform() {
             value={formData.park}
             onChange={handleChange}
           ></EndDropDown>
+          <Autocheck
+            name="endgameShoot"
+            checked={formData.endgameShoot}
+            onChange={handleChange}
+          >
+            Shot During Endgame?
+          </Autocheck>
           <div className="child" id="headparent">
             <h1 className="header">Misc.</h1>
           </div>
+          <BotTypeDropdown
+            value={formData.botType}
+            onChange={handleChange}
+            name="botType"
+          ></BotTypeDropdown>
+          <PlaystyleDropdown
+            value={formData.playstyle}
+            onChange={handleChange}
+            name="playstyle"
+          ></PlaystyleDropdown>
           <Autocheck
             name="disconnect"
             checked={formData.disconnect}
@@ -295,17 +435,68 @@ function Matchform() {
           >
             Did You Lose Track At Any Point?
           </Autocheck>
-          <div className="child" id="headparent">
-            <h1 className="header">Notes</h1>
-          </div>
-          <div className="child" id="notesdiv">
-            <input
-              name="notes"
-              value={formData.notes}
-              onChange={handleChange}
-              id="notesbox"
-            ></input>
-          </div>
+          <Autocheck
+            name="everBeached"
+            checked={formData.everBeached}
+            onChange={handleChange}
+          >
+            Were They Ever Beached?
+          </Autocheck>
+          <div className="child" id="headparent"></div>
+          <CollapsibleDropdown title="Notes">
+            <p>&emsp;Auto Notes: </p>
+            <div className="child notesdiv">
+              <textarea
+                name="autoNotes"
+                value={formData.autoNotes}
+                onChange={handleChange}
+                id="notesbox"
+              ></textarea>
+            </div>
+            <p>&emsp;TeleOp Notes: </p>
+            <div className="child notesdiv">
+              <textarea
+                placeholder="What is the general TeleOp Strategy? Ex: Shuttling (include loc.), Blocking, etc."
+                name="teleNotes"
+                value={formData.teleNotes}
+                onChange={handleChange}
+                id="notesbox"
+              ></textarea>
+            </div>
+            <p>&emsp;Performance Notes: </p>
+            <div className="child notesdiv">
+              <textarea
+                placeholder="Did the robot drive well? Did it impede their alliance members?
+desc things like speed, susceptibility to defense, etc (or put here if they played defense during this period)
+"
+                name="perfNotes"
+                value={formData.perfNotes}
+                onChange={handleChange}
+                id="notesbox"
+              ></textarea>
+            </div>
+            <p>&emsp;Special Events Notes: </p>
+            <div className="child notesdiv">
+              <textarea
+                name="eventsNotes"
+                placeholder="Any unexpected or notable events?
+Ex. Did you notice something about their shooter, a tendency to bump easily, an intake not working, if beached were they unbeached?…
+"
+                value={formData.eventsNotes}
+                onChange={handleChange}
+                id="notesbox"
+              ></textarea>
+            </div>
+            <p>&emsp;Any Other Comments: </p>
+            <div className="child notesdiv">
+              <textarea
+                name="commentsNotes"
+                value={formData.commentsNotes}
+                onChange={handleChange}
+                id="notesbox"
+              ></textarea>
+            </div>
+          </CollapsibleDropdown>
           <ReplayButton
             idButton={"replayButtonId"}
             idDiv={"replayButtonDiv"}

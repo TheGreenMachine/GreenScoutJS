@@ -72,21 +72,20 @@
   --matchform-matchteam-margin-top: 1.5vh;
 
   --matchform-header-padding-top: 5px;
-  --matchform-header-end-margin-top: 10vh;
+  --matchform-header-end-margin-top: 8vh;
 
-  --matchform-notes-height: 40vh;
+  --matchform-notes-height: 20vh;
 
   --matchform-cycle-container-height: 40vh;
   --matchform-cycle-item-height: 9vh;
   --matchform-cycle-item-margin-bottom: 1vw;
-  --matchform-cycle-item-image-height: 40%;
-  --matchform-cycle-item-image-width: 10%;
+  --matchform-cycle-item-image-height: 4vh;
+  --matchform-cycle-item-image-width: 4vh;
   --matchform-cycle-delete-height: 30%;
   --matchform-cycle-delete-width: 10%;
 
   --matchform-cycle-text-padding-top: 5%;
-  --matchform-cycle-text-padding-right: 20%;
-  --matchform-cycle-text-padding-left: 10%;
+  --matchform-cycle-text-padding-left: 5%;
   --matchform-cycle-text-width: 25;
 
   --matchform-acclabel-width: 10vh;
@@ -103,14 +102,13 @@
   --check-text-height: 30px;
   --check-padding-top: 1vh;
 
-  --check-div-margin-top: 3vh;
+  --check-div-margin: 5vh;
 
   --check-size: 2.5vh;
 
   --check-container-padding-left: 35px;
   --check-container-margin-bottom: 12px;
 
-  --check-mark-top: 1.5vh;
   --check-mark-left: 1vw;
 
   --check-mark-after-left: 9px;
@@ -134,6 +132,14 @@
   --counter-subtract-width: 30%;
   --counter-button-margin-left: 1vw;
 
+  /* Match Form Slider Sizing Variables */
+  --slider-container-width: 70%;
+  --slider-container-margin-bottom: 10%;
+
+  /* Match Form Collapsible Dropdown Sizing Variables */
+  --collapsible-open-max-height: 100%; /* 2000px */
+  --collapsible-padding: 12px 16px;
+
   /* Match Form Dropdown Sizing Variables */
   --dropdown-margin-top: 3vh;
   --dropdown-padding-bottom: 0.5vh;
@@ -154,6 +160,8 @@
 
   --dropdown-collect-margin-top: 16%;
   --dropdown-collect-padding-bottom: 0.5vh;
+
+  --dropdown-park-text-padding-top: 4%;
 
   /* Match Form Trigger Sizing Variables */
   --trigger-margin-top: 5.7vh;

@@ -3,24 +3,21 @@
   font-weight: lighter;
   color: var(--font-color);
   font-size: var(--font-size-small);
-  padding: 0;
-  margin-bottom: 0;
   height: var(--check-text-height);
-  text-decoration: none;
-  padding-top: var(--check-padding-top);
-  width: calc(100% - 15vw);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
 }
 
 .text:hover {
   cursor: default;
 }
 
-.divcheck {
-  margin-top: var(--check-div-margin-top);
+.child.divcheck {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: var(--matchform-element-height);
+  height: var(--check-div-height);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
+  margin-left: var(--check-special-margin-left);
 }
 
 .divcheck:focus {
@@ -55,7 +52,6 @@
 
 .checkmark {
   position: absolute;
-  top: var(--check-mark-top);
   left: var(--check-mark-left);
   height: var(--check-size);
   width: var(--check-size);
@@ -92,34 +88,6 @@
   transform: rotate(45deg);
 }
 
-#doesneutral {
-  margin-top: var(--check-div-margin-top);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: var(--check-div-height);
-  width: calc(100% - var(--matchform-child-width-to-subtract));
-  margin-left: var(--check-special-margin-left);
-}
-
-#doesneutral:focus {
-  outline: none;
-}
-
-#doeshp {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: var(--check-div-height);
-  width: calc(100% - var(--matchform-child-width-to-subtract));
-  margin-left: var(--check-special-margin-left);
-}
-
-#doeshp:focus {
-  outline: none;
-}
-
 #autotext {
-  padding-top: var(--check-auto-text-padding-top);
   width: var(--check-auto-text-width);
 }
