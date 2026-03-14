@@ -135,8 +135,10 @@ body {
   text-decoration: none;
 }
 
-.side-nav a:hover {
+.side-nav button:hover {
   background-color: var(--sidenav-hover-color);
+  color: var(--background-color);
+  cursor: pointer;
 }
 
 #nav-toggle:checked ~ .side-nav {

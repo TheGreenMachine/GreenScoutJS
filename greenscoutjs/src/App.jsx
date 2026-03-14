@@ -79,7 +79,7 @@ function App() {
             path="/scout"
             element={
               <ProtectedRoute>
-                <Matchform  />
+                <Matchform />
               </ProtectedRoute>
             }
           />
