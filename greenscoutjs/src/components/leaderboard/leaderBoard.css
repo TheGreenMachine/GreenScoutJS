@@ -4,6 +4,7 @@
 }
 
 #leaderBody {
+
   width: 100%;
   height: var(--page-height);
   margin: 0;
@@ -25,8 +26,8 @@
   width: 90%;
   margin-left: 5%;
   justify-content: space-evenly;
-  gap: 8;
-  margin-bottom: 16;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .lb-sort-btn {
@@ -35,7 +36,7 @@
   border: none;
   background: var(--accent-color3);
   cursor: pointer;
-  width: 45%;
+  width: 30%;
   height: var(--leader-board-element-height);
 }
 

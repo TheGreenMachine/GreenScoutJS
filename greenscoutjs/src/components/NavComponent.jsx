@@ -28,15 +28,23 @@ function NavComponent() {
     logout();
   };
 
-  const toggleCheck = (e) => {
-    e.preventDefault();
-    setChecked(!checked);
+  const handleNavToggle = (e) => {
+    setChecked(e.target.checked);
+  };
+
+  const closeNav = () => {
+    setChecked(false);
   };
 
   return (
     <div id="navWrapper">
-      <input type="checkbox" id="nav-toggle" checked={checked} />
-      <label onClick={toggleCheck} className="hamburger"></label>
+      <input
+        type="checkbox"
+        id="nav-toggle"
+        checked={checked}
+        onChange={handleNavToggle}
+      />
+      <label htmlFor="nav-toggle" className="hamburger"></label>
       <nav className="side-nav">
         {/* Add back later */}
         {/* <div id="usertile">
@@ -66,7 +74,7 @@ function NavComponent() {
           </button>
         </nav>
       </nav>
-      <div className="invis-nav" onClick={toggleCheck}></div>
+      <div className="invis-nav" onClick={closeNav}></div>
       <nav id="navbar"></nav>
     </div>
   );
