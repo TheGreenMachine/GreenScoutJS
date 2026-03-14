@@ -14,8 +14,8 @@ function PlaystyleDropdown({ value, onChange, name }) {
         onChange={onChange}
       >
         <option>Select</option>
-        <option>Mainly Played Defense</option>
-        <option>Mainly Got Defended</option>
+        <option>Mostly Aggressive</option>
+        <option>Mostly Defensive</option>
         <option>N/A</option>
       </select>
     </div>
