@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { authenticateUser, getCertificate, getUUID } from "../../api";
+import { authenticateUser } from "../../api";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import "./Login.css";
@@ -22,11 +22,11 @@ const Login = ({ getUser }) => {
     const result = await authenticateUser(username, password);
     console.log("Authentication result:", result);
 
-      if (result.success) {
-        // Store user data in localStorage
-        getUser(username);
+    if (result.success) {
+      // Store user data in localStorage
+      getUser(username);
 
-        login(result.user);
+      login(result.user);
 
       console.log("Login successful:", result.user);
 
