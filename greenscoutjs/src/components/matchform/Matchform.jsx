@@ -40,6 +40,7 @@ function Matchform() {
     autoRobotAccuracy: 0,
     autoWon: false,
     autoFieldLeft: false,
+    autoFieldRight: false,
     autoFieldMid: false,
     autoFieldTop: false,
     autoFieldBump: false,
@@ -114,61 +115,128 @@ function Matchform() {
   const submitAll = async (event) => {
     event.preventDefault();
 
-    const prettyInt = (str) => {
-      const parsed = parseInt(str.toString().replace(/[^\d.]/g, ""));
-      return isNaN(parsed) ? 1 : parsed;
+    const prettyInt = (str, fallback = 1) => {
+      const parsed = parseInt(String(str ?? "").replace(/[^\d]/g, ""), 10);
+      return Number.isNaN(parsed) ? fallback : parsed;
+    };
+
+    const prettyFloat = (val, fallback = 0) => {
+      const parsed = parseFloat(String(val ?? "").replace(/[^\d.]/g, ""));
+      return Number.isNaN(parsed) ? fallback : parsed;
+    };
+
+    const parseDriverStation = (dsRaw) => {
+      const ds = String(dsRaw ?? "");
+
+      // You currently do: includes("Blue") and prettyInt(driverStation)
+      // TeamDataV2 expects: { isBlue: bool, number: int }
+      return {
+        isBlue: ds.toLowerCase().includes("blue"),
+        number: prettyInt(ds, 1),
+      };
     };
 
     const expandCycles = () => {
-      if (cycleList.length === 0) {
-        return [{ Time: 0, Type: "None", Success: false }];
+      if (!cycleList || cycleList.length === 0) {
+        return [{ time: 0, type: "None", success: false, accuracy: 0 }];
       }
-      return cycleList.map((cycle) => ({
-        Time: parseFloat(cycle.time),
-        Type: cycle.event,
-        Success: cycle.accuracy === 1,
-      }));
+
+      return cycleList.map((cycle) => {
+        // Old logic: Success = (accuracy === 1)
+        // New backend still has `success`, but ALSO has `accuracy` float64.
+        // If your UI stores accuracy as 0..1 or 0..100, decide and normalize here.
+        const accNum = Number(cycle.accuracy);
+
+        return {
+          time: prettyFloat(cycle.time, 0),
+          type: String(cycle.event ?? ""),
+          accuracy: Number.isFinite(accNum) ? accNum : 0,
+        };
+      });
     };
 
     const dataToSubmit = {
-      Team: formData.team === "" ? 1 : prettyInt(formData.team),
-      Match: {
-        Number: formData.match === "" ? 1 : prettyInt(formData.match),
-        isReplay: formData.replayed,
+      team: formData.team === "" ? 1 : prettyInt(formData.team, 1),
+
+      match: {
+        number: formData.match === "" ? 1 : prettyInt(formData.match, 1),
+        isReplay: !!formData.replayed,
       },
-      "Driver Station": {
-        "Is Blue": formData.driverStation.includes("Blue"),
-        Number: prettyInt(formData.driverStation),
+
+      scouter: "",
+
+      driverStation: parseDriverStation(formData.driverStation),
+
+      cycles: expandCycles(),
+
+      auto: {
+        canAuto: !!formData.canAuto,
+        hangAuto: !!formData.hangAuto,
+        scores: prettyInt(formData.autoScores, 0),
+        misses: prettyInt(formData.autoMisses, 0),
+        ejects: prettyInt(formData.autoEjects, 0),
+        won: !!formData.autoWon,
+
+        accuracy: {
+          hpAccuracy: prettyInt(formData.autoHPAccuracy, 0),
+          robotAccuracy: prettyInt(formData.autoRobotAccuracy, 0),
+        },
+
+        field: {
+          left: !!formData.autoFieldLeft,
+          right: !!formData.autoFieldRight,
+          mid: !!formData.autoFieldMid,
+          top: !!formData.autoFieldTop,
+          bump: !!formData.autoFieldBump,
+          trench: !!formData.autoFieldTrench,
+          didntCross: !!formData.autoFieldDidntCross,
+          hp: !!formData.autoFieldHP,
+          fuel: !!formData.autoFieldFuel,
+        },
       },
-      Scouter: user?.user ?? "",
-      Cycles: expandCycles(),
-      "Pickup Locations": {
-        "Coral Ground": formData.pickupGround,
-        "Coral Source": formData.pickupSource,
-        "Algae Ground": formData.pickupAGround,
-        "Algae Source": formData.pickupASource,
+
+      teleop: {
+        collection: {
+          collectNeutral: !!formData.collectNeutral,
+          collectHp: !!formData.collectHp,
+          fuelCapacity: String(formData.fuelCapacity ?? "0"),
+        },
+
+        field: {
+          bump: !!formData.teleFieldBump,
+          trench: !!formData.teleFieldTrench,
+        },
+
+        botType: String(formData.botType ?? ""),
+        playstyle: String(formData.playstyle ?? ""),
       },
-      Auto: {
-        Can: formData.canAuto,
-        Scores: formData.autoScores,
-        Misses: formData.autoMisses,
-        Ejects: formData.autoEjects,
+
+      endgame: {
+        park: String(formData.park ?? ""),
+        climbTimer: prettyFloat(formData.climbTimer, 0),
+        endgameShoot: !!formData.endgameShoot,
       },
-      Endgame: {
-        "Parking Status": prettyInt(formData.park),
-        Time: parseFloat(formData.climbTimer),
+
+      issues: {
+        disconnect: !!formData.disconnect,
+        loseTrack: !!formData.loseTrack,
+        everBeached: !!formData.everBeached,
       },
-      Misc: {
-        "Lost Communication Or Disabled": formData.disconnect,
-        "User Lost Track": formData.loseTrack,
+
+      notes: {
+        autoNotes: String(formData.autoNotes ?? ""),
+        teleNotes: String(formData.teleNotes ?? ""),
+        perfNotes: String(formData.perfNotes ?? ""),
+        eventsNotes: String(formData.eventsNotes ?? ""),
+        commentsNotes: String(formData.commentsNotes ?? ""),
       },
-      Penalties: [],
-      Mangled: false,
-      Rescouting: formData.rescouting,
-      Notes: formData.notes,
+
+      rescouting: !!formData.rescouting,
+      prescouting: !!formData.prescouting,
     };
 
     const jsonString = JSON.stringify(dataToSubmit, null, 2);
+
 
     await submitMatchform(jsonString);
     const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
