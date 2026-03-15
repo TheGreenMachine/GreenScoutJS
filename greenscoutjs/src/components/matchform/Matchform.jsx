@@ -401,6 +401,13 @@ function Matchform() {
               Right Of Field
             </Autocheck>
             <Autocheck
+              name="autoFieldTop"
+              value={formData.autoFieldTop}
+              onChange={handleChange}
+            >
+              Top Of Field
+            </Autocheck>
+            <Autocheck
               name="autoFieldBump"
               value={formData.autoFieldBump}
               onChange={handleChange}
