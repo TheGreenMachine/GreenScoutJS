@@ -177,6 +177,14 @@
   overflow-x: hidden;
 }
 
+.cycleElementImg.blue {
+  background-color: var(--accent-color3);
+}
+
+.cycleElementImg.red {
+  background-color: var(--error-color);
+}
+
 .cycle-item.Score {
   width: 100%;
   height: var(--matchform-cycle-item-height);
@@ -196,6 +204,33 @@
   height: var(--matchform-cycle-item-image-height);
   width: var(--matchform-cycle-item-image-width);
   background-image: url("../../assets/meteor-solid-full.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0px 4px 5px rgb(164, 164, 164);
+  border: var(--font-color) 0.5px solid;
+  border-radius: var(--border-radius);
+}
+
+.cycle-item.hubSwitch {
+  width: 100%;
+  height: var(--matchform-cycle-item-height);
+  text-align: center;
+  color: var(--font-color);
+  text-decoration: none;
+  font-size: var(--font-size-small);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--matchform-cycle-item-margin-bottom);
+}
+
+.cycle-item.hubSwitch > .cycleElementImg {
+  left: 0;
+  position: relative;
+  height: var(--matchform-cycle-item-image-height);
+  width: var(--matchform-cycle-item-image-width);
+  background-image: url("../../assets/arrow-right-arrow-left-solid-full.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -255,6 +290,14 @@
   font-size: var(--font-size-small);
 }
 
+.hubSwitch.cycleElementText {
+  padding-top: var(--matchform-cycle-text-padding-top);
+  padding-left: var(--matchform-cycle-text-padding-left);
+  width: var(--matchform-cycle-text-width);
+  height: inherit;
+  font-size: var(--font-size-small);
+}
+
 .Shuttle.cycleElementText {
   padding-top: var(--matchform-cycle-text-padding-top);
   width: var(--matchform-cycle-text-width);
@@ -263,6 +306,21 @@
 }
 
 .Score.deleteButton {
+  left: 0;
+  margin-left: 0;
+  position: relative;
+  height: var(--matchform-cycle-delete-height);
+  width: var(--matchform-cycle-delete-width);
+  background-image: url("../../assets/xmark-solid-full.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0px 4px 5px rgb(164, 164, 164);
+  border: black 0.5px solid;
+  border-radius: var(--border-radius);
+}
+
+.hubSwitch.deleteButton {
   left: 0;
   margin-left: 0;
   position: relative;
