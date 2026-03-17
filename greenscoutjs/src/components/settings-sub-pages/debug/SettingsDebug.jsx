@@ -103,7 +103,7 @@ function SettingsDebug({ ip, eventData, uuid, certificate }) {
                 {entry.data.driverStation}
               </span>
               <button onClick={() => copyToClipboard(entry.data)}>Copy</button>
-              <button onClick={() => forceSend(entry)}>Force Send</button>
+              {/* <button onClick={() => forceSend(entry)}>Force Send</button> */}
             </div>
           ))}
           <h1 className="settingsh1">End</h1>
