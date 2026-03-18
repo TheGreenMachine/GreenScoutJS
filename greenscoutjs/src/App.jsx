@@ -18,7 +18,7 @@ import Settings from "./components/Settings";
 import SettingsDebug from "./components/settings-sub-pages/debug/SettingsDebug";
 import SettingsLayout from "./components/settings-sub-pages/layout/SettingsMatchForm";
 import SettingsThemes from "./components/settings-sub-pages/themes/SettingsThemes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getCertificate, getUUID } from "./api";
 
 function App() {
@@ -33,11 +33,17 @@ function App() {
     }
   };
 
-  const [ip] = useState(getIpAddress());
+  const [ip, setIp] = useState("");
   const [eventData, setEventData] = useState("");
   const [UUID, setUUID] = useState("");
   const [certificate, setCertificate] = useState("");
   const [user, setUser] = useState("");
+
+  useEffect(() => {
+    getIpAddress().then((address) => {
+      if (address) setIp(address);
+    });
+  }, []);
 
   const getUser = (username) => {
     setUser(username);
