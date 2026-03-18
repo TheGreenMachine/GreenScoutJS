@@ -24,6 +24,7 @@ import Slider from "./auto/slider/Slider";
 import CollapsibleDropdown from "./auto/collapsible-div/CollapsibleDropdown";
 import BotTypeDropdown from "./auto/dropdown/BotTypeDropdown";
 import PlaystyleDropdown from "./auto/dropdown/PlaystyleDropdown";
+import HubSwitch from "./teleopcycles/HubSwitch";
 
 function Matchform() {
   const navigate = useNavigate();
@@ -83,6 +84,7 @@ function Matchform() {
   const [cycleList, setCycleList] = useState([]);
 
   const [isButtonActive, setIsButtonActive] = useState("true");
+  const [activeAlliance, setActiveAlliance] = useState("blue");
 
   const toggleStopwatch = (event) => {
     if (event) event.preventDefault();
@@ -102,16 +104,36 @@ function Matchform() {
     }
   };
 
-  const handleChange = useCallback((e) => {
-    const { name, type, checked, value } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
+ const handleChange = useCallback(
+    (e) => {
+      const { name, type, checked, value } = e.target;
+      const newValue = type === "checkbox" ? checked : value;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: newValue,
-    }));
-  }, []);
+      setFormData((prev) => ({
+        ...prev,
+        [name]: newValue,
+      }));
 
+      if (name === "autoWon" || name === "driverStation") {
+        const isBlue =
+          name === "driverStation"
+            ? value.toLowerCase().includes("blue")
+            : formData.driverStation.toLowerCase().includes("blue");
+
+        // If autoWon is checked, flip the alliance, if unchecked revert to driver station side
+        setActiveAlliance(
+          name === "autoWon" && checked
+            ? isBlue
+              ? "red"
+              : "blue"
+            : isBlue
+              ? "blue"
+              : "red",
+        );
+      }
+    },
+    [formData.driverStation],
+  );
   const submitAll = async (event) => {
     event.preventDefault();
 
@@ -136,7 +158,7 @@ function Matchform() {
 
     const expandCycles = () => {
       if (!cycleList || cycleList.length === 0) {
-        return [{ time: 0, type: "None", success: false, accuracy: 0 }];
+        return [{ time: 0, type: "None", success: false, accuracy: 0, activeHub: "blue"}];
       }
 
       return cycleList.map((cycle) => {
@@ -145,6 +167,7 @@ function Matchform() {
         return {
           time: prettyFloat(cycle.time, 0),
           type: String(cycle.event ?? ""),
+          activeHub: cycle.activeHub,
           accuracy: Number.isFinite(accNum) ? accNum : 0,
         };
       });
@@ -272,12 +295,16 @@ function Matchform() {
   const addCycleEvent = (eventName) => {
     if (isCycleRunning) {
       const currentTime = (cycleTime / 1000).toFixed(2);
+      if (eventName === "hubSwitch") {
+        setActiveAlliance(activeAlliance === "red" ? "blue" : "red");
+      }
       setCycleList((prevList) => [
         ...prevList,
         {
           event: eventName,
           time: currentTime,
           accuracy: eventName === "Score" ? 0 : null,
+          activeHub: activeAlliance,
         },
       ]);
     }
@@ -643,6 +670,10 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
             active={isButtonActive}
             onTrigger={() => addCycleEvent("Shuttle")}
           ></ShuttleButton>
+          <HubSwitch
+            activeAlliance={activeAlliance}
+            onTrigger={() => addCycleEvent("hubSwitch")}
+          ></HubSwitch>
           <TriggerButton
             onTrigger={toggleStopwatch}
             active={isRunning}
