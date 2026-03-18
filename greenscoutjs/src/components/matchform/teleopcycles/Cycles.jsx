@@ -50,7 +50,7 @@ const Cycles = ({
     <div id="cycleContainer">
       {list.map((item, index) => (
         <div className={`cycle-item ${item.event}`} key={index}>
-          <div className="cycleElementImg"></div>
+          <div className={`cycleElementImg  ${item.activeHub}`}></div>
           <div className={`${item.event} cycleElementText`}>
             {item.event} {item.time}s
           </div>
@@ -84,6 +84,11 @@ const Cycles = ({
               <div className="accuracyLabel">
                 {getAccuracyLabelShuttle(item.accuracy || 0)}
               </div>
+            </div>
+          )}
+          {item.event === "hubSwitch" && (
+            <div className="accuracy-control">
+              <div className="accuracyLabel"></div>
             </div>
           )}
           <button
