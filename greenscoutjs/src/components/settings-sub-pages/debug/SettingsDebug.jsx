@@ -102,8 +102,16 @@ function SettingsDebug({ ip, eventData, uuid, certificate }) {
               <span className="settingsDebugCachedMatchesButton">
                 {entry.data.driverStation}
               </span>
-              <button onClick={() => copyToClipboard(entry.data)}>Copy</button>
-              <button onClick={() => forceSend(entry)}>Force Send</button>
+              <button
+                onClick={() =>
+                  copyToClipboard(JSON.stringify(entry.data, null, 2))
+                }
+              >
+                Copy
+              </button>
+              {/* <button onClick={() => forceSend(JSON.stringify(entry, null, 2))}>
+                Force Send
+              </button> */}
             </div>
           ))}
           <h1 className="settingsh1">End</h1>
