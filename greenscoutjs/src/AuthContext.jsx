@@ -18,7 +18,12 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const logout = useCallback(async () => {
-    await logoutUser();
+    try {
+      await logoutUser();
+    } catch (err) {
+      console.warn("Server logout failed:", err);
+    }
+    // Always clear local state even if server errors
     setUser(null);
     setIsAuthenticated(false);
     localStorage.removeItem("greenscout_user");
