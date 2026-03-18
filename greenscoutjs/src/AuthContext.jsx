@@ -2,7 +2,7 @@
 // Place this file in: greenscoutjs/src/context/AuthContext.jsx
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
-import { logoutUser } from "./api/api";
+import { logoutUser } from "./api/";
 
 const AuthContext = createContext(null);
 
