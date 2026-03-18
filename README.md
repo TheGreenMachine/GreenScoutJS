@@ -23,7 +23,7 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
        - if broke: `rm -Force .\node_modules\.cache\gh-pages\`
 
     2. `cd .\greenscoutjs\`
-    3. `vite build --base /GreenScoutJS/`
+    3. `vite build --base /GreenScoutJS`
     4. `gh-pages -d dist`
 
 - How to run locally in browser (Assuming you have installed vite from above)
