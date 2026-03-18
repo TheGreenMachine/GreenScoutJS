@@ -25,7 +25,7 @@ function NavComponent() {
   }
 
   const handleLogout = () => {
-    logout();
+    navigate("/logout");
   };
 
   const handleNavToggle = (e) => {

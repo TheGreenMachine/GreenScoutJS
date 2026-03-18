@@ -1,9 +1,8 @@
+import "./Login.css";
 import { useNavigate } from "react-router-dom";
-
 import { authenticateUser } from "../../api";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
-import "./Login.css";
 import { useAuth } from "../../AuthContext";
 
 const Login = ({ getUser }) => {

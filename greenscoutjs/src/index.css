@@ -208,6 +208,9 @@
   /* Shuttle Cycle Sizing Variables */
   --shuttle-top: 22vh;
 
+  /* Hub Switch Cycle Sizing Variables */
+  --hubSwitch-top: 31vh;
+
   /* Home Page Sizing Variables */
   --new-matchpit-button-height: 8vh;
   --new-matchpit-button-width: 50vw;

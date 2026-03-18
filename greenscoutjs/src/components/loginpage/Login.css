@@ -84,7 +84,7 @@
 
 #pass {
   width: var(--login-box-width);
-  height: var(--login-box-height);
+  height: var(--matchform-element-height);
   border-radius: var(--border-radius);
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
