@@ -1,7 +1,7 @@
 import "./App.css";
 import { AuthProvider } from "./AuthContext";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -45,7 +45,7 @@ function App() {
     setCertificate(getCertificate(username));
   };
   return (
-    <Router basename="/GreenScoutJS">
+    <Router>
       <AuthProvider>
         {/* <RoutesList /> */}
         <Routes>
