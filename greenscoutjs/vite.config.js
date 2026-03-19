@@ -6,7 +6,8 @@ import { log } from "console";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
-  const useBackend = env.VITE_USE_BACKEND_SERVER === "true";
+  // const useBackend = env.VITE_USE_BACKEND_SERVER === "true";
+  const useBackend = "true";
 
   return {
     plugins: [react()],
@@ -25,7 +26,8 @@ export default defineConfig(({ mode }) => {
       host: "0.0.0.0",
       proxy: {
         "/api": {
-          target: "http://localhost:8080",
+          target:
+            "https://greenscout-backend-github-85398269750.us-central1.run.app",
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ""),
         },
