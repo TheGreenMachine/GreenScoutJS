@@ -7,8 +7,7 @@ function BotTypeDropdown({ value, onChange, name }) {
         Bot Type
       </p>
       <select
-        className="textDropdown"
-        id="dropdown"
+        className="textDropdown dropdown"
         name={name}
         value={value}
         onChange={onChange}

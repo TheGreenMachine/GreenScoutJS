@@ -1,5 +1,5 @@
 import "./Matchform.css";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -25,49 +25,51 @@ import BotTypeDropdown from "./auto/dropdown/BotTypeDropdown";
 import PlaystyleDropdown from "./auto/dropdown/PlaystyleDropdown";
 import HubSwitch from "./teleopcycles/HubSwitch";
 
+const defaultFormData = {
+  match: "",
+  team: "",
+  driverStation: "",
+  canAuto: false,
+  hangAuto: false,
+  autoScores: 0,
+  autoMisses: 0,
+  autoEjects: 0,
+  autoHPAccuracy: 0,
+  autoRobotAccuracy: 0,
+  autoWon: false,
+  autoFieldLeft: false,
+  autoFieldRight: false,
+  autoFieldMid: false,
+  autoFieldTop: false,
+  autoFieldBump: false,
+  autoFieldTrench: false,
+  autoFieldDidntCross: false,
+  autoFieldHP: false,
+  autoFieldFuel: false,
+  collectNeutral: false,
+  collectHp: false,
+  fuelCapacity: "0",
+  climbTimer: 0.0,
+  teleFieldBump: false,
+  teleFieldTrench: false,
+  park: "",
+  endgameShoot: false,
+  botType: "",
+  playstyle: "",
+  disconnect: false,
+  loseTrack: false,
+  everBeached: false,
+  autoNotes: "",
+  teleNotes: "",
+  perfNotes: "",
+  eventsNotes: "",
+  commentsNotes: "",
+  replayed: false,
+};
+
 function Matchform() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    match: "",
-    team: "",
-    driverStation: "",
-    canAuto: false,
-    hangAuto: false,
-    autoScores: 0,
-    autoMisses: 0,
-    autoEjects: 0,
-    autoHPAccuracy: 0,
-    autoRobotAccuracy: 0,
-    autoWon: false,
-    autoFieldLeft: false,
-    autoFieldRight: false,
-    autoFieldMid: false,
-    autoFieldTop: false,
-    autoFieldBump: false,
-    autoFieldTrench: false,
-    autoFieldDidntCross: false,
-    autoFieldHP: false,
-    autoFieldFuel: false,
-    collectNeutral: false,
-    collectHp: false,
-    fuelCapacity: "0",
-    climbTimer: 0.0,
-    teleFieldBump: false,
-    teleFieldTrench: false,
-    park: "",
-    endgameShoot: false,
-    botType: "",
-    playstyle: "",
-    disconnect: false,
-    loseTrack: false,
-    everBeached: false,
-    autoNotes: "",
-    teleNotes: "",
-    perfNotes: "",
-    eventsNotes: "",
-    commentsNotes: "",
-    replayed: false,
-  });
+  const [formData, setFormData] = useState(defaultFormData);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -90,6 +92,31 @@ function Matchform() {
 
   const [teamAlliance, setTeamAlliance] = useState("");
   const [activeAlliance, setActiveAlliance] = useState("gray");
+
+  const [hasCache, setHasCache] = useState(false);
+
+  const restoreFromCache = (e) => {
+    e.preventDefault();
+    try {
+      const raw = localStorage.getItem("tempMatchFormCache");
+      console.log("raw cache:", raw);
+
+      const cached = JSON.parse(raw);
+      console.log("parsed cache:", cached);
+      console.log("cached.data:", cached?.data);
+
+      if (cached?.data) {
+        const restored = { ...defaultFormData, ...cached.data };
+        console.log("restoring to:", restored);
+        setFormData(restored);
+        setHasCache(false);
+      } else {
+        console.log("no data found in cache");
+      }
+    } catch (err) {
+      console.warn("Failed to restore cache:", err);
+    }
+  };
 
   const toggleStopwatch = (event) => {
     if (event) event.preventDefault();
@@ -126,19 +153,6 @@ function Matchform() {
   };
 
   const compileAndCache = (cacheLocation, replace) => {
-    if (formData.match === "") {
-      alert("Fill in the Match Number");
-    } else if (!Number.isInteger(parseInt(formData.match))) {
-      alert("Fill in the Match Number with an Integer");
-    } else if (formData.team === "") {
-      alert("Fill in the Team Number");
-    } else if (!Number.isInteger(parseInt(formData.team))) {
-      alert("Fill in the Team Number with an Integer");
-    } else if (formData.driverStation === "") {
-      alert("Select a Driver Station");
-    } else {
-      setIsSubmitting(true);
-
       // fallback is the value to be used if a number cant be found in the form data/string
       const prettyInt = (str, fallback = 1) => {
           const parsed = parseInt(String(str ?? "").replace(/[^\d]/g, ""), 10);
@@ -249,7 +263,7 @@ function Matchform() {
       const newCacheEntry = {
         key: cacheKey,
         timestamp: Date.now(),
-        data: dataToSubmit,
+        data: formData,
       };
 
       localStorage.removeItem(cacheLocation);
@@ -291,11 +305,9 @@ function Matchform() {
     } else {
       updateHub(teamAlliance, formData.autoWon, hubSwitchCount);
     }
-  });
 
-  useEffect(() => {
     compileAndCache("tempMatchFormCache", true);
-  }, [formData, cycleList]);
+  });
 
   const submitAll = async (event) => {
     event.preventDefault();
@@ -378,6 +390,11 @@ function Matchform() {
       <NavComponent></NavComponent>
       <span id="form">
         <form id="formBody" className="formElement">
+          {hasCache && (
+            <button className="child" id="restore" onClick={restoreFromCache}>
+              Restore Unsaved Match
+            </button>
+          )}
           <input
             placeholder="Match #"
             type="textMatchForm"
@@ -653,7 +670,7 @@ function Matchform() {
                 name="autoNotes"
                 value={formData.autoNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
             <p>&emsp;TeleOp Notes: </p>
@@ -663,7 +680,7 @@ function Matchform() {
                 name="teleNotes"
                 value={formData.teleNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
             <p>&emsp;Performance Notes: </p>
@@ -675,7 +692,7 @@ desc things like speed, susceptibility to defense, etc (or put here if they play
                 name="perfNotes"
                 value={formData.perfNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
             <p>&emsp;Special Events Notes: </p>
@@ -687,7 +704,7 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
 "
                 value={formData.eventsNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
             <p>&emsp;Any Other Comments: </p>
@@ -696,7 +713,7 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
                 name="commentsNotes"
                 value={formData.commentsNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
           </CollapsibleDropdown>

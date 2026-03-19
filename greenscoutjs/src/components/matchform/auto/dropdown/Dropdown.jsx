@@ -7,8 +7,7 @@ function Dropdown({ value, onChange, name }) {
         Driver Station
       </p>
       <select
-        className="textDropdown"
-        id="dropdown"
+        className="textDropdown dropdown"
         name={name}
         value={value}
         onChange={onChange}
