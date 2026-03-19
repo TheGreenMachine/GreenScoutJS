@@ -1,5 +1,5 @@
 import "./Matchform.css";
-import { useState, useCallback} from "react";
+import { useState, useCallback, useEffect } from "react";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -94,6 +94,17 @@ function Matchform() {
   const [activeAlliance, setActiveAlliance] = useState("gray");
 
   const [hasCache, setHasCache] = useState(false);
+
+  useEffect(() => {
+    const cachedData = localStorage.getItem("tempMatchFormCache");
+    if (cachedData) {
+      setHasCache(true);
+    }
+  }, []);
+
+  const handleNavigateOut = () => {
+    compileAndCache("tempMatchFormCache", true);
+  };
 
   const restoreFromCache = (e) => {
     e.preventDefault();
@@ -365,7 +376,7 @@ function Matchform() {
 
   return (
     <span id="body">
-      <NavComponent></NavComponent>
+      <NavComponent onNavigateOut={handleNavigateOut}></NavComponent>
       <span id="form">
         <form id="formBody" className="formElement">
           {hasCache && (
