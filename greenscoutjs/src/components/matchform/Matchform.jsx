@@ -1,5 +1,5 @@
 import "./Matchform.css";
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback} from "react";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
