@@ -259,7 +259,7 @@ function Matchform() {
 
   useEffect(() => {
     compileAndCache("tempMatchFormCache", true);
-  }, [formData]);
+  }, [formData, cycleList]);
 
   const submitAll = async (event) => {
     event.preventDefault();
@@ -279,6 +279,7 @@ function Matchform() {
       alert("Select a Driver Station");
     } else {
       setIsSubmitting(true);
+      localStorage.removeItem("tempMatchFormCache");
 
       let jsonString = compileAndCache("matchFormCache", false);
 
