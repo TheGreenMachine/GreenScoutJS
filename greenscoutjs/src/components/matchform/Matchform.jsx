@@ -69,6 +69,8 @@ function Matchform() {
     replayed: false,
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [time, setTime] = useState(0);
   const [cycleTime, setCycleTime] = useState(0);
 
@@ -144,6 +146,9 @@ function Matchform() {
   });
   const submitAll = async (event) => {
     event.preventDefault();
+    event.stopPropagation();
+
+    if (isSubmitting) return;
 
     if (formData.match === "") {
       alert("Fill in the Match Number");
@@ -156,6 +161,8 @@ function Matchform() {
     } else if (formData.driverStation === "") {
       alert("Select a Driver Station");
     } else {
+      setIsSubmitting(true);
+
       // fallback is the value to be used if a number cant be found in the form data/string
       const prettyInt = (str, fallback = 1) => {
           const parsed = parseInt(String(str ?? "").replace(/[^\d]/g, ""), 10);
@@ -261,7 +268,7 @@ function Matchform() {
 
       const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
-      await submitMatchform(jsonString);
+      // 1. Cache immediately
       const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
       try {
         const existingCache = JSON.parse(
@@ -273,10 +280,17 @@ function Matchform() {
           data: dataToSubmit,
         });
         localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
-        navigate("/home");
       } catch (err) {
         console.warn("Failed to cache form data:", err);
       }
+
+      // 2. Navigate instantly
+      navigate("/home");
+
+      // 3. Fire network request in background
+      submitMatchform(jsonString).catch((err) => {
+        console.error("Submission failed:", err);
+      });
     }
   };
 
@@ -667,6 +681,7 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
             idDiv={"submitButtonDiv"}
             idImage={"submitImage"}
             submit={submitAll}
+            disabled={isSubmitting}
           >
             Save
           </SubmitButton>

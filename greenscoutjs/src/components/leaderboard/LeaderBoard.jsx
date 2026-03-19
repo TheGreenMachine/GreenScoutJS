@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import "./leaderBoard.css";
+import "../homepage/Home.css";
 import NavComponent from "../NavComponent";
 import { getLeaderboard } from "../../api";
 
@@ -7,7 +8,7 @@ const SORT_KEYS = ["Score", "LifeScore", "HighScore"];
 const SORT_LABELS = {
   Score: "Season",
   LifeScore: "Lifetime",
-  HighScore: "High",
+  HighScore: "Tournament High",
 };
 
 function normalizeLeaderboardData(rawData) {
@@ -87,8 +88,15 @@ export default function Leaderboard({ data }) {
     };
   }, [sortKey, data]);
 
+  function refreshPage() {
+    location.reload();
+  }
+
   return (
     <div id="leaderBody">
+      <div id="refreshButtonContainer">
+        <button id="refreshButton" onClick={refreshPage}></button>
+      </div>
       <NavComponent />
 
       <h2
