@@ -251,8 +251,12 @@
 }
 
 .accSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: var(--background-color);
   height: var(--matchform-accslider-thumb-size);
   width: var(--matchform-accslider-thumb-size);
+  border: black 2px solid;
+  border-radius: var(--border-radius);
 }
 
 .cycle-item.Shuttle {
