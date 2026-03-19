@@ -72,8 +72,8 @@ export const submitMatchform = async (formData) => {
 export const getLeaderboard = async (scoreType) => {
   const response = await axios.get(`${SERVER}/leaderboard`, {
     headers: {
-      'type': scoreType
-    }
+      type: scoreType,
+    },
   });
 
   return response.data;
