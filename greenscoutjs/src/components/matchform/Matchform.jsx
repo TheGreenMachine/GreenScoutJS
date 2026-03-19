@@ -40,6 +40,7 @@ function Matchform() {
     autoRobotAccuracy: 0,
     autoWon: false,
     autoFieldLeft: false,
+    autoFieldRight: false,
     autoFieldMid: false,
     autoFieldTop: false,
     autoFieldBump: false,
@@ -407,6 +408,13 @@ function Matchform() {
               onChange={handleChange}
             >
               Right Of Field
+            </Autocheck>
+            <Autocheck
+              name="autoFieldTop"
+              value={formData.autoFieldTop}
+              onChange={handleChange}
+            >
+              Top Of Field
             </Autocheck>
             <Autocheck
               name="autoFieldBump"
