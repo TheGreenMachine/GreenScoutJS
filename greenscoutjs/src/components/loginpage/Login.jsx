@@ -25,7 +25,7 @@ const Login = ({ getUser }) => {
       // Store user data in localStorage
       getUser(username);
 
-      login(result.user);
+      login({ username: result.user, role: result.role });
 
       console.log("Login successful:", result.user);
 

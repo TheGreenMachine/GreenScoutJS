@@ -173,7 +173,7 @@
 #cycleContainer {
   height: var(--matchform-cycle-container-height);
   margin-right: var(--matchform-child-margin-side);
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
 }
 

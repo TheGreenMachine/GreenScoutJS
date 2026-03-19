@@ -11,6 +11,21 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const logout = useCallback(async () => {
+    try {
+      await logoutUser();
+    } catch (err) {
+      console.warn("Server logout failed:", err);
+    }
+    // Always clear local state even if server errors
+    setUser(null);
+    setIsAuthenticated(false);
+    localStorage.removeItem("greenscout_user");
+    localStorage.removeItem("greenscout_auth");
+    localStorage.removeItem("UUID");
+    localStorage.removeItem("Certificate");
+  });
+
   // Check for existing session on mount
   useEffect(() => {
     const checkAuth = () => {

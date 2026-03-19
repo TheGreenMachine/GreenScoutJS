@@ -212,45 +212,57 @@ function Matchform() {
           fuel: !!formData.autoFieldFuel,
         },
       },
-
-      teleop: {
-        collection: {
-          collectNeutral: !!formData.collectNeutral,
-          collectHp: !!formData.collectHp,
-          fuelCapacity: String(formData.fuelCapacity ?? "0"),
-        },
-
-        field: {
-          bump: !!formData.teleFieldBump,
-          trench: !!formData.teleFieldTrench,
-        },
-
-        botType: String(formData.botType ?? ""),
-        playstyle: String(formData.playstyle ?? ""),
+      Scouter: user?.user ?? "",
+      Auto: {
+        Can: formData.canAuto,
+        Hang: formData.hangAuto,
+        Scores: formData.autoScores,
+        Misses: formData.autoMisses,
+        Ejects: formData.autoEjects,
+        "Auto Human Player Accuracy": formData.autoHPAccuracy,
+        "Auto Robot Accuracy": formData.autoRobotAccuracy,
+        "Auto Won": formData.autoWon,
       },
-
-      endgame: {
-        park: String(formData.park ?? ""),
-        climbTimer: prettyFloat(formData.climbTimer, 0),
-        endgameShoot: !!formData.endgameShoot,
+      "Auto Locations": {
+        "Auto Field Left": formData.autoFieldLeft,
+        "Auto Field Mid": formData.autoFieldMid,
+        "Auto Field Top": formData.autoFieldTop,
+        "Auto Field Bump": formData.autoFieldBump,
+        "Auto Field Trench": formData.autoFieldTrench,
+        "Auto Field DidntCross": formData.autoFieldDidntCross,
+        "Auto Field HP": formData.autoFieldHP,
+        "Auto Field Fuel": formData.autoFieldFuel,
       },
-
-      issues: {
-        disconnect: !!formData.disconnect,
-        loseTrack: !!formData.loseTrack,
-        everBeached: !!formData.everBeached,
+      Cycles: expandCycles(),
+      TeleOP: {
+        "Neutral Collection": formData.collectNeutral,
+        "Human Player Collection": formData.collectHp,
+        "Fuel Capacity": formData.fuelCapacity,
       },
-
-      notes: {
-        autoNotes: String(formData.autoNotes ?? ""),
-        teleNotes: String(formData.teleNotes ?? ""),
-        perfNotes: String(formData.perfNotes ?? ""),
-        eventsNotes: String(formData.eventsNotes ?? ""),
-        commentsNotes: String(formData.commentsNotes ?? ""),
+      Endgame: {
+        "Hanging Status": prettyInt(formData.park),
+        Time: parseFloat(formData.climbTimer),
+        "Shot During Endgame": formData.endgameShoot,
       },
-
-      rescouting: !!formData.rescouting,
-      prescouting: !!formData.prescouting,
+      "TeleOp Locations": {
+        "TeleOp Field Bump": formData.teleFieldBump,
+        "TeleOp Field Trench": formData.teleFieldTrench,
+      },
+      Misc: {
+        "Bot Type": formData.botType,
+        "Play Style": formData.playstyle,
+        "Lost Communication Or Disabled": formData.disconnect,
+        "User Lost Track": formData.loseTrack,
+        "Ever Beached": formData.everBeached,
+      },
+      Notes: {
+        "Auto Notes": formData.autoNotes,
+        "TeleOp Notes": formData.teleNotes,
+        "Performance Notes": formData.perfNotes,
+        "Event Notes": formData.eventsNotes,
+        Comments: formData.commentsNotes,
+      },
+      Rescouting: formData.replayed,
     };
 
     const jsonString = JSON.stringify(dataToSubmit, null, 2);
@@ -644,7 +656,7 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
             value={formData.replayed}
             onChange={handleChange}
           >
-            Is Replay?
+            Is Rescout?
           </ReplayButton>
           <SubmitButton
             idButton={"submitButtonId"}
