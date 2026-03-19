@@ -15,6 +15,7 @@ body {
   height: var(--navbar-height);
   width: 100%;
   background-color: var(--accent-color);
+  z-index: 999999;
 }
 
 #navWrapper {
@@ -22,6 +23,7 @@ body {
   height: var(--navbar-height);
   flex-shrink: 0;
   overflow: hidden;
+  z-index: 999999;
 }
 
 .hamburger {
