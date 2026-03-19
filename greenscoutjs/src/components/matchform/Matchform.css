@@ -225,11 +225,27 @@
   margin-bottom: var(--matchform-cycle-item-margin-bottom);
 }
 
-.cycle-item.hubSwitch > .cycleElementImg {
+.cycle-item.hubSwitch > .cycleElementImg.blue {
   left: 0;
   position: relative;
   height: var(--matchform-cycle-item-image-height);
   width: var(--matchform-cycle-item-image-width);
+  background-color: var(--error-color);
+  background-image: url("../../assets/arrow-right-arrow-left-solid-full.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0px 4px 5px rgb(164, 164, 164);
+  border: var(--font-color) 0.5px solid;
+  border-radius: var(--border-radius);
+}
+
+.cycle-item.hubSwitch > .cycleElementImg.red {
+  left: 0;
+  position: relative;
+  height: var(--matchform-cycle-item-image-height);
+  width: var(--matchform-cycle-item-image-width);
+  background-color: var(--accent-color3);
   background-image: url("../../assets/arrow-right-arrow-left-solid-full.svg");
   background-size: 100%;
   background-repeat: no-repeat;

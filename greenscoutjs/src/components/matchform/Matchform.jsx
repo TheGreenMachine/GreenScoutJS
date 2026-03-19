@@ -1,6 +1,5 @@
 import "./Matchform.css";
 import { useState, useCallback } from "react";
-import { useAuth } from "../../AuthContext";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -76,6 +75,8 @@ function Matchform() {
   const secondCount = "Misses";
   const thirdCount = "Ejects";
 
+  const [hubSwitchCount, setHubSwitchCount] = useState(0);
+
   const [isRunning, setIsRunning] = useState(false);
   const [isCycleRunning, setIsCycleRunning] = useState(false);
   const [resetKey, setResetKey] = useState(0);
@@ -84,7 +85,8 @@ function Matchform() {
 
   const [isButtonActive, setIsButtonActive] = useState("true");
 
-  const [activeAlliance, setActiveAlliance] = useState("blue");
+  const [teamAlliance, setTeamAlliance] = useState("");
+  const [activeAlliance, setActiveAlliance] = useState("gray");
 
   const toggleStopwatch = (event) => {
     if (event) event.preventDefault();
@@ -104,36 +106,41 @@ function Matchform() {
     }
   };
 
-  const handleChange = useCallback(
-    (e) => {
-      const { name, type, checked, value } = e.target;
-      const newValue = type === "checkbox" ? checked : value;
-
-      setFormData((prev) => ({
-        ...prev,
-        [name]: newValue,
-      }));
-
-      if (name === "autoWon" || name === "driverStation") {
-        const isBlue =
-          name === "driverStation"
-            ? value.toLowerCase().includes("blue")
-            : formData.driverStation.toLowerCase().includes("blue");
-
-        // If autoWon is checked, flip the alliance, if unchecked revert to driver station side
-        setActiveAlliance(
-          name === "autoWon" && checked
-            ? isBlue
-              ? "red"
-              : "blue"
-            : isBlue
-              ? "blue"
-              : "red",
-        );
+  const updateHub = (alliance, autoWon, switchCount) => {
+    if (alliance === "blue") {
+      if (autoWon) {
+        setActiveAlliance((switchCount + 1) % 2 === 0 ? "red" : "blue");
+      } else {
+        setActiveAlliance(switchCount % 2 === 0 ? "red" : "blue");
       }
-    },
-    [formData.driverStation],
-  );
+    } else if (alliance === "red") {
+      if (autoWon) {
+        setActiveAlliance((switchCount + 1) % 2 === 0 ? "blue" : "red");
+      } else {
+        setActiveAlliance(switchCount % 2 === 0 ? "blue" : "red");
+      }
+    }
+  };
+
+  const handleChange = useCallback((e) => {
+    const { name, type, checked, value } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: newValue,
+    }));
+
+    if (name === "driverStation") {
+      const newAlliance = value.includes("Blue") ? "blue" : "red";
+      setTeamAlliance(newAlliance);
+      updateHub(newAlliance, formData.autoWon, hubSwitchCount);
+    } else if (name === "autoWon") {
+      updateHub(teamAlliance, checked, hubSwitchCount);
+    } else {
+      updateHub(teamAlliance, formData.autoWon, hubSwitchCount);
+    }
+  });
 
   const submitAll = async (event) => {
     event.preventDefault();
@@ -270,9 +277,11 @@ function Matchform() {
 
   const addCycleEvent = (eventName) => {
     if (isCycleRunning) {
+      let newSwitchCount = hubSwitchCount;
       const currentTime = (cycleTime / 1000).toFixed(2);
       if (eventName === "hubSwitch") {
-        setActiveAlliance(activeAlliance === "red" ? "blue" : "red");
+        newSwitchCount = hubSwitchCount + 1;
+        setHubSwitchCount(newSwitchCount);
       }
       setCycleList((prevList) => [
         ...prevList,
@@ -283,6 +292,7 @@ function Matchform() {
           activeHub: activeAlliance,
         },
       ]);
+      updateHub(teamAlliance, formData.autoWon, newSwitchCount);
     }
   };
 
