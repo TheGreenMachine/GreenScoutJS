@@ -38,7 +38,7 @@
   padding-top: var(--dropdown-park-text-padding-top);
 }
 
-#dropdown {
+.dropdown {
   margin-top: var(--dropdown-margin-top);
   padding-bottom: var(--dropdown-padding-bottom);
   height: var(--dropdown-height);

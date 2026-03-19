@@ -7,8 +7,7 @@ function EndDropdown({ name, value, onChange }) {
         Climb Status
       </p>
       <select
-        className="textDropdown"
-        id="dropdown"
+        className="textDropdown dropdown"
         name={name}
         value={value}
         onChange={onChange}
