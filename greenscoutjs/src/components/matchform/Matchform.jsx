@@ -1,5 +1,5 @@
 import "./Matchform.css";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -125,31 +125,7 @@ function Matchform() {
     }
   };
 
-  const handleChange = useCallback((e) => {
-    const { name, type, checked, value } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: newValue,
-    }));
-
-    if (name === "driverStation") {
-      const newAlliance = value.toLowerCase().includes("Blue") ? "blue" : "red";
-      setTeamAlliance(newAlliance);
-      updateHub(newAlliance, formData.autoWon, hubSwitchCount);
-    } else if (name === "autoWon") {
-      updateHub(teamAlliance, checked, hubSwitchCount);
-    } else {
-      updateHub(teamAlliance, formData.autoWon, hubSwitchCount);
-    }
-  });
-  const submitAll = async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (isSubmitting) return;
-
+  const compileAndCache = (cacheLocation, replace) => {
     if (formData.match === "") {
       alert("Fill in the Match Number");
     } else if (!Number.isInteger(parseInt(formData.match))) {
@@ -266,22 +242,81 @@ function Matchform() {
         rescouting: !!formData.replayed,
       };
 
-      const jsonString = JSON.stringify(dataToSubmit, null, 2);
+    const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
-      const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
+    const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
+    if (replace) {
+      const newCacheEntry = {
+        key: cacheKey,
+        timestamp: Date.now(),
+        data: dataToSubmit,
+      };
+
+      localStorage.removeItem(cacheLocation);
+      localStorage.setItem(cacheLocation, JSON.stringify(newCacheEntry));
+    } else {
       try {
         const existingCache = JSON.parse(
-          localStorage.getItem("matchFormCache") || "[]",
+          localStorage.getItem(cacheLocation) || "[]",
         );
         existingCache.push({
           key: cacheKey,
           timestamp: Date.now(),
           data: dataToSubmit,
         });
-        localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
+        localStorage.setItem(cacheLocation, JSON.stringify(existingCache));
       } catch (err) {
         console.warn("Failed to cache form data:", err);
       }
+    }
+
+    return jsonString;
+  };
+
+  const handleChange = useCallback((e) => {
+    const { name, type, checked, value } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: newValue,
+    }));
+
+    if (name === "driverStation") {
+      const newAlliance = value.includes("Blue") ? "blue" : "red";
+      setTeamAlliance(newAlliance);
+      updateHub(newAlliance, formData.autoWon, hubSwitchCount);
+    } else if (name === "autoWon") {
+      updateHub(teamAlliance, checked, hubSwitchCount);
+    } else {
+      updateHub(teamAlliance, formData.autoWon, hubSwitchCount);
+    }
+  });
+
+  useEffect(() => {
+    compileAndCache("tempMatchFormCache", true);
+  }, [formData]);
+
+  const submitAll = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (isSubmitting) return;
+
+    if (formData.match === "") {
+      alert("Fill in the Match Number");
+    } else if (!Number.isInteger(parseInt(formData.match))) {
+      alert("Fill in the Match Number with an Integer");
+    } else if (formData.team === "") {
+      alert("Fill in the Team Number");
+    } else if (!Number.isInteger(parseInt(formData.team))) {
+      alert("Fill in the Team Number with an Integer");
+    } else if (formData.driverStation === "") {
+      alert("Select a Driver Station");
+    } else {
+      setIsSubmitting(true);
+
+      let jsonString = compileAndCache("matchFormCache", false);
 
       navigate("/home");
 
