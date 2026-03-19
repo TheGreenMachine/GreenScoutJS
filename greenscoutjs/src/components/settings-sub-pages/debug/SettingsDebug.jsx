@@ -55,7 +55,7 @@ function SettingsDebug({ ip, eventData, uuid, certificate }) {
         </button>
         <button
           className="settingButtonDebug"
-          onClick={() => copyToClipboard(uuid)}
+          onClick={() => copyToClipboard(JSON.stringify(uuid, null, 2))}
         >
           <div className="image debug uuid"></div>
           <div className="settingButtonDebugText">
@@ -65,7 +65,7 @@ function SettingsDebug({ ip, eventData, uuid, certificate }) {
         </button>
         <button
           className="settingButtonDebug"
-          onClick={() => copyToClipboard(certificate)}
+          onClick={() => copyToClipboard(JSON.stringify(certificate, null, 2))}
         >
           <div className="image debug certificate"></div>
           <div className="settingButtonDebugText">
