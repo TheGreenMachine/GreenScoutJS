@@ -418,6 +418,13 @@ function Matchform() {
               Left Of Field
             </Autocheck>
             <Autocheck
+              name="autoFieldRight"
+              value={formData.autoFieldRight}
+              onChange={handleChange}
+            >
+              Right Of Field
+            </Autocheck>
+            <Autocheck
               name="autoFieldMid"
               value={formData.autoFieldMid}
               onChange={handleChange}
