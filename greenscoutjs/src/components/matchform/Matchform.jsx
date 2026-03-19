@@ -197,6 +197,7 @@ function Matchform() {
         },
         "Auto Locations": {
           "Auto Field Left": formData.autoFieldLeft,
+          "Auto Field Right": formData.autoFieldRight,
           "Auto Field Mid": formData.autoFieldMid,
           "Auto Field Top": formData.autoFieldTop,
           "Auto Field Bump": formData.autoFieldBump,
@@ -394,6 +395,13 @@ function Matchform() {
               onChange={handleChange}
             >
               Left Of Field
+            </Autocheck>
+            <Autocheck
+              name="autoFieldRight"
+              value={formData.autoFieldRight}
+              onChange={handleChange}
+            >
+              Right Of Field
             </Autocheck>
             <Autocheck
               name="autoFieldMid"
