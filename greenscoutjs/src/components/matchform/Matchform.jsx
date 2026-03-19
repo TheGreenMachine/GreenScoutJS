@@ -268,7 +268,6 @@ function Matchform() {
 
       const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
-      // 1. Cache immediately
       const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
       try {
         const existingCache = JSON.parse(
@@ -284,10 +283,8 @@ function Matchform() {
         console.warn("Failed to cache form data:", err);
       }
 
-      // 2. Navigate instantly
       navigate("/home");
 
-      // 3. Fire network request in background
       submitMatchform(jsonString).catch((err) => {
         console.error("Submission failed:", err);
       });
