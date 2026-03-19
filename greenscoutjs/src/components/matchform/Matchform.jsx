@@ -138,103 +138,115 @@ function Matchform() {
   const submitAll = async (event) => {
     event.preventDefault();
 
-    const prettyInt = (str) => {
-      const parsed = parseInt(str.toString().replace(/[^\d.]/g, ""));
-      return isNaN(parsed) ? 1 : parsed;
-    };
+    if (formData.match === "") {
+      alert("Fill in the Match Number");
+    } else if (!Number.isInteger(parseInt(formData.match))) {
+      alert("Fill in the Match Number with an Integer");
+    } else if (formData.team === "") {
+      alert("Fill in the Team Number");
+    } else if (!Number.isInteger(parseInt(formData.team))) {
+      alert("Fill in the Team Number with an Integer");
+    } else if (formData.driverStation === "") {
+      alert("Select a Driver Station");
+    } else {
+      const prettyInt = (str) => {
+        const parsed = parseInt(str.toString().replace(/[^\d.]/g, ""));
+        return isNaN(parsed) ? 1 : parsed;
+      };
 
-    const expandCycles = () => {
-      if (cycleList.length === 0) {
-        return [{ Time: 0, Type: "None", activeHub: "blue", Success: false }];
+      const expandCycles = () => {
+        if (cycleList.length === 0) {
+          return [{ Time: 0, Type: "None", activeHub: "blue", Success: false }];
+        }
+        return cycleList.map((cycle) => ({
+          Time: parseFloat(cycle.time),
+          Type: cycle.event,
+          activeHub: cycle.activeHub,
+          Success: cycle.accuracy === 1,
+        }));
+      };
+
+      const dataToSubmit = {
+        Team: formData.team === "" ? 1 : prettyInt(formData.team),
+        Match: {
+          Number: formData.match === "" ? 1 : prettyInt(formData.match),
+          isReplay: formData.replayed,
+        },
+        "Driver Station": {
+          "Is Blue": formData.driverStation.includes("Blue"),
+          Number: prettyInt(formData.driverStation),
+        },
+        Scouter: user?.user ?? "",
+        Auto: {
+          Can: formData.canAuto,
+          Hang: formData.hangAuto,
+          Scores: formData.autoScores,
+          Misses: formData.autoMisses,
+          Ejects: formData.autoEjects,
+          "Auto Human Player Accuracy": formData.autoHPAccuracy,
+          "Auto Robot Accuracy": formData.autoRobotAccuracy,
+          "Auto Won": formData.autoWon,
+        },
+        "Auto Locations": {
+          "Auto Field Left": formData.autoFieldLeft,
+          "Auto Field Mid": formData.autoFieldMid,
+          "Auto Field Top": formData.autoFieldTop,
+          "Auto Field Bump": formData.autoFieldBump,
+          "Auto Field Trench": formData.autoFieldTrench,
+          "Auto Field DidntCross": formData.autoFieldDidntCross,
+          "Auto Field HP": formData.autoFieldHP,
+          "Auto Field Fuel": formData.autoFieldFuel,
+        },
+        Cycles: expandCycles(),
+        TeleOP: {
+          "Neutral Collection": formData.collectNeutral,
+          "Human Player Collection": formData.collectHp,
+          "Fuel Capacity": formData.fuelCapacity,
+        },
+        Endgame: {
+          "Hanging Status": prettyInt(formData.park),
+          Time: parseFloat(formData.climbTimer),
+          "Shot During Endgame": formData.endgameShoot,
+        },
+        "TeleOp Locations": {
+          "TeleOp Field Bump": formData.teleFieldBump,
+          "TeleOp Field Trench": formData.teleFieldTrench,
+        },
+        Misc: {
+          "Bot Type": formData.botType,
+          "Play Style": formData.playstyle,
+          "Lost Communication Or Disabled": formData.disconnect,
+          "User Lost Track": formData.loseTrack,
+          "Ever Beached": formData.everBeached,
+        },
+        Notes: {
+          "Auto Notes": formData.autoNotes,
+          "TeleOp Notes": formData.teleNotes,
+          "Performance Notes": formData.perfNotes,
+          "Event Notes": formData.eventsNotes,
+          Comments: formData.commentsNotes,
+        },
+        Rescouting: formData.replayed,
+      };
+
+      const jsonString = JSON.stringify(dataToSubmit, null, 2);
+
+      await submitMatchform(jsonString);
+      const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
+      try {
+        const existingCache = JSON.parse(
+          localStorage.getItem("matchFormCache") || "[]",
+        );
+        existingCache.push({
+          key: cacheKey,
+          timestamp: Date.now(),
+          data: dataToSubmit,
+        });
+        localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
+        navigate("/home");
+      } catch (err) {
+        console.warn("Failed to cache form data:", err);
       }
-      return cycleList.map((cycle) => ({
-        Time: parseFloat(cycle.time),
-        Type: cycle.event,
-        activeHub: cycle.activeHub,
-        Success: cycle.accuracy === 1,
-      }));
-    };
-
-    const dataToSubmit = {
-      Team: formData.team === "" ? 1 : prettyInt(formData.team),
-      Match: {
-        Number: formData.match === "" ? 1 : prettyInt(formData.match),
-        isReplay: formData.replayed,
-      },
-      "Driver Station": {
-        "Is Blue": formData.driverStation.includes("Blue"),
-        Number: prettyInt(formData.driverStation),
-      },
-      Scouter: user?.user ?? "",
-      Auto: {
-        Can: formData.canAuto,
-        Hang: formData.hangAuto,
-        Scores: formData.autoScores,
-        Misses: formData.autoMisses,
-        Ejects: formData.autoEjects,
-        "Auto Human Player Accuracy": formData.autoHPAccuracy,
-        "Auto Robot Accuracy": formData.autoRobotAccuracy,
-        "Auto Won": formData.autoWon,
-      },
-      "Auto Locations": {
-        "Auto Field Left": formData.autoFieldLeft,
-        "Auto Field Mid": formData.autoFieldMid,
-        "Auto Field Top": formData.autoFieldTop,
-        "Auto Field Bump": formData.autoFieldBump,
-        "Auto Field Trench": formData.autoFieldTrench,
-        "Auto Field DidntCross": formData.autoFieldDidntCross,
-        "Auto Field HP": formData.autoFieldHP,
-        "Auto Field Fuel": formData.autoFieldFuel,
-      },
-      Cycles: expandCycles(),
-      TeleOP: {
-        "Neutral Collection": formData.collectNeutral,
-        "Human Player Collection": formData.collectHp,
-        "Fuel Capacity": formData.fuelCapacity,
-      },
-      Endgame: {
-        "Hanging Status": prettyInt(formData.park),
-        Time: parseFloat(formData.climbTimer),
-        "Shot During Endgame": formData.endgameShoot,
-      },
-      "TeleOp Locations": {
-        "TeleOp Field Bump": formData.teleFieldBump,
-        "TeleOp Field Trench": formData.teleFieldTrench,
-      },
-      Misc: {
-        "Bot Type": formData.botType,
-        "Play Style": formData.playstyle,
-        "Lost Communication Or Disabled": formData.disconnect,
-        "User Lost Track": formData.loseTrack,
-        "Ever Beached": formData.everBeached,
-      },
-      Notes: {
-        "Auto Notes": formData.autoNotes,
-        "TeleOp Notes": formData.teleNotes,
-        "Performance Notes": formData.perfNotes,
-        "Event Notes": formData.eventsNotes,
-        Comments: formData.commentsNotes,
-      },
-      Rescouting: formData.replayed,
-    };
-
-    const jsonString = JSON.stringify(dataToSubmit, null, 2);
-
-    await submitMatchform(jsonString);
-    const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
-    try {
-      const existingCache = JSON.parse(
-        localStorage.getItem("matchFormCache") || "[]",
-      );
-      existingCache.push({
-        key: cacheKey,
-        timestamp: Date.now(),
-        data: dataToSubmit,
-      });
-      localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
-      navigate("/home");
-    } catch (err) {
-      console.warn("Failed to cache form data:", err);
     }
   };
 
