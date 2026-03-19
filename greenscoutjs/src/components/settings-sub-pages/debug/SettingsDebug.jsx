@@ -94,13 +94,17 @@ function SettingsDebug({ ip, eventData, uuid, certificate }) {
               className="settingsDebugCachedMatchesButton"
             >
               <span className="settingsDebugCachedMatchesButton">
-                Match # {entry.data.match || "N/A"}
+                Match # {JSON.stringify(entry.data.Match.Number) || "N/A"}
               </span>
               <span className="settingsDebugCachedMatchesButton">
-                Team # {entry.data.team || "N/A"}
+                Team # {JSON.stringify(entry.data.Team) || "N/A"}
               </span>
               <span className="settingsDebugCachedMatchesButton">
-                {entry.data.driverStation}
+                {JSON.stringify(entry.data.driverStation.IsBlue).includes(
+                  "false",
+                )
+                  ? "Red " + JSON.stringify(entry.data.driverStation.Number)
+                  : "Blue " + JSON.stringify(entry.data.driverStation.Number)}
               </span>
               <button
                 onClick={() =>
