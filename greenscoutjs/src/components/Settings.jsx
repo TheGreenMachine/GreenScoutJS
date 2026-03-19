@@ -22,14 +22,14 @@ function Settings() {
       <NavComponent />
       <div id="settingsContainer">
         <h1 className="settingsh1">Settings</h1>
-        <button className="settingButton" onClick={navMatchForm}>
+        {/* <button className="settingButton" onClick={navMatchForm}>
           <div className="image matchImage"></div>
           Match Form Layout
-        </button>
-        <button className="settingButton" onClick={navTheme}>
+        </button> */}
+        {/* <button className="settingButton" onClick={navTheme}>
           <div className="image themeImage"></div>
           Themes (Work In Progress)
-        </button>
+        </button> */}
         <button className="settingButton" onClick={navDebug}>
           <div className="image debugImage"></div>
           Debug Info
