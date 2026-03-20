@@ -138,6 +138,12 @@
 .image.debug.resetLife {
   background-image: url("../assets/clock-rotate-left-solid-full.svg");
 }
+.image.debug.copyAll {
+  background-image: url("../assets/copy-solid-full.svg");
+}
+.image.debug.forceAll {
+  background-image: url("../assets/share-solid-full.svg");
+}
 
 /* Debug Cached Matches */
 
