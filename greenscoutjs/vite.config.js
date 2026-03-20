@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import path, { basename } from "path";
 import { log } from "console";
 
 // https://vite.dev/config/
@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    base: "/GreenScoutJS/",
     resolve: {
       alias: {
         "@api": path.resolve(
@@ -21,7 +22,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       // List of specific hostnames allowed
-      allowedHosts: ["engelki.taild523d0.ts.net"],
+      allowedHosts: true,
 
       host: "0.0.0.0",
       proxy: {
