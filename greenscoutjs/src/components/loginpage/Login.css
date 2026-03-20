@@ -32,6 +32,7 @@
 
 .input {
   border: none;
+  background-color: transparent;
 }
 
 #loginPageForm {
@@ -49,13 +50,15 @@
 /* Username Box */
 
 #user {
-  width: calc(var(--login-box-width) - var(--login-box-padding-left));
+  max-width: calc(
+    var(--login-box-width) - calc(var(--login-box-padding-left) * 1)
+  );
   height: var(--matchform-element-height);
   color: var(--font-color-prompt-title);
   border: none;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
-  background-color: var(--background-color);
+  background-color: transparent;
   background-position: var(--login-box-background-position);
   font-size: var(--font-size-large);
 }
@@ -83,7 +86,9 @@
 /* Password Box */
 
 #pass {
-  width: calc(var(--login-box-width) - var(--login-box-padding-left));
+  max-width: calc(
+    var(--login-box-width) - calc(var(--login-box-padding-left) * 1)
+  );
   height: var(--matchform-element-height);
   color: var(--font-color-prompt-title);
   font-family: Arial, Helvetica, sans-serif;
