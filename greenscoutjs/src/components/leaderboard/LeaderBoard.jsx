@@ -8,7 +8,7 @@ const SORT_KEYS = ["Score", "LifeScore", "HighScore"];
 const SORT_LABELS = {
   Score: "Season",
   LifeScore: "Lifetime",
-  HighScore: "Tournament High",
+  HighScore: "Tourn. High",
 };
 
 function normalizeLeaderboardData(rawData) {

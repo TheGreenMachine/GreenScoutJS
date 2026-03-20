@@ -11,9 +11,9 @@ function Home() {
   return (
     <span id="homeBody">
       <NavComponent></NavComponent>
-      {/* <div id="refreshButtonContainer">
+      <div id="refreshButtonContainer">
         <button id="refreshButton" onClick={refreshPage}></button>
-      </div> */}
+      </div>
       <span id="parent" className="text">
         <h1 className="textHome">Create New Match Form</h1>
         <NewButtonMatch></NewButtonMatch>

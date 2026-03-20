@@ -7,7 +7,11 @@ function NewButtonMatch() {
   function handleClick() {
     navigate("/scout");
   }
-  return <button onClick={handleClick} id="newmatchbutton"></button>;
+  return (
+    <button onClick={handleClick} id="newmatchbutton">
+      <div id="newmatchbuttonimg"></div>
+    </button>
+  );
 }
 
 export default NewButtonMatch;
