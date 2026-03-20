@@ -8,16 +8,16 @@ html {
   /* --accent-color: #9bcbfb;
   --accent-color2: #8fbdeb;
   --accent-color3: #cee5ff; */
-  --accent-color: hotpink;
-  --accent-color2: hotpink;
-  --accent-color3: hotpink;
+  --accent-color: #2cff05;
+  --accent-color2: #2cff05;
+  --accent-color3: #2cff05;
 
   --blue-color: #9bcbfb;
   --error-color: red;
   --disabled-color: #8b8b8c;
 
   --font-color: black;
-  --font-color-prompt-title: hotpink;
+  --font-color-prompt-title: #2cff05;
 
   --sidenav-hover-color: #444;
 
@@ -25,7 +25,7 @@ html {
   --faded-text-color: rgb(210, 209, 209);
 
   /*--kelly-green: #4cbb17; /* Kelly Green is the color of Edina's "The Green Machine" */
-  --kelly-green: hotpink;
+  --kelly-green: #2cff05;
 
   --error-message-color: #d32f2f;
   --check-background-color: #2f628d;
@@ -34,10 +34,10 @@ html {
   --border-color-faded: #93979f;
 
   /* --border-color-active: #417096; */
-  --border-color-active: hotpink;
+  --border-color-active: #2cff05;
 
   /* --sidenav-button-color: #dfdfdf; */
-  --sidenav-button-color: hotpink;
+  --sidenav-button-color: #2cff05;
 
   /* General Sizing Variables */
   --border-radius: 1em;
