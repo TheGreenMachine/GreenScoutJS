@@ -1,6 +1,7 @@
 import "../../settings.css";
 import NavComponentSettings from "../../NavComponentSettings";
 import { useState, useRef, useEffect } from "react";
+import { submitMatchform } from "../../../api";
 
 function SettingsDebug({ ip, eventData }) {
   const [matches, setMatches] = useState(() => {
@@ -32,7 +33,9 @@ function SettingsDebug({ ip, eventData }) {
   };
 
   const forceSend = (text) => {
-    alert(text);
+    submitMatchform(text).catch((err) => {
+      console.error("Submission failed:", err);
+    });
   };
 
   return (
@@ -93,9 +96,9 @@ function SettingsDebug({ ip, eventData }) {
               >
                 Copy
               </button>
-              {/* <button onClick={() => forceSend(JSON.stringify(entry, null, 2))}>
+              <button onClick={() => forceSend(JSON.stringify(entry, null, 2))}>
                 Force Send
-              </button> */}
+              </button>
             </div>
           ))}
           <h1 className="settingsh1">End</h1>
