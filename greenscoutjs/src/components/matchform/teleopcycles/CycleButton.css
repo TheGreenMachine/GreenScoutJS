@@ -39,7 +39,15 @@
 #cycleImg {
   height: var(--cycle-image-height);
   width: 100%;
-  background-image: url("../../../assets/play-solid-full.svg");
+  background-color: var(--font-color);
+  -webkit-mask-image: url("../../../assets/play-solid-full.svg");
+  mask-image: url("../../../assets/play-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
   background-size: var(--cycle-image-background-size);
   background-repeat: no-repeat;
   background-position: var(--cycle-image-background-position);
@@ -48,7 +56,15 @@
 #stopImg {
   height: var(--cycle-image-height);
   width: 100%;
-  background-image: url("../../../assets/square-solid-full.svg");
+  background-color: var(--font-color);
+  -webkit-mask-image: url("../../../assets/square-solid-full.svg");
+  mask-image: url("../../../assets/square-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
   background-size: var(--cycle-image-background-size);
   background-repeat: no-repeat;
   background-position: var(--cycle-image-background-position);

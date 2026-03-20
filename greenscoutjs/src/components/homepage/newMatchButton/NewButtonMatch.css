@@ -10,10 +10,6 @@
   font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-small);
-  background-image: url(../../../assets/pencil.svg);
-  background-repeat: no-repeat;
-  background-position: 0px 50%;
-  background-size: 100% 40%;
   margin: 0;
   padding: 0;
 }
@@ -22,4 +18,18 @@
   background-color: var(--accent-color);
   cursor: pointer;
   outline: none;
+}
+
+#newmatchbuttonimg {
+  width: 100%;
+  height: 40%;
+  background-color: var(--font-color);
+  -webkit-mask-image: url("../../../assets/pencil.svg");
+  mask-image: url("../../../assets/pencil.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }

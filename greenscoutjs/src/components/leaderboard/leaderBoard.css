@@ -1,10 +1,9 @@
 * {
   font-size: var(--font-size-small);
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
 }
 
 #leaderBody {
-
   width: 100%;
   height: var(--page-height);
   margin: 0;
@@ -38,6 +37,7 @@
   cursor: pointer;
   width: 30%;
   height: var(--leader-board-element-height);
+  color: var(--font-color);
 }
 
 .lb-sort-btn.active {

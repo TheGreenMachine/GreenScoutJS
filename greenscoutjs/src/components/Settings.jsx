@@ -42,13 +42,6 @@ function Settings() {
           <div className="image debugImage"></div>
           Debug Info
         </button>
-        <button className="settingButtonDebug" onClick={clearMatchCache}>
-          <div className="image debug resetLife"></div>
-          <div className="settingButtonDebugText">
-            <h2>Reset Lifetime Matches</h2>
-            <p>Gets rid of all the cached matches stored</p>
-          </div>
-        </button>
       </div>
     </div>
   );
