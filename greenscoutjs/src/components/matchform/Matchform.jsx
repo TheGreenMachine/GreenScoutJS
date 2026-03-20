@@ -401,11 +401,11 @@ function Matchform() {
       <NavComponent onNavigateOut={handleNavigateOut}></NavComponent>
       <span id="form">
         <form id="formBody" className="formElement">
-          {hasCache && (
+          {/* {hasCache && (
             <button className="child" id="restore" onClick={restoreFromCache}>
               Restore Unsaved Match
             </button>
-          )}
+          )} */}
           <input
             placeholder="Match #"
             type="textMatchForm"
