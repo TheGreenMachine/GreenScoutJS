@@ -60,7 +60,7 @@ const Login = ({ getUser }) => {
             <div id="userimg"></div>
             <input
               className="input"
-              placeholder="Enter your username"
+              placeholder="Enter Username"
               type="text"
               id="user"
               onChange={handleUsernameChange}
@@ -74,7 +74,7 @@ const Login = ({ getUser }) => {
             <div id="passimg"></div>
             <input
               className="input"
-              placeholder="Enter your password"
+              placeholder="Enter Password"
               required
               disabled={isLoading}
               autoComplete="current-password"
