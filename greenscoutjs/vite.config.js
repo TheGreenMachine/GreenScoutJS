@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import path, { basename } from "path";
 import { log } from "console";
 
 // https://vite.dev/config/
@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    base: "/GreenScoutJS/",
     resolve: {
       alias: {
         "@api": path.resolve(
@@ -26,8 +27,7 @@ export default defineConfig(({ mode }) => {
       host: "0.0.0.0",
       proxy: {
         "/api": {
-          target:
-            "https://greenscout-backend-github-85398269750.us-central1.run.app",
+          target: "http://localhost:8080",
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ""),
         },
