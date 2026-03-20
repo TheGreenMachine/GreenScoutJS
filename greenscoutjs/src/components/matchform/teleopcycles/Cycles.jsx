@@ -10,10 +10,16 @@ const Cycles = ({
 }) => {
   const getAccuracyLabelScore = (value) => {
     const numValue = Number(value);
-    if (numValue <= 0) return "Miss";
-    if (numValue <= 25) return "25%";
+    if (numValue === 0) return "Miss";
+    if (numValue <= 10) return "10%";
+    if (numValue <= 20) return "20%";
+    if (numValue <= 30) return "30%";
+    if (numValue <= 40) return "40%";
     if (numValue <= 50) return "50%";
-    if (numValue <= 75) return "75%";
+    if (numValue <= 60) return "60%";
+    if (numValue <= 70) return "70%";
+    if (numValue <= 80) return "80%";
+    if (numValue <= 90) return "90%";
     return "100%";
   };
 
@@ -60,7 +66,7 @@ const Cycles = ({
                 type="range"
                 min={0}
                 max={100}
-                step={25}
+                step={10}
                 className="accSlider"
                 value={item.accuracy || 0}
                 onChange={(e) => handleAccuracyChange(index, e.target.value)}
