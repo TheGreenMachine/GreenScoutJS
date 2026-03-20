@@ -49,14 +49,6 @@ export const authenticateUser = async (username, password) => {
   };
 };
 
-export const getUUID = (username) => {
-  return null;
-};
-
-export const getCertificate = (username) => {
-  return null;
-};
-
 export const logoutUser = async () => {
   await axios.post(`${SERVER}/logout`);
 };
