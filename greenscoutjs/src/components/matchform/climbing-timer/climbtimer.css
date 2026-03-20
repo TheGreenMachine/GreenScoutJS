@@ -6,6 +6,6 @@
 
 #climbtimetext {
   font-size: var(--font-size-small);
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
   font-weight: bold;
 }
