@@ -32,10 +32,28 @@ function SettingsDebug({ ip, eventData }) {
     }
   };
 
+  const copyAllToClipboard = () => {
+    if (window.confirm("Do you want to save all matches to your clipboard?")) {
+      const formattedData = matches
+        .map((entry) => JSON.stringify(entry))
+        .join("\n");
+
+      navigator.clipboard.writeText(formattedData);
+    }
+  };
+
   const forceSend = (text) => {
     submitMatchform(text).catch((err) => {
       console.error("Submission failed:", err);
     });
+  };
+
+  const forceSendAll = () => {
+    matches.map((entry) =>
+      submitMatchform(entry).catch((err) => {
+        console.err("Submission failed:", err);
+      }),
+    );
   };
 
   return (
@@ -63,6 +81,18 @@ function SettingsDebug({ ip, eventData }) {
             <p>Gets rid of all the cached matches stored</p>
           </div>
         </button>
+        <button className="settingButtonDebug" onClick={copyAllToClipboard}>
+          <div className="image debug copyAll"></div>
+          <div className="settingButtonDebugText">
+            <h2>Copy All Matches To Clipboard</h2>
+          </div>
+        </button>
+        <button className="settingButtonDebug" onClick={forceSendAll}>
+          <div className="image debug forceAll"></div>
+          <div className="settingButtonDebugText">
+            <h2>Force Send All Matches</h2>
+          </div>
+        </button>
         <div id="settingsDebugCachedMatches">
           <h1 className="settingsh1">Cached Matches</h1>
           {matches.length === 0 && (
@@ -77,17 +107,17 @@ function SettingsDebug({ ip, eventData }) {
               className="settingsDebugCachedMatchesButton"
             >
               <span className="settingsDebugCachedMatchesButton">
-                Match # {JSON.stringify(entry.data.Match.Number) || "N/A"}
+                Match # {JSON.stringify(entry.data?.Match?.Number) || "N/A"}
               </span>
               <span className="settingsDebugCachedMatchesButton">
-                Team # {JSON.stringify(entry.data.Team) || "N/A"}
+                Team # {JSON.stringify(entry.data?.Team) || "N/A"}
               </span>
               <span className="settingsDebugCachedMatchesButton">
-                {JSON.stringify(entry.data.driverStation.IsBlue).includes(
+                {JSON.stringify(entry.data?.driverStation?.IsBlue).includes(
                   "false",
                 )
-                  ? "Red " + JSON.stringify(entry.data.driverStation.Number)
-                  : "Blue " + JSON.stringify(entry.data.driverStation.Number)}
+                  ? "Red " + JSON.stringify(entry.data?.driverStation?.Number)
+                  : "Blue " + JSON.stringify(entry.data?.driverStation?.Number)}
               </span>
               <button
                 onClick={() =>
