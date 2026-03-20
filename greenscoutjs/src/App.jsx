@@ -12,14 +12,12 @@ import Login from "./components/loginpage/Login";
 import Home from "./components/homepage/Home";
 import Logout from "./components/loginpage/Logout";
 import Matchform from "./components/matchform/Matchform";
-
 import LeaderBoard from "./components/leaderboard/LeaderBoard";
 import Settings from "./components/Settings";
 import SettingsDebug from "./components/settings-sub-pages/debug/SettingsDebug";
 import SettingsLayout from "./components/settings-sub-pages/layout/SettingsMatchForm";
 import SettingsThemes from "./components/settings-sub-pages/themes/SettingsThemes";
 import { useState, useEffect } from "react";
-import { getCertificate, getUUID } from "./api";
 
 function App() {
   const getIpAddress = async () => {
@@ -35,8 +33,6 @@ function App() {
 
   const [ip, setIp] = useState("");
   const [eventData, setEventData] = useState("");
-  const [UUID, setUUID] = useState("");
-  const [certificate, setCertificate] = useState("");
   const [user, setUser] = useState("");
 
   useEffect(() => {
@@ -47,9 +43,8 @@ function App() {
 
   const getUser = (username) => {
     setUser(username);
-    setUUID(getUUID(username));
-    setCertificate(getCertificate(username));
   };
+
   return (
     <Router>
       <AuthProvider>
@@ -60,13 +55,7 @@ function App() {
             path="/login"
             element={
               <PublicRoute>
-                <Login
-                  user={user}
-                  setUser={setUser}
-                  setID={setUUID}
-                  setCertificate={setCertificate}
-                  getUser={getUser}
-                />
+                <Login getUser={getUser} />
               </PublicRoute>
             }
           />
@@ -133,12 +122,7 @@ function App() {
             path="/settings/debug"
             element={
               <ProtectedRoute>
-                <SettingsDebug
-                  ip={ip}
-                  eventData={eventData}
-                  uuid={UUID}
-                  certificate={certificate}
-                />{" "}
+                <SettingsDebug ip={ip} eventData={eventData} />{" "}
                 {/* Temporary values replace with backend values */}
               </ProtectedRoute>
             }

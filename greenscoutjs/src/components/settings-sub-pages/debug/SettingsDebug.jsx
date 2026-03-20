@@ -2,7 +2,7 @@ import "../../settings.css";
 import NavComponentSettings from "../../NavComponentSettings";
 import { useState, useRef, useEffect } from "react";
 
-function SettingsDebug({ ip, eventData, uuid, certificate }) {
+function SettingsDebug({ ip, eventData }) {
   const [matches, setMatches] = useState(() => {
     const cached = JSON.parse(localStorage.getItem("matchFormCache") || "[]");
     return cached.reverse(); // most recent first
@@ -51,26 +51,6 @@ function SettingsDebug({ ip, eventData, uuid, certificate }) {
           <div className="settingButtonDebugText">
             <h2>Event Data</h2>
             <p>{eventData || "Unable to recieve from server"}</p>
-          </div>
-        </button>
-        <button
-          className="settingButtonDebug"
-          onClick={() => copyToClipboard(JSON.stringify(uuid, null, 2))}
-        >
-          <div className="image debug uuid"></div>
-          <div className="settingButtonDebugText">
-            <h2>UUID</h2>
-            <p>{uuid || "N/A"}</p>
-          </div>
-        </button>
-        <button
-          className="settingButtonDebug"
-          onClick={() => copyToClipboard(JSON.stringify(certificate, null, 2))}
-        >
-          <div className="image debug certificate"></div>
-          <div className="settingButtonDebugText">
-            <h2>Certificate</h2>
-            <p>{certificate || "N/A"}</p>
           </div>
         </button>
         <button className="settingButtonDebug" onClick={clearMatchCache}>
