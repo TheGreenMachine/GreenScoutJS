@@ -4,20 +4,23 @@ html {
 
 :root {
   /* Color Variables */
-  --background-color: black;
+  --background-color: #141415;
   /* --accent-color: #9bcbfb;
   --accent-color2: #8fbdeb;
   --accent-color3: #cee5ff; */
-  --accent-color: hotpink;
-  --accent-color2: hotpink;
-  --accent-color3: hotpink;
+  --accent-color: #4cbb17;
+  --accent-color2: #4cbb17;
+  --accent-color3: #4cbb17;
 
   --blue-color: #9bcbfb;
   --error-color: var(--disabled-color);
-  --disabled-color: #8b8b8c;
+  --disabled-color: #717172;
 
   --font-color: black;
-  --font-color-prompt-title: hotpink;
+  --font-color-prompt-title: #4cbb17;
+  --font-color-header: #58db1c;
+
+  --drop-shadow-color: #626263;
 
   --sidenav-hover-color: #444;
 
@@ -25,22 +28,22 @@ html {
   --faded-text-color: rgb(210, 209, 209);
 
   /*--kelly-green: #4cbb17; /* Kelly Green is the color of Edina's "The Green Machine" */
-  --kelly-green: hotpink;
+  --kelly-green: #4cbb17;
 
   --error-message-color: var(--disabled-color);
-  --check-background-color: hotpink;
+  --check-background-color: #4cbb17;
   --checkbox-default-color: #eee;
   --checkbox-hover-color: #ccc;
-  --border-color-faded: #93979f;
+  --border-color-faded: #d9d9db;
 
   /* --border-color-active: #417096; */
-  --border-color-active: hotpink;
+  --border-color-active: #4cbb17;
 
   /* --sidenav-button-color: #dfdfdf; */
-  --sidenav-button-color: hotpink;
+  --sidenav-button-color: #4cbb17;
 
   /* General Sizing Variables */
-  --border-radius: 1em;
+  --border-radius: 1rem;
   --font-size-large: 3vh;
   --font-size-small: 2.5vh;
   --font-weight: 1;
