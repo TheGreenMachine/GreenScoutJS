@@ -3,8 +3,9 @@
   font-weight: lighter;
   color: var(--font-color-prompt-title);
   font-size: var(--font-size-small);
-  height: var(--check-text-height);
-  width: calc(100% - var(--matchform-child-width-to-subtract));
+  line-height: 1.3;
+  flex: 1;
+  min-width: 0;
 }
 
 .text:hover {
@@ -15,9 +16,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: var(--check-div-height);
+  min-height: var(--check-div-height);
   width: calc(100% - var(--matchform-child-width-to-subtract));
   margin-left: var(--check-special-margin-left);
+  gap: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
 }
 
 .divcheck:focus {
@@ -27,19 +31,23 @@
 .check {
   height: var(--check-size);
   width: var(--check-size);
+  flex-shrink: 0;
 }
 
 .checkcontainer {
   display: block;
   position: relative;
+  flex-shrink: 0;
   padding-left: var(--check-container-padding-left);
-  margin-bottom: var(--check-container-margin-bottom);
+  margin-bottom: 0;
   cursor: pointer;
   font-size: var(--font-size-small);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  min-width: calc(var(--check-container-padding-left) + var(--check-size));
+  min-height: var(--check-size);
 }
 
 .checkcontainer input {
@@ -52,10 +60,13 @@
 
 .checkmark {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   left: var(--check-mark-left);
   height: var(--check-size);
   width: var(--check-size);
   background-color: var(--checkbox-default-color);
+  border-radius: 3px;
 }
 
 .checkcontainer:hover input ~ .checkmark {
@@ -89,5 +100,7 @@
 }
 
 #autotext {
+  flex: 1;
+  min-width: 0;
   width: var(--check-auto-text-width);
 }

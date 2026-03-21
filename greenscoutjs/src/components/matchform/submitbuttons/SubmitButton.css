@@ -4,43 +4,48 @@
   width: calc(100% - var(--matchform-child-width-to-subtract));
   height: var(--submitreplay-div-height);
   margin-bottom: var(--submitreplay-div-margin-bottom);
+  box-sizing: border-box;
 }
 
 .submitButton {
-  margin-top: var(--submitreplay-button-margin-top);
-  margin-bottom: var(--submitreplay-button-margin-bottom);
-  border: 1px var(--accent-color3);
+  border: 1px solid var(--accent-color3);
   border-radius: var(--border-radius);
-  box-shadow: 0px 4px 5px rgb(164, 164, 164);
+  box-shadow: 0px 4px 5px var(--drop-shadow-color);
   color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-small);
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  grid-template-areas: "stack-layer";
   width: 100%;
   height: 100%;
-  padding: none;
   background-color: var(--accent-color);
+  cursor: pointer;
+  gap: 0.1rem;
 }
 
 .submitButton:hover {
   background-color: var(--accent-color2);
 }
 
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .submitText {
   text-decoration: none;
   color: var(--font-color);
-  margin: none;
-  margin-top: 0;
-  padding: none;
+  margin: 0;
+  padding: 0;
   font-size: var(--font-size-small);
+  line-height: 1.2;
 }
 
 #submitImage {
-  margin-top: var(--submit-image-margin-top);
   background-color: var(--font-color);
   -webkit-mask-image: url("../../../assets/floppy-disk-solid-full.svg");
   mask-image: url("../../../assets/floppy-disk-solid-full.svg");
@@ -55,6 +60,5 @@
 .submitImage {
   height: var(--submit-image-size);
   width: var(--submit-image-size);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  flex-shrink: 0;
 }

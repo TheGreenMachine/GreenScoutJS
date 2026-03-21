@@ -1,8 +1,10 @@
-#sideButtonCycleTrigger.true {
-  margin-top: var(--cycle-margin-top);
-  margin-bottom: var(--cycle-margin-bottom);
-  background-color: var(--accent-color3);
-  border: 1px var(--accent-color3);
+#sideButtonCycleTrigger,
+#scoreButton,
+#shuttleButton,
+#hubSwitchButton {
+  flex-shrink: 0;
+  position: relative;
+  top: auto;
   border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px var(--drop-shadow-color);
   color: var(--font-color);
@@ -11,61 +13,48 @@
   outline: none;
   width: var(--cycle-size);
   height: var(--cycle-size);
-  position: absolute;
-  top: var(--cycle-top);
   font-size: var(--font-size-cycle);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: clamp(0.3rem, 1.5vh, 0.8rem);
+  margin-bottom: 0;
+  border: 1px solid transparent;
+}
+
+#sideButtonCycleTrigger.true {
+  background-color: var(--accent-color3);
+  border-color: var(--accent-color3);
 }
 
 #sideButtonCycleTrigger.false {
-  margin-top: var(--cycle-margin-top);
-  margin-bottom: var(--cycle-margin-bottom);
   background-color: var(--error-color);
-  border: 1px var(--error-color);
-  border-radius: var(--border-radius);
-  box-shadow: 0px 4px 5px var(--drop-shadow-color);
-  color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: var(--font-weight);
-  outline: none;
-  width: var(--cycle-size);
-  height: var(--cycle-size);
-  position: absolute;
-  top: var(--cycle-top);
-  font-size: var(--font-size-cycle);
-  text-align: center;
+  border-color: var(--error-color);
+}
+
+#cycleImg,
+#stopImg {
+  height: var(--cycle-image-height);
+  width: 80%;
+  background-color: var(--font-color);
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  flex-shrink: 0;
 }
 
 #cycleImg {
-  height: var(--cycle-image-height);
-  width: 100%;
-  background-color: var(--font-color);
   -webkit-mask-image: url("../../../assets/play-solid-full.svg");
   mask-image: url("../../../assets/play-solid-full.svg");
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  background-size: var(--cycle-image-background-size);
-  background-repeat: no-repeat;
-  background-position: var(--cycle-image-background-position);
 }
 
 #stopImg {
-  height: var(--cycle-image-height);
-  width: 100%;
-  background-color: var(--font-color);
   -webkit-mask-image: url("../../../assets/square-solid-full.svg");
   mask-image: url("../../../assets/square-solid-full.svg");
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  background-size: var(--cycle-image-background-size);
-  background-repeat: no-repeat;
-  background-position: var(--cycle-image-background-position);
 }

@@ -4,11 +4,11 @@ import "../homepage/Home.css";
 import NavComponent from "../NavComponent";
 import { getLeaderboard } from "../../api";
 
-const SORT_KEYS = ["Score", "LifeScore", "HighScore"];
+const SORT_KEYS = ["HighScore", "Score", "LifeScore"];
 const SORT_LABELS = {
   Score: "Season",
   LifeScore: "Lifetime",
-  HighScore: "Tourn. High",
+  HighScore: "Event",
 };
 
 function normalizeLeaderboardData(rawData) {

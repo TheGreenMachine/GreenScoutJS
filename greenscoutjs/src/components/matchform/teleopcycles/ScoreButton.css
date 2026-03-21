@@ -1,44 +1,17 @@
 #scoreButton.false {
-  margin-top: var(--cycle-margin-top);
-  margin-bottom: var(--cycle-margin-bottom);
   background-color: var(--accent-color3);
-  border: 1px var(--accent-color3);
-  border-radius: var(--border-radius);
-  box-shadow: 0px 4px 5px var(--drop-shadow-color);
-  color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: var(--font-weight);
-  outline: none;
-  width: var(--cycle-size);
-  height: var(--cycle-size);
-  position: absolute;
-  top: var(--score-top);
-  font-size: var(--font-size-cycle);
-  text-align: center;
-} 
+  border-color: var(--accent-color3);
+}
 
 #scoreButton.true {
-  margin-top: var(--cycle-margin-top);
-  margin-bottom: var(--cycle-margin-bottom);
   background-color: var(--disabled-color);
-  border: 1px var(--disabled-color);
-  border-radius: var(--border-radius);
-  box-shadow: 0px 4px 5px var(--drop-shadow-color);
-  color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: var(--font-weight);
-  outline: none;
-  width: var(--cycle-size);
-  height: var(--cycle-size);
-  position: absolute;
-  top: var(--score-top);
-  font-size: var(--font-size-cycle);
-  text-align: center;
+  border-color: var(--disabled-color);
 }
 
 #scoreButtonImg {
   height: var(--score-image-height);
-  width: 100%;
+  width: 80%;
+  flex-shrink: 0;
   background-color: var(--font-color);
   -webkit-mask-image: url("../../../assets/meteor-solid-full.svg");
   mask-image: url("../../../assets/meteor-solid-full.svg");
@@ -48,7 +21,4 @@
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
   mask-size: contain;
-  background-size: var(--cycle-image-background-size);
-  background-repeat: no-repeat;
-  background-position: var(--cycle-image-background-position);
 }

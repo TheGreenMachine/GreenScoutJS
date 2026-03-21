@@ -1,20 +1,26 @@
 #sideButtonTrigger {
-  margin-top: var(--trigger-margin-top);
-  margin-bottom: var(--trigger-margin-bottom);
+  flex-shrink: 0;
+  position: relative;
+  top: auto;
   border-radius: var(--border-radius);
-  box-shadow: 0px 4px 5px rgb(164, 164, 164);
+  box-shadow: 0px 4px 5px var(--drop-shadow-color);
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
+  font-size: var(--font-size-cycle);
   outline: none;
   width: var(--trigger-size);
   height: var(--trigger-size);
-  position: absolute;
-  bottom: 0;
-  font-size: var(--font-size-cycle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   border: 1px solid;
   transition: background-color 0.2s ease;
+  cursor: pointer;
+  margin-top: clamp(0.3rem, 1.5vh, 0.8rem);
+  margin-bottom: 0;
 }
 
 #sideButtonTrigger.active {
@@ -32,7 +38,7 @@
   width: 100%;
   background-size: var(--trigger-stop-image-background-size);
   background-repeat: no-repeat;
-  background-position: var(--trigger-stop-image-background-position);
+  background-position: center;
 }
 
 .act {
@@ -61,7 +67,8 @@
 
 #resetbutton {
   background-color: var(--accent-color3);
-  border: 1px var(--accent-color3);
+  border: 1px solid var(--accent-color3);
+  border-radius: var(--border-radius);
   color: var(--faded-text-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
@@ -69,9 +76,11 @@
   outline: none;
   width: 100%;
   height: var(--trigger-reset-height);
+  min-height: 2rem;
   box-shadow: none;
+  cursor: pointer;
 }
 
 #resetbutton:hover {
-  background-color: var(--accent-color3);
+  background-color: var(--accent-color2);
 }

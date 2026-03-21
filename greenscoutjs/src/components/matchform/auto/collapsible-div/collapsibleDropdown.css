@@ -4,6 +4,9 @@
   width: calc(100% - var(--matchform-child-width-to-subtract));
   margin-left: var(--matchform-child-margin-side);
   margin-right: var(--matchform-child-margin-side);
+  box-sizing: border-box;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 .collapsibleDropdown__trigger {
@@ -16,10 +19,15 @@
   border: none;
   cursor: pointer;
   font-size: var(--font-size-small);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--font-color-prompt-title);
+  min-height: var(--matchform-element-height);
 }
 
 .collapsibleDropdown__arrow {
   transition: transform 0.2s;
+  flex-shrink: 0;
+  font-size: var(--font-size-small);
 }
 
 .collapsibleDropdown__arrow--open {
@@ -39,4 +47,45 @@
 
 .collapsibleDropdown__inner {
   padding: var(--collapsible-padding);
+}
+
+.collapsibleDropdown__inner .child,
+.collapsibleDropdown__inner .child.divcheck {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.collapsibleDropdown__inner .divAutoAccLabel {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.collapsibleDropdown__inner #driverStation {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.collapsibleDropdown__inner .collectchild {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.collapsibleDropdown__inner .collapsibleDropdown {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.collapsibleDropdown__inner > p {
+  margin-top: 0.3rem;
+  margin-bottom: 0.2rem;
+}
+
+.collapsibleDropdown__inner .child.notesdiv {
+  margin-top: 0;
+  margin-bottom: 0;
 }

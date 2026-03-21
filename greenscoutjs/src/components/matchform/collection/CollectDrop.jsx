@@ -1,4 +1,4 @@
-import "./CollectDrop.css";
+import "../auto/dropdown/Dropdown.css";
 
 function CollectDrop({ value, onChange, name }) {
   return (

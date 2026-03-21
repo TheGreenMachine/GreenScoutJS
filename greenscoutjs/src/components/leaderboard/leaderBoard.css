@@ -1,21 +1,17 @@
-* {
-  font-size: var(--font-size-small);
-  color: var(--font-color-prompt-title);
-}
-
 #leaderBody {
   width: 100%;
   height: var(--page-height);
   margin: 0;
   overflow: hidden;
   font-family: sans-serif;
+  font-size: var(--font-size-small);
+  color: var(--font-color-prompt-title);
   background: var(--background-color);
-  min-height: var(--page-height);
 }
 
 #leaderBoardBody {
   width: 100%;
-  height: calc(100% - 8vh);
+  height: var(--content-height);
   padding: 0;
   overflow: hidden;
 }
@@ -38,6 +34,7 @@
   width: 30%;
   height: var(--leader-board-element-height);
   color: var(--font-color);
+  font-size: var(--font-size-small);
 }
 
 .lb-sort-btn.active {
@@ -52,7 +49,9 @@
   margin: 3% auto;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: calc(100vh - 8vh - 60px - 60px);
+  height: calc(
+    var(--content-height) - var(--leader-board-element-height) - 3rem
+  );
 }
 
 .leaderBoardTile {
@@ -64,8 +63,10 @@
   background-color: var(--background-color);
   border: 0.15vh solid var(--accent-color);
   border-radius: var(--border-radius);
-  height: var(--leader-board-element-height);
+  min-height: var(--leader-board-element-height);
   font-size: var(--font-size-small);
+  color: var(--font-color-prompt-title);
+  flex-shrink: 0;
 }
 
 .lb-name {
