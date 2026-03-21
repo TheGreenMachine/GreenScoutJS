@@ -1,7 +1,7 @@
 import axios from "axios";
 import forge from "node-forge";
 
-const SERVER = "/api";
+const SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
 
 async function getPublicKey() {
   const response = await axios.get(`${SERVER}/pub`);

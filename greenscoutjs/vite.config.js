@@ -6,8 +6,8 @@ import { log } from "console";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
-  // const useBackend = env.VITE_USE_BACKEND_SERVER === "true";
-  const useBackend = "true";
+  // Backend URL is defined in .env.production
+  const useBackend = env.VITE_BACKEND_URL !== "";
 
   return {
     plugins: [react()],
