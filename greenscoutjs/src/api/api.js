@@ -3,6 +3,8 @@ import forge from "node-forge";
 
 const SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
 
+axios.defaults.withCredentials = true;
+
 async function getPublicKey() {
   const response = await axios.get(`${SERVER}/pub`);
   return forge.pki.publicKeyFromPem(response.data);
