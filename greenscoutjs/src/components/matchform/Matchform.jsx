@@ -137,11 +137,13 @@ function Matchform() {
   const submitAll = async (event) => {
     event.preventDefault();
 
+    // fallback is the value to be used if a number cant be found in the form data/string
     const prettyInt = (str, fallback = 1) => {
       const parsed = parseInt(String(str ?? "").replace(/[^\d]/g, ""), 10);
       return Number.isNaN(parsed) ? fallback : parsed;
     };
 
+    // fallback is the value to be used if a number cant be found in the form data/string
     const prettyFloat = (val, fallback = 0) => {
       const parsed = parseFloat(String(val ?? "").replace(/[^\d.]/g, ""));
       return Number.isNaN(parsed) ? fallback : parsed;
@@ -174,10 +176,10 @@ function Matchform() {
     };
 
     const dataToSubmit = {
-      team: formData.team === "" ? 1 : prettyInt(formData.team, 1),
+      team: prettyInt(formData.team, 1),
 
       match: {
-        number: formData.match === "" ? 1 : prettyInt(formData.match, 1),
+        number: prettyInt(formData.match, 1),
         isReplay: !!formData.replayed,
       },
 
