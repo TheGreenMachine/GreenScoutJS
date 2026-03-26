@@ -41,6 +41,7 @@ function Matchform() {
     autoRobotAccuracy: 0,
     autoWon: false,
     autoFieldLeft: false,
+    autoFieldRight: false,
     autoFieldMid: false,
     autoFieldTop: false,
     autoFieldBump: false,
@@ -83,7 +84,6 @@ function Matchform() {
   const [cycleList, setCycleList] = useState([]);
 
   const [isButtonActive, setIsButtonActive] = useState("true");
-
   const [activeAlliance, setActiveAlliance] = useState("blue");
 
   const toggleStopwatch = (event) => {
@@ -104,7 +104,7 @@ function Matchform() {
     }
   };
 
-  const handleChange = useCallback(
+ const handleChange = useCallback(
     (e) => {
       const { name, type, checked, value } = e.target;
       const newValue = type === "checkbox" ? checked : value;
@@ -134,91 +134,129 @@ function Matchform() {
     },
     [formData.driverStation],
   );
-
   const submitAll = async (event) => {
     event.preventDefault();
 
-    const prettyInt = (str) => {
-      const parsed = parseInt(str.toString().replace(/[^\d.]/g, ""));
-      return isNaN(parsed) ? 1 : parsed;
+    // fallback is the value to be used if a number cant be found in the form data/string
+    const prettyInt = (str, fallback = 1) => {
+      const parsed = parseInt(String(str ?? "").replace(/[^\d]/g, ""), 10);
+      return Number.isNaN(parsed) ? fallback : parsed;
+    };
+
+    // fallback is the value to be used if a number cant be found in the form data/string
+    const prettyFloat = (val, fallback = 0) => {
+      const parsed = parseFloat(String(val ?? "").replace(/[^\d.]/g, ""));
+      return Number.isNaN(parsed) ? fallback : parsed;
+    };
+
+    const parseDriverStation = (dsRaw) => {
+      const ds = String(dsRaw ?? "");
+
+      return {
+        isBlue: ds.toLowerCase().includes("blue"),
+        number: prettyInt(ds, 1),
+      };
     };
 
     const expandCycles = () => {
-      if (cycleList.length === 0) {
-        return [{ Time: 0, Type: "None", activeHub: "blue", Success: false }];
+      if (!cycleList || cycleList.length === 0) {
+        return [{ time: 0, type: "None", success: false, accuracy: 0, activeHub: "blue"}];
       }
-      return cycleList.map((cycle) => ({
-        Time: parseFloat(cycle.time),
-        Type: cycle.event,
-        activeHub: cycle.activeHub,
-        Success: cycle.accuracy === 1,
-      }));
+
+      return cycleList.map((cycle) => {
+        const accNum = Number(cycle.accuracy);
+
+        return {
+          time: prettyFloat(cycle.time, 0),
+          type: String(cycle.event ?? ""),
+          activeHub: cycle.activeHub,
+          accuracy: Number.isFinite(accNum) ? accNum : 0,
+        };
+      });
     };
 
     const dataToSubmit = {
-      Team: formData.team === "" ? 1 : prettyInt(formData.team),
-      Match: {
-        Number: formData.match === "" ? 1 : prettyInt(formData.match),
-        isReplay: formData.replayed,
+      team: prettyInt(formData.team, 1),
+
+      match: {
+        number: prettyInt(formData.match, 1),
+        isReplay: !!formData.replayed,
       },
-      "Driver Station": {
-        "Is Blue": formData.driverStation.includes("Blue"),
-        Number: prettyInt(formData.driverStation),
+
+      scouter: "",
+
+      driverStation: parseDriverStation(formData.driverStation),
+
+      cycles: expandCycles(),
+
+      auto: {
+        canAuto: !!formData.canAuto,
+        hangAuto: !!formData.hangAuto,
+        scores: prettyInt(formData.autoScores, 0),
+        misses: prettyInt(formData.autoMisses, 0),
+        ejects: prettyInt(formData.autoEjects, 0),
+        won: !!formData.autoWon,
+
+        accuracy: {
+          hpAccuracy: prettyInt(formData.autoHPAccuracy, 0),
+          robotAccuracy: prettyInt(formData.autoRobotAccuracy, 0),
+        },
+
+        field: {
+          left: !!formData.autoFieldLeft,
+          right: !!formData.autoFieldRight,
+          mid: !!formData.autoFieldMid,
+          top: !!formData.autoFieldTop,
+          bump: !!formData.autoFieldBump,
+          trench: !!formData.autoFieldTrench,
+          didntCross: !!formData.autoFieldDidntCross,
+          hp: !!formData.autoFieldHP,
+          fuel: !!formData.autoFieldFuel,
+        },
       },
-      Scouter: user?.user ?? "",
-      Auto: {
-        Can: formData.canAuto,
-        Hang: formData.hangAuto,
-        Scores: formData.autoScores,
-        Misses: formData.autoMisses,
-        Ejects: formData.autoEjects,
-        "Auto Human Player Accuracy": formData.autoHPAccuracy,
-        "Auto Robot Accuracy": formData.autoRobotAccuracy,
-        "Auto Won": formData.autoWon,
+
+      teleop: {
+        collection: {
+          collectNeutral: !!formData.collectNeutral,
+          collectHp: !!formData.collectHp,
+          fuelCapacity: String(formData.fuelCapacity ?? "0"),
+        },
+
+        field: {
+          bump: !!formData.teleFieldBump,
+          trench: !!formData.teleFieldTrench,
+        },
+
+        botType: String(formData.botType ?? ""),
+        playstyle: String(formData.playstyle ?? ""),
       },
-      "Auto Locations": {
-        "Auto Field Left": formData.autoFieldLeft,
-        "Auto Field Mid": formData.autoFieldMid,
-        "Auto Field Top": formData.autoFieldTop,
-        "Auto Field Bump": formData.autoFieldBump,
-        "Auto Field Trench": formData.autoFieldTrench,
-        "Auto Field DidntCross": formData.autoFieldDidntCross,
-        "Auto Field HP": formData.autoFieldHP,
-        "Auto Field Fuel": formData.autoFieldFuel,
+
+      endgame: {
+        park: String(formData.park ?? ""),
+        climbTimer: prettyFloat(formData.climbTimer, 0),
+        endgameShoot: !!formData.endgameShoot,
       },
-      Cycles: expandCycles(),
-      TeleOP: {
-        "Neutral Collection": formData.collectNeutral,
-        "Human Player Collection": formData.collectHp,
-        "Fuel Capacity": formData.fuelCapacity,
+
+      issues: {
+        disconnect: !!formData.disconnect,
+        loseTrack: !!formData.loseTrack,
+        everBeached: !!formData.everBeached,
       },
-      Endgame: {
-        "Hanging Status": prettyInt(formData.park),
-        Time: parseFloat(formData.climbTimer),
-        "Shot During Endgame": formData.endgameShoot,
+
+      notes: {
+        autoNotes: String(formData.autoNotes ?? ""),
+        teleNotes: String(formData.teleNotes ?? ""),
+        perfNotes: String(formData.perfNotes ?? ""),
+        eventsNotes: String(formData.eventsNotes ?? ""),
+        commentsNotes: String(formData.commentsNotes ?? ""),
       },
-      "TeleOp Locations": {
-        "TeleOp Field Bump": formData.teleFieldBump,
-        "TeleOp Field Trench": formData.teleFieldTrench,
-      },
-      Misc: {
-        "Bot Type": formData.botType,
-        "Play Style": formData.playstyle,
-        "Lost Communication Or Disabled": formData.disconnect,
-        "User Lost Track": formData.loseTrack,
-        "Ever Beached": formData.everBeached,
-      },
-      Notes: {
-        "Auto Notes": formData.autoNotes,
-        "TeleOp Notes": formData.teleNotes,
-        "Performance Notes": formData.perfNotes,
-        "Event Notes": formData.eventsNotes,
-        Comments: formData.commentsNotes,
-      },
-      Rescouting: formData.replayed,
+
+      rescouting: !!formData.rescouting,
+      prescouting: !!formData.prescouting,
     };
 
     const jsonString = JSON.stringify(dataToSubmit, null, 2);
+
 
     await submitMatchform(jsonString);
     const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
@@ -385,6 +423,13 @@ function Matchform() {
               onChange={handleChange}
             >
               Right Of Field
+            </Autocheck>
+            <Autocheck
+              name="autoFieldTop"
+              value={formData.autoFieldTop}
+              onChange={handleChange}
+            >
+              Top Of Field
             </Autocheck>
             <Autocheck
               name="autoFieldBump"
