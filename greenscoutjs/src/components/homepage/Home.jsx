@@ -1,7 +1,7 @@
 import NavComponent from "../NavComponent";
 import "./Home.css";
-import NewButtonMatch from "./newMatchButton/NewButtonMatch";
-// import NewButtonPit from "./newPitButton/NewButtonPit";
+import NewButtonMatch from "./NewButtonMatch";
+import NewButtonPit from "./NewButtonPit";
 
 function refreshPage() {
   location.reload();
@@ -20,8 +20,8 @@ function Home() {
         {/* Pit Scouting Future Implementation */}
         {/* <h1 className="text" padding="0">
           Create Pit Scouting Form
-        </h1>
-        <NewButtonPit></NewButtonPit> */}
+        </h1> */}
+        {/* <NewButtonPit></NewButtonPit> */}
         {/* <h1 className="textHome2" id="assigned">
           Assigned Matches
         </h1> */}

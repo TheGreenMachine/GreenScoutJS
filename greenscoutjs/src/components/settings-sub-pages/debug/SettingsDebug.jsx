@@ -6,7 +6,7 @@ import { submitMatchform } from "../../../api";
 function SettingsDebug({ ip, eventData }) {
   const [matches, setMatches] = useState(() => {
     const cached = JSON.parse(localStorage.getItem("matchFormCache") || "[]");
-    return cached.reverse(); // most recent first
+    return cached.reverse(); //Most Recent First
   });
 
   const tileRef = useRef(null);
@@ -37,7 +37,6 @@ function SettingsDebug({ ip, eventData }) {
       const formattedData = matches
         .map((entry) => JSON.stringify(entry))
         .join("\n");
-
       navigator.clipboard.writeText(formattedData);
     }
   };
@@ -51,7 +50,7 @@ function SettingsDebug({ ip, eventData }) {
   const forceSendAll = () => {
     matches.map((entry) =>
       submitMatchform(entry).catch((err) => {
-        console.err("Submission failed:", err);
+        console.error("Submission failed:", err);
       }),
     );
   };
@@ -61,7 +60,7 @@ function SettingsDebug({ ip, eventData }) {
       <NavComponentSettings />
       <div id="settingsContainerDebug">
         <button className="settingButtonDebug">
-          <div className="image debug ipAddress"> </div>
+          <div className="image debug ipAddress"></div>
           <div className="settingButtonDebugText">
             <h2>IP Address</h2>
             <p>{ip}</p>
@@ -71,7 +70,7 @@ function SettingsDebug({ ip, eventData }) {
           <div className="image debug eventData"></div>
           <div className="settingButtonDebugText">
             <h2>Event Data</h2>
-            <p>{eventData || "Unable to recieve from server"}</p>
+            <p>{eventData || "Unable to receive from server"}</p>
           </div>
         </button>
         <button className="settingButtonDebug" onClick={clearMatchCache}>
@@ -106,13 +105,11 @@ function SettingsDebug({ ip, eventData }) {
               ref={index === 0 ? tileRef : null}
               className="settingsDebugCachedMatchesButton"
             >
-              <span className="settingsDebugCachedMatchesButton">
+              <span>
                 Match # {JSON.stringify(entry.data?.Match?.Number) || "N/A"}
               </span>
-              <span className="settingsDebugCachedMatchesButton">
-                Team # {JSON.stringify(entry.data?.Team) || "N/A"}
-              </span>
-              <span className="settingsDebugCachedMatchesButton">
+              <span>Team # {JSON.stringify(entry.data?.Team) || "N/A"}</span>
+              <span>
                 {JSON.stringify(entry.data?.driverStation?.IsBlue).includes(
                   "false",
                 )

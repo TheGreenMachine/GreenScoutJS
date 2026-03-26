@@ -33,8 +33,8 @@ function Settings() {
         {/* <button className="settingButton" onClick={navMatchForm}>
           <div className="image matchImage"></div>
           Match Form Layout
-        </button> */}
-        {/* <button className="settingButton" onClick={navTheme}>
+        </button>
+        <button className="settingButton" onClick={navTheme}>
           <div className="image themeImage"></div>
           Themes (Work In Progress)
         </button> */}

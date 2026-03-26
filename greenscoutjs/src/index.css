@@ -4,144 +4,109 @@ html {
 
 :root {
   /* Color Variables */
-  --background-color: #141415;
-  /* --accent-color: #9bcbfb;
+  --background-color: white;
+  --accent-color: #9bcbfb;
   --accent-color2: #8fbdeb;
-  --accent-color3: #cee5ff; */
-  --accent-color: #4cbb17;
-  --accent-color2: #4cbb17;
-  --accent-color3: #4cbb17;
+  --accent-color3: #cee5ff;
 
   --blue-color: #9bcbfb;
   --error-color: var(--disabled-color);
   --disabled-color: #717172;
 
   --font-color: black;
-  --font-color-prompt-title: #4cbb17;
-  --font-color-header: #58db1c;
+  --font-color-prompt-title: black;
+  --font-color-header: black;
 
   --drop-shadow-color: #626263;
-
   --sidenav-hover-color: #444;
+  --faded-text-color: #5f6167;
 
-  /* --faded-text-color: #5f6167; */
-  --faded-text-color: rgb(210, 209, 209);
-
-  /*--kelly-green: #4cbb17; /* Kelly Green is the color of Edina's "The Green Machine" */
   --kelly-green: #4cbb17;
-
   --error-message-color: var(--disabled-color);
   --check-background-color: #4cbb17;
   --checkbox-default-color: #eee;
   --checkbox-hover-color: #ccc;
   --border-color-faded: #d9d9db;
-
-  /* --border-color-active: #417096; */
-  --border-color-active: #4cbb17;
-
-  /* --sidenav-button-color: #dfdfdf; */
-  --sidenav-button-color: #4cbb17;
+  --border-color-active: #417096;
+  --sidenav-button-color: #dfdfdf;
 
   /* General Sizing Variables */
-  --border-radius: 1rem;
   --font-size-large: 3vh;
   --font-size-small: 2.5vh;
+  --font-size-cycle: clamp(0.7rem, 1.8vh, 0.95rem);
   --font-weight: 1;
-  --page-height: 100vh;
+  --border-radius: 1rem;
+  --page-height: 100dvh;
   --page-width: 100vw;
   --content-height: calc(var(--page-height) - var(--navbar-height));
   --content-width: var(--page-width);
-  --element-height: 6.2vh; /* Not used universally, but use a lot */
+  --element-height: clamp(2.8rem, 6.2vh, 3.6rem);
 
   /* Navbar Sizing Variables */
-  --sidenav-width: 70vw;
-  --navbar-height: 8vh;
-  --sidenav-usertile-height: 0%; /* Set to 0 while user tile is diabled */
+  --sidenav-width: min(70vw, 22rem);
+  --navbar-height: clamp(3rem, 8vh, 4.5rem);
+  --sidenav-usertile-height: 0%;
   --sidenav-usertile-width: 15vh;
   --sidenav-section-height: calc((100% - var(--sidenav-usertile-height)) / 2);
   --navbar-hamburger-padding: 15px;
   --navbar-hamburger-top-distance: -6px;
   --navbar-text-padding-top: 5px;
   --sidenav-usertile-margin-bottom: 3vw;
-  --sidenav-userimage-size: 3vw;
+  --sidenav-userimage-size: clamp(1.5rem, 3vw, 2.5rem);
   --sidenav-usertext-h1-margin-top: 1.7vh;
   --sidenav-usertext-p-margin-top: -4.3vh;
   --sidenav-usertext-p-margin-left: 0.2vw;
   --sidenav-padding-top: 60px;
+
   /* Login Sizing Variables */
   --login-h1-height: 3vh;
   --login-h1-margin-top: 4vh;
   --login-error-message-margin: 10px 0;
-
-  --login-box-width: 30vh;
+  --login-element-width: 50rem;
+  --login-element-height: clamp(4.8rem, 6.2vh, 6.6rem);
   --login-box-margin-top: 5vh;
   --login-box-margin-bottom: 1.5vh;
   --login-box-padding-left: calc(var(--login-box-background-size) + 1vh);
   --login-box-background-size: 3vh;
   --login-box-background-position: 5px 1.2vh;
-
-  --login-button-width: 30vh;
-  --login-button-height: 6vh;
+  --login-button-height: clamp(2.5rem, 6vh, 4rem);
 
   /* Match Form Sizing Variables */
-  --matchform-text-padding-top: 5px;
-  --matchform-text-height: 30px;
-
-  --matchform-side-panel-width: 8vh;
+  --matchform-side-panel-width: clamp(4rem, 8vh, 5.5rem);
   --matchform-grid-template: 1fr var(--matchform-side-panel-width);
-
-  --matchform-child-margin-side: 7.5vw; /* Used Throughout Child Components */
-  --matchform-child-width-to-subtract: 15vw; /* Used Throughout Child Components */
-
-  --matchform-element-height: 6.2vh; /* Replace throughout with element-height */
-  --matchform-matchteam-margin-top: 1.5vh;
-
+  --matchform-child-margin-side: 7.5vw;
+  --matchform-child-width-to-subtract: 15vw;
+  --matchform-element-height: var(--element-height);
+  --matchform-matchteam-margin-top: clamp(0.5rem, 1.5vh, 1rem);
   --matchform-header-padding-top: 5px;
-  --matchform-header-end-margin-top: 8vh;
-
-  --matchform-notes-height: 20vh;
-
-  --matchform-cycle-container-height: 40vh;
-  --matchform-cycle-item-height: 9vh;
-  --matchform-cycle-item-margin-bottom: 1vw;
-  --matchform-cycle-item-image-height: 4vh;
-  --matchform-cycle-item-image-width: 4vh;
+  --matchform-header-end-margin-top: clamp(2rem, 8vh, 5rem);
+  --matchform-notes-height: 35vh;
+  --matchform-cycle-container-height: clamp(16rem, 40vh, 28rem);
+  --matchform-cycle-item-height: clamp(4rem, 9vh, 6rem);
+  --matchform-cycle-item-margin-bottom: clamp(0.3rem, 1vw, 0.6rem);
+  --matchform-cycle-item-image-height: clamp(1.8rem, 4vh, 2.6rem);
+  --matchform-cycle-item-image-width: clamp(1.8rem, 4vh, 2.6rem);
   --matchform-cycle-delete-height: 30%;
   --matchform-cycle-delete-width: 10%;
-
   --matchform-cycle-text-padding-top: 5%;
   --matchform-cycle-text-padding-left: 5%;
   --matchform-cycle-text-width: 25;
-
-  --matchform-acclabel-width: 10vh;
-  --matchform-acclabel-height: 3vh;
-  --matchform-accslider-width: 70%;
-  --matchform-accslider-height: 2vh;
-  --matchform-accslider-margin-right: 10%;
-  --matchform-accslider-thumb-size: 5vw;
-
-  --matchform-bottomspace-height: 15vh;
+  --matchform-bottomspace-height: clamp(4rem, 15vh, 10rem);
   --matchform-bottomspace-max-height: 80px;
 
   /* Match Form Checkbox Sizing Variables */
   --check-text-height: 30px;
   --check-padding-top: 1vh;
-
+  --check-div-height: clamp(2.4rem, 6vh, 3.5rem);
   --check-div-margin: 5vh;
-
-  --check-size: 2.5vh;
-
+  --check-size: clamp(1.1rem, 2.5vh, 1.6rem);
   --check-container-padding-left: 35px;
   --check-container-margin-bottom: 12px;
-
   --check-mark-left: 1vw;
-
   --check-mark-after-left: 9px;
   --check-mark-after-top: 5px;
-  --check-mark-after-size: 1.2vh;
-
+  --check-mark-after-size: clamp(0.5rem, 1.2vh, 0.8rem);
   --check-special-margin-left: 7.5vw;
-
   --check-auto-text-padding-top: 1vh;
   --check-auto-text-width: 80vw;
 
@@ -149,86 +114,75 @@ html {
   --counter-text-padding-top: 5px;
   --counter-text-height: 30px;
   --counter-text-margin-bottom: 5vh;
-
   --counter-child-margin-vertical: 3vh;
-
-  --counter-button-height: 5.2vh;
-  --counter-add-width: 40%;
-  --counter-subtract-width: 30%;
+  --counter-button-height: clamp(2.8rem, 5.2vh, 3.4rem);
+  --counter-add-width: 28%;
+  --counter-subtract-width: 20%;
   --counter-button-margin-left: 1vw;
 
   /* Match Form Slider Sizing Variables */
-  --slider-container-width: 70%;
-  --slider-container-margin-bottom: 10%;
+  --slider-container-width: 55%;
+  --slider-container-margin-bottom: clamp(0.4rem, 3vh, 1.2rem);
+
+  /* Match Form Accuracy Slider Sizing Variables */
+  --matchform-acclabel-width: clamp(2.8rem, 10vh, 5rem);
+  --matchform-acclabel-height: clamp(1rem, 3vh, 2rem);
+  --matchform-accslider-width: 70%;
+  --matchform-accslider-height: 2vh;
+  --matchform-accslider-margin-right: 10%;
+  --matchform-accslider-thumb-size: clamp(1.6rem, 5vw, 2.2rem);
 
   /* Match Form Collapsible Dropdown Sizing Variables */
-  --collapsible-open-max-height: 100%; /* 2000px */
+  --collapsible-open-max-height: 9999px;
   --collapsible-padding: 12px 16px;
 
   /* Match Form Dropdown Sizing Variables */
   --dropdown-margin-top: 3vh;
   --dropdown-padding-bottom: 0.5vh;
-  --dropdown-height: 5.2vh;
-  --dropdown-width: 15vh;
-
+  --dropdown-height: clamp(2.8rem, 5.2vh, 3.4rem);
+  --dropdown-width: clamp(5rem, 12vh, 8rem);
   --dropdown-text-padding-top: 5px;
   --dropdown-text-height: 30px;
-
   --dropdown-driverstation-margin-top: 1vh;
-
   --dropdown-dtext-height: 3.1vh;
   --dropdown-dtext-width: 70vw;
-
   --dropdown-collect-container-margin-top: 3%;
-
   --dropdown-dtext-collect-width: 70vw;
-
-  --dropdown-collect-margin-top: 16%;
+  --dropdown-collect-margin-top: 0;
   --dropdown-collect-padding-bottom: 0.5vh;
-
   --dropdown-park-text-padding-top: 4%;
 
   /* Match Form Trigger Sizing Variables */
   --trigger-margin-top: 5.7vh;
   --trigger-margin-bottom: 4.4vh;
-  --trigger-size: 6.5vh;
-
+  --trigger-size: clamp(3rem, 6.5vh, 4.5rem);
   --trigger-stop-image-height: 2vh;
   --trigger-stop-image-background-size: 1.7vh 1.7vh;
   --trigger-stop-image-background-position: 2vh 0vh;
-
-  --trigger-reset-height: 8vh;
+  --trigger-reset-height: clamp(2.2rem, 8vh, 4.5rem);
 
   /* Match Form Submit/Replay Sizing Variables */
-  --submitreplay-div-height: 8vh;
+  --submitreplay-div-height: clamp(3rem, 8vh, 5rem);
   --submitreplay-div-margin-bottom: 1vh;
-
   --submitreplay-button-margin-top: 5.7vh;
   --submitreplay-button-margin-bottom: 4.4vh;
-
   --submitreplay-text-margin-top: -1vh;
-
   --submitreplay-label-margin-top: 2vh;
-
   --submit-image-margin-top: -3.5vh;
-  --submit-image-size: 4.8vh;
+  --submit-image-size: clamp(2rem, 4.8vh, 3.2rem);
 
   /* General Cycles Sizing Variables */
-  --font-size-cycle: 1.8vh;
-
-  /* Cycle Start/Stop Button Sizing Variables */
   --cycle-margin-top: 5.7vh;
   --cycle-margin-bottom: 4.4vh;
-  --cycle-size: 6.5vh;
+  --cycle-size: clamp(3rem, 6.5vh, 4.5rem);
   --cycle-top: 4vh;
-
   --cycle-image-height: 2vh;
   --cycle-image-background-size: 1.7vh 1.7vh;
   --cycle-image-background-position: 2vh 0vh;
 
   /* Score Cycle Sizing Variables */
   --score-top: 13vh;
-  --score-image-height: 3vh;
+  --score-image-height: clamp(1.2rem, 3vh, 2rem);
 
   /* Shuttle Cycle Sizing Variables */
   --shuttle-top: 22vh;
@@ -237,28 +191,24 @@ html {
   --hubSwitch-top: 31vh;
 
   /* Home Page Sizing Variables */
-  --new-matchpit-button-height: 8vh;
-  --new-matchpit-button-width: 50vw;
-
+  --new-matchpit-button-height: clamp(3rem, 8vh, 5rem);
+  --new-matchpit-button-width: clamp(14rem, 50vw, 22rem);
   --home-text-padding-top: 5px;
   --home-assigned-h-padding-top: 10px;
   --home-refresh-container-bottom: -14px;
   --home-refresh-container-right: 17px;
   --home-refresh-button-margin-top: 5.7vh;
   --home-refresh-button-margin-bottom: 4.4vh;
-  --refresh-button-size: 7.9vh;
-
-  /* Sizing Variables */
+  --refresh-button-size: clamp(3.5rem, 7.9vh, 5rem);
 
   /* Leader Board Sizing Variables */
-  --leader-board-element-height: 5vh;
+  --leader-board-element-height: clamp(2.2rem, 5vh, 3.2rem);
 
   /* Settings Sizing Variables */
   --settings-element-width: 80%;
   --settings-element-height: calc(var(--font-size-large) * 2);
   --settings-element-spacing: calc(var(--font-size-small) / 2);
   --settings-debug-image-offset: 2vh;
-
   --settings-themedrop-padding-top: 5px;
   --settings-themedrop-height: 30px;
   --settings-themedrop-text-width: 70vw;

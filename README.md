@@ -7,6 +7,7 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
     1. First time:
        - Installations:
          ```
+         npm install vite -g
          npm install -g create-vite
          npm i react@latest react-dom@latest
          npm install --save gh-pages

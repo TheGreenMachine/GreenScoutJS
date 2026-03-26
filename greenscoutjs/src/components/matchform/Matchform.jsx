@@ -31,9 +31,9 @@ const defaultFormData = {
   driverStation: "",
   canAuto: false,
   hangAuto: false,
-  autoScores: 0,
-  autoMisses: 0,
-  autoEjects: 0,
+  autoScores: undefined,
+  autoMisses: undefined,
+  autoEjects: undefined,
   autoHPAccuracy: 0,
   autoRobotAccuracy: 0,
   autoWon: false,
@@ -558,7 +558,7 @@ function Matchform() {
           <div className="child" id="headparent">
             <h1 className="header">TeleOp Mode</h1>
           </div>
-          <CollapsibleDropdown title="Cycles">
+          <CollapsibleDropdown title="Cycles" startOpen={true}>
             <Cycles
               list={cycleList}
               runningBool={isCycleRunning}
@@ -673,7 +673,7 @@ function Matchform() {
             Were They Ever Beached?
           </Autocheck>
           <div className="child" id="headparent"></div>
-          <CollapsibleDropdown title="Notes">
+          <CollapsibleDropdown title="Notes" startOpen={true}>
             <p>&emsp;Auto Notes: </p>
             <div className="child notesdiv">
               <textarea

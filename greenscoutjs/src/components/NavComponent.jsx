@@ -61,7 +61,7 @@ function NavComponent({ onNavigateOut }) {
             Match Form
           </button>
           <button className="textp" onClick={navLeaderBoard}>
-            Leaderboard
+            Leader Board
           </button>
         </nav>
         <nav className="side-nav-bottom">
