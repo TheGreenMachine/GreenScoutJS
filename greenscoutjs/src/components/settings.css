@@ -23,6 +23,7 @@
   height: var(--settings-element-height);
   margin-left: calc((100% - var(--settings-element-width)) / 2);
   border-radius: var(--border-radius);
+  border: var(--border-color) 1px solid;
   background-color: var(--sidenav-button-color);
   display: flex;
   flex-direction: row;
@@ -32,7 +33,7 @@
 .settingsh1 {
   text-align: center;
   background-color: transparent;
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
   margin: var(--settings-element-spacing) var(--settings-element-spacing);
   width: var(--settings-element-width);
   height: var(--settings-element-height);
@@ -69,7 +70,7 @@
 
 #settingsDebugBody {
   font-size: var(--font-size-small);
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
   background-color: var(--background-color);
   height: var(--page-height);
   width: var(--page-width);
@@ -88,7 +89,7 @@
 }
 
 .settingButtonDebug {
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
   margin: calc(var(--settings-element-spacing) / 3)
     calc(var(--settings-element-spacing) / 3);
   width: var(--settings-element-width);
@@ -97,6 +98,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
 }
 
 .settingButtonDebugText {
@@ -120,23 +123,63 @@
 }
 
 .image.debug {
-  margin-right: var(--settings-debug-image-offset);
+  padding-left: 20vw;
 }
 
 .image.debug.ipAddress {
-  background-image: url("../assets/wifi-solid-full.svg");
+  background-color: var(--font-color-prompt-title);
+  -webkit-mask-image: url("../assets/wifi-solid-full.svg");
+  mask-image: url("../assets/wifi-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 .image.debug.eventData {
-  background-image: url("../assets/calendar-day-solid-full.svg");
-}
-.image.debug.uuid {
-  background-image: url("../assets/user.svg");
-}
-.image.debug.certificate {
-  background-image: url("../assets/code-solid-full.svg");
+  background-color: var(--font-color-prompt-title);
+  -webkit-mask-image: url("../assets/calendar-day-solid-full.svg");
+  mask-image: url("../assets/calendar-day-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 .image.debug.resetLife {
-  background-image: url("../assets/clock-rotate-left-solid-full.svg");
+  background-color: var(--font-color-prompt-title);
+  -webkit-mask-image: url("../assets/clock-rotate-left-solid-full.svg");
+  mask-image: url("../assets/clock-rotate-left-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+.image.debug.copyAll {
+  background-color: var(--font-color-prompt-title);
+  -webkit-mask-image: url("../assets/copy-solid-full.svg");
+  mask-image: url("../assets/copy-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+.image.debug.forceAll {
+  background-color: var(--font-color-prompt-title);
+  -webkit-mask-image: url("../assets/share-solid-full.svg");
+  mask-image: url("../assets/share-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 /* Debug Cached Matches */
@@ -151,7 +194,7 @@
 }
 
 .settingsDebugCachedMatchesButton {
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
   margin: calc(var(--settings-element-spacing) / 3)
     calc(var(--settings-element-spacing) / 3);
   max-width: var(--content-width);
@@ -161,6 +204,14 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background-color: var(--background-color);
+  border: var(--font-color-prompt-title) 1px solid;
+  border-radius: var(--border-radius);
+}
+
+.settingsDebugCachedMatchesButton > * {
+  border: none;
+  max-height: calc(calc(var(--settings-element-height) * 2) - 5%);
 }
 
 .settingsDebugCachedMatchesButton.noneFound {
@@ -174,4 +225,5 @@
   width: 20%;
   padding: 0;
   right: 0;
+  background-color: var(--background-color);
 }

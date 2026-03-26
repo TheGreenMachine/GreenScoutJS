@@ -1,7 +1,9 @@
 import axios from "axios";
 import forge from "node-forge";
 
-const SERVER = "/api";
+const SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
+
+axios.defaults.withCredentials = true;
 
 async function getPublicKey() {
   const response = await axios.get(`${SERVER}/pub`);
@@ -49,14 +51,6 @@ export const authenticateUser = async (username, password) => {
   };
 };
 
-export const getUUID = (username) => {
-  return null;
-};
-
-export const getCertificate = (username) => {
-  return null;
-};
-
 export const logoutUser = async () => {
   await axios.post(`${SERVER}/logout`);
 };
@@ -72,8 +66,8 @@ export const submitMatchform = async (formData) => {
 export const getLeaderboard = async (scoreType) => {
   const response = await axios.get(`${SERVER}/leaderboard`, {
     headers: {
-      'type': scoreType
-    }
+      type: scoreType,
+    },
   });
 
   return response.data;

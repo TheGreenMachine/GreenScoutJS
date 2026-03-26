@@ -17,6 +17,14 @@ function Settings() {
     navigate("/settings/debug");
   }
 
+  const clearMatchCache = (event) => {
+    event.preventDefault();
+    if (confirm("Clear all cached matches?")) {
+      localStorage.removeItem("matchFormCache");
+      setMatches([]);
+    }
+  };
+
   return (
     <div className="settingsBody">
       <NavComponent />

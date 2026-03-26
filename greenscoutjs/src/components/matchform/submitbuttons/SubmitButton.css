@@ -41,7 +41,15 @@
 
 #submitImage {
   margin-top: var(--submit-image-margin-top);
-  background-image: url("../../../assets/floppy-disk-solid-full.svg");
+  background-color: var(--font-color);
+  -webkit-mask-image: url("../../../assets/floppy-disk-solid-full.svg");
+  mask-image: url("../../../assets/floppy-disk-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 .submitImage {

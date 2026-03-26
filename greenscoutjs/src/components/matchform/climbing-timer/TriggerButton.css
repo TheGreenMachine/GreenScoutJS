@@ -36,11 +36,27 @@
 }
 
 .act {
-  background-image: url("../../../assets/square-solid-full.svg");
+  background-color: var(--font-color);
+  -webkit-mask-image: url("../../../assets/square-solid-full.svg");
+  mask-image: url("../../../assets/square-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 .inact {
-  background-image: url("../../../assets/stopwatch.svg");
+  background-color: var(--font-color);
+  -webkit-mask-image: url("../../../assets/stopwatch.svg");
+  mask-image: url("../../../assets/stopwatch.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 #resetbutton {

@@ -1,8 +1,14 @@
 // AuthContext.jsx - Context provider for authentication state
 // Place this file in: greenscoutjs/src/context/AuthContext.jsx
 
-import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
-import { logoutUser } from "./api/";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
+import { logoutUser } from "./api/api";
 
 const AuthContext = createContext(null);
 
@@ -17,13 +23,10 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.warn("Server logout failed:", err);
     }
-    // Always clear local state even if server errors
     setUser(null);
     setIsAuthenticated(false);
     localStorage.removeItem("greenscout_user");
     localStorage.removeItem("greenscout_auth");
-    localStorage.removeItem("UUID");
-    localStorage.removeItem("Certificate");
   });
 
   // Check for existing session on mount
@@ -54,16 +57,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("greenscout_user", JSON.stringify(userData));
     localStorage.setItem("greenscout_auth", "true");
   }, []);
-
-  const logout = useCallback(async () => {
-    await logoutUser();
-    setUser(null);
-    setIsAuthenticated(false);
-    localStorage.removeItem("greenscout_user");
-    localStorage.removeItem("greenscout_auth");
-    localStorage.removeItem("UUID");
-    localStorage.removeItem("Certificate");
-  });
 
   const updateUser = useCallback((updatedData) => {
     setUser((prev) => {

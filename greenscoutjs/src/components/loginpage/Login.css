@@ -19,6 +19,7 @@
   margin-top: var(--login-h1-margin-top);
   height: var(--login-h1-height);
   font-size: var(--font-size-large);
+  color: var(--font-color-prompt-title);
 }
 
 #body {
@@ -31,6 +32,7 @@
 
 .input {
   border: none;
+  background-color: transparent;
 }
 
 #loginPageForm {
@@ -48,29 +50,30 @@
 /* Username Box */
 
 #user {
-  width: var(--login-box-width);
+  max-width: calc(
+    var(--login-box-width) - calc(var(--login-box-padding-left) * 1)
+  );
   height: var(--matchform-element-height);
-  border-radius: var(--border-radius);
-  padding-left: var(--login-box-padding-left);
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
+  border: none;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
-  border: solid 0.25vh var(--border-color-gray);
-  margin-top: var(--login-box-margin-top);
-  margin-bottom: var(--login-box-margin-bottom);
-  background: url(../../assets/user.svg) no-repeat scroll 0px 0px;
-  background-size: var(--login-box-background-size);
+  background-color: transparent;
   background-position: var(--login-box-background-position);
   font-size: var(--font-size-large);
 }
 
 #user:focus {
-  border: solid 0.4vh var(--border-color-blue);
+  outline: none;
+}
+
+#usercontainer:focus-within {
+  border: solid 0.4vh var(--border-color-active);
   outline: none;
 }
 
 #user::placeholder {
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
   font-size: var(--font-size-large);
@@ -83,29 +86,33 @@
 /* Password Box */
 
 #pass {
-  width: var(--login-box-width);
+  max-width: calc(
+    var(--login-box-width) - calc(var(--login-box-padding-left) * 1)
+  );
   height: var(--matchform-element-height);
-  border-radius: var(--border-radius);
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
-  border: solid 0.25vh var(--border-color-gray);
-  padding-left: var(--login-box-padding-left);
-  background: url(../../assets/pass.svg) no-repeat scroll 0px 0vh;
+  border: none;
+  background-color: var(--background-color) no-repeat scroll 0px 0vh;
   background-size: var(--login-box-background-size);
   background-position: var(--login-box-background-position);
   font-size: var(--font-size-large);
 }
 
 #pass::placeholder {
-  color: var(--font-color);
+  color: var(--font-color-prompt-title);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
   font-size: var(--font-size-large);
 }
 
 #pass:focus {
-  border: solid 0.4vh var(--border-color-blue);
+  outline: none;
+}
+
+#passcontainer:focus-within {
+  border: solid 0.4vh var(--border-color-active);
   outline: none;
 }
 
@@ -135,4 +142,50 @@
   background-color: var(--accent-color2);
   cursor: pointer;
   outline: none;
+}
+
+#userimg {
+  width: var(--login-box-padding-left);
+  height: var(--login-box-padding-left);
+  background-color: var(--font-color-prompt-title);
+  -webkit-mask-image: url("../../assets/user.svg");
+  mask-image: url("../../assets/user.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+#passimg {
+  width: var(--login-box-padding-left);
+  height: var(--login-box-padding-left);
+  background-color: var(--font-color-prompt-title);
+  -webkit-mask-image: url("../../assets/square-solid-full.svg");
+  mask-image: url("../../assets/square-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+#usercontainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: var(--login-box-margin-top);
+  margin-bottom: var(--login-box-margin-bottom);
+  align-items: center;
+  border: solid 0.25vh var(--border-color-faded);
+  border-radius: var(--border-radius);
+}
+
+#passcontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: solid 0.25vh var(--border-color-faded);
+  border-radius: var(--border-radius);
 }

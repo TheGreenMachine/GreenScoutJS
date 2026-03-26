@@ -56,10 +56,11 @@ const Login = ({ getUser }) => {
       <div id="parent" className="text">
         <h1 className="textlogin loginh1">Login</h1>
         <form id="loginPageForm" onSubmit={handleSubmit}>
-          <div>
+          <div id="usercontainer">
+            <div id="userimg"></div>
             <input
               className="input"
-              placeholder="Enter your username"
+              placeholder="Enter Username"
               type="text"
               id="user"
               onChange={handleUsernameChange}
@@ -69,10 +70,11 @@ const Login = ({ getUser }) => {
               autoComplete="username"
             />
           </div>
-          <div>
+          <div id="passcontainer">
+            <div id="passimg"></div>
             <input
               className="input"
-              placeholder="Enter your password"
+              placeholder="Enter Password"
               required
               disabled={isLoading}
               autoComplete="current-password"

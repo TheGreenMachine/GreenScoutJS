@@ -1,10 +1,9 @@
-#hubSwitchButton.blue {
+#hubSwitchButton {
   margin-top: var(--cycle-margin-top);
   margin-bottom: var(--cycle-margin-bottom);
-  background-color: var(--accent-color3);
   border: 1px var(--accent-color3);
   border-radius: var(--border-radius);
-  box-shadow: 0px 4px 5px rgb(164, 164, 164);
+  box-shadow: 0px 4px 5px var(--drop-shadow-color);
   color: var(--font-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: var(--font-weight);
@@ -15,31 +14,29 @@
   top: var(--hubSwitch-top);
   font-size: var(--font-size-cycle);
   text-align: center;
+  background-color: var(--disabled-color);
+}
+
+#hubSwitchButton.blue {
+  background-color: var(--blue-color);
 }
 
 #hubSwitchButton.red {
-  margin-top: var(--cycle-margin-top);
-  margin-bottom: var(--cycle-margin-bottom);
   background-color: var(--error-color);
-  border: 1px var(--disabled-color);
-  border-radius: var(--border-radius);
-  box-shadow: 0px 4px 5px rgb(164, 164, 164);
-  color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: var(--font-weight);
-  outline: none;
-  width: var(--cycle-size);
-  height: var(--cycle-size);
-  position: absolute;
-  top: var(--hubSwitch-top);
-  font-size: var(--font-size-cycle);
-  text-align: center;
 }
 
 #hubSwitchButtonImg {
   height: var(--cycle-image-height);
   width: 100%;
-  background-image: url("../../../assets//arrow-right-arrow-left-solid-full.svg");
+  background-color: var(--font-color);
+  -webkit-mask-image: url("../../../assets/arrow-right-arrow-left-solid-full.svg");
+  mask-image: url("../../../assets/arrow-right-arrow-left-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
   background-size: var(--cycle-image-background-size);
   background-repeat: no-repeat;
   background-position: var(--cycle-image-background-position);

@@ -1,6 +1,5 @@
 import "./Matchform.css";
-import { useState, useCallback } from "react";
-import { useAuth } from "../../AuthContext";
+import { useState, useCallback, useEffect } from "react";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -26,49 +25,53 @@ import BotTypeDropdown from "./auto/dropdown/BotTypeDropdown";
 import PlaystyleDropdown from "./auto/dropdown/PlaystyleDropdown";
 import HubSwitch from "./teleopcycles/HubSwitch";
 
+const defaultFormData = {
+  match: "",
+  team: "",
+  driverStation: "",
+  canAuto: false,
+  hangAuto: false,
+  autoScores: 0,
+  autoMisses: 0,
+  autoEjects: 0,
+  autoHPAccuracy: 0,
+  autoRobotAccuracy: 0,
+  autoWon: false,
+  autoFieldLeft: false,
+  autoFieldRight: false,
+  autoFieldMid: false,
+  autoFieldTop: false,
+  autoFieldBump: false,
+  autoFieldTrench: false,
+  autoFieldDidntCross: false,
+  autoFieldHP: false,
+  autoFieldFuel: false,
+  collectNeutral: false,
+  collectHp: false,
+  fuelCapacity: "0",
+  climbTimer: 0.0,
+  teleFieldBump: false,
+  teleFieldTrench: false,
+  park: "",
+  endgameShoot: false,
+  botType: "",
+  playstyle: "",
+  disconnect: false,
+  loseTrack: false,
+  everBeached: false,
+  autoNotes: "",
+  teleNotes: "",
+  perfNotes: "",
+  eventsNotes: "",
+  commentsNotes: "",
+  replayed: false,
+};
+
 function Matchform() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    match: "",
-    team: "",
-    driverStation: "",
-    canAuto: false,
-    hangAuto: false,
-    autoScores: 0,
-    autoMisses: 0,
-    autoEjects: 0,
-    autoHPAccuracy: 0,
-    autoRobotAccuracy: 0,
-    autoWon: false,
-    autoFieldLeft: false,
-    autoFieldRight: false,
-    autoFieldMid: false,
-    autoFieldTop: false,
-    autoFieldBump: false,
-    autoFieldTrench: false,
-    autoFieldDidntCross: false,
-    autoFieldHP: false,
-    autoFieldFuel: false,
-    collectNeutral: false,
-    collectHp: false,
-    fuelCapacity: "0",
-    climbTimer: 0.0,
-    teleFieldBump: false,
-    teleFieldTrench: false,
-    park: "",
-    endgameShoot: false,
-    botType: "",
-    playstyle: "",
-    disconnect: false,
-    loseTrack: false,
-    everBeached: false,
-    autoNotes: "",
-    teleNotes: "",
-    perfNotes: "",
-    eventsNotes: "",
-    commentsNotes: "",
-    replayed: false,
-  });
+  const [formData, setFormData] = useState(defaultFormData);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [time, setTime] = useState(0);
   const [cycleTime, setCycleTime] = useState(0);
@@ -77,6 +80,8 @@ function Matchform() {
   const secondCount = "Misses";
   const thirdCount = "Ejects";
 
+  const [hubSwitchCount, setHubSwitchCount] = useState(0);
+
   const [isRunning, setIsRunning] = useState(false);
   const [isCycleRunning, setIsCycleRunning] = useState(false);
   const [resetKey, setResetKey] = useState(0);
@@ -84,7 +89,45 @@ function Matchform() {
   const [cycleList, setCycleList] = useState([]);
 
   const [isButtonActive, setIsButtonActive] = useState("true");
-  const [activeAlliance, setActiveAlliance] = useState("blue");
+
+  const [teamAlliance, setTeamAlliance] = useState("");
+  const [activeAlliance, setActiveAlliance] = useState("gray");
+
+  const [hasCache, setHasCache] = useState(false);
+
+  useEffect(() => {
+    const cachedData = localStorage.getItem("tempMatchFormCache");
+    if (cachedData) {
+      setHasCache(true);
+    }
+  }, []);
+
+  const handleNavigateOut = () => {
+    compileAndCache("tempMatchFormCache", true);
+  };
+
+  const restoreFromCache = (e) => {
+    e.preventDefault();
+    try {
+      const raw = localStorage.getItem("tempMatchFormCache");
+      console.log("raw cache:", raw);
+
+      const cached = JSON.parse(raw);
+      console.log("parsed cache:", cached);
+      console.log("cached.data:", cached?.data);
+
+      if (cached?.data) {
+        const restored = { ...defaultFormData, ...cached.data };
+        console.log("restoring to:", restored);
+        setFormData(restored);
+        setHasCache(false);
+      } else {
+        console.log("no data found in cache");
+      }
+    } catch (err) {
+      console.warn("Failed to restore cache:", err);
+    }
+  };
 
   const toggleStopwatch = (event) => {
     if (event) event.preventDefault();
@@ -104,175 +147,205 @@ function Matchform() {
     }
   };
 
- const handleChange = useCallback(
-    (e) => {
-      const { name, type, checked, value } = e.target;
-      const newValue = type === "checkbox" ? checked : value;
-
-      setFormData((prev) => ({
-        ...prev,
-        [name]: newValue,
-      }));
-
-      if (name === "autoWon" || name === "driverStation") {
-        const isBlue =
-          name === "driverStation"
-            ? value.toLowerCase().includes("blue")
-            : formData.driverStation.toLowerCase().includes("blue");
-
-        // If autoWon is checked, flip the alliance, if unchecked revert to driver station side
-        setActiveAlliance(
-          name === "autoWon" && checked
-            ? isBlue
-              ? "red"
-              : "blue"
-            : isBlue
-              ? "blue"
-              : "red",
-        );
+  const updateHub = (alliance, autoWon, switchCount) => {
+    if (alliance === "blue") {
+      if (autoWon) {
+        setActiveAlliance((switchCount + 1) % 2 === 0 ? "red" : "blue");
+      } else {
+        setActiveAlliance(switchCount % 2 === 0 ? "red" : "blue");
       }
-    },
-    [formData.driverStation],
-  );
-  const submitAll = async (event) => {
-    event.preventDefault();
+    } else if (alliance === "red") {
+      if (autoWon) {
+        setActiveAlliance((switchCount + 1) % 2 === 0 ? "blue" : "red");
+      } else {
+        setActiveAlliance(switchCount % 2 === 0 ? "blue" : "red");
+      }
+    }
+  };
 
-    // fallback is the value to be used if a number cant be found in the form data/string
-    const prettyInt = (str, fallback = 1) => {
-      const parsed = parseInt(String(str ?? "").replace(/[^\d]/g, ""), 10);
-      return Number.isNaN(parsed) ? fallback : parsed;
-    };
-
-    // fallback is the value to be used if a number cant be found in the form data/string
-    const prettyFloat = (val, fallback = 0) => {
-      const parsed = parseFloat(String(val ?? "").replace(/[^\d.]/g, ""));
-      return Number.isNaN(parsed) ? fallback : parsed;
-    };
-
-    const parseDriverStation = (dsRaw) => {
-      const ds = String(dsRaw ?? "");
-
-      return {
-        isBlue: ds.toLowerCase().includes("blue"),
-        number: prettyInt(ds, 1),
+  const compileAndCache = (cacheLocation, replace) => {
+      // fallback is the value to be used if a number cant be found in the form data/string
+      const prettyInt = (str, fallback = 1) => {
+          const parsed = parseInt(String(str ?? "").replace(/[^\d]/g, ""), 10);
+        return Number.isNaN(parsed) ? fallback : parsed;
       };
-    };
 
-    const expandCycles = () => {
-      if (!cycleList || cycleList.length === 0) {
-        return [{ time: 0, type: "None", success: false, accuracy: 0, activeHub: "blue"}];
-      }
+      // fallback is the value to be used if a number cant be found in the form data/string
+      const prettyFloat = (val, fallback = 0) => {
+        const parsed = parseFloat(String(val ?? "").replace(/[^\d.]/g, ""));
+          return Number.isNaN(parsed) ? fallback : parsed;
+      };
 
-      return cycleList.map((cycle) => {
-        const accNum = Number(cycle.accuracy);
+      const parseDriverStation = (dsRaw) => {
+        const ds = String(dsRaw ?? "");
 
         return {
-          time: prettyFloat(cycle.time, 0),
-          type: String(cycle.event ?? ""),
-          activeHub: cycle.activeHub,
-          accuracy: Number.isFinite(accNum) ? accNum : 0,
+          isBlue: ds.toLowerCase().includes("blue"),
+          number: prettyInt(ds, 1),
         };
-      });
-    };
+      };
 
-    const dataToSubmit = {
-      team: prettyInt(formData.team, 1),
+      const expandCycles = () => {
+        if (cycleList.length === 0) {
+          return [{ Time: 0, Type: "None", activeHub: "blue", Success: false }];
+        }
+        return cycleList.map((cycle) => ({
+          Time: parseFloat(cycle.time),
+          Type: cycle.event,
+          activeHub: cycle.activeHub,
+          Success: cycle.accuracy === 1,
+        }));
+      };
 
-      match: {
-        number: prettyInt(formData.match, 1),
-        isReplay: !!formData.replayed,
-      },
+      const dataToSubmit = {
+        team: prettyInt(formData.team, 1),
+        match: {
+          number: prettyInt(formData.match, 1),
+          isReplay: !!formData.replayed,
+        },
+        driverStation: parseDriverStation(formData.driverStation),
+        cycles: expandCycles(),
+        auto: {
+          canAuto: !!formData.canAuto,
+          hangAuto: !!formData.hangAuto,
+          scores: prettyInt(formData.autoScores, 0),
+          misses: prettyInt(formData.autoMisses, 0),
+          ejects: prettyInt(formData.autoEjects, 0),
+          won: !!formData.autoWon,
 
-      scouter: "",
+          accuracy: {
+            hpAccuracy: prettyInt(formData.autoHPAccuracy, 0),
+            robotAccuracy: prettyInt(formData.autoRobotAccuracy, 0),
+          },
+          field: {
+            left: !!formData.autoFieldLeft,
+            right: !!formData.autoFieldRight,
+            mid: !!formData.autoFieldMid,
+            top: !!formData.autoFieldTop,
+            bump: !!formData.autoFieldBump,
+            trench: !!formData.autoFieldTrench,
+            didntCross: !!formData.autoFieldDidntCross,
+            hp: !!formData.autoFieldHP,
+            fuel: !!formData.autoFieldFuel,
+          },
+        },
+        teleop: {
+          collection: {
+            collectNeutral: !!formData.collectNeutral,
+            collectHp: !!formData.collectHp,
+            fuelCapacity: String(formData.fuelCapacity ?? "0"),
+          },
 
-      driverStation: parseDriverStation(formData.driverStation),
+          field: {
+            bump: !!formData.teleFieldBump,
+            trench: !!formData.teleFieldTrench,
+          },
 
-      cycles: expandCycles(),
-
-      auto: {
-        canAuto: !!formData.canAuto,
-        hangAuto: !!formData.hangAuto,
-        scores: prettyInt(formData.autoScores, 0),
-        misses: prettyInt(formData.autoMisses, 0),
-        ejects: prettyInt(formData.autoEjects, 0),
-        won: !!formData.autoWon,
-
-        accuracy: {
-          hpAccuracy: prettyInt(formData.autoHPAccuracy, 0),
-          robotAccuracy: prettyInt(formData.autoRobotAccuracy, 0),
+          botType: String(formData.botType ?? ""),
+          playstyle: String(formData.playstyle ?? ""),
+        },
+        endgame: {
+          park: String(formData.park ?? ""),
+          climbTimer: prettyFloat(formData.climbTimer, 0),
+          endgameShoot: !!formData.endgameShoot,
         },
 
-        field: {
-          left: !!formData.autoFieldLeft,
-          right: !!formData.autoFieldRight,
-          mid: !!formData.autoFieldMid,
-          top: !!formData.autoFieldTop,
-          bump: !!formData.autoFieldBump,
-          trench: !!formData.autoFieldTrench,
-          didntCross: !!formData.autoFieldDidntCross,
-          hp: !!formData.autoFieldHP,
-          fuel: !!formData.autoFieldFuel,
+        issues: {
+          disconnect: !!formData.disconnect,
+          loseTrack: !!formData.loseTrack,
+          everBeached: !!formData.everBeached,
         },
-      },
-
-      teleop: {
-        collection: {
-          collectNeutral: !!formData.collectNeutral,
-          collectHp: !!formData.collectHp,
-          fuelCapacity: String(formData.fuelCapacity ?? "0"),
+        notes: {
+          autoNotes: String(formData.autoNotes ?? ""),
+          teleNotes: String(formData.teleNotes ?? ""),
+          perfNotes: String(formData.perfNotes ?? ""),
+          eventsNotes: String(formData.eventsNotes ?? ""),
+          commentsNotes: String(formData.commentsNotes ?? ""),
         },
 
-        field: {
-          bump: !!formData.teleFieldBump,
-          trench: !!formData.teleFieldTrench,
-        },
-
-        botType: String(formData.botType ?? ""),
-        playstyle: String(formData.playstyle ?? ""),
-      },
-
-      endgame: {
-        park: String(formData.park ?? ""),
-        climbTimer: prettyFloat(formData.climbTimer, 0),
-        endgameShoot: !!formData.endgameShoot,
-      },
-
-      issues: {
-        disconnect: !!formData.disconnect,
-        loseTrack: !!formData.loseTrack,
-        everBeached: !!formData.everBeached,
-      },
-
-      notes: {
-        autoNotes: String(formData.autoNotes ?? ""),
-        teleNotes: String(formData.teleNotes ?? ""),
-        perfNotes: String(formData.perfNotes ?? ""),
-        eventsNotes: String(formData.eventsNotes ?? ""),
-        commentsNotes: String(formData.commentsNotes ?? ""),
-      },
-
-      rescouting: !!formData.rescouting,
-      prescouting: !!formData.prescouting,
-    };
+        rescouting: !!formData.replayed,
+      };
 
     const jsonString = JSON.stringify(dataToSubmit, null, 2);
 
-
-    await submitMatchform(jsonString);
     const cacheKey = `match_${formData.match}_team_${formData.team}_driverstation_${formData.driverStation}_${Date.now()}`;
-    try {
-      const existingCache = JSON.parse(
-        localStorage.getItem("matchFormCache") || "[]",
-      );
-      existingCache.push({
+    if (replace) {
+      const newCacheEntry = {
         key: cacheKey,
         timestamp: Date.now(),
-        data: dataToSubmit,
-      });
-      localStorage.setItem("matchFormCache", JSON.stringify(existingCache));
+        data: formData,
+      };
+
+      localStorage.removeItem(cacheLocation);
+      localStorage.setItem(cacheLocation, JSON.stringify(newCacheEntry));
+    } else {
+      try {
+        const existingCache = JSON.parse(
+          localStorage.getItem(cacheLocation) || "[]",
+        );
+        existingCache.push({
+          key: cacheKey,
+          timestamp: Date.now(),
+          data: dataToSubmit,
+        });
+        localStorage.setItem(cacheLocation, JSON.stringify(existingCache));
+      } catch (err) {
+        console.warn("Failed to cache form data:", err);
+      }
+    }
+
+    return jsonString;
+  };
+
+  const handleChange = useCallback((e) => {
+    const { name, type, checked, value } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: newValue,
+    }));
+
+    if (name === "driverStation") {
+      const newAlliance = value.includes("Blue") ? "blue" : "red";
+      setTeamAlliance(newAlliance);
+      updateHub(newAlliance, formData.autoWon, hubSwitchCount);
+    } else if (name === "autoWon") {
+      updateHub(teamAlliance, checked, hubSwitchCount);
+    } else {
+      updateHub(teamAlliance, formData.autoWon, hubSwitchCount);
+    }
+
+    compileAndCache("tempMatchFormCache", true);
+  });
+
+  const submitAll = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (isSubmitting) return;
+
+    if (formData.match === "") {
+      alert("Fill in the Match Number");
+    } else if (!Number.isInteger(parseInt(formData.match))) {
+      alert("Fill in the Match Number with an Integer");
+    } else if (formData.team === "") {
+      alert("Fill in the Team Number");
+    } else if (!Number.isInteger(parseInt(formData.team))) {
+      alert("Fill in the Team Number with an Integer");
+    } else if (formData.driverStation === "") {
+      alert("Select a Driver Station");
+    } else {
+      setIsSubmitting(true);
+      localStorage.removeItem("tempMatchFormCache");
+
+      let jsonString = compileAndCache("matchFormCache", false);
+
       navigate("/home");
-    } catch (err) {
-      console.warn("Failed to cache form data:", err);
+
+      submitMatchform(jsonString).catch((err) => {
+        console.error("Submission failed:", err);
+      });
     }
   };
 
@@ -296,9 +369,11 @@ function Matchform() {
 
   const addCycleEvent = (eventName) => {
     if (isCycleRunning) {
+      let newSwitchCount = hubSwitchCount;
       const currentTime = (cycleTime / 1000).toFixed(2);
       if (eventName === "hubSwitch") {
-        setActiveAlliance(activeAlliance === "red" ? "blue" : "red");
+        newSwitchCount = hubSwitchCount + 1;
+        setHubSwitchCount(newSwitchCount);
       }
       setCycleList((prevList) => [
         ...prevList,
@@ -309,6 +384,7 @@ function Matchform() {
           activeHub: activeAlliance,
         },
       ]);
+      updateHub(teamAlliance, formData.autoWon, newSwitchCount);
     }
   };
 
@@ -321,9 +397,14 @@ function Matchform() {
 
   return (
     <span id="body">
-      <NavComponent></NavComponent>
+      <NavComponent onNavigateOut={handleNavigateOut}></NavComponent>
       <span id="form">
         <form id="formBody" className="formElement">
+          {/* {hasCache && (
+            <button className="child" id="restore" onClick={restoreFromCache}>
+              Restore Unsaved Match
+            </button>
+          )} */}
           <input
             placeholder="Match #"
             type="textMatchForm"
@@ -409,6 +490,13 @@ function Matchform() {
               onChange={handleChange}
             >
               Left Of Field
+            </Autocheck>
+            <Autocheck
+              name="autoFieldRight"
+              value={formData.autoFieldRight}
+              onChange={handleChange}
+            >
+              Right Of Field
             </Autocheck>
             <Autocheck
               name="autoFieldMid"
@@ -592,7 +680,7 @@ function Matchform() {
                 name="autoNotes"
                 value={formData.autoNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
             <p>&emsp;TeleOp Notes: </p>
@@ -602,7 +690,7 @@ function Matchform() {
                 name="teleNotes"
                 value={formData.teleNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
             <p>&emsp;Performance Notes: </p>
@@ -614,7 +702,7 @@ desc things like speed, susceptibility to defense, etc (or put here if they play
                 name="perfNotes"
                 value={formData.perfNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
             <p>&emsp;Special Events Notes: </p>
@@ -626,7 +714,7 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
 "
                 value={formData.eventsNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
             <p>&emsp;Any Other Comments: </p>
@@ -635,7 +723,7 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
                 name="commentsNotes"
                 value={formData.commentsNotes}
                 onChange={handleChange}
-                id="notesbox"
+                className="notesbox"
               ></textarea>
             </div>
           </CollapsibleDropdown>
@@ -653,6 +741,7 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
             idDiv={"submitButtonDiv"}
             idImage={"submitImage"}
             submit={submitAll}
+            disabled={isSubmitting}
           >
             Save
           </SubmitButton>
