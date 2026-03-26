@@ -203,7 +203,6 @@ function Matchform() {
           number: prettyInt(formData.match, 1),
           isReplay: !!formData.replayed,
         },
-        scouter: user?.user ?? "",
         driverStation: parseDriverStation(formData.driverStation),
         cycles: expandCycles(),
         auto: {
