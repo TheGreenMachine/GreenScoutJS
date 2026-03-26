@@ -646,7 +646,7 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
             value={formData.replayed}
             onChange={handleChange}
           >
-            Is Replay?
+            Is Rescout?
           </ReplayButton>
           <SubmitButton
             idButton={"submitButtonId"}

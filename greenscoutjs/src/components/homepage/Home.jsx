@@ -11,9 +11,9 @@ function Home() {
   return (
     <span id="homeBody">
       <NavComponent></NavComponent>
-      <div id="refreshButtonContainer">
+      {/* <div id="refreshButtonContainer">
         <button id="refreshButton" onClick={refreshPage}></button>
-      </div>
+      </div> */}
       <span id="parent" className="text">
         <h1 className="textHome">Create New Match Form</h1>
         <NewButtonMatch></NewButtonMatch>
@@ -22,11 +22,11 @@ function Home() {
           Create Pit Scouting Form
         </h1>
         <NewButtonPit></NewButtonPit> */}
-        <h1 className="textHome2" id="assigned">
+        {/* <h1 className="textHome2" id="assigned">
           Assigned Matches
-        </h1>
+        </h1> */}
 
-        <h1 className="textHome2">All Matches</h1>
+        {/* <h1 className="textHome2">All Matches</h1> */}
       </span>
     </span>
   );
