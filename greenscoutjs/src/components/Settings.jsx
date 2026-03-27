@@ -5,10 +5,6 @@ import { useNavigate } from "react-router-dom";
 function Settings() {
   const navigate = useNavigate();
 
-  function navMatchForm() {
-    navigate("/settings/layout");
-  }
-
   function navTheme() {
     navigate("/settings/theme");
   }
@@ -30,11 +26,7 @@ function Settings() {
       <NavComponent />
       <div id="settingsContainer">
         <h1 className="settingsh1">Settings</h1>
-        {/* <button className="settingButton" onClick={navMatchForm}>
-          <div className="image matchImage"></div>
-          Match Form Layout
-        </button>
-        <button className="settingButton" onClick={navTheme}>
+        {/* <button className="settingButton" onClick={navTheme}>
           <div className="image themeImage"></div>
           Themes (Work In Progress)
         </button> */}
