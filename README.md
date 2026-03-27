@@ -23,13 +23,10 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
          ```
        - if broke: `rm -Force .\node_modules\.cache\gh-pages\`
 
-    2. `cd .\greenscoutjs\`
-    3. `vite build --base /GreenScoutJS`
-    4. `gh-pages -d dist`
+    2. `vite build --base /GreenScoutJS`
+    3. `gh-pages -d dist`
 
 - How to run locally in browser (Assuming you have installed vite from above)
-  1. `cd .\greenscoutjs\`
+  1. `npm run dev`
 
-  2. `npm run dev`
-
-  3. Open [http://localhost:5173/GreenScoutJS](http://localhost:5173/GreenScoutJS)
+  2. Open [http://localhost:5173/GreenScoutJS](http://localhost:5173/GreenScoutJS)
