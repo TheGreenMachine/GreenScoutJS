@@ -63,10 +63,6 @@
   flex-shrink: 0;
 }
 
-.image.matchImage {
-  background-image: url("../assets/list-ul-solid-full.svg");
-}
-
 .image.themeImage {
   background-image: url("../assets/palette-solid-full.svg");
 }

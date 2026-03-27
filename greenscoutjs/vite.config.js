@@ -7,7 +7,8 @@ import { log } from "console";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   // Backend URL is defined in .env.production
-  const useBackend = env.VITE_BACKEND_URL !== "";
+  // const useBackend = env.VITE_BACKEND_URL !== "";
+  const useBackend = true;
 
   return {
     plugins: [react()],
