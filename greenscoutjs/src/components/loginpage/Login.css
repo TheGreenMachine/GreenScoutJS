@@ -3,7 +3,7 @@
   width: var(--page-width);
   height: var(--page-height);
   margin: 0;
-  background-color: var(--background-color);
+  background: var(--background-color);
 }
 
 #parent {
@@ -64,7 +64,7 @@
   width: var(--login-box-padding-left);
   height: var(--login-box-padding-left);
   flex-shrink: 0;
-  background-color: var(--font-color-prompt-title);
+  background: var(--font-color-prompt-title);
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   mask-position: center;
@@ -99,7 +99,7 @@
   font-weight: var(--font-weight);
   font-size: var(--font-size-large);
   border: none;
-  background-color: transparent;
+  background: transparent;
 }
 
 #user:focus,
@@ -125,7 +125,7 @@
   height: var(--login-button-height);
   margin-top: 5.7vh;
   margin-bottom: 4.4vh;
-  background-color: var(--accent-color3);
+  background: var(--accent-color3);
   border: 1px solid var(--accent-color3);
   border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px var(--drop-shadow-color);
@@ -138,7 +138,7 @@
 }
 
 #loginButton:hover {
-  background-color: var(--accent-color2);
+  background: var(--accent-color2);
 }
 
 #loginButton:disabled {

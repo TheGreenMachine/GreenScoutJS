@@ -26,12 +26,12 @@
 }
 
 #sideButtonCycleTrigger.true {
-  background-color: var(--accent-color3);
+  background: var(--accent-color3);
   border-color: var(--accent-color3);
 }
 
 #sideButtonCycleTrigger.false {
-  background-color: var(--error-color);
+  background: var(--error-color);
   border-color: var(--error-color);
 }
 
@@ -39,7 +39,7 @@
 #stopImg {
   height: var(--cycle-image-height);
   width: 80%;
-  background-color: var(--font-color);
+  background: var(--font-color);
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   mask-position: center;

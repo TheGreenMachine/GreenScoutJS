@@ -1,10 +1,10 @@
 #scoreButton.false {
-  background-color: var(--accent-color3);
+  background: var(--accent-color3);
   border-color: var(--accent-color3);
 }
 
 #scoreButton.true {
-  background-color: var(--disabled-color);
+  background: var(--disabled-color);
   border-color: var(--disabled-color);
 }
 
@@ -12,7 +12,7 @@
   height: var(--score-image-height);
   width: 80%;
   flex-shrink: 0;
-  background-color: var(--font-color);
+  background: var(--font-color);
   -webkit-mask-image: url("../../../assets/meteor-solid-full.svg");
   mask-image: url("../../../assets/meteor-solid-full.svg");
   mask-repeat: no-repeat;

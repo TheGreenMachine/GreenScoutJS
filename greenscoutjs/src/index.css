@@ -4,10 +4,10 @@ html {
 
 :root {
   /* Color Variables */
-  --background-color: white;
-  --accent-color: #9bcbfb;
-  --accent-color2: #8fbdeb;
-  --accent-color3: #cee5ff;
+  --background-color: #3c3c3c;
+  --accent-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
+  --accent-color2: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
+  --accent-color3: linear-gradient(0deg, #3db43d 0%, #43c343 100%);
 
   --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1);
 
@@ -16,11 +16,11 @@ html {
   --disabled-color: #717172;
 
   --font-color: black;
-  --font-color-prompt-title: black;
-  --font-color-header: black;
+  --font-color-prompt-title: white;
+  --font-color-header: white;
 
   --drop-shadow-color: #626263;
-  --sidenav-hover-color: #444;
+  --sidenav-hover-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
   --faded-text-color: #5f6167;
 
   --kelly-green: #4cbb17;
@@ -29,7 +29,7 @@ html {
   --checkbox-default-color: #eee;
   --checkbox-hover-color: #ccc;
   --border-color-faded: #d9d9db;
-  --border-color-active: #417096;
+  --border-color-active: #4cbb17;
   --sidenav-button-color: #dfdfdf;
 
   /* General Sizing Variables */

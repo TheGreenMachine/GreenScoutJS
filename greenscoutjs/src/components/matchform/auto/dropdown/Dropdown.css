@@ -15,6 +15,10 @@
   cursor: default;
 }
 
+.dropdown {
+  background: var(--background-color);
+}
+
 .dropdown,
 #collectdropdown {
   flex-shrink: 0;
@@ -28,6 +32,7 @@
   color: var(--font-color-prompt-title);
   font-size: var(--font-size-small);
   cursor: pointer;
+  background: var(--background-color);
 }
 
 .dropdown:focus,

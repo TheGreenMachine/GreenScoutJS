@@ -1,5 +1,5 @@
 import "./Home.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function NewButtonMatch() {
   const navigate = useNavigate();

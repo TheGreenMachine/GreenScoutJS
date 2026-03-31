@@ -60,7 +60,7 @@
   overflow: hidden;
   gap: 8%;
   padding: 2.5% 2.5%;
-  background-color: var(--background-color);
+  background: var(--background-color);
   border: 0.15vh solid var(--accent-color);
   border-radius: var(--border-radius);
   min-height: var(--leader-board-element-height);

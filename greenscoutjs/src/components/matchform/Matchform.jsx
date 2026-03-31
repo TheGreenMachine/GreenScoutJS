@@ -411,8 +411,9 @@ function Matchform() {
             </div>
             <input
               placeholder="Match #"
-              type="textMatchForm"
-              className="child"
+              type="number"
+              step="1"
+              className="child backgroundcolorfilled"
               id="matchNum"
               name="match"
               value={formData.match}
@@ -420,8 +421,9 @@ function Matchform() {
             />
             <input
               placeholder="Team #"
-              type="textMatchForm"
-              className="child"
+              type="number"
+              step="1"
+              className="child backgroundcolorfilled"
               id="teamNum"
               name="team"
               value={formData.team}

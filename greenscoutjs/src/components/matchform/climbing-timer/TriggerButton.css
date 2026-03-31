@@ -24,12 +24,12 @@
 }
 
 #sideButtonTrigger.active {
-  background-color: var(--error-color);
+  background: var(--error-color);
   border-color: var(--error-color);
 }
 
 #sideButtonTrigger.inactive {
-  background-color: var(--accent-color3);
+  background: var(--accent-color3);
   border-color: var(--accent-color3);
 }
 
@@ -42,7 +42,7 @@
 }
 
 .act {
-  background-color: var(--font-color);
+  background: var(--font-color);
   -webkit-mask-image: url("../../../assets/square-solid-full.svg");
   mask-image: url("../../../assets/square-solid-full.svg");
   mask-repeat: no-repeat;
@@ -54,7 +54,7 @@
 }
 
 .inact {
-  background-color: var(--font-color);
+  background: var(--font-color);
   -webkit-mask-image: url("../../../assets/stopwatch.svg");
   mask-image: url("../../../assets/stopwatch.svg");
   mask-repeat: no-repeat;
@@ -66,7 +66,7 @@
 }
 
 #resetbutton {
-  background-color: var(--accent-color3);
+  background: var(--accent-color3);
   border: 1px solid var(--accent-color3);
   border-radius: var(--border-radius);
   color: var(--faded-text-color);
@@ -82,5 +82,5 @@
 }
 
 #resetbutton:hover {
-  background-color: var(--accent-color2);
+  background: var(--accent-color2);
 }
