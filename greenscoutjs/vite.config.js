@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
         transformIndexHtml(html) {
           return html.replace(
             "<THEMEANCHOR/>",
-            `<link href="${env.VITE_BACKEND_URL}/getTheme" rel="stylesheet">`,
+            `<link href="${env.VITE_BACKEND_URL}/getTheme" rel="stylesheet" id="themeLink">`,
           );
         },
       },

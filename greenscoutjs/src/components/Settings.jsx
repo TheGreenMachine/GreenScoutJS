@@ -26,10 +26,10 @@ function Settings() {
       <NavComponent />
       <div id="settingsContainer">
         <h1 className="settingsh1">Settings</h1>
-        <button className="settingButton" onClick={navTheme}>
+        {<button className="settingButton" onClick={navTheme}>
           <div className="image themeImage"></div>
-          Themes (Work In Progress)
-        </button>
+          Themes
+        </button>}
         <button className="settingButton" onClick={navDebug}>
           <div className="image debugImage"></div>
           Debug Info
