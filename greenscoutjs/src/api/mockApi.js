@@ -165,3 +165,15 @@ export const isAdmin = (userId) => {
 };
 
 export const logoutUser = async () => {};
+
+export const getThemeList = async () => {
+  return ["Light", "Dark"];
+};
+
+export const getCurrentTheme = async () => {
+  return "Light";
+};
+
+export const setTheme = async (themeName) => {};
+
+export const makeThemeLink = (themeName) => {};

@@ -65,10 +65,27 @@ export const submitMatchform = async (formData) => {
 
 export const getLeaderboard = async (scoreType) => {
   const response = await axios.get(`${SERVER}/leaderboard`, {
-    headers: {
-      type: scoreType,
-    },
+    headers: { type: scoreType },
   });
 
   return response.data;
+};
+
+export const getThemeList = async () => {
+  const response = await axios.get(`${SERVER}/allThemes`);
+
+  return response.data.themes;
+};
+
+export const getCurrentTheme = async () => {
+  const response = await axios.get(`${SERVER}/currTheme`);
+  return response.data.theme;
+};
+
+export const setTheme = async (themeName) => {
+  await axios.post(`${SERVER}/setTheme`, { theme: themeName });
+};
+
+export const makeThemeLink = (themeName) => {
+  return `${SERVER}/getTheme?theme=${themeName}`;
 };
