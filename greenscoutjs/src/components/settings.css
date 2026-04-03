@@ -61,14 +61,29 @@
   background-size: calc(var(--settings-element-height) * 0.8)
     calc(var(--settings-element-height) * 0.8);
   flex-shrink: 0;
+
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  background-image: none;
+
+  background-color: var(--font-color-prompt-title);
 }
 
 .image.themeImage {
-  background-image: url("../assets/palette-solid-full.svg");
+  -webkit-mask-image: url("../assets/palette-solid-full.svg");
+  mask-image: url("../assets/palette-solid-full.svg");
 }
 
 .image.debugImage {
-  background-image: url("../assets/bug-solid-full.svg");
+  mask-image: url("../assets/bug-solid-full.svg");
+  -webkit-mask-image: url("../assets/bug-solid-full.svg");
 }
 
 .settingButtonDebug {
