@@ -19,6 +19,34 @@ import SettingsThemes from "./components/settings-sub-pages/themes/SettingsTheme
 import { useState, useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const updateStylesheet = () => {
+      const rawTheme = localStorage.getItem("app-theme") || "light";
+      const savedTheme = rawTheme.toLowerCase();
+
+      let link = document.getElementById("dynamic-theme-link");
+      if (!link) {
+        link = document.createElement("link");
+        link.id = "dynamic-theme-link";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+      }
+
+      const base = import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
+
+      const newHref = `${base}themes/${savedTheme}.css`;
+
+      console.log("Loading CSS from:", newHref);
+      link.href = newHref;
+    };
+
+    updateStylesheet();
+    window.addEventListener("storage", updateStylesheet);
+    return () => window.removeEventListener("storage", updateStylesheet);
+  }, []);
+
   const getIpAddress = async () => {
     try {
       const response = await fetch("https://api.ipify.org?format=json");
