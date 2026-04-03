@@ -7,11 +7,21 @@ import { log } from "console";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   // Backend URL is defined in .env.production
-  // const useBackend = env.VITE_BACKEND_URL !== "";
-  const useBackend = true;
+  const useBackend = env.VITE_BACKEND_URL !== "";
 
   return {
-    plugins: [react()],
+    plugins: [
+      react(),
+      {
+        name: "inject-html",
+        transformIndexHtml(html) {
+          return html.replace(
+            "<THEMEANCHOR/>",
+            `<link href="${env.VITE_BACKEND_URL}/getTheme" rel="stylesheet">`,
+          );
+        },
+      },
+    ],
     base: "/GreenScoutJS/",
     resolve: {
       alias: {
@@ -21,6 +31,7 @@ export default defineConfig(({ mode }) => {
         ),
       },
     },
+
     server: {
       // List of specific hostnames allowed
       allowedHosts: ["engelki.taild523d0.ts.net"],
