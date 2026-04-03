@@ -22,13 +22,13 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: var(--accent-color);
+  background: var(--accent-color);
   cursor: pointer;
   gap: 0.1rem;
 }
 
 .submitButton:hover {
-  background-color: var(--accent-color2);
+  background: var(--accent-color2);
 }
 
 .submitButton:disabled {
@@ -46,7 +46,7 @@
 }
 
 #submitImage {
-  background-color: var(--font-color);
+  background: var(--font-color);
   -webkit-mask-image: url("../../../assets/floppy-disk-solid-full.svg");
   mask-image: url("../../../assets/floppy-disk-solid-full.svg");
   mask-repeat: no-repeat;

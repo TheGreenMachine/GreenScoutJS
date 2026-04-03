@@ -65,16 +65,16 @@
   left: var(--check-mark-left);
   height: var(--check-size);
   width: var(--check-size);
-  background-color: var(--checkbox-default-color);
+  background: var(--checkbox-default-color);
   border-radius: 3px;
 }
 
 .checkcontainer:hover input ~ .checkmark {
-  background-color: var(--checkbox-hover-color);
+  background: var(--checkbox-hover-color);
 }
 
 .checkcontainer input:checked ~ .checkmark {
-  background-color: var(--check-background-color);
+  background: var(--check-background-color);
 }
 
 .checkmark:after {

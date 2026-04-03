@@ -19,7 +19,7 @@ body {
   padding: 0;
   height: var(--navbar-height);
   width: 100%;
-  background-color: var(--accent-color);
+  background: var(--sidenav-hover-color);
   z-index: 999999;
 }
 
@@ -36,7 +36,7 @@ body {
   margin-left: calc(0.1 * var(--navbar-height));
   height: calc(0.5 * var(--navbar-height));
   width: calc(0.5 * var(--navbar-height));
-  background-color: var(--font-color);
+  background: var(--font-color);
   -webkit-mask-image: url("../assets/bars-solid-full.svg");
   mask-image: url("../assets/bars-solid-full.svg");
   mask-repeat: no-repeat;
@@ -57,7 +57,7 @@ body {
   margin-left: calc(0.1 * var(--navbar-height));
   height: calc(0.5 * var(--navbar-height));
   width: calc(0.5 * var(--navbar-height));
-  background-color: var(--font-color);
+  background: var(--font-color);
   -webkit-mask-image: url("../assets/arrow-left-solid-full.svg");
   mask-image: url("../assets/arrow-left-solid-full.svg");
   mask-repeat: no-repeat;
@@ -150,9 +150,13 @@ body {
   text-decoration: none;
 }
 
+.side-nav button {
+  background: var(--accent-color);
+}
+
 .side-nav button:hover {
-  background-color: var(--sidenav-hover-color);
-  color: var(--background-color);
+  background: var(--sidenav-hover-color);
+  /* color: var(--background-color); */
   cursor: pointer;
 }
 
@@ -172,8 +176,12 @@ body {
   left: var(--sidenav-width);
 }
 
+#nav-toggle:checked ~ .hamburger {
+  background: var(--accent-color);
+}
+
 .textp {
-  background-color: var(--sidenav-button-color);
+  background: var(--sidenav-button-color);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: var(--font-color);

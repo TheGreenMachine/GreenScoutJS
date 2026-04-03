@@ -1,35 +1,4 @@
-html {
-  scrollbar-color: var(--font-color-prompt-title) var(--background-color);
-}
-
 :root {
-  /* Color Variables */
-  --background-color: white;
-  --accent-color: #9bcbfb;
-  --accent-color2: #8fbdeb;
-  --accent-color3: #cee5ff;
-
-  --blue-color: #9bcbfb;
-  --error-color: var(--disabled-color);
-  --disabled-color: #717172;
-
-  --font-color: black;
-  --font-color-prompt-title: black;
-  --font-color-header: black;
-
-  --drop-shadow-color: #626263;
-  --sidenav-hover-color: #444;
-  --faded-text-color: #5f6167;
-
-  --kelly-green: #4cbb17;
-  --error-message-color: var(--disabled-color);
-  --check-background-color: #4cbb17;
-  --checkbox-default-color: #eee;
-  --checkbox-hover-color: #ccc;
-  --border-color-faded: #d9d9db;
-  --border-color-active: #417096;
-  --sidenav-button-color: #dfdfdf;
-
   /* General Sizing Variables */
   --font-size-large: 3vh;
   --font-size-small: 2.5vh;
@@ -40,7 +9,7 @@ html {
   --page-width: 100vw;
   --content-height: calc(var(--page-height) - var(--navbar-height));
   --content-width: var(--page-width);
-  --element-height: clamp(2.8rem, 6.2vh, 3.6rem);
+  --element-height: clamp(3.8rem, 20.2vh, 10rem);
 
   /* Navbar Sizing Variables */
   --sidenav-width: min(70vw, 22rem);
@@ -72,6 +41,8 @@ html {
   --login-button-height: clamp(2.5rem, 6vh, 4rem);
 
   /* Match Form Sizing Variables */
+  --matchform-sectionbox-margin-vertical: clamp(1.5rem, 5.5vh, 2rem);
+  --matchform-sectionbox-padding-top: clamp(1.5rem, 7.5vh, 2rem);
   --matchform-side-panel-width: clamp(4rem, 8vh, 5.5rem);
   --matchform-grid-template: 1fr var(--matchform-side-panel-width);
   --matchform-child-margin-side: 7.5vw;
@@ -162,7 +133,7 @@ html {
   --trigger-reset-height: clamp(2.2rem, 8vh, 4.5rem);
 
   /* Match Form Submit/Replay Sizing Variables */
-  --submitreplay-div-height: clamp(3rem, 8vh, 5rem);
+  --submitreplay-div-height: var(--matchform-element-height);
   --submitreplay-div-margin-bottom: 1vh;
   --submitreplay-button-margin-top: 5.7vh;
   --submitreplay-button-margin-bottom: 4.4vh;

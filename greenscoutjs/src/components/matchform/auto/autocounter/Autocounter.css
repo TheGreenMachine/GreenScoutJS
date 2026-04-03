@@ -12,7 +12,7 @@
   font-size: var(--font-size-small);
   font-family: Arial, Helvetica, sans-serif;
   color: var(--font-color-prompt-title);
-  background-color: var(--background-color);
+  background: var(--background-color);
   box-sizing: border-box;
   resize: none;
   border: solid 2px var(--border-color-faded);

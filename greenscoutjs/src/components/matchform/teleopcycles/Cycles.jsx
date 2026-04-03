@@ -1,6 +1,22 @@
 import "../Matchform.css";
 import { useEffect, useRef } from "react";
 
+// Methods for handling cycles, in matchform.jsx
+const updateCycleAccuracy = (index, newAccuracy) => {
+  setCycleList((prevList) =>
+    prevList.map((item, i) =>
+      i === index ? { ...item, accuracy: parseInt(newAccuracy) } : item,
+    ),
+  );
+};
+
+const removeCycleEvent = (indexRemoval) => {
+  setCycleList((prevList) => [
+    ...prevList.slice(0, indexRemoval),
+    ...prevList.slice(indexRemoval + 1),
+  ]);
+};
+
 const Cycles = ({
   list,
   runningBool,

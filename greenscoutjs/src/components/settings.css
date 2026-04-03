@@ -1,7 +1,7 @@
 .settingsBody {
   font-size: var(--font-size-small);
   color: var(--font-color);
-  background-color: var(--background-color);
+  background: var(--background-color);
   height: var(--page-height);
   width: var(--page-width);
 }
@@ -20,7 +20,7 @@
 #settingsDebugBody {
   font-size: var(--font-size-small);
   color: var(--font-color-prompt-title);
-  background-color: var(--background-color);
+  background: var(--background-color);
   height: var(--page-height);
   width: var(--page-width);
   overflow: hidden;
@@ -29,7 +29,7 @@
 
 .settingsh1 {
   text-align: center;
-  background-color: transparent;
+  background: transparent;
   color: var(--font-color-prompt-title);
   margin: var(--settings-element-spacing);
   width: var(--settings-element-width);
@@ -46,7 +46,7 @@
   margin-left: calc((100% - var(--settings-element-width)) / 2);
   border-radius: var(--border-radius);
   border: var(--border-color-faded) 1px solid;
-  background-color: var(--sidenav-button-color);
+  background: var(--sidenav-button-color);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -80,7 +80,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: var(--background-color);
+  background: var(--background-color);
   border-radius: var(--border-radius);
   cursor: pointer;
 }
@@ -101,7 +101,7 @@
 
 .image.debug {
   flex-shrink: 0;
-  background-color: var(--font-color-prompt-title);
+  background: var(--font-color-prompt-title);
   width: calc(var(--settings-element-height) * 0.8);
   height: calc(var(--settings-element-height) * 0.8);
   mask-repeat: no-repeat;
@@ -155,7 +155,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: var(--background-color);
+  background: var(--background-color);
   border: var(--font-color-prompt-title) 1px solid;
   border-radius: var(--border-radius);
 }
@@ -175,7 +175,7 @@
   height: 80%;
   width: 20%;
   padding: 0;
-  background-color: var(--background-color);
+  background: var(--background-color);
   cursor: pointer;
 }
 
@@ -204,7 +204,7 @@
   border-bottom: gray solid 1px;
   font-size: var(--font-size-small);
   color: var(--font-color);
-  background-color: var(--background-color);
+  background: var(--background-color);
   cursor: pointer;
 }
 

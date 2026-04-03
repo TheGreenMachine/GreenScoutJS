@@ -1,21 +1,21 @@
 #hubSwitchButton {
-  background-color: var(--disabled-color);
+  background: var(--disabled-color);
   border-color: var(--accent-color3);
 }
 
 #hubSwitchButton.blue {
-  background-color: var(--blue-color);
+  background: var(--blue-color);
 }
 
 #hubSwitchButton.red {
-  background-color: var(--error-color);
+  background: var(--error-color);
 }
 
 #hubSwitchButtonImg {
   height: var(--cycle-image-height);
   width: 80%;
   flex-shrink: 0;
-  background-color: var(--font-color);
+  background: var(--font-color);
   -webkit-mask-image: url("../../../assets/arrow-right-arrow-left-solid-full.svg");
   mask-image: url("../../../assets/arrow-right-arrow-left-solid-full.svg");
   mask-repeat: no-repeat;
