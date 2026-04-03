@@ -359,14 +359,6 @@ function Matchform() {
     }
   };
 
-  const updateCycleAccuracy = (index, newAccuracy) => {
-    setCycleList((prevList) =>
-      prevList.map((item, i) =>
-        i === index ? { ...item, accuracy: parseInt(newAccuracy) } : item,
-      ),
-    );
-  };
-
   const addCycleEvent = (eventName) => {
     if (isCycleRunning) {
       let newSwitchCount = hubSwitchCount;
@@ -386,13 +378,6 @@ function Matchform() {
       ]);
       updateHub(teamAlliance, formData.autoWon, newSwitchCount);
     }
-  };
-
-  const removeCycleEvent = (indexRemoval) => {
-    setCycleList((prevList) => [
-      ...prevList.slice(0, indexRemoval),
-      ...prevList.slice(indexRemoval + 1),
-    ]);
   };
 
   return (
@@ -568,17 +553,6 @@ function Matchform() {
             <div className="child" id="headparent">
               <h1 className="header">TeleOp Mode</h1>
             </div>
-            <CollapsibleDropdown title="Cycles" startOpen={true}>
-              <Cycles
-                list={cycleList}
-                runningBool={isCycleRunning}
-                time={cycleTime}
-                setTime={setCycleTime}
-                onChange={handleChange}
-                onTrigger={removeCycleEvent}
-                onUpdateAccuracy={updateCycleAccuracy}
-              ></Cycles>
-            </CollapsibleDropdown>
             <div className="child" id="headparent">
               <h1 className="header">Collection Ability</h1>
             </div>
