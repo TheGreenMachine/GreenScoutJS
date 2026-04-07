@@ -10,6 +10,9 @@ export default defineConfig(({ mode }) => {
   const useBackend = env.VITE_BACKEND_URL !== "";
 
   return {
+    css: {
+      transformer: "lightningcss",
+    },
     plugins: [
       react(),
       {
