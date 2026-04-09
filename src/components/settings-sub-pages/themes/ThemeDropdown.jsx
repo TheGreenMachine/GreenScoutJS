@@ -9,8 +9,10 @@ import {
 } from "../../../api";
 
 function ThemeDrop({ value, onChange, name = "theme" }) {
-  const [themes, setThemes] = useState([]);
-  const [selectedTheme, setSelectedTheme] = useState(value ?? "");
+  const [themes, setThemes] = useState(["Light", "Dark", "Green"]);
+  const [selectedTheme, setSelectedTheme] = useState(
+    value ?? localStorage.getItem("app-theme"),
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,10 +25,14 @@ function ThemeDrop({ value, onChange, name = "theme" }) {
           getCurrentTheme(),
         ]);
 
-        if (!active) return;
+        if (!active) return ["Light", "Dark", "Green"];
 
-        setThemes(Array.isArray(themeList) ? themeList : []);
-        setSelectedTheme(value ?? currentTheme ?? "");
+        setThemes(
+          Array.isArray(themeList) ? themeList : ["Light", "Dark", "Green"],
+        );
+        setSelectedTheme(
+          value ?? currentTheme ?? localStorage.getItem("app-theme"),
+        );
       } catch (err) {
         console.error("Failed to load themes:", err);
       }
@@ -44,10 +50,15 @@ function ThemeDrop({ value, onChange, name = "theme" }) {
     setSelectedTheme(nextTheme);
 
     try {
-      await setTheme(nextTheme);
-      onChange?.(e);
-      let themeLink = document.getElementById("themeLink");
-      themeLink.href = makeThemeLink(nextTheme);
+      if (Array.isArray(getThemeList)) {
+        await setTheme(nextTheme);
+        onChange?.(e);
+        let themeLink = document.getElementById("themeLink");
+        themeLink.href = makeThemeLink(nextTheme);
+      } else {
+        localStorage.setItem("app-theme", nextTheme);
+        globalThis.dispatchEvent(new Event("themeChange"));
+      }
     } catch (err) {
       console.error("Failed to set theme:", err);
     }

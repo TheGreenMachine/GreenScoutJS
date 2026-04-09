@@ -21,7 +21,7 @@ import { useState, useEffect } from "react";
 function App() {
   useEffect(() => {
     const updateStylesheet = () => {
-      const rawTheme = localStorage.getItem("app-theme") || "light";
+      const rawTheme = localStorage.getItem("app-theme") || "Green";
       const savedTheme = rawTheme.toLowerCase();
 
       let link = document.getElementById("dynamic-theme-link");
@@ -40,6 +40,10 @@ function App() {
 
       console.log("Loading CSS from:", newHref);
       link.href = newHref;
+
+      globalThis.addEventListener("themeChange", updateStylesheet);
+      return () =>
+        globalThis.removeEventListener("themeChange", updateStylesheet);
     };
 
     updateStylesheet();
