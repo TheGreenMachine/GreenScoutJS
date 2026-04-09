@@ -58,14 +58,15 @@ body {
   margin-left: calc(0.1 * var(--navbar-height));
   height: calc(1.5 * var(--navbar-height));
   width: calc(1.5 * var(--navbar-height));
-  background: url(../assets/084.svg);
+  background: url(../assets/broken.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: pointer;
   padding: var(--navbar-hamburger-padding);
   z-index: 1001;
   position: absolute;
-  top: 90vh;
+  top: calc(60vh - calc(1.5 * var(--navbar-height)));
+  box-shadow: var(--font-color) 0px 0px 20px;
 }
 
 .back {
@@ -94,19 +95,15 @@ body {
   margin-left: calc(0.1 * var(--navbar-height));
   height: calc(2.5 * var(--navbar-height));
   width: calc(2.5 * var(--navbar-height));
-  background: var(--font-color);
-  -webkit-mask-image: url("../assets/084.svg");
-  mask-image: url("../assets/084.svg");
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
+  background: url(../assets/broken.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   cursor: pointer;
   padding: var(--navbar-hamburger-padding);
   position: fixed;
-  top: calc(100vh - calc(2.5 * var(--navbar-height)));
+  border-radius: var(--border-radius);
+  top: calc(60vh - calc(2.5 * var(--navbar-height)));
+  box-shadow: var(--font-color) 0px 0px 20px;
   z-index: 1001;
 }
 
