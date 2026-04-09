@@ -1,38 +1,27 @@
 import { useEffect, useState } from "react";
 import "../../settings.css";
-import { useNavigate } from "react-router-dom";
-import {
-  getThemeList,
-  getCurrentTheme,
-  setTheme,
-  makeThemeLink,
-} from "../../../api";
+import { getThemeList, setTheme, makeThemeLink } from "../../../api";
 
-function ThemeDrop({ value, onChange, name = "theme" }) {
+function ThemeDrop({ onChange, name = "theme" }) {
   const [themes, setThemes] = useState(["Light", "Dark", "Green"]); //, "Rainbow"
   const [selectedTheme, setSelectedTheme] = useState(
-    value ?? localStorage.getItem("app-theme"),
+    localStorage.getItem("app-theme"),
   );
-  const navigate = useNavigate();
 
   useEffect(() => {
     let active = true;
 
     async function loadThemes() {
       try {
-        const [themeList, currentTheme] = await Promise.all([
-          getThemeList(),
-          getCurrentTheme(),
-        ]);
-
         if (!active) return;
 
         setThemes(
-          Array.isArray(themeList) ? themeList : ["Light", "Dark", "Green"], //, "Rainbow"
+          Array.isArray(await getThemeList())
+            ? await getThemeList()
+            : ["Light", "Dark", "Green"], //, "Rainbow"
         );
-        setSelectedTheme(
-          value ?? currentTheme ?? localStorage.getItem("app-theme"),
-        );
+
+        setSelectedTheme(localStorage.getItem("app-theme"));
       } catch (err) {
         console.error("Failed to load themes:", err);
       }
@@ -48,10 +37,10 @@ function ThemeDrop({ value, onChange, name = "theme" }) {
   const handleChange = async (e) => {
     const nextTheme = e.target.value;
     setSelectedTheme(nextTheme);
+    localStorage.setItem("app-theme", nextTheme);
 
     try {
       if (Array.isArray(getThemeList)) {
-        // Array.isArray(getThemeList)
         await setTheme(nextTheme);
         onChange?.(e);
         let themeLink = document.getElementById("themeLink");

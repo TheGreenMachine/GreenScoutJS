@@ -7,4 +7,5 @@ export {
   getCurrentTheme,
   setTheme,
   makeThemeLink,
+  getIsOffline,
 } from "@api";

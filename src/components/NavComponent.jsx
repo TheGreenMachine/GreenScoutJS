@@ -1,6 +1,8 @@
 import "./NavComponent.css";
+import "../../public/themes/animation.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { getIsOffline } from "../api";
 
 function NavComponent({ onNavigateOut, isAnimated }) {
   const navigate = useNavigate();
@@ -45,6 +47,9 @@ function NavComponent({ onNavigateOut, isAnimated }) {
         htmlFor="nav-toggle"
         className={`hamburger${isAnimated ? " animated-accent" : ""}`}
       ></label>
+      <div
+        className={`${!getIsOffline ? "offline animated-offline" : ""}`}
+      ></div>
       <label htmlFor="nav-toggle" id="aneeshButton"></label>
       <nav className="side-nav">
         <nav className="side-nav-top">

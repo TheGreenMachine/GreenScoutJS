@@ -114,3 +114,7 @@ export const setTheme = async (themeName) => {
 export const makeThemeLink = (themeName) => {
   return `${SERVER}/getTheme?theme=${themeName}`;
 };
+
+export const getIsOffline = () => {
+  return wasOffline;
+};

@@ -31,8 +31,26 @@ body {
   z-index: 999999;
 }
 
+.offline {
+  height: calc(0.8 * var(--navbar-height));
+  width: calc(0.8 * var(--navbar-height));
+  position: absolute;
+  margin-top: calc(0.125 * var(--navbar-height));
+  margin-right: calc(0.1 * var(--navbar-height));
+  right: calc(0);
+  background-color: var(--font-color);
+  -webkit-mask-image: url("../assets/plug-circle-xmark-solid-full.svg");
+  mask-image: url("../assets/plug-circle-xmark-solid-full.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .hamburger {
-  margin-top: calc(0.25 * var(--navbar-height));
+  margin-top: calc(0.125 * var(--navbar-height));
   margin-left: calc(0.1 * var(--navbar-height));
   height: calc(0.8 * var(--navbar-height));
   width: calc(0.8 * var(--navbar-height));
@@ -54,7 +72,7 @@ body {
 
 #aneeshButton {
   border-radius: var(--border-radius);
-  margin-top: calc(0.25 * var(--navbar-height));
+  margin-top: calc(0 25 * var(--navbar-height));
   margin-left: calc(0.1 * var(--navbar-height));
   height: calc(1.5 * var(--navbar-height));
   width: calc(1.5 * var(--navbar-height));
