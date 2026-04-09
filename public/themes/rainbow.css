@@ -1,0 +1,46 @@
+html {
+  scrollbar-color: var(--font-color-prompt-title) #000000;
+}
+
+:root {
+  /* Color Variables */
+  --animatedTheme: 1;
+  --loop-time: 35s;
+  --background-gradient: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff7700,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #8b00ff,
+    #ff0000
+  );
+  --background-color: #3c3c3c;
+  --accent-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
+  --accent-color2: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
+  --accent-color3: linear-gradient(0deg, #3db43d 0%, #43c343 100%);
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1);
+
+  --blue-color: #9bcbfb;
+  --error-color: var(--disabled-color);
+  --disabled-color: #717172;
+
+  --font-color: black;
+  --font-color-prompt-title: white;
+  --font-color-header: white;
+
+  --drop-shadow-color: #626263;
+  --sidenav-hover-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
+  --faded-text-color: #5f6167;
+
+  --kelly-green: #4cbb17;
+  --error-message-color: var(--disabled-color);
+  --check-background-color: #4cbb17;
+  --checkbox-default-color: #eee;
+  --checkbox-hover-color: #ccc;
+  --border-color-faded: #d9d9db;
+  --border-color-active: #4cbb17;
+  --sidenav-button-color: #dfdfdf;
+}

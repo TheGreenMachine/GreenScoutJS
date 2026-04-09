@@ -367,9 +367,16 @@ function Matchform() {
     }
   };
 
+  const [isAnimated, setIsAnimated] = useState(
+    localStorage.getItem("app-theme-animated") === "1",
+  );
+
   return (
     <span id="body">
-      <NavComponent onNavigateOut={handleNavigateOut}></NavComponent>
+      <NavComponent
+        onNavigateOut={handleNavigateOut}
+        isAnimated={isAnimated}
+      ></NavComponent>
       <span id="form">
         <form id="formBody" className="formElement">
           {/* {hasCache && (
@@ -379,7 +386,9 @@ function Matchform() {
           )} */}
           <div className="sectionBox">
             <div className="child headparent">
-              <h1 className="header">Match Info</h1>
+              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
+                Match Info
+              </h1>
             </div>
             <input
               placeholder="Match #"
@@ -409,7 +418,9 @@ function Matchform() {
           </div>
           <div className="sectionBox">
             <div className="child headparent">
-              <h1 className="header">Auto Mode</h1>
+              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
+                Auto Mode
+              </h1>
             </div>
             <Autocheck
               name="canAuto"
@@ -538,10 +549,14 @@ function Matchform() {
           </div>
           <div className="sectionBox">
             <div className="child" id="headparent">
-              <h1 className="header">TeleOp Mode</h1>
+              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
+                TeleOp Mode
+              </h1>
             </div>
             <div className="child" id="headparent">
-              <h1 className="header">Collection Ability</h1>
+              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
+                Collection Ability
+              </h1>
             </div>
             <Neutralcheck
               value={formData.collectNeutral}
@@ -559,7 +574,10 @@ function Matchform() {
               onChange={handleChange}
             ></CollectDrop>
             <div className="child" id="climbheadparent">
-              <h1 className="header" id="climbheadtext">
+              <h1
+                className={`header${isAnimated ? " animated-text" : ""}`}
+                id="climbheadtext"
+              >
                 Hang
               </h1>
             </div>
@@ -597,7 +615,9 @@ function Matchform() {
           </div>
           <div className="sectionBox">
             <div className="child" id="endheadparent">
-              <h1 className="header">End Game</h1>
+              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
+                End Game
+              </h1>
             </div>
             <EndDropdown
               name="park"
@@ -614,7 +634,9 @@ function Matchform() {
           </div>
           <div className="sectionBox">
             <div className="child" id="headparent">
-              <h1 className="header">Misc.</h1>
+              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
+                Misc.
+              </h1>
             </div>
             <BotTypeDropdown
               value={formData.botType}

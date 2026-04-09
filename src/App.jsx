@@ -36,19 +36,37 @@ function App() {
         ? import.meta.env.BASE_URL
         : `${import.meta.env.BASE_URL}/`;
 
-      const newHref = `${base}themes/${savedTheme}.css`;
-
-      console.log("Loading CSS from:", newHref);
-      link.href = newHref;
-
-      globalThis.addEventListener("themeChange", updateStylesheet);
-      return () =>
-        globalThis.removeEventListener("themeChange", updateStylesheet);
+      link.href = `${base}themes/${savedTheme}.css`;
     };
 
     updateStylesheet();
-    window.addEventListener("storage", updateStylesheet);
-    return () => window.removeEventListener("storage", updateStylesheet);
+    window.addEventListener("themeChange", updateStylesheet);
+    return () => window.removeEventListener("themeChange", updateStylesheet);
+  }, []);
+
+  useEffect(() => {
+    const updateAnimation = () => {
+      const isAnimated = localStorage.getItem("app-theme-animated") === "1";
+
+      let link = document.getElementById("dynamic-theme-animation-link");
+      if (!link) {
+        link = document.createElement("link");
+        link.id = "dynamic-theme-animation-link";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+      }
+
+      const base = import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
+
+      link.href = isAnimated ? `${base}themes/animation.css` : "";
+    };
+
+    updateAnimation();
+    window.addEventListener("themeAnimationChange", updateAnimation);
+    return () =>
+      window.removeEventListener("themeAnimationChange", updateAnimation);
   }, []);
 
   const getIpAddress = async () => {
@@ -79,9 +97,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        {/* <RoutesList /> */}
         <Routes>
-          {/* Public routes */}
           <Route
             path="/login"
             element={
@@ -90,8 +106,6 @@ function App() {
               </PublicRoute>
             }
           />
-
-          {/* Protected routes - require authentication */}
           <Route
             path="/home"
             element={
@@ -100,7 +114,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/scout"
             element={
@@ -109,7 +122,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/leaderBoard"
             element={
@@ -118,10 +130,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-
-          {/* Redirect root to home */}
           <Route path="/" element={<Navigate to="/home" replace />} />
-
           <Route
             path="/settings"
             element={
@@ -130,7 +139,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/settings/theme"
             element={
@@ -139,17 +147,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/settings/debug"
             element={
               <ProtectedRoute>
-                <SettingsDebug ip={ip} eventData={eventData} />{" "}
-                {/* Temporary values replace with backend values */}
+                <SettingsDebug ip={ip} eventData={eventData} />
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/logout"
             element={
@@ -158,8 +163,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
-          {/* 404 route */}
           <Route path="*" element={<div>404 - Page Not Found</div>} />
         </Routes>
       </AuthProvider>

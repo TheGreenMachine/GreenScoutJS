@@ -83,7 +83,7 @@
   background: var(--background-color);
 }
 
-.child > .header {
+.child > .header.no {
   background: transparent;
 }
 

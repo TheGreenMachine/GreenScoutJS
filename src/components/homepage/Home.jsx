@@ -1,32 +1,42 @@
+import { useState, useEffect } from "react";
 import NavComponent from "../NavComponent";
 import "./Home.css";
 import NewButtonMatch from "./NewButtonMatch";
-import NewButtonPit from "./NewButtonPit";
 
 function refreshPage() {
   location.reload();
 }
 
 function Home() {
+  const [isAnimated, setIsAnimated] = useState(
+    localStorage.getItem("app-theme-animated") === "1",
+  );
+
+  useEffect(() => {
+    const checkAnimated = () => {
+      setIsAnimated(localStorage.getItem("app-theme-animated") === "1");
+    };
+
+    window.addEventListener("themeAnimationChange", checkAnimated);
+    return () =>
+      window.removeEventListener("themeAnimationChange", checkAnimated);
+  }, []);
+
   return (
     <span id="homeBody">
-      <NavComponent></NavComponent>
+      <NavComponent isAnimated={isAnimated} />
       <div id="refreshButtonContainer">
-        <button id="refreshButton" onClick={refreshPage}></button>
+        <button
+          id="refreshButton"
+          className={isAnimated ? "animated-accent" : ""}
+          onClick={refreshPage}
+        ></button>
       </div>
       <span id="parent" className="text">
-        <h1 className="textHome">Create New Match Form</h1>
-        <NewButtonMatch></NewButtonMatch>
-        {/* Pit Scouting Future Implementation */}
-        {/* <h1 className="text" padding="0">
-          Create Pit Scouting Form
-        </h1> */}
-        {/* <NewButtonPit></NewButtonPit> */}
-        {/* <h1 className="textHome2" id="assigned">
-          Assigned Matches
-        </h1> */}
-
-        {/* <h1 className="textHome2">All Matches</h1> */}
+        <h1 className={`textHome${isAnimated ? " animated-text" : ""}`}>
+          Create New Match Form
+        </h1>
+        <NewButtonMatch isAnimated={isAnimated} />
       </span>
     </span>
   );

@@ -2,43 +2,33 @@ import "./NavComponent.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-// Add onNavigateOut as a prop
-function NavComponent({ onNavigateOut }) {
+function NavComponent({ onNavigateOut, isAnimated }) {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
 
-  // Helper function to handle saving before navigating
   const handleNavigation = (path) => {
-    if (onNavigateOut) {
-      onNavigateOut();
-    }
+    if (onNavigateOut) onNavigateOut();
     navigate(path);
   };
 
   function navHome() {
     handleNavigation("/home");
   }
-
   function navForm() {
     handleNavigation("/scout");
   }
-
   function navLeaderBoard() {
     handleNavigation("/leaderBoard");
   }
-
   function navSettings() {
     handleNavigation("/settings");
   }
-
   const handleLogout = () => {
     handleNavigation("/logout");
   };
-
   const handleNavToggle = (e) => {
     setChecked(e.target.checked);
   };
-
   const closeNav = () => {
     setChecked(false);
   };
@@ -51,31 +41,51 @@ function NavComponent({ onNavigateOut }) {
         checked={checked}
         onChange={handleNavToggle}
       />
-      <label htmlFor="nav-toggle" className="hamburger"></label>
+      <label
+        htmlFor="nav-toggle"
+        className={`hamburger${isAnimated ? " animated-accent" : ""}`}
+      ></label>
       <label htmlFor="nav-toggle" id="aneeshButton"></label>
       <nav className="side-nav">
         <nav className="side-nav-top">
-          <button className="textp" onClick={navHome}>
-            Home
+          <button
+            className={`textp${isAnimated ? " animated-accent" : ""}`}
+            onClick={navHome}
+          >
+            <span>Home</span>
           </button>
-          <button className="textp" onClick={navForm}>
-            Match Form
+          <button
+            className={`textp${isAnimated ? " animated-accent" : ""}`}
+            onClick={navForm}
+          >
+            <span>Match Form</span>
           </button>
-          <button className="textp" onClick={navLeaderBoard}>
-            Leader Board
+          <button
+            className={`textp${isAnimated ? " animated-accent" : ""}`}
+            onClick={navLeaderBoard}
+          >
+            <span>Leader Board</span>
           </button>
         </nav>
         <nav className="side-nav-bottom">
-          <button id="settings" className="textp" onClick={navSettings}>
-            Settings
+          <button
+            id="settings"
+            className={`textp${isAnimated ? " animated-accent" : ""}`}
+            onClick={navSettings}
+          >
+            <span>Settings</span>
           </button>
-          <button id="logout" className="textp" onClick={handleLogout}>
-            Log Out
+          <button
+            id="logout"
+            className={`textp${isAnimated ? " animated-accent" : ""}`}
+            onClick={handleLogout}
+          >
+            <span>Log Out</span>
           </button>
         </nav>
       </nav>
       <div className="invis-nav" onClick={closeNav}></div>
-      <nav id="navbar"></nav>
+      <nav id="navbar" className={isAnimated ? "animated-accent" : ""}></nav>
     </div>
   );
 }
