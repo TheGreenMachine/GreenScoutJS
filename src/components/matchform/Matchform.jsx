@@ -13,17 +13,17 @@ import ResetButton from "./climbing-timer/ResetButton";
 import EndDropdown from "./auto/dropdown/EndDropdown";
 import SubmitButton from "./submitbuttons/SubmitButton";
 import ReplayButton from "./submitbuttons/ReplayButton";
-import Cycles from "./teleopcycles/Cycles";
-import CycleTimerToggle from "./teleopcycles/CycleTimerToggle";
-import ScoreButton from "./teleopcycles/ScoreButton";
-import ShuttleButton from "./teleopcycles/ShuttleButton";
+import Cycles from "../Archived/teleopcycles/Cycles";
+import CycleTimerToggle from "../Archived/teleopcycles/CycleTimerToggle";
+import ScoreButton from "../Archived/teleopcycles/ScoreButton";
+import ShuttleButton from "../Archived/teleopcycles/ShuttleButton";
 import { submitMatchform } from "../../api";
 import { useNavigate } from "react-router-dom";
 import Slider from "./auto/slider/Slider";
 import CollapsibleDropdown from "./auto/collapsible-div/CollapsibleDropdown";
 import BotTypeDropdown from "./auto/dropdown/BotTypeDropdown";
 import PlaystyleDropdown from "./auto/dropdown/PlaystyleDropdown";
-import HubSwitch from "./teleopcycles/HubSwitch";
+import HubSwitch from "../Archived/teleopcycles/HubSwitch";
 
 const defaultFormData = {
   match: "",
@@ -737,23 +737,6 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
           <div id="bottomspace"></div>
         </form>
         <div id="formScore">
-          <CycleTimerToggle
-            active={isButtonActive}
-            isCycleRunning={isCycleRunning}
-            onTrigger={toggleCycleStopwatch}
-          ></CycleTimerToggle>
-          <ScoreButton
-            active={isButtonActive}
-            onTrigger={() => addCycleEvent("Score")}
-          ></ScoreButton>
-          <ShuttleButton
-            active={isButtonActive}
-            onTrigger={() => addCycleEvent("Shuttle")}
-          ></ShuttleButton>
-          <HubSwitch
-            activeAlliance={activeAlliance}
-            onTrigger={() => addCycleEvent("hubSwitch")}
-          ></HubSwitch>
           <TriggerButton
             onTrigger={toggleStopwatch}
             active={isRunning}

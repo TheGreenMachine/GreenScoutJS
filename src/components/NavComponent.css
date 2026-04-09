@@ -34,8 +34,8 @@ body {
 .hamburger {
   margin-top: calc(0.25 * var(--navbar-height));
   margin-left: calc(0.1 * var(--navbar-height));
-  height: calc(0.5 * var(--navbar-height));
-  width: calc(0.5 * var(--navbar-height));
+  height: calc(0.8 * var(--navbar-height));
+  width: calc(0.8 * var(--navbar-height));
   background: var(--font-color);
   -webkit-mask-image: url("../assets/bars-solid-full.svg");
   mask-image: url("../assets/bars-solid-full.svg");
@@ -50,6 +50,22 @@ body {
   position: fixed;
   top: var(--navbar-hamburger-top-distance);
   z-index: 1001;
+}
+
+#aneeshButton {
+  border-radius: var(--border-radius);
+  margin-top: calc(0.25 * var(--navbar-height));
+  margin-left: calc(0.1 * var(--navbar-height));
+  height: calc(1.5 * var(--navbar-height));
+  width: calc(1.5 * var(--navbar-height));
+  background: url(../assets/084.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+  padding: var(--navbar-hamburger-padding);
+  z-index: 1001;
+  position: absolute;
+  top: 90vh;
 }
 
 .back {
@@ -70,6 +86,27 @@ body {
   padding: var(--navbar-hamburger-padding);
   position: fixed;
   top: var(--navbar-hamburger-top-distance);
+  z-index: 1001;
+}
+
+.aneeshBack {
+  margin-top: calc(0.25 * var(--navbar-height));
+  margin-left: calc(0.1 * var(--navbar-height));
+  height: calc(2.5 * var(--navbar-height));
+  width: calc(2.5 * var(--navbar-height));
+  background: var(--font-color);
+  -webkit-mask-image: url("../assets/084.svg");
+  mask-image: url("../assets/084.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  cursor: pointer;
+  padding: var(--navbar-hamburger-padding);
+  position: fixed;
+  top: calc(100vh - calc(2.5 * var(--navbar-height)));
   z-index: 1001;
 }
 

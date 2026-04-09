@@ -117,13 +117,17 @@ function SettingsDebug({ ip, eventData }) {
                   : "Blue " + JSON.stringify(entry.data?.driverStation?.number)}
               </span>
               <button
+                className="forceSendCopy"
                 onClick={() =>
                   copyToClipboard(JSON.stringify(entry.data, null, 2))
                 }
               >
                 Copy
               </button>
-              <button onClick={() => forceSend(JSON.stringify(entry, null, 2))}>
+              <button
+                className="forceSendCopy"
+                onClick={() => forceSend(JSON.stringify(entry, null, 2))}
+              >
                 Force Send
               </button>
             </div>

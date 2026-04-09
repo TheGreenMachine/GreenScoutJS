@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import "../../settings.css";
-import { useNavigate } from 'react-router-dom';
-import { getThemeList, getCurrentTheme, setTheme, makeThemeLink } from "../../../api";
+import { useNavigate } from "react-router-dom";
+import {
+  getThemeList,
+  getCurrentTheme,
+  setTheme,
+  makeThemeLink,
+} from "../../../api";
 
 function ThemeDrop({ value, onChange, name = "theme" }) {
   const [themes, setThemes] = useState([]);

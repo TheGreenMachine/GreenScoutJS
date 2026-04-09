@@ -52,6 +52,7 @@ function NavComponent({ onNavigateOut }) {
         onChange={handleNavToggle}
       />
       <label htmlFor="nav-toggle" className="hamburger"></label>
+      <label htmlFor="nav-toggle" id="aneeshButton"></label>
       <nav className="side-nav">
         <nav className="side-nav-top">
           <button className="textp" onClick={navHome}>
