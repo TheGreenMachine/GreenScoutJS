@@ -9,8 +9,9 @@ var wasOffline = false;
 
 async function post(url, data, config) {
   try {
-    await axios.post(url, data, config);
+    const response = await axios.post(url, data, config);
     wasOffline = false;
+    return response;
   } catch (err) {
     console.error("Axios post failed. Switching to offline mode. ", err);
     wasOffline = true;
@@ -19,11 +20,13 @@ async function post(url, data, config) {
 
 async function get(url, config) {
   try {
-    await axios.get(url, config);
+    const data = await axios.get(url, config);
     wasOffline = false;
+    return data;
   } catch (err) {
     console.error("Axios get failed. Switching to offline mode. ", err);
     wasOffline = true;
+    return null;
   }
 }
 
@@ -86,7 +89,7 @@ export const submitMatchform = async (formData) => {
 };
 
 export const getLeaderboard = async (scoreType) => {
-  const response = await et(`${SERVER}/leaderboard`, {
+  const response = await get(`${SERVER}/leaderboard`, {
     headers: { type: scoreType },
   });
 
