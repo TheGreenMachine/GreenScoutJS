@@ -1,19 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<!-- Standard favicon -->
-		<link rel="icon" href="/src/assets/favicon/favicon.ico" sizes="any">
-		<!-- For Apple devices -->
-		<link rel="apple-touch-icon" href="/src/assets/favicon/apple-touch-icon.png">
-		<!-- General fallback for older browsers -->
-		<link rel="icon" type="image/png" href="/src/assets/favicon/favicon-32x32.png" sizes="32x32">
+  <head>
+    <!-- Standard favicon -->
+    <link rel="icon" href="/src/assets/favicon/favicon.ico" sizes="any" />
+    <!-- For Apple devices -->
+    <link
+      rel="apple-touch-icon"
+      href="/src/assets/favicon/apple-touch-icon.png"
+    />
+    <!-- General fallback for older browsers -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/src/assets/favicon/favicon-32x32.png"
+      sizes="32x32"
+    />
+    <script>
+      const theme = localStorage.getItem("app-theme") ?? "green";
+      document.documentElement.dataset.theme = theme;
+      const link = document.createElement("link");
+      link.id = "dynamic-theme";
+      link.rel = "stylesheet";
+      link.href = `/themes/${theme.toLowerCase()}.css`;
+      document.head.appendChild(link);
+    </script>
 
-                <THEMEANCHOR/>
-                        
-		<title>Green Scout</title>
-	</head>
-	<body style="padding: 0; margin: 0; color: var(--background-color)">
-		<div id="root"></div>
-		<script type="module" src="/src/main.jsx"></script>
-	</body>
+    <title>Green Scout</title>
+  </head>
+  <body style="padding: 0; margin: 0; color: var(--background-color)">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

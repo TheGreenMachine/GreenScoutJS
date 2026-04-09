@@ -1,62 +1,45 @@
 import { useEffect, useState } from "react";
 import "../../settings.css";
-import { getThemeList, setTheme, makeThemeLink } from "../../../api";
+
+function applyThemeStylesheet(themeName) {
+  document.getElementById("dynamic-theme")?.remove();
+
+  const link = document.createElement("link");
+  link.id = "dynamic-theme";
+  link.rel = "stylesheet";
+  link.href = `GreenScoutJS/themes/${themeName.toLowerCase()}.css`;
+  document.head.appendChild(link);
+}
 
 function ThemeDrop() {
-  const [themes, setThemes] = useState(["Light", "Dark", "Green"]); //, "Rainbow"
+  const cssModules = import.meta.glob("/public/themes/*.css");
+  const fileNames = Object.keys(cssModules).map((path) => {
+    const name = path.replace("/public/themes/", "").replace(".css", "");
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  });
+
+  const [themes, setThemes] = useState(fileNames);
   const [selectedTheme, setSelectedTheme] = useState(
     localStorage.getItem("app-theme"),
   );
 
   useEffect(() => {
-    let active = true;
-
-    async function loadThemes() {
-      try {
-        if (!active) return;
-
-        setThemes(
-          Array.isArray(await getThemeList())
-            ? await getThemeList()
-            : ["Light", "Dark", "Green"], //, "Rainbow"
-        );
-
-        setSelectedTheme(localStorage.getItem("app-theme"));
-      } catch (err) {
-        console.error("Failed to load themes:", err);
-      }
-    }
-
-    loadThemes();
-
-    return () => {
-      active = false;
-    };
-  }, [value]);
+    const saved = localStorage.getItem("app-theme") ?? "Green";
+    setSelectedTheme(saved);
+    document.documentElement.dataset.theme = saved;
+    applyThemeStylesheet(saved);
+  }, []);
 
   const handleChange = async (e) => {
     const nextTheme = e.target.value;
     setSelectedTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
     localStorage.setItem("app-theme", nextTheme);
-
-    try {
-      if (Array.isArray(getThemeList)) {
-        await setTheme(nextTheme);
-        onChange?.(e);
-        let themeLink = document.getElementById("themeLink");
-        themeLink.href = makeThemeLink(nextTheme);
-        localStorage.setItem("app-theme-animated", "0");
-      } else {
-        localStorage.setItem("app-theme", nextTheme);
-        globalThis.dispatchEvent(new Event("themeChange"));
-
-        const isRainbow = nextTheme === "Rainbow";
-        localStorage.setItem("app-theme-animated", isRainbow ? "1" : "0");
-        globalThis.dispatchEvent(new Event("themeAnimationChange"));
-      }
-    } catch (err) {
-      console.error("Failed to set theme:", err);
-    }
+    applyThemeStylesheet(nextTheme);
+    localStorage.setItem(
+      "app-theme-animated",
+      nextTheme === "Rainbow" ? "1" : "0",
+    );
   };
 
   return (
@@ -66,7 +49,7 @@ function ThemeDrop() {
         id="themedropdown"
         value={selectedTheme}
         onChange={handleChange}
-        name={name}
+        name={"theme"}
       >
         {themes.map((theme) => (
           <option key={theme} value={theme}>

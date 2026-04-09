@@ -1,8 +1,8 @@
-html {
+html[data-theme="Dark"] {
   scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
 }
 
-:root {
+:root[data-theme="Dark"] {
   /* Color Variables */
   --background-color: #3c3c3c !important;
   --accent-color: #9bcbfb !important;

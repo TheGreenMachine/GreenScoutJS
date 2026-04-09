@@ -1,8 +1,8 @@
-html {
+html[data-theme="Green"] {
   scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
 }
 
-:root {
+:root[data-theme="Green"] {
   /* Color Variables */
   --background-color: #3c3c3c !important;
   --accent-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%) !important;

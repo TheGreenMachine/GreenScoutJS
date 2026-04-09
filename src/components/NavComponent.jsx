@@ -1,5 +1,5 @@
 import "./NavComponent.css";
-import "../../public/themes/animation.css";
+import "../../public/animation.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getIsOffline } from "../api";
