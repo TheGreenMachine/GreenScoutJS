@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../../settings.css";
 import { getThemeList, setTheme, makeThemeLink } from "../../../api";
 
-function ThemeDrop({ onChange, name = "theme" }) {
+function ThemeDrop() {
   const [themes, setThemes] = useState(["Light", "Dark", "Green"]); //, "Rainbow"
   const [selectedTheme, setSelectedTheme] = useState(
     localStorage.getItem("app-theme"),
