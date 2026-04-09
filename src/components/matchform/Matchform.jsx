@@ -185,18 +185,6 @@ function Matchform() {
       };
     };
 
-    const expandCycles = () => {
-      if (cycleList.length === 0) {
-        return [{ Time: 0, Type: "None", activeHub: "blue", Success: false }];
-      }
-      return cycleList.map((cycle) => ({
-        Time: parseFloat(cycle.time),
-        Type: cycle.event,
-        activeHub: cycle.activeHub,
-        Success: cycle.accuracy === 1,
-      }));
-    };
-
     const dataToSubmit = {
       team: prettyInt(formData.team, 1),
       match: {
@@ -205,7 +193,6 @@ function Matchform() {
       },
       driverStation: parseDriverStation(formData.driverStation),
       isBlue: parseDriverStation(formData.driverStation).isBlue,
-      cycles: expandCycles(),
       auto: {
         canAuto: !!formData.canAuto,
         hangAuto: !!formData.hangAuto,
