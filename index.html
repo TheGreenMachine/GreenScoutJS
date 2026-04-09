@@ -16,12 +16,12 @@
       sizes="32x32"
     />
     <script>
-      const theme = localStorage.getItem("app-theme") ?? "green";
+      const theme = localStorage.getItem("app-theme") ?? "Green";
       document.documentElement.dataset.theme = theme;
       const link = document.createElement("link");
       link.id = "dynamic-theme";
       link.rel = "stylesheet";
-      link.href = `/themes/${theme.toLowerCase()}.css`;
+      link.href = `/GreenScoutJS/themes/${theme.toLowerCase()}.css`;
       document.head.appendChild(link);
     </script>
 
