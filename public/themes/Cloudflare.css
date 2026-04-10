@@ -1,0 +1,29 @@
+html[data-theme="Cloudflare"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="Cloudflare"] {
+  /* Color Variables */
+  --background-color: #ffffff !important;
+  --font-color: #111111 !important;
+  --font-color-prompt-title: #111111 !important;
+  --font-color-header: #111111 !important;
+  --accent-color: #f48120 !important;
+  --accent-color2: #fcb44b !important;
+  --accent-color3: #ffe2be !important;
+  --disabled-color: #6b7280 !important;
+  --faded-text-color: #4b5563 !important;
+  --border-color-faded: #e5e7eb !important;
+  --border-color-active: #f48120 !important;
+  --drop-shadow-color: rgba(17, 24, 39, 0.25) !important;
+  --sidenav-button-color: #f3f4f6 !important;
+  --sidenav-hover-color: #2b2f36 !important;
+  --kelly-green: #22c55e !important;
+  --check-background-color: #22c55e !important;
+  --error-color: #ef4444 !important;
+  --error-message-color: #ef4444 !important;
+  --checkbox-default-color: #f3f4f6 !important;
+  --checkbox-hover-color: #e5e7eb !important;
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+}

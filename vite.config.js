@@ -8,18 +8,25 @@ function generateThemeLinks() {
   const dirPath = path.resolve(__dirname, relativePath);
   const files = fs.readdirSync(dirPath);
 
-  let themeLinks = [];
+  const PRIORITY = ["Green", "Dark", "Light", "Rainbow"];
+
   let themeNames = [];
   for (let i = 0; i < files.length; ++i) {
     let index = files[i].lastIndexOf(".css");
     if (index === -1) continue;
     themeNames.push(files[i].substring(0, index));
-
-    const thePath = path.resolve(relativePath, files[i]);
-    const link = `<link href="${thePath}" rel="stylesheet" id="themeLink">`;
-    themeLinks.push(link);
   }
-  return { themeLinks, themeNames };
+
+  themeNames.sort((a, b) => {
+    const ai = PRIORITY.indexOf(a);
+    const bi = PRIORITY.indexOf(b);
+    if (ai !== -1 && bi !== -1) return ai - bi;
+    if (ai !== -1) return -1;
+    if (bi !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
+  return { themeNames };
 }
 
 // https://vite.dev/config/
@@ -36,15 +43,7 @@ export default defineConfig(({ mode }) => {
     define: {
       __THEME_NAMES__: JSON.stringify(themeNames),
     },
-    plugins: [
-      react(),
-      {
-        name: "inject-html",
-        transformIndexHtml(html) {
-          return html.replace("<THEMEANCHOR/>", themeLinks.join("\n"));
-        },
-      },
-    ],
+    plugins: [react()],
     base: "/GreenScoutJS/",
     resolve: {
       alias: {

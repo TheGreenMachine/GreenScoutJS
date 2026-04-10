@@ -1,0 +1,30 @@
+html[data-theme="FLStudio"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="FLStudio"] {
+  /* Color Variables */
+  --background-color: #223b44 !important;
+  --accent-color: #ff8a1f !important;
+  --accent-color2: #ffa84b !important;
+  --accent-color3: #ffd2a3 !important;
+  --blue-color: #6fbad1 !important;
+  --error-color: #ff4d4d !important;
+  --disabled-color: #7f969d !important;
+  --font-color: #eef6f8 !important;
+  --font-color-prompt-title: #f6fbff !important;
+  --font-color-header: #f6fbff !important;
+  --drop-shadow-color: rgba(0, 0, 0, 0.45) !important;
+  --sidenav-hover-color: #3b6674 !important;
+  --faded-text-color: #b6c9cf !important;
+  --kelly-green: #63d13a !important;
+  --error-message-color: #ff6b6b !important;
+  --check-background-color: #63d13a !important;
+  --checkbox-default-color: #1d3138 !important;
+  --checkbox-hover-color: #24404a !important;
+  --border-color-faded: #365c67 !important;
+  --border-color-active: #ff8a1f !important;
+  --sidenav-button-color: #2b4a55 !important;
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+}
