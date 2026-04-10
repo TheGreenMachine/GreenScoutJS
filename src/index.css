@@ -147,8 +147,8 @@ html {
   /* Match Form Dropdown Sizing Variables */
   --dropdown-margin-top: 3vh;
   --dropdown-padding-bottom: 0.5vh;
-  --dropdown-height: clamp(2.8rem, 5.2vh, 3.4rem);
-  --dropdown-width: clamp(5rem, 12vh, 8rem);
+  --dropdown-height: clamp(4rem, 5.2vh, 10rem);
+  --dropdown-width: clamp(8rem, 12vh, 15rem);
   --dropdown-text-padding-top: 5px;
   --dropdown-text-height: 30px;
   --dropdown-driverstation-margin-top: 1vh;
