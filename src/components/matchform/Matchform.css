@@ -243,6 +243,8 @@
   color: var(--font-color-prompt-title);
   box-sizing: border-box;
   border-radius: var(--border-radius);
+  padding-left: var(--matchform-notes-padding);
+  padding-top: var(--matchform-notes-padding);
 }
 
 .child.notesdiv .notesbox {
@@ -254,7 +256,7 @@
 }
 
 .notesbox::placeholder {
-  color: var(--font-color-prompt-title);
+  color: var(--font-color-prompt-title-faded);
 }
 
 #cycleContainer {

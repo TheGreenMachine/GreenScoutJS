@@ -54,8 +54,15 @@
   mask-composite: exclude;
 }
 
-:root[data-animated="1"] .animated-border-input input,
-.animated-border-input textarea {
+:root[data-animated="1"] .animated-border-input input {
+  border: none;
+  outline: none;
+  border-radius: inherit;
+  width: 100%;
+  background: transparent;
+}
+
+:root[data-animated="1"] .animated-border-input textarea {
   border: none;
   outline: none;
   border-radius: inherit;

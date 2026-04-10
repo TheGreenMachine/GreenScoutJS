@@ -19,6 +19,9 @@ html {
 
   --font-color: black;
   --font-color-prompt-title: white;
+  --font-color-prompt-title-faded: hsl(
+    from var(--font-color-prompt-title) h 0% 70%
+  );
   --font-color-header: white;
 
   --drop-shadow-color: #626263;
@@ -101,6 +104,7 @@ html {
   --matchform-cycle-text-width: 25;
   --matchform-bottomspace-height: clamp(4rem, 15vh, 10rem);
   --matchform-bottomspace-max-height: 80px;
+  --matchform-notes-padding: 1em;
 
   /* Match Form Checkbox Sizing Variables */
   --check-text-height: 30px;
