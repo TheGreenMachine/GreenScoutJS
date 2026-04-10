@@ -60,40 +60,40 @@ function SettingsDebug({ ip, eventData }) {
       <NavComponentSettings />
       <div id="settingsContainerDebug">
         <button className="settingButtonDebug">
-          <div className="image debug ipAddress"></div>
-          <div className="settingButtonDebugText">
+          <div className="image debug ipAddress animated-accent"></div>
+          <div className="settingButtonDebugText animated-text">
             <h2>IP Address</h2>
             <p>{ip}</p>
           </div>
         </button>
         <button className="settingButtonDebug">
-          <div className="image debug eventData"></div>
-          <div className="settingButtonDebugText">
+          <div className="image debug eventData  animated-accent"></div>
+          <div className="settingButtonDebugText animated-text">
             <h2>Event Data</h2>
             <p>{eventData || "Unable to receive from server"}</p>
           </div>
         </button>
         <button className="settingButtonDebug" onClick={clearMatchCache}>
-          <div className="image debug resetLife"></div>
-          <div className="settingButtonDebugText">
+          <div className="image debug resetLife animated-accent"></div>
+          <div className="settingButtonDebugText animated-text">
             <h2>Reset Lifetime Matches</h2>
             <p>Gets rid of all the cached matches stored</p>
           </div>
         </button>
         <button className="settingButtonDebug" onClick={copyAllToClipboard}>
-          <div className="image debug copyAll"></div>
-          <div className="settingButtonDebugText">
+          <div className="image debug copyAll animated-accent"></div>
+          <div className="settingButtonDebugText animated-text">
             <h2>Copy All Matches To Clipboard</h2>
           </div>
         </button>
         <button className="settingButtonDebug" onClick={forceSendAll}>
-          <div className="image debug forceAll"></div>
-          <div className="settingButtonDebugText">
+          <div className="image debug forceAll animated-accent"></div>
+          <div className="settingButtonDebugText animated-text">
             <h2>Force Send All Matches</h2>
           </div>
         </button>
         <div id="settingsDebugCachedMatches">
-          <h1 className="settingsh1">Cached Matches</h1>
+          <h1 className="settingsh1 animated-text">Cached Matches</h1>
           {matches.length === 0 && (
             <div className="settingsDebugCachedMatchesButton noneFound">
               <span>No cached matches found.</span>
@@ -105,17 +105,19 @@ function SettingsDebug({ ip, eventData }) {
               ref={index === 0 ? tileRef : null}
               className="settingsDebugCachedMatchesButton"
             >
-              <span>
+              <span className="animated-text">
                 Match # {JSON.stringify(entry.data?.Match?.Number) || "N/A"}
               </span>
-              <span>Team # {JSON.stringify(entry.data?.Team) || "N/A"}</span>
-              <span>
+              <span className="animated-text">
+                Team # {JSON.stringify(entry.data?.Team) || "N/A"}
+              </span>
+              <span className="animated-text">
                 {entry.data?.driverStation?.IsBlue === false
                   ? "Red " + entry.data?.driverStation?.Number
                   : "Blue " + entry.data?.driverStation?.Number}
               </span>
               <button
-                className="forceSendCopy"
+                className="forceSendCopy animated-text"
                 onClick={() =>
                   copyToClipboard(JSON.stringify(entry.data, null, 2))
                 }
@@ -123,15 +125,15 @@ function SettingsDebug({ ip, eventData }) {
                 Copy
               </button>
               <button
-                className="forceSendCopy"
+                className="forceSendCopy animated-text"
                 onClick={() => forceSend(JSON.stringify(entry, null, 2))}
               >
                 Force Send
               </button>
             </div>
           ))}
-          <h1 className="settingsh1">End</h1>
-          <h1 className="settingsh1">Of Matches</h1>
+          <h1 className="settingsh1 animated-text">End</h1>
+          <h1 className="settingsh1 animated-text">Of Matches</h1>
         </div>
       </div>
     </div>

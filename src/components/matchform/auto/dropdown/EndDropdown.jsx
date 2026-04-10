@@ -3,11 +3,11 @@ import "./Dropdown.css";
 function EndDropdown({ name, value, onChange }) {
   return (
     <div className="child" id="dropDown">
-      <p id="endtext" className="textDropdown">
+      <p id="endtext" className="textDropdown animated-text">
         Climb Status
       </p>
       <select
-        className="textDropdown dropdown"
+        className="textDropdown dropdown animated-text"
         name={name}
         value={value}
         onChange={onChange}

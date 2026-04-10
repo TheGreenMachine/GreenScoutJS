@@ -1,10 +1,10 @@
 import "./NavComponent.css";
 import "../../public/animation.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getIsOffline } from "../api";
 
-function NavComponent({ onNavigateOut, isAnimated }) {
+function NavComponent({ onNavigateOut }) {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
 
@@ -43,46 +43,34 @@ function NavComponent({ onNavigateOut, isAnimated }) {
         checked={checked}
         onChange={handleNavToggle}
       />
-      <label
-        htmlFor="nav-toggle"
-        className={`hamburger${isAnimated ? " animated-accent" : ""}`}
-      ></label>
+      <label htmlFor="nav-toggle" className="hamburger animated-accent"></label>
       <div
         className={`${!getIsOffline ? "offline animated-offline" : ""}`}
       ></div>
       <label htmlFor="nav-toggle" id="aneeshButton"></label>
       <nav className="side-nav">
         <nav className="side-nav-top">
-          <button
-            className={`textp${isAnimated ? " animated-accent" : ""}`}
-            onClick={navHome}
-          >
+          <button className="textp animated-accent" onClick={navHome}>
             <span>Home</span>
           </button>
-          <button
-            className={`textp${isAnimated ? " animated-accent" : ""}`}
-            onClick={navForm}
-          >
+          <button className="textp animated-accent" onClick={navForm}>
             <span>Match Form</span>
           </button>
-          <button
-            className={`textp${isAnimated ? " animated-accent" : ""}`}
-            onClick={navLeaderBoard}
-          >
+          <button className="textp animated-accent" onClick={navLeaderBoard}>
             <span>Leader Board</span>
           </button>
         </nav>
         <nav className="side-nav-bottom">
           <button
             id="settings"
-            className={`textp${isAnimated ? " animated-accent" : ""}`}
+            className="textp animated-accent"
             onClick={navSettings}
           >
             <span>Settings</span>
           </button>
           <button
             id="logout"
-            className={`textp${isAnimated ? " animated-accent" : ""}`}
+            className="textp animated-accent"
             onClick={handleLogout}
           >
             <span>Log Out</span>
@@ -90,7 +78,7 @@ function NavComponent({ onNavigateOut, isAnimated }) {
         </nav>
       </nav>
       <div className="invis-nav" onClick={closeNav}></div>
-      <nav id="navbar" className={isAnimated ? "animated-accent" : ""}></nav>
+      <nav id="navbar" className="animated-accent"></nav>
     </div>
   );
 }

@@ -3,11 +3,11 @@ import "../auto/dropdown/Dropdown.css";
 function CollectDrop({ value, onChange, name }) {
   return (
     <div className="collectchild" id="collectdrop">
-      <p id="collectdtext" className="textCollectDrop">
+      <p id="collectdtext" className="textCollectDrop animated-text">
         How Much Fuel Can They Hold? (Estimate)
       </p>
       <select
-        className="textCollectDrop"
+        className="textCollectDrop animated-text"
         id="collectdropdown"
         name={name}
         value={value}

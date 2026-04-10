@@ -18,10 +18,10 @@ function Slider({ value, onChange, name, nameText }) {
 
   return (
     <div className="child divAutoAccLabel">
-      <p className="textAutoAccLabel">{nameText}</p>
+      <p className="textAutoAccLabel animated-text">{nameText}</p>
       <label className="autoAccContainer">
         <input
-          className="autoAccSlider"
+          className="autoAccSlider animated-accent"
           type="range"
           value={value || 0}
           min={0}
@@ -30,7 +30,9 @@ function Slider({ value, onChange, name, nameText }) {
           name={name}
           onChange={onChange} // ← pass full event through
         />
-        <div className="autoAccuracyLabel">{getAccuracyLabel(value || 0)}</div>
+        <div className="autoAccuracyLabel animated-text">
+          {getAccuracyLabel(value || 0)}
+        </div>
       </label>
     </div>
   );

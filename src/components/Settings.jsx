@@ -1,6 +1,7 @@
 import NavComponent from "./NavComponent";
 import "./settings.css";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Settings() {
   const navigate = useNavigate();
@@ -25,12 +26,14 @@ function Settings() {
     <div className="settingsBody">
       <NavComponent />
       <div id="settingsContainer">
-        <h1 className="settingsh1">Settings</h1>
-        {<button className="settingButton" onClick={navTheme}>
-          <div className="image themeImage"></div>
-          Themes
-        </button>}
-        <button className="settingButton" onClick={navDebug}>
+        <h1 className="settingsh1 animated-text">Settings</h1>
+        {
+          <button className="settingButton animated-accent" onClick={navTheme}>
+            <div className="image themeImage"></div>
+            Themes
+          </button>
+        }
+        <button className="settingButton animated-accent" onClick={navDebug}>
           <div className="image debugImage"></div>
           Debug Info
         </button>

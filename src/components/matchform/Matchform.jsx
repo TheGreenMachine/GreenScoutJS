@@ -1,5 +1,5 @@
 import "./Matchform.css";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -13,17 +13,12 @@ import ResetButton from "./climbing-timer/ResetButton";
 import EndDropdown from "./auto/dropdown/EndDropdown";
 import SubmitButton from "./submitbuttons/SubmitButton";
 import ReplayButton from "./submitbuttons/ReplayButton";
-import Cycles from "../Archived/teleopcycles/Cycles";
-import CycleTimerToggle from "../Archived/teleopcycles/CycleTimerToggle";
-import ScoreButton from "../Archived/teleopcycles/ScoreButton";
-import ShuttleButton from "../Archived/teleopcycles/ShuttleButton";
 import { submitMatchform } from "../../api";
 import { useNavigate } from "react-router-dom";
 import Slider from "./auto/slider/Slider";
 import CollapsibleDropdown from "./auto/collapsible-div/CollapsibleDropdown";
 import BotTypeDropdown from "./auto/dropdown/BotTypeDropdown";
 import PlaystyleDropdown from "./auto/dropdown/PlaystyleDropdown";
-import HubSwitch from "../Archived/teleopcycles/HubSwitch";
 
 const defaultFormData = {
   match: "",
@@ -59,11 +54,11 @@ const defaultFormData = {
   disconnect: false,
   loseTrack: false,
   everBeached: false,
-  autoNotes: "",
-  teleNotes: "",
-  perfNotes: "",
-  eventsNotes: "",
-  commentsNotes: "",
+  autoNotes: "\t",
+  teleNotes: "\t",
+  perfNotes: "\t",
+  eventsNotes: "\t",
+  commentsNotes: "\t",
   replayed: false,
 };
 
@@ -367,60 +362,53 @@ function Matchform() {
     }
   };
 
-  const [isAnimated, setIsAnimated] = useState(
-    localStorage.getItem("app-theme-animated") === "1",
-  );
-
   return (
     <span id="body">
-      <NavComponent
-        onNavigateOut={handleNavigateOut}
-        isAnimated={isAnimated}
-      ></NavComponent>
+      <NavComponent onNavigateOut={handleNavigateOut}></NavComponent>
       <span id="form">
         <form id="formBody" className="formElement">
           {/* {hasCache && (
-            <button className="child" id="restore" onClick={restoreFromCache}>
+            <button className="child animated-accent" id="restore" onClick={restoreFromCache}>
               Restore Unsaved Match
             </button>
           )} */}
-          <div className="sectionBox">
+          <div className="sectionBox animated-border">
             <div className="child headparent">
-              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
-                Match Info
-              </h1>
+              <h1 className="header animated-text">Match Info</h1>
             </div>
-            <input
-              placeholder="Match #"
-              type="number"
-              step="1"
-              className="child backgroundcolorfilled"
-              id="matchNum"
-              name="match"
-              value={formData.match}
-              onChange={handleChange}
-            />
-            <input
-              placeholder="Team #"
-              type="number"
-              step="1"
-              className="child backgroundcolorfilled"
-              id="teamNum"
-              name="team"
-              value={formData.team}
-              onChange={handleChange}
-            />
+            <span className="animated-border-input">
+              <input
+                placeholder="Match #"
+                type="number"
+                step="1"
+                className="child backgroundcolorfilled animated-text"
+                id="matchNum"
+                name="match"
+                value={formData.match}
+                onChange={handleChange}
+              />
+            </span>
+            <span className="animated-border-input">
+              <input
+                placeholder="Team #"
+                type="number"
+                step="1"
+                className="child backgroundcolorfilled animated-text"
+                id="teamNum"
+                name="team"
+                value={formData.team}
+                onChange={handleChange}
+              />
+            </span>
             <Dropdown
               value={formData.driverStation}
               onChange={handleChange}
               name="driverStation"
             ></Dropdown>
           </div>
-          <div className="sectionBox">
+          <div className="sectionBox animated-border">
             <div className="child headparent">
-              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
-                Auto Mode
-              </h1>
+              <h1 className="header animated-text">Auto Mode</h1>
             </div>
             <Autocheck
               name="canAuto"
@@ -474,7 +462,7 @@ function Matchform() {
               Won Auto?
             </Autocheck>
             <CollapsibleDropdown title="Auto Field Coverage">
-              <p>&emsp;Went To:</p>
+              <p className="animated-text">&emsp;Went To:</p>
               <Autocheck
                 name="autoFieldLeft"
                 value={formData.autoFieldLeft}
@@ -547,16 +535,12 @@ function Matchform() {
               </Autocheck>
             </CollapsibleDropdown>
           </div>
-          <div className="sectionBox">
+          <div className="sectionBox animated-border">
             <div className="child" id="headparent">
-              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
-                TeleOp Mode
-              </h1>
+              <h1 className="header animated-text">TeleOp Mode</h1>
             </div>
             <div className="child" id="headparent">
-              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
-                Collection Ability
-              </h1>
+              <h1 className="header animated-text">Collection Ability</h1>
             </div>
             <Neutralcheck
               value={formData.collectNeutral}
@@ -574,10 +558,7 @@ function Matchform() {
               onChange={handleChange}
             ></CollectDrop>
             <div className="child" id="climbheadparent">
-              <h1
-                className={`header${isAnimated ? " animated-text" : ""}`}
-                id="climbheadtext"
-              >
+              <h1 className="header animated-text" id="climbheadtext">
                 Hang
               </h1>
             </div>
@@ -596,7 +577,7 @@ function Matchform() {
             </div>
             <div className="child" id="headparent"></div>
             <CollapsibleDropdown title="TeleOp Field Coverage">
-              <p>&emsp;Went:</p>
+              <p className="animated-text">&emsp;Went:</p>
               <Autocheck
                 name="teleFieldBump"
                 value={formData.teleFieldBump}
@@ -613,11 +594,9 @@ function Matchform() {
               </Autocheck>
             </CollapsibleDropdown>
           </div>
-          <div className="sectionBox">
+          <div className="sectionBox animated-border">
             <div className="child" id="endheadparent">
-              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
-                End Game
-              </h1>
+              <h1 className="header animated-text">End Game</h1>
             </div>
             <EndDropdown
               name="park"
@@ -632,11 +611,9 @@ function Matchform() {
               Shot During Endgame?
             </Autocheck>
           </div>
-          <div className="sectionBox">
+          <div className="sectionBox animated-border">
             <div className="child" id="headparent">
-              <h1 className={`header${isAnimated ? " animated-text" : ""}`}>
-                Misc.
-              </h1>
+              <h1 className="header animated-text">Misc.</h1>
             </div>
             <BotTypeDropdown
               value={formData.botType}
@@ -671,27 +648,27 @@ function Matchform() {
             </Autocheck>
             <div className="child" id="headparent"></div>
             <CollapsibleDropdown title="Notes" startOpen={true}>
-              <p>&emsp;Auto Notes: </p>
-              <div className="child notesdiv">
+              <p className="animated-text">&emsp;Auto Notes: </p>
+              <div className="child notesdiv animated-border-input">
                 <textarea
                   name="autoNotes"
                   value={formData.autoNotes}
                   onChange={handleChange}
-                  className="notesbox"
+                  className="notesbox animated-text"
                 ></textarea>
               </div>
-              <p>&emsp;TeleOp Notes: </p>
-              <div className="child notesdiv">
+              <p className="animated-text">&emsp;TeleOp Notes: </p>
+              <div className="child notesdiv animated-border-input">
                 <textarea
                   placeholder="What is the general TeleOp Strategy? Ex: Shuttling (include loc.), Blocking, etc."
                   name="teleNotes"
                   value={formData.teleNotes}
                   onChange={handleChange}
-                  className="notesbox"
+                  className="notesbox animated-text"
                 ></textarea>
               </div>
-              <p>&emsp;Performance Notes: </p>
-              <div className="child notesdiv">
+              <p className="animated-text">&emsp;Performance Notes: </p>
+              <div className="child notesdiv animated-border-input">
                 <textarea
                   placeholder="Did the robot drive well? Did it impede their alliance members?
 desc things like speed, susceptibility to defense, etc (or put here if they played defense during this period)
@@ -699,11 +676,11 @@ desc things like speed, susceptibility to defense, etc (or put here if they play
                   name="perfNotes"
                   value={formData.perfNotes}
                   onChange={handleChange}
-                  className="notesbox"
+                  className="notesbox animated-text"
                 ></textarea>
               </div>
-              <p>&emsp;Special Events Notes: </p>
-              <div className="child notesdiv">
+              <p className="animated-text">&emsp;Special Events Notes: </p>
+              <div className="child notesdiv animated-border-input">
                 <textarea
                   name="eventsNotes"
                   placeholder="Any unexpected or notable events?
@@ -711,16 +688,16 @@ Ex. Did you notice something about their shooter, a tendency to bump easily, an 
 "
                   value={formData.eventsNotes}
                   onChange={handleChange}
-                  className="notesbox"
+                  className="notesbox animated-text"
                 ></textarea>
               </div>
-              <p>&emsp;Any Other Comments: </p>
-              <div className="child notesdiv">
+              <p className="animated-text">&emsp;Any Other Comments: </p>
+              <div className="child notesdiv animated-border-input">
                 <textarea
                   name="commentsNotes"
                   value={formData.commentsNotes}
                   onChange={handleChange}
-                  className="notesbox"
+                  className="notesbox animated-text"
                 ></textarea>
               </div>
             </CollapsibleDropdown>

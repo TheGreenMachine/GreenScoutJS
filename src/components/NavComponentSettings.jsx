@@ -12,7 +12,7 @@ function NavComponent() {
     <div id="navWrapper">
       <div onClick={navBack} className="back"></div>
       <div onClick={navBack} className="aneeshBack"></div>
-      <nav id="navbar"></nav>
+      <nav id="navbar" className="animated-accent"></nav>
     </div>
   );
 }

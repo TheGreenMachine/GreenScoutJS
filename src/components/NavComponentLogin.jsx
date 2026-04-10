@@ -4,7 +4,7 @@ import { getIsOffline } from "../api";
 function NavComponentLogin() {
   return (
     <span>
-      <nav id="navbar">
+      <nav id="navbar" className="animated-accent">
         <div
           className={`${getIsOffline ? "offline animated-offline" : ""}`}
         ></div>

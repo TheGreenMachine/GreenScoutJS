@@ -11,6 +11,31 @@ const SORT_LABELS = {
   HighScore: "Event",
 };
 
+function BoardContent({ isLoading, error, sortedLeaderboardData, sortKey }) {
+  if (isLoading) {
+    return (
+      <div className="leaderBoardTile animated-text animated-border">
+        Loading leaderboards...
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="leaderBoardTile animated-text">{error}</div>;
+  }
+
+  return sortedLeaderboardData.map((user, index) => (
+    <div
+      key={user.Username ?? `${user.DisplayName}-${index}`}
+      className="leaderBoardTile animated-border"
+    >
+      <span className="lb-rank animated-text">{index + 1}.</span>
+      <span className="lb-name animated-text">{user.DisplayName}</span>
+      <span className="lb-score animated-text">{user[sortKey] ?? "-"}</span>
+    </div>
+  ));
+}
+
 function normalizeLeaderboardData(rawData) {
   if (!Array.isArray(rawData)) {
     return [];
@@ -26,7 +51,7 @@ function normalizeLeaderboardData(rawData) {
 }
 
 export default function Leaderboard({ data }) {
-  const [sortKey, setSortKey] = useState("Score");
+  const [sortKey, setSortKey] = useState("HighScore");
   const [leaderboardData, setLeaderboardData] = useState(
     normalizeLeaderboardData(data),
   );
@@ -95,12 +120,17 @@ export default function Leaderboard({ data }) {
   return (
     <div id="leaderBody">
       <div id="refreshButtonContainer">
-        <button id="refreshButton" onClick={refreshPage}></button>
+        <button
+          id="refreshButton"
+          className="animated-accent"
+          onClick={refreshPage}
+        ></button>
       </div>
       <NavComponent />
 
       <h2
         style={{ textAlign: "center", fontWeight: "normal", marginBottom: 16 }}
+        className="animated-text"
       >
         Leaderboard
       </h2>
@@ -108,7 +138,7 @@ export default function Leaderboard({ data }) {
       <div id="sortContainer">
         {SORT_KEYS.map((key) => (
           <button
-            className={`lb-sort-btn ${sortKey === key ? "active" : ""}`}
+            className={`lb-sort-btn ${sortKey === key ? "active animated-accent" : ""}`}
             key={key}
             onClick={() => setSortKey(key)}
           >
@@ -118,22 +148,12 @@ export default function Leaderboard({ data }) {
       </div>
 
       <div id="boardContainer">
-        {isLoading ? (
-          <div className="leaderBoardTile">Loading leaderboards...</div>
-        ) : error ? (
-          <div className="leaderBoardTile">{error}</div>
-        ) : (
-          sortedLeaderboardData.map((user, index) => (
-            <div
-              key={user.Username ?? `${user.DisplayName}-${index}`}
-              className="leaderBoardTile"
-            >
-              <span className="lb-rank">{index + 1}.</span>
-              <span className="lb-name">{user.DisplayName}</span>
-              <span className="lb-score">{user[sortKey] ?? "-"}</span>
-            </div>
-          ))
-        )}
+        <BoardContent
+          isLoading={isLoading}
+          error={error}
+          sortedLeaderboardData={sortedLeaderboardData}
+          sortKey={sortKey}
+        />
       </div>
     </div>
   );

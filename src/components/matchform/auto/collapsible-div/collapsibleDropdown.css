@@ -41,6 +41,7 @@
 }
 
 .collapsibleDropdown__content--open {
+  border: none !important;
   max-height: var(--collapsible-open-max-height);
   border-top: 1px solid #ccc;
 }

@@ -3,16 +3,16 @@ import "./Dropdown.css";
 function Dropdown({ value, onChange, name }) {
   return (
     <div id="driverStation">
-      <p id="dtext" className="textDropdown">
+      <p id="dtext" className="textDropdown animated-text">
         Driver Station
       </p>
       <select
-        className="textDropdown dropdown"
+        className="textDropdown dropdown animated-text"
         name={name}
         value={value}
         onChange={onChange}
       >
-        <option>Select</option>
+        <option >Select</option>
         <option>Red 1</option>
         <option>Red 2</option>
         <option>Red 3</option>

@@ -11,7 +11,7 @@ function SubmitButton({
     <div className="divSubmit" id={idDiv}>
       <button
         onClick={submit}
-        className="submitButton"
+        className="submitButton  animated-accent"
         id={idButton}
         disabled={disabled}
       >

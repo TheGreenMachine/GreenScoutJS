@@ -1,7 +1,7 @@
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 
-function NewButtonMatch({ isAnimated }) {
+function NewButtonMatch() {
   const navigate = useNavigate();
 
   function handleClick() {
@@ -11,7 +11,7 @@ function NewButtonMatch({ isAnimated }) {
     <button
       onClick={handleClick}
       id="newmatchbutton"
-      className={isAnimated ? "animated-accent" : ""}
+      className="animated-accent"
     >
       <div id="newmatchbuttonimg"></div>
     </button>

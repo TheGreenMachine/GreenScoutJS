@@ -18,6 +18,10 @@
     <script>
       const theme = localStorage.getItem("app-theme") ?? "Green";
       document.documentElement.dataset.theme = theme;
+
+      const animated = localStorage.getItem("app-theme-animated") ?? "0";
+      document.documentElement.dataset.animated = animated;
+
       const link = document.createElement("link");
       link.id = "dynamic-theme";
       link.rel = "stylesheet";

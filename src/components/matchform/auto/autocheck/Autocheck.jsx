@@ -3,7 +3,7 @@ import "./Autocheck.css";
 function Autocheck({ children, checked, onChange, name }) {
   return (
     <div className="child divcheck">
-      <p className="textcheck">{children}</p>
+      <p className="textcheck animated-text">{children}</p>
       <label className="checkcontainer">
         <input
           className="check"

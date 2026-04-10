@@ -13,7 +13,11 @@ function ReplayButton({ children, idButton, idDiv, name, value, onChange }) {
 
   return (
     <div className="divReplay" id={idDiv}>
-      <button onClick={handleClick} className="replayButton" id={idButton}>
+      <button
+        onClick={handleClick}
+        className="replayButton  animated-accent"
+        id={idButton}
+      >
         <p className="replayText" id="replayPOne">
           {children}
         </p>

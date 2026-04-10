@@ -3,7 +3,7 @@ import "../auto/autocheck/Autocheck.css";
 function HPCheck({ name, value, onChange }) {
   return (
     <div className="child divcheck">
-      <p id="autotext" className="textcheck">
+      <p id="autotext" className="textcheck animated-text">
         Collect From Human Player?
       </p>
       <label className="checkcontainer">

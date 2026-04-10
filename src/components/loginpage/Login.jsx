@@ -54,12 +54,12 @@ const Login = ({ getUser }) => {
     <div id="body">
       <NavComponentLogin />
       <div id="parent" className="text">
-        <h1 className="textlogin loginh1">Login</h1>
+        <h1 className="textlogin loginh1 animated-text">Login</h1>
         <form id="loginPageForm" onSubmit={handleSubmit}>
-          <div id="usercontainer">
-            <div id="userimg"></div>
+          <div id="usercontainer" className="animated-border-input">
+            <div id="userimg" className="animated-accent"></div>{" "}
             <input
-              className="input"
+              className="input animated-text"
               placeholder="Enter Username"
               type="text"
               id="user"
@@ -70,10 +70,10 @@ const Login = ({ getUser }) => {
               autoComplete="username"
             />
           </div>
-          <div id="passcontainer">
-            <div id="passimg"></div>
+          <div id="passcontainer" className="animated-border-input">
+            <div id="passimg" className="animated-accent"></div>
             <input
-              className="input"
+              className="input animated-text"
               placeholder="Enter Password"
               required
               disabled={isLoading}
@@ -86,8 +86,8 @@ const Login = ({ getUser }) => {
           </div>
 
           {error && (
-            <div className="error-message">
-              <span className="error-icon">⚠</span>
+            <div className="error-message animated-text">
+              <span className="error-icon">⚠ </span>
               {error}
             </div>
           )}
@@ -95,14 +95,11 @@ const Login = ({ getUser }) => {
           <button
             type="submit"
             id="loginButton"
-            className="login-button"
+            className="login-button animated-accent"
             disabled={isLoading}
           >
             {isLoading ? (
-              <>
-                <span className="spinner"></span>
-                Logging in...
-              </>
+              <span className="spinner">Logging in...</span>
             ) : (
               "Sign In"
             )}

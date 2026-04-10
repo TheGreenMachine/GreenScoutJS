@@ -105,21 +105,38 @@
 }
 
 #matchNum {
-  display: block;
-  margin-top: var(--matchform-matchteam-margin-top);
-  height: var(--matchform-element-height);
-  width: calc(100% - var(--matchform-child-width-to-subtract));
-  margin-left: var(--matchform-child-margin-side);
+  width: 100%;
+  height: 100%;
   border-radius: var(--border-radius);
   color: var(--font-color-prompt-title);
   font-family: Arial, Helvetica, sans-serif;
   font-size: var(--font-size-small);
-  border: solid 2px var(--border-color-faded);
   text-align: center;
   box-sizing: border-box;
+  margin: 0;
+  overflow: hidden;
 }
 
-#matchNum:focus {
+[data-animated="0"] #matchNum {
+  border: solid 2px var(--border-color-faded);
+}
+
+[data-animated="1"] #matchNum {
+  border: none;
+}
+
+[data-animated="1"] .animated-border-input:not(#usercontainer, #passcontainer) {
+  display: block;
+  height: var(--matchform-element-height);
+  width: calc(100% - var(--matchform-child-width-to-subtract));
+}
+
+[data-animated="1"] .animated-border-input:has(> #matchNum, > #teamNum) {
+  margin-left: var(--matchform-child-margin-side);
+  margin-top: var(--matchform-matchteam-margin-top);
+}
+
+[data-animated="0"] #matchNum:focus {
   border: solid 2px var(--border-color-active);
   outline: 0;
 }
@@ -135,24 +152,24 @@
 }
 
 #teamNum {
-  display: block;
-  width: calc(100% - var(--matchform-child-width-to-subtract));
-  margin-left: var(--matchform-child-margin-side);
-  font-size: var(--font-size-small);
-  margin-top: var(--matchform-matchteam-margin-top);
-  height: var(--matchform-element-height);
+  width: 100%;
+  height: 100%;
   border-radius: var(--border-radius);
   color: var(--font-color-prompt-title);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: var(--font-weight);
-  border: solid 2px var(--border-color-faded);
+  font-size: var(--font-size-small);
   text-align: center;
   box-sizing: border-box;
+  margin: 0;
+  overflow: hidden;
 }
 
-#teamNum:focus {
-  border: solid 2px var(--border-color-active);
-  outline: 0;
+[data-animated="0"] #teamNum {
+  border: solid 2px var(--border-color-faded);
+}
+
+[data-animated="1"] #teamNum {
+  border: none;
 }
 
 #teamNum::placeholder {
@@ -213,6 +230,7 @@
   background: var(--background-color);
   color: var(--font-color-prompt-title);
   box-sizing: border-box;
+  border-radius: var(--border-radius);
 }
 
 .child.notesdiv .notesbox {

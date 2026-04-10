@@ -3,11 +3,11 @@ import "./Dropdown.css";
 function BotTypeDropdown({ value, onChange, name }) {
   return (
     <div id="driverStation">
-      <p id="dtext" className="textDropdown">
+      <p id="dtext" className="textDropdown animated-text">
         Bot Type
       </p>
       <select
-        className="textDropdown dropdown"
+        className="textDropdown dropdown animated-text"
         name={name}
         value={value}
         onChange={onChange}

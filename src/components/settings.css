@@ -33,7 +33,7 @@
   color: var(--font-color-prompt-title);
   margin: var(--settings-element-spacing);
   width: var(--settings-element-width);
-  height: var(--settings-element-height);
+  height: calc(var(--settings-element-height) * 1.5);
   margin-left: calc((100% - var(--settings-element-width)) / 2);
   padding-top: calc(var(--settings-element-height) / 4);
 }

@@ -6,7 +6,7 @@ html[data-theme="Rainbow"] {
   /* Color Variables */
   --animatedTheme: 1 !important;
   --loop-time: 35s !important;
-  --background-gradient: linear-gradient(
+  --animation-gradient: linear-gradient(
     90deg,
     #ff0000,
     #ff7700,
@@ -17,9 +17,9 @@ html[data-theme="Rainbow"] {
     #ff0000
   ) !important;
   --background-color: #3c3c3c !important;
-  --accent-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%) !important;
-  --accent-color2: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%) !important;
-  --accent-color3: linear-gradient(0deg, #3db43d 0%, #43c343 100%) !important;
+  --accent-color: #6e6e6e !important;
+  --accent-color2: #6e6e6e !important;
+  --accent-color3: #6e6e6e !important;
 
   --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
 

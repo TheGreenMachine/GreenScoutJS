@@ -4,7 +4,7 @@ function TriggerButton({ onTrigger, active }) {
   return (
     <button
       id="sideButtonTrigger"
-      className={active ? "active" : "inactive"}
+      className={`animated-accent ${active ? "active" : "inactive"}`}
       onClick={onTrigger}
     >
       <div className={active ? "act" : "inact"} id="stopbuttonimg"></div>

@@ -8,7 +8,8 @@
 .autocountertextarea {
   display: block;
   width: 100%;
-  height: var(--counter-button-height);
+  /* height: var(--counter-button-height); */
+  height: 100%;
   font-size: var(--font-size-small);
   font-family: Arial, Helvetica, sans-serif;
   color: var(--font-color-prompt-title);
@@ -19,6 +20,7 @@
   border-radius: var(--border-radius);
   padding: 0 0.5rem;
   text-align: center;
+  margin: 0;
 }
 
 .autocountertextarea::placeholder {

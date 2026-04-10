@@ -10,9 +10,9 @@ function CollapsibleDropdown({ title, children, startOpen }) {
   }
 
   return (
-    <div className="collapsibleDropdown">
+    <div className="collapsibleDropdown animated-border">
       <button onClick={setOpen} className="collapsibleDropdown__trigger">
-        <span>{title}</span>
+        <span className="animated-text">{title}</span>
         <span
           className={`collapsibleDropdown__arrow ${isOpen ? "collapsibleDropdown__arrow--open" : ""}`}
         >
@@ -21,7 +21,7 @@ function CollapsibleDropdown({ title, children, startOpen }) {
       </button>
 
       <div
-        className={`collapsibleDropdown__content ${isOpen ? "collapsibleDropdown__content--open" : ""}`}
+        className={`collapsibleDropdown__content ${isOpen ? "collapsibleDropdown__content--open animated-border" : ""}`}
       >
         <div className="collapsibleDropdown__inner">{children}</div>
       </div>

@@ -233,7 +233,7 @@ body {
 }
 
 #nav-toggle:not(:checked) ~ .hamburger.animated-accent {
-  background: var(--font-color);
+  background: var(--font-color) !important;
 }
 
 #nav-toggle:checked ~ .hamburger.animated-accent {

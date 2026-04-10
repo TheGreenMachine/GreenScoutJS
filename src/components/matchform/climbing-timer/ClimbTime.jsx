@@ -31,7 +31,9 @@ function ClimbTime({ runningBool, time, setTime, name, onChange }) {
 
   return (
     <div className="child" id="climbtimehead">
-      <p id="climbtimetext">{(time / 1000).toFixed(2)} secs</p>
+      <p id="climbtimetext" className="animated-text">
+        {(time / 1000).toFixed(2)} secs
+      </p>
     </div>
   );
 }
