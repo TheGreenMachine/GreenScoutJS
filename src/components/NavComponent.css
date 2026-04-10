@@ -236,7 +236,7 @@ body {
   background: var(--font-color) !important;
 }
 
-#nav-toggle:checked ~ .hamburger.animated-accent {
+[data-animated="1"]#nav-toggle:checked ~ .hamburger.animated-accent {
   background-image: linear-gradient(
     90deg,
     #ff0000,

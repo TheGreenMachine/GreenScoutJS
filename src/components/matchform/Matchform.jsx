@@ -1,5 +1,5 @@
 import "./Matchform.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Children } from "react";
 import NavComponent from "../NavComponent";
 import Dropdown from "./auto/dropdown/Dropdown";
 import Autocheck from "./auto/autocheck/Autocheck";
@@ -13,7 +13,7 @@ import ResetButton from "./climbing-timer/ResetButton";
 import EndDropdown from "./auto/dropdown/EndDropdown";
 import SubmitButton from "./submitbuttons/SubmitButton";
 import ReplayButton from "./submitbuttons/ReplayButton";
-import { submitMatchform } from "../../api";
+import { getIsOffline, submitMatchform } from "../../api";
 import { useNavigate } from "react-router-dom";
 import Slider from "./auto/slider/Slider";
 import CollapsibleDropdown from "./auto/collapsible-div/CollapsibleDropdown";
@@ -54,13 +54,21 @@ const defaultFormData = {
   disconnect: false,
   loseTrack: false,
   everBeached: false,
-  autoNotes: "\t",
-  teleNotes: "\t",
-  perfNotes: "\t",
-  eventsNotes: "\t",
-  commentsNotes: "\t",
+  autoNotes: "",
+  teleNotes: "",
+  perfNotes: "",
+  eventsNotes: "",
+  commentsNotes: "",
   replayed: false,
 };
+
+function AnimatedSpan({ children }) {
+  console.log(document.documentElement.dataset.animated + "1 = animated");
+  if (document.documentElement.dataset.animated == "1") {
+    return <span className="animated-border-input">{children}</span>;
+  }
+  return children;
+}
 
 function Matchform() {
   const navigate = useNavigate();
@@ -376,7 +384,7 @@ function Matchform() {
             <div className="child headparent">
               <h1 className="header animated-text">Match Info</h1>
             </div>
-            <span className="animated-border-input">
+            <AnimatedSpan>
               <input
                 placeholder="Match #"
                 type="number"
@@ -387,8 +395,8 @@ function Matchform() {
                 value={formData.match}
                 onChange={handleChange}
               />
-            </span>
-            <span className="animated-border-input">
+            </AnimatedSpan>
+            <AnimatedSpan>
               <input
                 placeholder="Team #"
                 type="number"
@@ -399,7 +407,7 @@ function Matchform() {
                 value={formData.team}
                 onChange={handleChange}
               />
-            </span>
+            </AnimatedSpan>
             <Dropdown
               value={formData.driverStation}
               onChange={handleChange}
