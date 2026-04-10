@@ -44,7 +44,7 @@ html {
   --element-height: clamp(3.8rem, 20.2vh, 10rem);
 
   /* Navbar Sizing Variables */
-  --sidenav-width: min(70vw, 22rem);
+  --sidenav-width: 75vw;
   --navbar-height: clamp(3rem, 8vh, 4.5rem);
   --sidenav-usertile-height: 0%;
   --sidenav-usertile-width: 15vh;

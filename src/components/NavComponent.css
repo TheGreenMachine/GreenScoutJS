@@ -134,7 +134,7 @@ body {
   top: 0;
   left: calc(var(--sidenav-width) * -1);
   width: var(--sidenav-width);
-  max-width: min(70vw, 22rem);
+  max-width: var(--sidenav-width);
   height: 100%;
   background: linear-gradient(
     90deg,
@@ -153,7 +153,7 @@ body {
 .side-nav-top {
   z-index: 999999999999;
   position: fixed;
-  width: inherit;
+  width: var(--sidenav-width);
   max-width: inherit;
   top: var(--sidenav-usertile-height);
   height: var(--sidenav-section-height);
@@ -172,7 +172,7 @@ body {
   z-index: 9;
   position: fixed;
   top: calc(var(--sidenav-usertile-height) + var(--sidenav-section-height));
-  width: inherit;
+  width: var(--sidenav-width);
   max-width: inherit;
   height: var(--sidenav-section-height);
   background: transparent;
