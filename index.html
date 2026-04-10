@@ -1,35 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Standard favicon -->
-    <link rel="icon" href="/GreenScoutJS/assets/favicon-Dz3wCwUa.ico" sizes="any" />
-    <!-- For Apple devices -->
-    <link
-      rel="apple-touch-icon"
-      href="/GreenScoutJS/assets/apple-touch-icon-DWktp9Ec.png"
-    />
-    <!-- General fallback for older browsers -->
-    <link
-      rel="icon"
-      type="image/png"
-      href="/GreenScoutJS/assets/favicon-32x32-im4bZGnR.png"
-      sizes="32x32"
-    />
-    <script>
-      const theme = localStorage.getItem("app-theme") ?? "Green";
-      document.documentElement.dataset.theme = theme;
-      const link = document.createElement("link");
-      link.id = "dynamic-theme";
-      link.rel = "stylesheet";
-      link.href = `/GreenScoutJS/themes/${theme.toLowerCase()}.css`;
-      document.head.appendChild(link);
-    </script>
+	<head>
+		<!-- Standard favicon -->
+		<link rel="icon" href="/GreenScoutJS/assets/favicon-Dz3wCwUa.ico" sizes="any">
+		<!-- For Apple devices -->
+		<link rel="apple-touch-icon" href="/GreenScoutJS/assets/apple-touch-icon-DWktp9Ec.png">
+		<!-- General fallback for older browsers -->
+		<link rel="icon" type="image/png" href="/GreenScoutJS/assets/favicon-32x32-im4bZGnR.png" sizes="32x32">
 
-    <title>Green Scout</title>
-    <script type="module" crossorigin src="/GreenScoutJS/assets/index-DWCgKDVH.js"></script>
-    <link rel="stylesheet" crossorigin href="/GreenScoutJS/assets/index-BDk0dB9L.css">
-  </head>
-  <body style="padding: 0; margin: 0; color: var(--background-color)">
-    <div id="root"></div>
-  </body>
+                <link href="https://greenscout-backend-github-85398269750.us-central1.run.app/getTheme" rel="stylesheet" id="themeLink">
+                        
+		<title>Green Scout</title>
+		<script type="module" crossorigin src="/GreenScoutJS/assets/index-BhrCg-9C.js"></script>
+		<link rel="stylesheet" crossorigin href="/GreenScoutJS/assets/index-Bb48GUhk.css">
+	</head>
+	<body style="padding: 0; margin: 0; color: var(--background-color)">
+		<div id="root"></div>
+	</body>
 </html>

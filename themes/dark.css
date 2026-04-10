@@ -1,34 +1,34 @@
-html[data-theme="Dark"] {
-  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+html {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color);
 }
 
-:root[data-theme="Dark"] {
+:root {
   /* Color Variables */
-  --background-color: #3c3c3c !important;
-  --accent-color: #9bcbfb !important;
-  --accent-color2: #8fbdeb !important;
-  --accent-color3: #cee5ff !important;
+  --background-color: #3c3c3c;
+  --accent-color: #9bcbfb;
+  --accent-color2: #8fbdeb;
+  --accent-color3: #cee5ff;
 
-  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1);
 
-  --blue-color: #9bcbfb !important;
-  --error-color: var(--disabled-color) !important;
-  --disabled-color: #717172 !important;
+  --blue-color: #9bcbfb;
+  --error-color: var(--disabled-color);
+  --disabled-color: #717172;
 
-  --font-color: black !important;
-  --font-color-prompt-title: white !important;
-  --font-color-header: white !important;
+  --font-color: black;
+  --font-color-prompt-title: white;
+  --font-color-header: white;
 
-  --drop-shadow-color: #626263 !important;
-  --sidenav-hover-color: var(--accent-color) !important;
-  --faded-text-color: #5f6167 !important;
+  --drop-shadow-color: #626263;
+  --sidenav-hover-color: var(--accent-color);
+  --faded-text-color: #5f6167;
 
-  --kelly-green: #4cbb17 !important;
-  --error-message-color: var(--disabled-color) !important;
-  --check-background-color: #4cbb17 !important;
-  --checkbox-default-color: #eee !important;
-  --checkbox-hover-color: #ccc !important;
-  --border-color-faded: #d9d9db !important;
-  --border-color-active: #417096 !important;
-  --sidenav-button-color: #dfdfdf !important;
+  --kelly-green: #4cbb17;
+  --error-message-color: var(--disabled-color);
+  --check-background-color: #4cbb17;
+  --checkbox-default-color: #eee;
+  --checkbox-hover-color: #ccc;
+  --border-color-faded: #d9d9db;
+  --border-color-active: #417096;
+  --sidenav-button-color: #dfdfdf;
 }
