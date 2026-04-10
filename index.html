@@ -15,27 +15,25 @@
       href="/src/assets/favicon/favicon-32x32.png"
       sizes="32x32"
     />
-    <script type="module">
-      import { getIsOffline } from "./src/api";
-
+    <script>
       const theme = localStorage.getItem("app-theme") ?? "Green";
       document.documentElement.dataset.theme = theme;
 
       const animated = localStorage.getItem("app-theme-animated") ?? "0";
       document.documentElement.dataset.animated = animated;
+    </script>
 
-      const offline = (getIsOffline() ? "1" : "0") ?? "0";
-      document.documentElement.dataset.offline = offline;
-
-      console.log(offline);
-      console.log(document.documentElement.dataset.offline);
-      console.log("--------------");
+    <script type="module">
+      import { getIsOffline } from "./src/api";
 
       const link = document.createElement("link");
       link.id = "dynamic-theme";
       link.rel = "stylesheet";
-      link.href = `/GreenScoutJS/themes/${theme.toLowerCase()}.css`;
+      link.href = `/GreenScoutJS/themes/${localStorage.getItem("app-theme") ?? "green"}.css`;
       document.head.appendChild(link);
+
+      const offline = (getIsOffline() ? "1" : "0") ?? "0";
+      document.documentElement.dataset.offline = offline;
     </script>
 
     <title>Green Scout</title>

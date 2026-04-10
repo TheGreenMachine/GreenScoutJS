@@ -103,7 +103,7 @@ function SettingsDebug({ ip, eventData }) {
             <div
               key={entry.key}
               ref={index === 0 ? tileRef : null}
-              className="settingsDebugCachedMatchesButton"
+              className="settingsDebugCachedMatchesButton animated-border"
             >
               <span className="animated-text">
                 Match # {JSON.stringify(entry.data?.Match?.Number) || "N/A"}
