@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useCallback,
 } from "react";
-import { logoutUser } from "./api/api";
+import { AUTH_EXPIRED_EVENT_NAME, logoutUser } from "./api/api";
 
 const AuthContext = createContext(null);
 
@@ -50,6 +50,18 @@ export const AuthProvider = ({ children }) => {
 
     checkAuth();
   }, []);
+
+  useEffect(() => {
+    const handleAuthExpired = () => {
+      logout();
+    };
+
+    window.addEventListener(AUTH_EXPIRED_EVENT_NAME, handleAuthExpired);
+
+    return () => {
+      window.removeEventListener(AUTH_EXPIRED_EVENT_NAME, handleAuthExpired);
+    };
+  }, [logout]);
 
   const login = useCallback((userData) => {
     setUser(userData);
