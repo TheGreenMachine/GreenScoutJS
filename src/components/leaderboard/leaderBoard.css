@@ -26,7 +26,7 @@
 }
 
 .lb-sort-btn {
-  padding: 1% 1%;
+  padding: 1%;
   border-radius: var(--border-radius);
   border: none;
   background: var(--accent-color3);
@@ -35,6 +35,7 @@
   height: var(--leader-board-element-height);
   color: var(--font-color);
   font-size: var(--font-size-small);
+  padding-top: -5%;
 }
 
 .lb-sort-btn.active {

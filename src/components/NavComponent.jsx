@@ -35,6 +35,11 @@ function NavComponent({ onNavigateOut }) {
     setChecked(false);
   };
 
+  useEffect(() => {
+    document.documentElement.dataset.offline = getIsOffline ? "0" : "1";
+    console.log(document.documentElement.dataset.offline);
+  }, []);
+
   return (
     <div id="navWrapper">
       <input
@@ -44,9 +49,7 @@ function NavComponent({ onNavigateOut }) {
         onChange={handleNavToggle}
       />
       <label htmlFor="nav-toggle" className="hamburger animated-accent"></label>
-      <div
-        className={`${!getIsOffline ? "offline animated-offline" : ""}`}
-      ></div>
+      <div className="offline animated-offline"></div>
       <label htmlFor="nav-toggle" id="aneeshButton"></label>
       <nav className="side-nav">
         <nav className="side-nav-top">
