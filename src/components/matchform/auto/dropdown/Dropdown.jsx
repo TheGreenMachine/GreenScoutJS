@@ -1,4 +1,5 @@
 import "./Dropdown.css";
+// import { Textfit } from "react-textfit";
 
 function Dropdown({ value, onChange, name }) {
   return (
@@ -12,7 +13,7 @@ function Dropdown({ value, onChange, name }) {
         value={value}
         onChange={onChange}
       >
-        <option >Select</option>
+        <option>Select</option>
         <option>Red 1</option>
         <option>Red 2</option>
         <option>Red 3</option>

@@ -9,6 +9,9 @@ html[data-theme="Dark"] {
   --accent-color2: #8fbdeb !important;
   --accent-color3: #cee5ff !important;
 
+  --hamburger-color: var(--font-color);
+  --hamburger-color-checked: var(--font-color-prompt-title);
+
   --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
 
   --blue-color: #9bcbfb !important;

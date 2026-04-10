@@ -11,6 +11,9 @@ html[data-theme="Green"] {
 
   --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
 
+  --hamburger-color: var(--font-color);
+  --hamburger-color-checked: var(--font-color-prompt-title);
+
   --blue-color: #9bcbfb !important;
   --error-color: var(--disabled-color) !important;
   --disabled-color: #717172 !important;

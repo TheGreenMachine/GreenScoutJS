@@ -8,6 +8,9 @@ html {
   --accent-color2: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
   --accent-color3: linear-gradient(0deg, #3db43d 0%, #43c343 100%);
 
+  --hamburger-color: var(--font-color);
+  --hamburger-color-checked: var(--font-color);
+
   --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1);
 
   --blue-color: #9bcbfb;
@@ -77,8 +80,10 @@ html {
   --matchform-sectionbox-padding-top: clamp(1.5rem, 7.5vh, 2rem);
   --matchform-side-panel-width: clamp(4rem, 8vh, 5.5rem);
   --matchform-grid-template: 1fr var(--matchform-side-panel-width);
-  --matchform-child-margin-side: 7.5vw;
-  --matchform-child-width-to-subtract: 15vw;
+  --matchform-child-margin-side: 1vw;
+  --matchform-child-width-to-subtract: calc(
+    var(--matchform-child-margin-side) * 2
+  );
   --matchform-element-height: var(--element-height);
   --matchform-matchteam-margin-top: clamp(0.5rem, 1.5vh, 1rem);
   --matchform-header-padding-top: 5px;

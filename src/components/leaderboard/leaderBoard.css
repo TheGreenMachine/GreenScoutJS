@@ -32,7 +32,7 @@
   background: var(--accent-color3);
   cursor: pointer;
   width: 30%;
-  height: var(--leader-board-element-height);
+  height: calc(var(--leader-board-element-height) * 1.5);
   color: var(--font-color);
   font-size: var(--font-size-small);
   padding-top: -5%;
