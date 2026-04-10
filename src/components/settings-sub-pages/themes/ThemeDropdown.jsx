@@ -39,7 +39,6 @@ function ThemeDrop() {
     );
     document.documentElement.dataset.animated =
       nextTheme === "Rainbow" ? "1" : "0";
-    console.log(document.documentElement.dataset.animated);
   };
 
   return (

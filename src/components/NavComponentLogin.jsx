@@ -5,7 +5,6 @@ import { useEffect } from "react";
 function NavComponentLogin() {
   useEffect(() => {
     document.documentElement.dataset.offline = getIsOffline ? "0" : "1";
-    console.log(document.documentElement.dataset.offline);
   }, []);
 
   return (

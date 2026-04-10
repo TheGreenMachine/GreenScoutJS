@@ -2,12 +2,14 @@ import "./Autocounter.css";
 
 function Autocounter({ nameText, value, onChange, name }) {
   return (
-    <div className="child autocounterwrap animated-border-input">
+    <div
+      className={`child autocounterwrap ${document.documentElement.dataset.animated == "1" ? "animated-border-input" : ""}`}
+    >
       <input
         name={name}
         value={value}
         onChange={onChange}
-        className="autocountertextarea animated-text animated-border-input"
+        className="autocountertextarea animated-text"
         placeholder={nameText}
         type="number"
         step="1"

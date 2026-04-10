@@ -63,7 +63,6 @@ const defaultFormData = {
 };
 
 function AnimatedSpan({ children }) {
-  console.log(document.documentElement.dataset.animated + "1 = animated");
   if (document.documentElement.dataset.animated == "1") {
     return <span className="animated-border-input">{children}</span>;
   }

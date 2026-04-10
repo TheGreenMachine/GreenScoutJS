@@ -12,7 +12,6 @@ function NavComponent() {
 
   useEffect(() => {
     document.documentElement.dataset.offline = getIsOffline ? "0" : "1";
-    console.log(document.documentElement.dataset.offline);
   }, []);
 
   return (
