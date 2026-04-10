@@ -106,15 +106,16 @@ function SettingsDebug({ ip, eventData }) {
               className="settingsDebugCachedMatchesButton animated-border"
             >
               <span className="animated-text">
-                Match # {JSON.stringify(entry.data?.Match?.Number) || "N/A"}
+                Match # {JSON.stringify(entry.data?.match?.number) || "N/A"} |
               </span>
               <span className="animated-text">
-                Team # {JSON.stringify(entry.data?.Team) || "N/A"}
+                | Team # {JSON.stringify(entry.data?.team) || "N/A"} |
               </span>
               <span className="animated-text">
-                {entry.data?.driverStation?.IsBlue === false
-                  ? "Red " + entry.data?.driverStation?.Number
-                  : "Blue " + entry.data?.driverStation?.Number}
+                |{" "}
+                {entry.data?.driverStation?.isBlue === false
+                  ? "Red " + entry.data?.driverStation?.number
+                  : "Blue " + entry.data?.driverStation?.number}
               </span>
               <button
                 className="forceSendCopy animated-text"
