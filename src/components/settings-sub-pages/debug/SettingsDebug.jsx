@@ -1,7 +1,7 @@
 import "../../settings.css";
 import NavComponentSettings from "../../NavComponentSettings";
 import { useState, useRef, useEffect } from "react";
-import { submitMatchform } from "../../../api";
+import { submitMatchform, getIsOffline } from "../../../api";
 
 function SettingsDebug({ ip, eventData }) {
   const [matches, setMatches] = useState(() => {
@@ -44,6 +44,7 @@ function SettingsDebug({ ip, eventData }) {
   const forceSend = (text) => {
     submitMatchform(text).catch((err) => {
       console.error("Submission failed:", err);
+      document.documentElement.dataset.offline = "1";
     });
   };
 
@@ -51,6 +52,7 @@ function SettingsDebug({ ip, eventData }) {
     matches.map((entry) =>
       submitMatchform(entry).catch((err) => {
         console.error("Submission failed:", err);
+        document.documentElement.dataset.offline = getIsOffline ? "0" : "1";
       }),
     );
   };
@@ -93,7 +95,9 @@ function SettingsDebug({ ip, eventData }) {
           </div>
         </button>
         <div id="settingsDebugCachedMatches">
-          <h1 className="settingsh1 animated-text">Cached Matches</h1>
+          <h1 id="cachedTitle" className="settingsh1 animated-text">
+            Cached Matches
+          </h1>
           {matches.length === 0 && (
             <div className="settingsDebugCachedMatchesButton noneFound">
               <span>No cached matches found.</span>
@@ -106,27 +110,35 @@ function SettingsDebug({ ip, eventData }) {
               className="settingsDebugCachedMatchesButton animated-border"
             >
               <span className="animated-text">
-                Match # {JSON.stringify(entry.data?.match?.number) || "N/A"} |
+                Match #{" "}
+                {JSON.stringify(entry.data?.match?.number) ||
+                  JSON.stringify(entry.data?.match?.Number) ||
+                  JSON.stringify(entry.data?.Match?.number) ||
+                  JSON.stringify(entry.data?.Match?.Number) ||
+                  "N/A"}{" "}
               </span>
               <span className="animated-text">
-                | Team # {JSON.stringify(entry.data?.team) || "N/A"} |
+                {"Team # "}
+                {JSON.stringify(entry.data?.team) ||
+                  JSON.stringify(entry.data?.Team) ||
+                  "N/A"}{" "}
               </span>
               <span className="animated-text">
-                |{" "}
+                {" "}
                 {entry.data?.driverStation?.isBlue === false
                   ? "Red " + entry.data?.driverStation?.number
                   : "Blue " + entry.data?.driverStation?.number}
               </span>
               <button
-                className="forceSendCopy animated-text"
+                className="forceSendCopy animated-text animated-border"
                 onClick={() =>
                   copyToClipboard(JSON.stringify(entry.data, null, 2))
                 }
               >
-                Copy
+                Copy Match
               </button>
               <button
-                className="forceSendCopy animated-text"
+                className="forceSendCopy animated-text animated-border"
                 onClick={() => forceSend(JSON.stringify(entry, null, 2))}
               >
                 Force Send

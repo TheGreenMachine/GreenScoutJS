@@ -23,6 +23,8 @@ const Login = ({ getUser }) => {
 
     if (result.success) {
       // Store user data in localStorage
+      localStorage.setItem("guest_mode", true);
+
       getUser(username);
 
       login({ username: result.user, role: result.role });
@@ -48,6 +50,31 @@ const Login = ({ getUser }) => {
     setPassword(e.target.value);
     // Clear error when user starts typing
     if (error) setError("");
+  };
+
+  const loginGuest = (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+
+    localStorage.setItem(
+      "greenscout_user",
+      JSON.stringify({
+        username: {
+          uuid: 0,
+          certificate: 0,
+          role: "Guest",
+          username: "Guest",
+          DisplayName: "Guest",
+        },
+      }),
+    );
+    localStorage.setItem("greenscout_auth", true);
+    localStorage.setItem("guest_mode", true);
+
+    setIsLoading(false);
+
+    navigate("/home");
+    globalThis.location.reload();
   };
 
   return (
@@ -105,6 +132,13 @@ const Login = ({ getUser }) => {
             )}
           </button>
         </form>
+        <button
+          id="guestButton"
+          className="login-button animated-accent"
+          onClick={loginGuest}
+        >
+          Sign In as Guest
+        </button>
       </div>
     </div>
   );

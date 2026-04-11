@@ -1,7 +1,7 @@
 import axios from "axios";
 import forge from "node-forge";
 
-const SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
+let SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
 
 axios.defaults.withCredentials = true;
 

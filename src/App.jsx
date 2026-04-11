@@ -34,11 +34,11 @@ function App() {
   const [eventData, setEventData] = useState("");
   const [user, setUser] = useState("");
 
-  useEffect(() => {
-    getIpAddress().then((address) => {
-      if (address) setIp(address);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getIpAddress().then((address) => {
+  //     if (address) setIp(address);
+  //   });
+  // }, []);
 
   const getUser = (username) => {
     setUser(username);

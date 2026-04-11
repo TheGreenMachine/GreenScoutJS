@@ -18,10 +18,11 @@
   align-items: center;
   min-height: var(--check-div-height);
   width: calc(100% - var(--matchform-child-width-to-subtract));
-  margin-left: var(--check-special-margin-left);
+  margin-left: var(--matchform-child-margin-side);
   gap: 0.5rem;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
+  position: relative;
 }
 
 .divcheck:focus {
@@ -36,7 +37,6 @@
 
 .checkcontainer {
   display: block;
-  position: relative;
   flex-shrink: 0;
   padding-left: var(--check-container-padding-left);
   margin-bottom: 0;
@@ -62,7 +62,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: var(--check-mark-left);
+  right: 0.5rem;
+  left: auto;
   height: var(--check-size);
   width: var(--check-size);
   background: var(--checkbox-default-color);
