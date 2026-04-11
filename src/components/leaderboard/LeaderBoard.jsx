@@ -82,16 +82,22 @@ export default function Leaderboard({ data }) {
       setError("");
 
       try {
-        const response = await getLeaderboard(sortKey);
-        const leaderboardResponse = Array.isArray(response)
-          ? response
-          : response?.data;
+        if (localStorage.getItem("guest_mode") === "false") {
+          const response = await getLeaderboard(sortKey);
+          const leaderboardResponse = Array.isArray(response)
+            ? response
+            : response?.data;
 
-        if (!isMounted) {
+          if (!isMounted) {
+            return;
+          }
+
+          setLeaderboardData(normalizeLeaderboardData(leaderboardResponse));
+        } else {
+          setLeaderboardData([]);
+          setError("Failed to load leaderboard due to Guest Mode.");
           return;
         }
-
-        setLeaderboardData(normalizeLeaderboardData(leaderboardResponse));
       } catch (fetchError) {
         if (!isMounted) {
           return;

@@ -28,7 +28,7 @@
 :root[data-animated="1"] .animated-border {
   position: relative;
   border: none !important;
-  border-radius: 2em;
+  border-radius: var(--border-radius);
   background: var(--background-color);
   isolation: isolate;
 }
@@ -37,7 +37,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 2em;
+  border-radius: var(--border-radius);
   padding: 2px;
   background: var(--animation-gradient);
   background-size: 400% 100%;
@@ -82,7 +82,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 2em;
+  border-radius: var(--border-radius);
   padding: 2px;
   background: var(--animation-gradient);
   background-size: 400% 100%;

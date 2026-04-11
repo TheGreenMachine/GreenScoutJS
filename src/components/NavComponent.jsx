@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getIsOffline } from "../api";
 
-function NavComponent({ onNavigateOut }) {
+function NavComponent() {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
 
   const handleNavigation = (path) => {
-    if (onNavigateOut) onNavigateOut();
     navigate(path);
   };
 
@@ -36,8 +35,8 @@ function NavComponent({ onNavigateOut }) {
   };
 
   useEffect(() => {
-    document.documentElement.dataset.offline = getIsOffline ? "0" : "1";
-  }, []);
+    getIsOffline();
+  });
 
   return (
     <div id="navWrapper">

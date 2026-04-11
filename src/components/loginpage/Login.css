@@ -121,7 +121,7 @@
 
 #loginButton {
   width: var(--login-element-width);
-  height: var(--login-button-height);
+  height: calc(var(--login-button-height) * 1.5);
   margin-top: 5.7vh;
   margin-bottom: 4.4vh;
   background: var(--accent-color3);
@@ -143,4 +143,24 @@
 #loginButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+#guestButton {
+  width: calc(var(--login-element-width) * 0.8);
+  height: calc(var(--login-button-height) * 1.5);
+  margin-bottom: 4.4vh;
+  background: var(--accent-color3);
+  border: 1px solid var(--accent-color3);
+  border-radius: var(--border-radius);
+  box-shadow: 0px 4px 5px var(--drop-shadow-color);
+  color: var(--font-color);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: var(--font-weight);
+  outline: none;
+  font-size: var(--font-size-large);
+  cursor: pointer;
+}
+
+#guestButton:hover {
+  background: var(--accent-color2);
 }

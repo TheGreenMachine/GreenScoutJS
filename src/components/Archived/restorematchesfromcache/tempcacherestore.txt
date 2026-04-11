@@ -1,0 +1,45 @@
+const [hasCache, setHasCache] = useState(false);
+
+  useEffect(() => {
+    const cachedData = localStorage.getItem("tempMatchFormCache");
+    if (cachedData) {
+      setHasCache(true);
+    }
+  }, []);
+
+  const handleNavigateOut = () => {
+    compileAndCache("tempMatchFormCache", true);
+  };
+
+  const restoreFromCache = (e) => {
+    e.preventDefault();
+    try {
+      const raw = localStorage.getItem("tempMatchFormCache");
+      console.log("raw cache:", raw);
+
+      const cached = JSON.parse(raw);
+      console.log("parsed cache:", cached);
+      console.log("cached.data:", cached?.data);
+
+      if (cached?.data) {
+        const restored = { ...defaultFormData, ...cached.data };
+        console.log("restoring to:", restored);
+        setFormData(restored);
+        setHasCache(false);
+      } else {
+        console.log("no data found in cache");
+      }
+    } catch (err) {
+      console.warn("Failed to restore cache:", err);
+    }
+  };
+
+  {hasCache && (
+            <button className="child animated-accent" id="restore" onClick={restoreFromCache}>
+              Restore Unsaved Match
+            </button>
+          )}
+
+            useEffect(() => {
+    compileAndCache("tempMatchFormCache", true);
+  }, [formData, compileAndCache]);

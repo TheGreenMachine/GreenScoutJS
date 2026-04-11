@@ -226,6 +226,7 @@ html {
   --settings-themedrop-text-width: 70vw;
   --settings-themedrop-margin-top: 10%;
   --settings-themedrop-padding-bottom: 0.5vh;
+  --debug-element-width: 90%;
 }
 
 :root[data-offline="1"] .animated-offline {

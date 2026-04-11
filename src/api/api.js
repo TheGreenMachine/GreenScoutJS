@@ -1,7 +1,7 @@
 import axios from "axios";
 import forge from "node-forge";
 
-const SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
+let SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
 
 export const api = axios.create({
   baseURL: SERVER,
@@ -14,7 +14,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-var wasOffline = false;
+let wasOffline = false;
 
 const AUTH_EXPIRED_EVENT = "greenscout:auth-expired";
 
@@ -26,6 +26,7 @@ async function post(url, data, config) {
   try {
     const response = await api.post(url, data, config);
     wasOffline = false;
+    getIsOffline();
     return response;
   } catch (err) {
     if (err.response && err.response.status === 401) {
@@ -38,6 +39,7 @@ async function post(url, data, config) {
       wasOffline = true;
       console.error("Axios post failed. Switching to offline mode. ", err);
     }
+    getIsOffline();
   }
 }
 
@@ -45,6 +47,7 @@ async function get(url, config) {
   try {
     const data = await api.get(url, config);
     wasOffline = false;
+    getIsOffline();
     return data;
   } catch (err) {
     if (err.response && err.response.status === 401) {
@@ -57,6 +60,7 @@ async function get(url, config) {
       wasOffline = true;
       console.error("Axios get failed. Switching to offline mode. ", err);
     }
+    getIsOffline();
     return null;
   }
 }
@@ -151,6 +155,15 @@ export const makeThemeLink = (themeName) => {
 };
 
 export const getIsOffline = () => {
+  if (localStorage.getItem("guest_mode") === "false") {
+    if (wasOffline) {
+      document.documentElement.dataset.offline = "1";
+    } else {
+      document.documentElement.dataset.offline = "0";
+    }
+  } else {
+    document.documentElement.dataset.offline = "1";
+  }
   return wasOffline;
 };
 
