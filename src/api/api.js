@@ -3,39 +3,70 @@ import forge from "node-forge";
 
 let SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
 
-axios.defaults.withCredentials = true;
+export const api = axios.create({
+  baseURL: SERVER,
+  headers: { "Content-Type": "application/json" },
+});
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("accessToken");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 let wasOffline = false;
 
+const AUTH_EXPIRED_EVENT = "greenscout:auth-expired";
+
+const notifyAuthExpired = () => {
+  window.dispatchEvent(new CustomEvent(AUTH_EXPIRED_EVENT));
+};
+
 async function post(url, data, config) {
   try {
-    const response = await axios.post(url, data, config);
+    const response = await api.post(url, data, config);
     wasOffline = false;
     getIsOffline();
     return response;
   } catch (err) {
-    console.error("Axios post failed. Switching to offline mode. ", err);
-    wasOffline = true;
+    if (err.response && err.response.status === 401) {
+      console.error(
+        "Axios post failed. Token is most likely expired. Clearing. ",
+        err,
+      );
+      notifyAuthExpired();
+    } else {
+      wasOffline = true;
+      console.error("Axios post failed. Switching to offline mode. ", err);
+    }
     getIsOffline();
   }
 }
 
 async function get(url, config) {
   try {
-    const data = await axios.get(url, config);
+    const data = await api.get(url, config);
     wasOffline = false;
     getIsOffline();
     return data;
   } catch (err) {
-    console.error("Axios get failed. Switching to offline mode. ", err);
-    wasOffline = true;
+    if (err.response && err.response.status === 401) {
+      console.error(
+        "Axios get failed. Token is most likely expired. Clearing. ",
+        err,
+      );
+      notifyAuthExpired();
+    } else {
+      wasOffline = true;
+      console.error("Axios get failed. Switching to offline mode. ", err);
+    }
     getIsOffline();
     return null;
   }
 }
 
 async function getPublicKey() {
-  const response = await get(`${SERVER}/pub`);
+  const response = await get("/pub");
   return forge.pki.publicKeyFromPem(response.data);
 }
 
@@ -50,7 +81,7 @@ export const authenticateUser = async (username, password) => {
   const encryptedPassword = await encryptPassword(password);
 
   const response = await post(
-    `${SERVER}/login`,
+    "/login",
     JSON.stringify({
       Username: username.toLowerCase(),
       EncryptedPassword: encryptedPassword,
@@ -73,6 +104,9 @@ export const authenticateUser = async (username, password) => {
     };
   }
 
+  const token = response.data.token;
+  localStorage.setItem("accessToken", token);
+
   return {
     role: role,
     user: username.toLowerCase(),
@@ -81,11 +115,12 @@ export const authenticateUser = async (username, password) => {
 };
 
 export const logoutUser = async () => {
-  await post(`${SERVER}/logout`);
+  // await post("/logout");
+  localStorage.removeItem("accessToken");
 };
 
 export const submitMatchform = async (formData) => {
-  await post(`${SERVER}/dataEntry`, formData, {
+  await post("/dataEntry", formData, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -93,7 +128,7 @@ export const submitMatchform = async (formData) => {
 };
 
 export const getLeaderboard = async (scoreType) => {
-  const response = await get(`${SERVER}/leaderboard`, {
+  const response = await get("/leaderboard", {
     headers: { type: scoreType },
   });
 
@@ -101,22 +136,22 @@ export const getLeaderboard = async (scoreType) => {
 };
 
 export const getThemeList = async () => {
-  const response = await get(`${SERVER}/allThemes`);
+  const response = await get("/allThemes");
 
   return response.data.themes;
 };
 
 export const getCurrentTheme = async () => {
-  const response = await get(`${SERVER}/currTheme`);
+  const response = await get("/currTheme");
   return response.data.theme;
 };
 
 export const setTheme = async (themeName) => {
-  await post(`${SERVER}/setTheme`, { theme: themeName });
+  await post("/setTheme", { theme: themeName });
 };
 
 export const makeThemeLink = (themeName) => {
-  return `${SERVER}/getTheme?theme=${themeName}`;
+  return `/getTheme?theme=${themeName}`;
 };
 
 export const getIsOffline = () => {
@@ -131,3 +166,5 @@ export const getIsOffline = () => {
   }
   return wasOffline;
 };
+
+export const AUTH_EXPIRED_EVENT_NAME = AUTH_EXPIRED_EVENT;
