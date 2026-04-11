@@ -1,0 +1,31 @@
+html[data-theme="BestBuy"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="BestBuy"] {
+  /* Color Variables */
+  --background-color: #f6f8fb !important;
+  --font-color: #0b0f14 !important;
+  --font-color-header: #0b0f14 !important;
+  --font-color-prompt-title: #0b0f14 !important;
+  --accent-color: #ffd400 !important;
+  --accent-color2: #1f4fbf !important;
+  --accent-color3: #dbe8ff !important;
+  --blue-color: #2a66ff !important;
+  --border-color-active: #1f4fbf !important;
+  --border-color-faded: #d6dde8 !important;
+  --sidenav-button-color: #eef2f7 !important;
+  --drop-shadow-color: rgba(11, 15, 20, 0.35) !important;
+  --sidenav-hover-color: #163b8e !important;
+  --faded-text-color: #4d5a6b !important;
+  --disabled-color: #7a8798 !important;
+  --kelly-green: #2ecc71 !important;
+  --check-background-color: #2ecc71 !important;
+  --error-color: #d92d20 !important;
+  --error-message-color: #d92d20 !important;
+  --check-background-color: #ffd400 !important;
+  --checkbox-default-color: #f2f4f7 !important;
+  --checkbox-hover-color: #e4e8ef !important;
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+}

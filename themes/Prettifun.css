@@ -1,0 +1,30 @@
+html[data-theme="Prettifun"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="Prettifun"] {
+  /* Color Variables */
+  --background-color: #00c8e6 !important;
+  --accent-color: #ff3300 !important;
+  --accent-color2: #ff8c00 !important;
+  --accent-color3: #c400d4 !important;
+  --blue-color: #1b3fa8 !important;
+  --error-color: #ff3300 !important;
+  --disabled-color: #5a7ab0 !important;
+  --font-color: #001833 !important;
+  --font-color-prompt-title: #001833 !important;
+  --font-color-header: #ffffff !important;
+  --drop-shadow-color: #003344 !important;
+  --sidenav-hover-color: #ff3300 !important;
+  --faded-text-color: #004466 !important;
+  --kelly-green: #39ff14 !important;
+  --error-message-color: #ff3300 !important;
+  --check-background-color: #39ff14 !important;
+  --checkbox-default-color: #b3eeff !important;
+  --checkbox-hover-color: #ffe500 !important;
+  --border-color-faded: #00a0bb !important;
+  --border-color-active: #ff3300 !important;
+  --sidenav-button-color: #b3eeff !important;
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+}

@@ -1,0 +1,37 @@
+html[data-theme="Dark"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="Dark"] {
+  /* Color Variables */
+  --background-color: #3c3c3c !important;
+  --accent-color: #9bcbfb !important;
+  --accent-color2: #8fbdeb !important;
+  --accent-color3: #cee5ff !important;
+
+  --hamburger-color: var(--font-color);
+  --hamburger-color-checked: var(--font-color-prompt-title);
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+
+  --blue-color: #9bcbfb !important;
+  --error-color: var(--disabled-color) !important;
+  --disabled-color: #717172 !important;
+
+  --font-color: black !important;
+  --font-color-prompt-title: white !important;
+  --font-color-header: white !important;
+
+  --drop-shadow-color: #626263 !important;
+  --sidenav-hover-color: var(--accent-color) !important;
+  --faded-text-color: #5f6167 !important;
+
+  --kelly-green: #4cbb17 !important;
+  --error-message-color: var(--disabled-color) !important;
+  --check-background-color: #4cbb17 !important;
+  --checkbox-default-color: #eee !important;
+  --checkbox-hover-color: #ccc !important;
+  --border-color-faded: #d9d9db !important;
+  --border-color-active: #417096 !important;
+  --sidenav-button-color: #dfdfdf !important;
+}
