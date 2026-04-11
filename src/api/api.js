@@ -11,10 +11,12 @@ async function post(url, data, config) {
   try {
     const response = await axios.post(url, data, config);
     wasOffline = false;
+    getIsOffline();
     return response;
   } catch (err) {
     console.error("Axios post failed. Switching to offline mode. ", err);
     wasOffline = true;
+    getIsOffline();
   }
 }
 
@@ -22,10 +24,12 @@ async function get(url, config) {
   try {
     const data = await axios.get(url, config);
     wasOffline = false;
+    getIsOffline();
     return data;
   } catch (err) {
     console.error("Axios get failed. Switching to offline mode. ", err);
     wasOffline = true;
+    getIsOffline();
     return null;
   }
 }
@@ -116,5 +120,14 @@ export const makeThemeLink = (themeName) => {
 };
 
 export const getIsOffline = () => {
+  if (localStorage.getItem("guest_mode") === "false") {
+    if (wasOffline) {
+      document.documentElement.dataset.offline = "1";
+    } else {
+      document.documentElement.dataset.offline = "0";
+    }
+  } else {
+    document.documentElement.dataset.offline = "1";
+  }
   return wasOffline;
 };

@@ -11,11 +11,7 @@ function NavComponent() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem("guest_mode") === "false") {
-      document.documentElement.dataset.offline = getIsOffline ? "1" : "0";
-    } else {
-      document.documentElement.dataset.offline = "1";
-    }
+    getIsOffline();
   }, []);
 
   return (
