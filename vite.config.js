@@ -47,10 +47,7 @@ export default defineConfig(({ mode }) => {
     base: "/GreenScoutJS/",
     resolve: {
       alias: {
-        "@api": path.resolve(
-          __dirname,
-          useBackend ? "src/api/api.js" : "src/api/mockApi.js",
-        ),
+        "@api": path.resolve(__dirname, "src/api/index.js"),
       },
     },
 

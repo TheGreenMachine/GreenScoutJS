@@ -19,7 +19,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = useCallback(async () => {
     try {
-      await logoutUser();
+      if (localStorage.getItem("guest_mode") === "false") {
+        await logoutUser();
+      }
     } catch (err) {
       console.warn("Server logout failed:", err);
     }

@@ -2,6 +2,47 @@
 import { useEffect, useRef } from "react";
 
 // Methods for handling cycles, in matchform.jsx
+const [hubSwitchCount, setHubSwitchCount] = useState(0);
+const [isCycleRunning, setIsCycleRunning] = useState(false);
+
+const [cycleList, setCycleList] = useState([]);
+
+const [isButtonActive, setIsButtonActive] = useState("true");
+
+const [activeAlliance, setActiveAlliance] = useState("gray");
+
+const [cycleTime, setCycleTime] = useState(0);
+
+const [teamAlliance, setTeamAlliance] = useState("");
+
+updateHub(newAlliance, formData.autoWon, hubSwitchCount);
+
+//from handle change
+if (name === "driverStation") {
+  const newAlliance = value.includes("Blue") ? "blue" : "red";
+  setTeamAlliance(newAlliance);
+} else if (name === "autoWon") {
+  updateHub(teamAlliance, checked, hubSwitchCount);
+} else {
+  updateHub(teamAlliance, formData.autoWon, hubSwitchCount);
+}
+
+const updateHub = (alliance, autoWon, switchCount) => {
+  if (alliance === "blue") {
+    if (autoWon) {
+      setActiveAlliance((switchCount + 1) % 2 === 0 ? "red" : "blue");
+    } else {
+      setActiveAlliance(switchCount % 2 === 0 ? "red" : "blue");
+    }
+  } else if (alliance === "red") {
+    if (autoWon) {
+      setActiveAlliance((switchCount + 1) % 2 === 0 ? "blue" : "red");
+    } else {
+      setActiveAlliance(switchCount % 2 === 0 ? "blue" : "red");
+    }
+  }
+};
+
 const updateCycleAccuracy = (index, newAccuracy) => {
   setCycleList((prevList) =>
     prevList.map((item, i) =>
@@ -24,6 +65,37 @@ const Cycles = ({
   onTrigger,
   onUpdateAccuracy,
 }) => {
+  const toggleCycleStopwatch = (event) => {
+    if (event) event.preventDefault();
+    setIsCycleRunning(!isCycleRunning);
+    if (isCycleRunning) {
+      setIsButtonActive("true");
+    } else {
+      setIsButtonActive("false");
+    }
+  };
+
+  const addCycleEvent = (eventName) => {
+    if (isCycleRunning) {
+      let newSwitchCount = hubSwitchCount;
+      const currentTime = (cycleTime / 1000).toFixed(2);
+      if (eventName === "hubSwitch") {
+        newSwitchCount = hubSwitchCount + 1;
+        setHubSwitchCount(newSwitchCount);
+      }
+      setCycleList((prevList) => [
+        ...prevList,
+        {
+          event: eventName,
+          time: currentTime,
+          accuracy: eventName === "Score" ? 0 : null,
+          activeHub: activeAlliance,
+        },
+      ]);
+      updateHub(teamAlliance, formData.autoWon, newSwitchCount);
+    }
+  };
+
   const getAccuracyLabelScore = (value) => {
     const numValue = Number(value);
     if (numValue === 0) return "Miss";

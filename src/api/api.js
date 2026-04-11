@@ -5,7 +5,7 @@ let SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
 
 axios.defaults.withCredentials = true;
 
-var wasOffline = false;
+let wasOffline = false;
 
 async function post(url, data, config) {
   try {

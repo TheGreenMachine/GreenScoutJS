@@ -1,6 +1,6 @@
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import { authenticateUser } from "../../api";
+import { authenticateUser, backendToggleOn } from "../../api";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import { useAuth } from "../../AuthContext";
@@ -17,13 +17,14 @@ const Login = ({ getUser }) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
+    backendToggleOn();
+    localStorage.setItem("guest_mode", false);
 
     const result = await authenticateUser(username, password);
     console.log("Authentication result:", result);
 
     if (result.success) {
       // Store user data in localStorage
-      localStorage.setItem("guest_mode", true);
 
       getUser(username);
 
@@ -32,7 +33,7 @@ const Login = ({ getUser }) => {
       console.log("Login successful:", result.user);
 
       // Navigate to home page
-      navigate("/home");
+      // navigate("/home");
     } else {
       setError(result.message);
     }

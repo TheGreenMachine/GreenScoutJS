@@ -52,7 +52,11 @@ function SettingsDebug({ ip, eventData }) {
     matches.map((entry) =>
       submitMatchform(entry).catch((err) => {
         console.error("Submission failed:", err);
-        document.documentElement.dataset.offline = getIsOffline ? "0" : "1";
+        if (localStorage.getItem("guest_mode") === "false") {
+          document.documentElement.dataset.offline = getIsOffline ? "1" : "0";
+        } else {
+          document.documentElement.dataset.offline = "1";
+        }
       }),
     );
   };

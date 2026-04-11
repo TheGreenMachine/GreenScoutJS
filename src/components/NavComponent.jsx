@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getIsOffline } from "../api";
 
-function NavComponent({ onNavigateOut }) {
+function NavComponent() {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
 
   const handleNavigation = (path) => {
-    if (onNavigateOut) onNavigateOut();
     navigate(path);
   };
 
@@ -36,7 +35,11 @@ function NavComponent({ onNavigateOut }) {
   };
 
   useEffect(() => {
-    document.documentElement.dataset.offline = getIsOffline ? "0" : "1";
+    if (localStorage.getItem("guest_mode") === "false") {
+      document.documentElement.dataset.offline = getIsOffline ? "1" : "0";
+    } else {
+      document.documentElement.dataset.offline = "1";
+    }
   }, []);
 
   return (
