@@ -1,8 +1,7 @@
 import * as realApi from "./api.js";
 import * as mockApi from "./mockApi.js";
 
-const useBackend = localStorage.getItem("USE_BACKEND") === "true";
-
+const useBackend = getUseBackend() === "true";
 const activeApi = useBackend ? realApi : mockApi;
 
 export const {
@@ -16,6 +15,13 @@ export const {
   makeThemeLink,
   getIsOffline,
 } = activeApi;
+
+function getUseBackend() {
+  if (!("USE_BACKEND" in localStorage)) {
+    localStorage.setItem("USE_BACKEND", true);
+  }
+  return localStorage.getItem("USE_BACKEND");
+}
 
 export const backendToggleOn = () => {
   if (localStorage.getItem("USE_BACKEND") === "false") {
