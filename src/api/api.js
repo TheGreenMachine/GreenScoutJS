@@ -117,6 +117,7 @@ export const authenticateUser = async (username, password) => {
 export const logoutUser = async () => {
   // await post("/logout");
   localStorage.removeItem("accessToken");
+  localStorage.removeItem("greenscout_user");
 };
 
 export const submitMatchform = async (formData) => {
@@ -155,15 +156,14 @@ export const makeThemeLink = (themeName) => {
 };
 
 export const getIsOffline = () => {
-  if (localStorage.getItem("guest_mode") === "false") {
-    if (wasOffline) {
-      document.documentElement.dataset.offline = "1";
-    } else {
-      document.documentElement.dataset.offline = "0";
-    }
-  } else {
+  const guestMode = localStorage.getItem("guest_mode");
+
+  if (guestMode === "true") {
     document.documentElement.dataset.offline = "1";
+  } else {
+    document.documentElement.dataset.offline = wasOffline ? "1" : "0";
   }
+
   return wasOffline;
 };
 

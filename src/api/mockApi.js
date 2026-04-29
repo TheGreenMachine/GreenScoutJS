@@ -164,7 +164,9 @@ export const isAdmin = (userId) => {
   return user ? user.role === "admin" : false;
 };
 
-export const logoutUser = async () => {};
+export const logoutUser = async () => {
+  localStorage.removeItem("greenscout_user");
+};
 
 export const getThemeList = async () => {
   return ["Light", "Dark"];
