@@ -5,6 +5,7 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
 - How to update GH Pages:
   - Open la terminal
     1. First time:
+       YOU NEED TO INSTALL NPM FOR YOUR OS FIRST
        - Installations:
          ```
          npm install vite -g
@@ -23,9 +24,9 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
          ```
        - if broke: `rm -Force .\node_modules\.cache\gh-pages\`
 
-    2. `cd .\greenscoutjs\`
-    3. `vite build --base /GreenScoutJS`
-    4. `gh-pages -d dist`
+    3. `cd .\greenscoutjs\`
+    4. `vite build --base /GreenScoutJS`
+    5. `gh-pages -d dist`
 
 - How to run locally in browser (Assuming you have installed vite from above)
   1. `cd .\greenscoutjs\`
