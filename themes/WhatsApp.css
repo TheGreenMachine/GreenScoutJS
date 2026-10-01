@@ -1,0 +1,30 @@
+html[data-theme="WhatsApp"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="WhatsApp"] {
+  /* Color Variables */
+  --background-color: #ece5dd !important;
+  --accent-color: #25d366 !important;
+  --accent-color2: #075e54 !important;
+  --accent-color3: #dcf8c6 !important;
+  --blue-color: #34b7f1 !important;
+  --error-color: #f44336 !important;
+  --disabled-color: #bdbdbd !important;
+  --font-color: #222 !important;
+  --font-color-prompt-title: #075e54 !important;
+  --font-color-header: #075e54 !important;
+  --drop-shadow-color: #0002 !important;
+  --sidenav-hover-color: #f0f0f0 !important;
+  --faded-text-color: #888 !important;
+  --kelly-green: #25d366 !important;
+  --error-message-color: #f44336 !important;
+  --check-background-color: #25d366 !important;
+  --checkbox-default-color: #fff !important;
+  --checkbox-hover-color: #dcf8c6 !important;
+  --border-color-faded: #ece5dd !important;
+  --border-color-active: #25d366 !important;
+  --sidenav-button-color: #fff !important;
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+}

@@ -1,0 +1,30 @@
+html[data-theme="HotPink"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="HotPink"] {
+  /* Color Variables */
+  --background-color: #fff0f6 !important;
+  --accent-color: #ff4da6 !important;
+  --accent-color2: #ff66b2 !important;
+  --accent-color3: #ffd6eb !important;
+  --blue-color: #ff4da6 !important;
+  --error-color: #ff99c8 !important;
+  --disabled-color: #b36b8c !important;
+  --font-color: #1a1a1a !important;
+  --font-color-prompt-title: #1a1a1a !important;
+  --font-color-header: #1a1a1a !important;
+  --drop-shadow-color: rgba(255, 77, 166, 0.4) !important;
+  --sidenav-hover-color: #ff3399 !important;
+  --faded-text-color: #a64d79 !important;
+  --kelly-green: #ff4da6 !important;
+  --error-message-color: #ff99c8 !important;
+  --check-background-color: #ff4da6 !important;
+  --checkbox-default-color: #ffe6f2 !important;
+  --checkbox-hover-color: #ffb3d9 !important;
+  --border-color-faded: #ffcce6 !important;
+  --border-color-active: #ff4da6 !important;
+  --sidenav-button-color: #ffd6eb !important;
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+}

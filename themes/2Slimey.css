@@ -1,0 +1,28 @@
+html[data-theme="2Slimey"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="2Slimey"] {
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+  --background-color: #0f0f0f !important;
+  --font-color: #e8ffe8 !important;
+  --font-color-prompt-title: #ffffff !important;
+  --font-color-header: #ffffff !important;
+  --accent-color: #00ff66 !important;
+  --accent-color2: #ff1744 !important;
+  --accent-color3: #1affd5 !important;
+  --blue-color: #1affd5 !important;
+  --kelly-green: #00ff66 !important;
+  --error-color: #ff1744 !important;
+  --error-message-color: #ff1744 !important;
+  --disabled-color: #5a5a5a !important;
+  --faded-text-color: #9cffc7 !important;
+  --drop-shadow-color: rgba(0, 255, 102, 0.6) !important;
+  --border-color-faded: #1f1f1f !important;
+  --border-color-active: #00ff66 !important;
+  --sidenav-hover-color: #ff1744 !important;
+  --sidenav-button-color: #1a1a1a !important;
+  --check-background-color: #00ff66 !important;
+  --checkbox-default-color: #2a2a2a !important;
+  --checkbox-hover-color: #3a3a3a !important;
+}

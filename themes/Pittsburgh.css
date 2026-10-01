@@ -1,0 +1,30 @@
+html[data-theme="Pittsburgh"] {
+  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+}
+
+:root[data-theme="Pittsburgh"] {
+  /* Color Variables */
+  --background-color: #141415 !important;
+  --accent-color: #4cbb17 !important;
+  --accent-color2: #4cbb17 !important;
+  --accent-color3: #4cbb17 !important;
+  --blue-color: #9bcbfb !important;
+  --error-color: var(--disabled-color) !important;
+  --disabled-color: #717172 !important;
+  --font-color: white !important;
+  --font-color-prompt-title: #4cbb17 !important;
+  --font-color-header: #58db1c !important;
+  --drop-shadow-color: #626263 !important;
+  --sidenav-hover-color: #444 !important;
+  --faded-text-color: rgb(210, 209, 209) !important;
+  --kelly-green: #4cbb17 !important;
+  --error-message-color: var(--disabled-color) !important;
+  --check-background-color: #4cbb17 !important;
+  --checkbox-default-color: #eee !important;
+  --checkbox-hover-color: #ccc !important;
+  --border-color-faded: #d9d9db !important;
+  --border-color-active: #4cbb17 !important;
+  --sidenav-button-color: #626263 !important;
+
+  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+}
