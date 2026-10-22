@@ -1,9 +1,10 @@
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import { authenticateUser, backendToggleOn } from "../../api";
+import { authenticateUser, backendToggleOn, mockToggleOn } from "../../api";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import { useAuth } from "../../AuthContext";
+
 
 const Login = ({ getUser }) => {
   const [username, setUsername] = useState("");
@@ -12,6 +13,8 @@ const Login = ({ getUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -145,4 +148,31 @@ const Login = ({ getUser }) => {
   );
 };
 
+//Add somewhere in the mix
+{/* <button
+id = "backEndToggleButton"
+className = "login-button animated-accent"
+type = "button"
+onClick = somehow enable backEnd
+</button> */}
+
+//add css to the button
+//add these into backEndToggle.css? make a new class?
+  // border: 1px solid var(--accent-color3);
+  // border-radius: var(--border-radius);
+  // box-shadow: 0px 4px 5px var(--drop-shadow-color);
+  // color: var(--faded-text-color);
+  // font-family: Arial, Helvetica, sans-serif;
+  // font-weight: var(--font-weight);
+  // outline: none;
+  // font-size: var(--font-size-small);
+  // display: flex;
+  // flex-direction: column;
+  // align-items: right;
+  // justify-content: right;
+  // width: 100%;
+  // height: 100%;
+  // background: var(--accent-color);
+  // cursor: pointer;
+  // gap: 0.1rem;
 export default Login;

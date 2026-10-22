@@ -70,22 +70,6 @@ body {
   z-index: 1001;
 }
 
-#aneeshButton {
-  border-radius: var(--border-radius);
-  margin-top: calc(0 25 * var(--navbar-height));
-  margin-left: calc(0.1 * var(--navbar-height));
-  height: calc(1.5 * var(--navbar-height));
-  width: calc(1.5 * var(--navbar-height));
-  background: url(../assets/broken.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  cursor: pointer;
-  padding: var(--navbar-hamburger-padding);
-  z-index: 1001;
-  position: absolute;
-  top: calc(60vh - calc(1.5 * var(--navbar-height)));
-  box-shadow: var(--font-color) 0px 0px 20px;
-}
 
 .back {
   margin-top: calc(0.25 * var(--navbar-height));
@@ -105,23 +89,6 @@ body {
   padding: var(--navbar-hamburger-padding);
   position: fixed;
   top: var(--navbar-hamburger-top-distance);
-  z-index: 1001;
-}
-
-.aneeshBack {
-  margin-top: calc(0.25 * var(--navbar-height));
-  margin-left: calc(0.1 * var(--navbar-height));
-  height: calc(2.5 * var(--navbar-height));
-  width: calc(2.5 * var(--navbar-height));
-  background: url(../assets/broken.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  cursor: pointer;
-  padding: var(--navbar-hamburger-padding);
-  position: fixed;
-  border-radius: var(--border-radius);
-  top: calc(60vh - calc(2.5 * var(--navbar-height)));
-  box-shadow: var(--font-color) 0px 0px 20px;
   z-index: 1001;
 }
 

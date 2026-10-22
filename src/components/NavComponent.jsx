@@ -48,7 +48,7 @@ function NavComponent() {
       />
       <label htmlFor="nav-toggle" className="hamburger animated-accent"></label>
       <div className="offline animated-offline"></div>
-      <label htmlFor="nav-toggle" id="aneeshButton"></label>
+      {/* <label htmlFor="nav-toggle" id="aneeshButton"></label> */}
       <nav className="side-nav">
         <nav className="side-nav-top">
           <button className="textp animated-accent" onClick={navHome}>
