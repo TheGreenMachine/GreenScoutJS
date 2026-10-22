@@ -20,7 +20,7 @@ const Login = ({ getUser }) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
-    backendToggleOn();
+    // backendToggleOn();
     localStorage.setItem("guest_mode", false);
 
     const result = await authenticateUser(username, password);

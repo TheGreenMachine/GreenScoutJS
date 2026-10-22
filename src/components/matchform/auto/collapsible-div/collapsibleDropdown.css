@@ -1,5 +1,5 @@
 .collapsibleDropdown {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color-faded);
   border-radius: var(--border-radius);
   width: calc(100% - var(--matchform-child-width-to-subtract));
   margin-left: var(--matchform-child-margin-side);
@@ -19,7 +19,7 @@
   border: none;
   cursor: pointer;
   font-size: var(--font-size-small);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   color: var(--font-color-prompt-title);
   min-height: var(--matchform-element-height);
 }
@@ -85,7 +85,7 @@
   margin-top: 0.3rem;
   margin-bottom: 0.2rem;
   color: var(--font-color-prompt-title);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-size: var(--font-size-small);
 }
 

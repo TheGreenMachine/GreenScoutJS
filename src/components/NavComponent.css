@@ -8,7 +8,7 @@ body {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-sans);
   position: fixed;
 }
 
@@ -19,7 +19,8 @@ body {
   padding: 0;
   height: var(--navbar-height);
   width: 100%;
-  background: var(--sidenav-hover-color);
+  background: var(--top-nav-background-color);
+  border-bottom: 1px solid var(--accent-color4);
   z-index: 999999;
 }
 
@@ -50,21 +51,31 @@ body {
 }
 
 .hamburger {
-  margin-top: calc(0.125 * var(--navbar-height));
-  margin-left: calc(0.1 * var(--navbar-height));
+  margin-top: calc(0.0625 * var(--navbar-height));
   height: calc(0.8 * var(--navbar-height));
-  width: calc(0.8 * var(--navbar-height));
-  background: var(--hamburger-color);
-  -webkit-mask-image: url("../assets/bars-solid-full.svg");
-  mask-image: url("../assets/bars-solid-full.svg");
+  width: calc(1.7 * var(--navbar-height));
+  background: if(
+    style(--eye-replace-hamburger: false): var(--hamburger-color) ;
+      else: transparent;
+  );
+  -webkit-mask-image: if(
+    style(--eye-replace-hamburger: false): url("../assets/bars-solid-full.svg")
+      ; else: none
+  );
+  mask-image: if(
+    style(--eye-replace-hamburger: false): url("../assets/bars-solid-full.svg")
+      ; else: none
+  );
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   mask-position: center;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
   mask-size: contain;
+  background-image: if(
+    style(--eye-replace-hamburger: true): url("../assets/greenlogo.svg") ;
+  );
   cursor: pointer;
-  padding: var(--navbar-hamburger-padding);
   position: fixed;
   top: var(--navbar-hamburger-top-distance);
   z-index: 1001;
@@ -103,12 +114,10 @@ body {
   width: var(--sidenav-width);
   max-width: var(--sidenav-width);
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    var(--background-color) 0%,
-    var(--background-color) 96%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  background: var(--background-color);
+  background-image: var(--bg-grid-pattern);
+  background-size: var(--background-grid-size) var(--background-grid-size);
+  border-right: 1px solid var(--accent-color-non-gradient);
   padding-top: var(--sidenav-padding-top);
   transition: left 0.3s ease;
   display: flex;
@@ -132,7 +141,7 @@ body {
 }
 
 .side-nav-top > :first-child {
-  margin-top: var(--navbar-height);
+  margin-top: calc(1.4 * var(--navbar-height));
 }
 
 .side-nav-bottom {
@@ -171,11 +180,20 @@ body {
 
 .side-nav button {
   background: var(--accent-color);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--accent-color)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
+  border: 1px solid var(--accent-color4);
 }
 
 .side-nav button:hover {
   background: var(--sidenav-hover-color);
-  /* color: var(--background-color); */
+  color: var(--font-color-hover);
   cursor: pointer;
 }
 
@@ -196,16 +214,27 @@ body {
 }
 
 #nav-toggle:checked ~ .hamburger {
-  background: var(--hamburger-color-checked);
+  background: if(
+    style(--eye-replace-hamburger: false): var(--hamburger-color-checked) ;
+      else: url("../assets/greenlogo.svg") ;
+  );
+  background-position: 0.5vh 0.5vh;
+  background-size: 95% 95%;
+  background-repeat: no-repeat;
 }
 
 #nav-toggle:not(:checked) ~ .hamburger.animated-accent {
-  background: var(--hamburger-color) !important;
+  background: if(
+    style(--eye-replace-hamburger: false): var(--hamburger-color) ;
+      else: url("../assets/greenlogo.svg") ;
+  );
+  background-position: 0.5vh 0.5vh;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .textp {
-  background: var(--sidenav-button-color);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: bold;
   color: var(--font-color);
   font-size: var(--font-size-large);

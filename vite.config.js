@@ -3,6 +3,23 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import fs from "fs";
 
+function publicFolderWatcher() {
+  return {
+    name: "watch-public-folder",
+    configureServer(server) {
+      server.watcher.add("./public");
+
+      const reloadBrowser = () => {
+        server.hot.send({ type: "full-reload" });
+      };
+
+      server.watcher.on("add", reloadBrowser);
+      server.watcher.on("change", reloadBrowser);
+      server.watcher.on("unlink", reloadBrowser);
+    },
+  };
+}
+
 function generateThemeLinks() {
   const relativePath = "public/themes";
   const dirPath = path.resolve(__dirname, relativePath);
@@ -32,6 +49,8 @@ function generateThemeLinks() {
 // https://vite.dev/config/
 export default defineConfig(() => {
   const { themeNames } = generateThemeLinks();
+
+  plugins: [react(), publicFolderWatcher()];
 
   return {
     css: {

@@ -5,7 +5,7 @@
   border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px var(--drop-shadow-color);
   color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: var(--font-weight);
   font-size: var(--font-size-cycle);
   outline: none;
@@ -25,12 +25,13 @@
 
 #sideButtonTrigger.active {
   background: var(--error-color);
-  border-color: var(--error-color);
+  border-color: var(--border-error-color);
+  color: var(--font-color-hover);
 }
 
 #sideButtonTrigger.inactive {
   background: var(--accent-color3);
-  border-color: var(--accent-color3);
+  border-color: var(--border-color-faded);
 }
 
 #stopbuttonimg {
@@ -42,7 +43,7 @@
 }
 
 .act {
-  background: var(--font-color);
+  background: var(--font-color-hover);
   -webkit-mask-image: url("../../../assets/square-solid-full.svg");
   mask-image: url("../../../assets/square-solid-full.svg");
   mask-repeat: no-repeat;
@@ -70,7 +71,7 @@
   border: 1px solid var(--accent-color3);
   border-radius: var(--border-radius);
   color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: var(--font-weight);
   font-size: var(--font-size-small);
   outline: none;

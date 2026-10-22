@@ -1,33 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
 html[data-theme="Green"] {
-  scrollbar-color: var(--font-color-prompt-title) var(--background-color) !important;
+  scrollbar-color: var(--font-color-prompt-title) transparent !important;
 }
 
 :root[data-theme="Green"] {
-  /* Color Variables */
-  --background-color: #3c3c3c !important;
-  --accent-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%) !important;
-  --accent-color2: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%) !important;
-  --accent-color3: linear-gradient(0deg, #3db43d 0%, #43c343 100%) !important;
+  /* Boolean Variables */
+  --is-grid: true !important;
+  --eye-replace-hamburger: true !important;
 
-  --matchform-sectionbox-background-color: rgba(0, 0, 0, 0.1) !important;
+  /* Color Variables */
+  --font-sans: "Inter", Helvetica, Arial, sans-serif !important;
+  font-weight: 400 !important;
+  --background-color: rgb(4, 18, 9) !important;
+  --background-grid-color: rgb(4, 25, 13) !important;
+  --element-grid-color: rgb(15, 50, 31) !important;
+  --background-grid-size: 50px !important;
+
+  --accent-color-non-gradient: #3aea3a !important;
+  --accent-color: var(--accent-color3) !important;
+  --accent-color2: rgb(0, 197, 104) !important;
+  --accent-color3: var(--matchform-sectionbox-background-color) !important;
+  --accent-color4: var(--border-color-faded) !important;
+
+  --matchform-sectionbox-background-color: rgb(16, 40, 26) !important;
 
   --hamburger-color: var(--font-color);
   --hamburger-color-checked: var(--font-color-prompt-title);
 
   --blue-color: #9bcbfb !important;
-  --error-color: var(--disabled-color) !important;
+  --error-color: var(--accent-color2) !important;
+  --border-error-color: var(--border-color-active);
   --disabled-color: #717172 !important;
 
-  --font-color: black !important;
+  --font-color: white !important;
+  --font-color-hover: rgb(3, 19, 10);
   --font-color-prompt-title: white !important;
-  --font-color-header: white !important;
+  --font-color-header: var(--font-color-prompt-title) !important;
 
-  --drop-shadow-color: #626263 !important;
-  --sidenav-hover-color: linear-gradient(
-    0deg,
-    #3aea3a 0%,
-    #59eb5a 100%
-  ) !important;
+  --drop-shadow-color: transparent !important;
+  --sidenav-hover-color: var(--accent-color2) !important;
+  --top-nav-background-color: transparent !important;
   --faded-text-color: #5f6167 !important;
 
   --kelly-green: #4cbb17 !important;
@@ -35,7 +48,14 @@ html[data-theme="Green"] {
   --check-background-color: #4cbb17 !important;
   --checkbox-default-color: #eee !important;
   --checkbox-hover-color: #ccc !important;
-  --border-color-faded: #d9d9db !important;
-  --border-color-active: #4cbb17 !important;
-  --sidenav-button-color: #dfdfdf !important;
+  --border-color-faded: rgb(0, 160, 86) !important;
+  --border-color-active: rgb(0, 160, 86) !important;
+  --sidenav-button-color: var(--accent-color3) !important;
+
+  --offline-color-start: rgb(255, 40, 40) !important;
+  --offline-color-end: rgb(255, 0, 0) !important;
+
+  /* General Sizing Variables */
+
+  --border-radius: none !important;
 }

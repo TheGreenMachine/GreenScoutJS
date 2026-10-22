@@ -4,6 +4,11 @@
  * Mock user database for GreenScout
  * Each user has: id, username, password, role, matchesLogged
  */
+
+if (localStorage.getItem("USE_BACKEND") === "false") {
+  console.log("Server: Mock API active");
+}
+
 export const users = [
   {
     uuid: 0,

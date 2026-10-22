@@ -3,10 +3,38 @@ html {
 }
 
 :root {
+  /* Boolean Variables */
+  --eye-replace-hamburger: false;
+  --is-grid: false;
+
+  /* Color Variables */
+  --font-sans: Arial, Helvetica, sans-serif;
   --background-color: #3c3c3c;
+  --background-grid-color: transparent;
+  --element-grid-color: transparent;
+  --background-grid-size: 30px;
+
+  --bg-grid-pattern:
+    linear-gradient(
+      to right,
+      var(--background-grid-color) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      var(--background-grid-color) 1px,
+      transparent 1px
+    );
+
+  --element-grid-pattern:
+    linear-gradient(to right, var(--element-grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--element-grid-color) 1px, transparent 1px);
+
+  --accent-color-non-gradient: black;
   --accent-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
   --accent-color2: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
   --accent-color3: linear-gradient(0deg, #3db43d 0%, #43c343 100%);
+  --accent-color4: var(--accent-color3);
 
   --hamburger-color: var(--font-color);
   --hamburger-color-checked: var(--font-color);
@@ -15,9 +43,11 @@ html {
 
   --blue-color: #9bcbfb;
   --error-color: var(--disabled-color);
+  --border-error-color: var(--error-color);
   --disabled-color: #717172;
 
   --font-color: black;
+  --font-color-hover: var(--font-color);
   --font-color-prompt-title: white;
   --font-color-prompt-title-faded: hsl(
     from var(--font-color-prompt-title) h 0% 70%
@@ -26,6 +56,7 @@ html {
 
   --drop-shadow-color: #626263;
   --sidenav-hover-color: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
+  --top-nav-background-color: var(--sidenav-hover-color);
   --faded-text-color: #5f6167;
 
   --kelly-green: #4cbb17;
@@ -36,6 +67,9 @@ html {
   --border-color-faded: #d9d9db;
   --border-color-active: #4cbb17;
   --sidenav-button-color: #dfdfdf;
+
+  --offline-color-start: rgb(255, 100, 100);
+  --offline-color-end: rgb(255, 80, 80);
 
   /* General Sizing Variables */
   --font-size-large: 3vh;
@@ -51,7 +85,7 @@ html {
 
   /* Navbar Sizing Variables */
   --sidenav-width: 75vw;
-  --navbar-height: clamp(3rem, 8vh, 4.5rem);
+  --navbar-height: clamp(5rem, 10vh, 6.5rem);
   --sidenav-usertile-height: 0%;
   --sidenav-usertile-width: 15vh;
   --sidenav-section-height: calc((100% - var(--sidenav-usertile-height)) / 2);
@@ -211,6 +245,7 @@ html {
   --home-refresh-container-right: 17px;
   --home-refresh-button-margin-top: 5.7vh;
   --home-refresh-button-margin-bottom: 4.4vh;
+  --home-text-bottom-margin: 1.5vh;
   --refresh-button-size: clamp(3.5rem, 7.9vh, 5rem);
 
   /* Leader Board Sizing Variables */
@@ -232,12 +267,13 @@ html {
 :root[data-offline="1"] .animated-offline {
   background-image: linear-gradient(
     90deg,
-    rgb(255, 100, 100),
-    rgb(255, 80, 80),
-    rgb(255, 100, 100)
+    var(--offline-color-start) 0%,
+    var(--offline-color-start) 45%,
+    rgb(255, 156, 156) 50%,
+    var(--offline-color-end) 55%
   ) !important;
-  background-size: 400% 100% !important;
-  animation: loop 5s reverse linear infinite !important;
+  background-size: 600% 100% !important;
+  animation: loop 12s reverse linear infinite !important;
   border-color: transparent !important;
 }
 

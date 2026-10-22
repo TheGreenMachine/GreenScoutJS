@@ -12,7 +12,7 @@
   border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px var(--drop-shadow-color);
   color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: var(--font-weight);
   outline: none;
   display: flex;
@@ -22,6 +22,15 @@
   width: 100%;
   height: 100%;
   background: var(--accent-color);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--accent-color)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
+  border: 1px solid var(--accent-color4);
   gap: 0;
   font-size: var(--font-size-small);
   cursor: pointer;
@@ -38,6 +47,14 @@
   padding: 0;
   font-size: var(--font-size-small);
   line-height: 1.2;
+}
+
+.replayButton:hover #replayCheck {
+  background: var(--font-color-hover);
+}
+
+.replayButton:hover .replayText {
+  color: var(--font-color-hover);
 }
 
 #replayPOne {

@@ -4,6 +4,8 @@
   height: var(--page-height);
   margin: 0;
   background: var(--background-color);
+  background-image: var(--bg-grid-pattern);
+  background-size: var(--background-grid-size) var(--background-grid-size);
 }
 
 #parent {
@@ -22,7 +24,7 @@
   height: calc(var(--login-h1-height) * 2);
   font-size: calc(var(--font-size-large) * 1.5);
   color: var(--font-color-prompt-title);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: bolder;
 }
 
@@ -36,7 +38,7 @@
   color: var(--error-message-color);
   margin: var(--login-error-message-margin);
   font-size: var(--font-size-large);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 
 #usercontainer,
@@ -94,7 +96,7 @@
   max-width: calc(var(--login-element-width) - var(--login-box-padding-left));
   height: var(--login-element-height);
   color: var(--font-color-prompt-title);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: var(--font-weight);
   font-size: var(--font-size-large);
   border: none;
@@ -109,7 +111,7 @@
 #user::placeholder,
 #pass::placeholder {
   color: var(--font-color-prompt-title);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: var(--font-weight);
   font-size: var(--font-size-large);
 }
@@ -125,11 +127,19 @@
   margin-top: 5.7vh;
   margin-bottom: 4.4vh;
   background: var(--accent-color3);
-  border: 1px solid var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--accent-color3)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
+  border: 1px solid var(--accent-color4);
   border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px var(--drop-shadow-color);
   color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-large);
@@ -138,6 +148,7 @@
 
 #loginButton:hover {
   background: var(--accent-color2);
+  color: rgb(3, 19, 10);
 }
 
 #loginButton:disabled {
@@ -150,11 +161,19 @@
   height: calc(var(--login-button-height) * 1.5);
   margin-bottom: 4.4vh;
   background: var(--accent-color3);
-  border: 1px solid var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--accent-color3)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
+  border: 1px solid var(--accent-color4);
   border-radius: var(--border-radius);
   box-shadow: 0px 4px 5px var(--drop-shadow-color);
   color: var(--font-color);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-weight: var(--font-weight);
   outline: none;
   font-size: var(--font-size-large);
@@ -163,4 +182,5 @@
 
 #guestButton:hover {
   background: var(--accent-color2);
+  color: var(--font-color-hover);
 }

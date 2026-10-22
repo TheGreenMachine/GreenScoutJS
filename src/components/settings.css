@@ -2,6 +2,8 @@
   font-size: var(--font-size-large);
   color: var(--font-color);
   background: var(--background-color);
+  background-image: var(--bg-grid-pattern);
+  background-size: var(--background-grid-size) var(--background-grid-size);
   height: var(--page-height);
   width: var(--page-width);
 }
@@ -21,6 +23,8 @@
   font-size: var(--font-size-large);
   color: var(--font-color-prompt-title);
   background: var(--background-color);
+  background-image: var(--bg-grid-pattern);
+  background-size: var(--background-grid-size) var(--background-grid-size);
   height: var(--page-height);
   width: var(--page-width);
   overflow: hidden;
@@ -42,7 +46,7 @@
   color: var(--font-color-prompt-title);
   font-size: var(--font-size-small);
   height: 100%;
-  border: 3px solid var(--border-color-faded);
+  border: 2px solid var(--border-color-faded);
   border-radius: var(--border-radius);
   margin-left: 1%;
 }
@@ -55,12 +59,25 @@
   margin-left: calc((100% - var(--settings-element-width)) / 2);
   border-radius: var(--border-radius);
   border: var(--border-color-faded) 1px solid;
-  background: var(--accent-color);
+  background: var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--accent-color)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
   display: flex;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
   font-size: var(--font-size-large);
+}
+
+.settingButton:hover {
+  background: var(--accent-color2);
+  color: var(--font-color-hover);
 }
 
 .image {
@@ -85,6 +102,10 @@
   background-color: var(--font-color);
 }
 
+.settingButton:hover .image {
+  background-color: var(--font-color-hover);
+}
+
 .image.themeImage {
   -webkit-mask-image: url("../assets/palette-solid-full.svg");
   mask-image: url("../assets/palette-solid-full.svg");
@@ -96,6 +117,7 @@
 }
 
 .settingButtonDebug {
+  border: var(--border-color-faded) 1px solid;
   font-size: calc(0.6 * var(--font-size-small));
   color: var(--font-color-prompt-title);
   margin: calc(var(--settings-element-spacing) / 3);
@@ -105,9 +127,26 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: var(--background-color);
+  background: var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--background-color)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
   border-radius: var(--border-radius);
   cursor: pointer;
+}
+
+.settingButtonDebug:hover {
+  background: var(--accent-color2);
+  color: var(--font-color-hover);
+}
+
+.settingButtonDebug:hover .image {
+  background-color: var(--font-color-hover);
 }
 
 .settingButtonDebugText {
@@ -180,8 +219,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background: var(--background-color);
-  border: var(--font-color-prompt-title) 1px solid;
+  background: var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--background-color)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
+  border: var(--border-color-faded) 1px solid;
   border-radius: var(--border-radius);
 }
 
@@ -199,8 +246,21 @@
   height: 80%;
   width: 20%;
   padding: 0;
-  background: var(--background-color);
+  background: var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--background-color)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
   cursor: pointer;
+}
+
+.settingsDebugCachedMatchesButton > button:hover {
+  background: var(--accent-color2);
+  color: var(--font-color-hover);
 }
 
 .cachedTitle {

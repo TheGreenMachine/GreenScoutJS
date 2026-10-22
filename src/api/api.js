@@ -3,6 +3,10 @@ import forge from "node-forge";
 
 let SERVER = import.meta.env.VITE_BACKEND_URL ?? "";
 
+if (localStorage.getItem("USE_BACKEND") === "true") {
+  console.log("Server: " + SERVER);
+}
+
 export const api = axios.create({
   baseURL: SERVER,
   headers: { "Content-Type": "application/json" },

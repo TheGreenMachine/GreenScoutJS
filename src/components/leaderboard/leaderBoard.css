@@ -3,10 +3,12 @@
   height: var(--page-height);
   margin: 0;
   overflow: hidden;
-  font-family: sans-serif;
+  font-family: var(--font-sans);
   font-size: var(--font-size-small);
   color: var(--font-color-prompt-title);
   background: var(--background-color);
+  background-image: var(--bg-grid-pattern);
+  background-size: var(--background-grid-size) var(--background-grid-size);
 }
 
 #leaderBoardBody {
@@ -28,8 +30,16 @@
 .lb-sort-btn {
   padding: 1%;
   border-radius: var(--border-radius);
-  border: none;
+  border: 1px solid var(--accent-color4);
   background: var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--accent-color3)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
   cursor: pointer;
   width: 30%;
   height: calc(var(--leader-board-element-height) * 1.5);
@@ -40,6 +50,7 @@
 
 .lb-sort-btn.active {
   background: var(--accent-color2);
+  color: rgb(3, 19, 10);
 }
 
 #boardContainer {
@@ -61,8 +72,16 @@
   overflow: hidden;
   gap: 8%;
   padding: 2.5% 2.5%;
-  background: var(--background-color);
-  border: 0.15vh solid var(--accent-color);
+  background: var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--background-color)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
+  border: 0.15vh solid var(--accent-color4);
   border-radius: var(--border-radius);
   min-height: var(--leader-board-element-height);
   font-size: var(--font-size-small);
