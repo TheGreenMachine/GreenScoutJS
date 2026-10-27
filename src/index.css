@@ -145,16 +145,18 @@ html {
   --check-padding-top: 1vh;
   --check-div-height: clamp(2.4rem, 6vh, 3.5rem);
   --check-div-margin: 5vh;
-  --check-size: clamp(1.1rem, 2.5vh, 1.6rem);
+  --check-size: clamp(3.1rem, 4.5vh, 5.6rem);
   --check-container-padding-left: 35px;
   --check-container-margin-bottom: 12px;
   --check-mark-left: 1vw;
   --check-mark-after-left: 9px;
   --check-mark-after-top: 5px;
-  --check-mark-after-size: clamp(0.5rem, 1.2vh, 0.8rem);
+  --check-mark-after-size: calc(var(--check-size) * 0.5);
   --check-special-margin-left: 7.5vw;
   --check-auto-text-padding-top: 1vh;
   --check-auto-text-width: 80vw;
+  --check-mark-after-margin-left: calc(var(--check-mark-after-size) * 0.5);
+  --check-mark-after-margin-top: calc(var(--check-mark-after-size) * 0.15);
 
   /* Match Form Counter Sizing Variables */
   --counter-text-padding-top: 5px;
