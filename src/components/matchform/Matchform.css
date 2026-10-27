@@ -352,7 +352,7 @@
   height: var(--matchform-accslider-height);
   margin-right: var(--matchform-accslider-margin-right);
   appearance: none;
-  background: var(--kelly-green);
+  background: var(--slider-green);
   border-radius: var(--border-radius);
   cursor: pointer;
 }

@@ -59,7 +59,7 @@ html {
   --top-nav-background-color: var(--sidenav-hover-color);
   --faded-text-color: #5f6167;
 
-  --kelly-green: #4cbb17;
+  --slider-green: #4cbb17;
   --error-message-color: var(--disabled-color);
   --check-background-color: #4cbb17;
   --checkbox-default-color: #eee;
@@ -77,6 +77,7 @@ html {
   --font-size-cycle: clamp(0.7rem, 1.8vh, 0.95rem);
   --font-weight: 1;
   --border-radius: 1rem;
+  --border-radius-slider: 20%;
   --page-height: 100dvh;
   --page-width: 100vw;
   --content-height: calc(var(--page-height) - var(--navbar-height));
@@ -176,9 +177,9 @@ html {
   --matchform-acclabel-width: clamp(2.8rem, 10vh, 5rem);
   --matchform-acclabel-height: clamp(1rem, 3vh, 2rem);
   --matchform-accslider-width: 70%;
-  --matchform-accslider-height: 2vh;
+  --matchform-accslider-height: 1vh;
   --matchform-accslider-margin-right: 10%;
-  --matchform-accslider-thumb-size: clamp(1.6rem, 5vw, 2.2rem);
+  --matchform-accslider-thumb-size: clamp(5rem, 10vw, 7rem);
 
   /* Match Form Collapsible Dropdown Sizing Variables */
   --collapsible-open-max-height: 9999px;
