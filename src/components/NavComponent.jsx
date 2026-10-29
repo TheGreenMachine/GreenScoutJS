@@ -9,6 +9,7 @@ function NavComponent() {
   const [checked, setChecked] = useState(false);
 
   const handleNavigation = (path) => {
+    setChecked(false);
     navigate(path);
   };
 
