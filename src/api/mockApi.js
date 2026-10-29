@@ -54,6 +54,17 @@ export const users = [
     LifeScore: 3,
     HighScore: 38,
   },
+  {
+    uuid: 4,
+    certificate: 4,
+    role: "user",
+    username: "1816",
+    password: "team1816",
+    DisplayName: "1816 Team Member",
+    Score: 0,
+    LifeScore: 0,
+    HighScore: 0,
+  },
 ];
 
 /**

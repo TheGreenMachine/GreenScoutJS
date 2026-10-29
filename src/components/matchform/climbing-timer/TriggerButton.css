@@ -67,8 +67,16 @@
 }
 
 #resetbutton {
-  background: var(--accent-color3);
-  border: 1px solid var(--accent-color3);
+  background: var(--accent-color);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--accent-color)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
+  border: 1px solid var(--border-color-active);
   border-radius: var(--border-radius);
   color: var(--font-color);
   font-family: var(--font-sans);
@@ -84,4 +92,5 @@
 
 #resetbutton:hover {
   background: var(--accent-color2);
+  color: var(--font-color-hover);
 }

@@ -53,49 +53,20 @@ body {
 .hamburger {
   margin-top: calc(0.0625 * var(--navbar-height));
   height: calc(0.8 * var(--navbar-height));
-  width: calc(1.7 * var(--navbar-height));
-  background: if(
-    style(--eye-replace-hamburger: false): var(--hamburger-color) ;
-      else: transparent;
-  );
-  -webkit-mask-image: if(
-    style(--eye-replace-hamburger: false): url("../assets/bars-solid-full.svg")
-      ; else: none
-  );
-  mask-image: if(
-    style(--eye-replace-hamburger: false): url("../assets/bars-solid-full.svg")
-      ; else: none
-  );
+  width: calc(1.4 * var(--navbar-height));
+  background: transparent;
+  -webkit-mask-image: none;
+  mask-image: none;
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   mask-position: center;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
   mask-size: contain;
-  background-image: if(
-    style(--eye-replace-hamburger: true): url("../assets/greenlogo.svg") ;
-  );
   cursor: pointer;
   position: fixed;
   top: var(--navbar-hamburger-top-distance);
   z-index: 1001;
-}
-
-#aneeshButton {
-  border-radius: var(--border-radius);
-  margin-top: calc(0 25 * var(--navbar-height));
-  margin-left: calc(0.1 * var(--navbar-height));
-  height: calc(1.5 * var(--navbar-height));
-  width: calc(1.5 * var(--navbar-height));
-  background: url(../assets/broken.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  cursor: pointer;
-  padding: var(--navbar-hamburger-padding);
-  z-index: 1001;
-  position: absolute;
-  top: calc(60vh - calc(1.5 * var(--navbar-height)));
-  box-shadow: var(--font-color) 0px 0px 20px;
 }
 
 .back {
@@ -116,23 +87,6 @@ body {
   padding: var(--navbar-hamburger-padding);
   position: fixed;
   top: var(--navbar-hamburger-top-distance);
-  z-index: 1001;
-}
-
-.aneeshBack {
-  margin-top: calc(0.25 * var(--navbar-height));
-  margin-left: calc(0.1 * var(--navbar-height));
-  height: calc(2.5 * var(--navbar-height));
-  width: calc(2.5 * var(--navbar-height));
-  background: url(../assets/broken.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  cursor: pointer;
-  padding: var(--navbar-hamburger-padding);
-  position: fixed;
-  border-radius: var(--border-radius);
-  top: calc(60vh - calc(2.5 * var(--navbar-height)));
-  box-shadow: var(--font-color) 0px 0px 20px;
   z-index: 1001;
 }
 
@@ -247,22 +201,16 @@ body {
 }
 
 #nav-toggle:checked ~ .hamburger {
-  background: if(
-    style(--eye-replace-hamburger: false): var(--hamburger-color-checked) ;
-      else: url("../assets/greenlogo.svg") ;
-  );
+  background: url("../assets/greenlogo.png");
   background-position: 0.5vh 0.5vh;
   background-size: 95% 95%;
   background-repeat: no-repeat;
 }
 
 #nav-toggle:not(:checked) ~ .hamburger.animated-accent {
-  background: if(
-    style(--eye-replace-hamburger: false): var(--hamburger-color) ;
-      else: url("../assets/greenlogo.svg") ;
-  );
+  background: url("../assets/greenlogo.png");
   background-position: 0.5vh 0.5vh;
-  background-size: 100% 100%;
+  background-size: 95% 95%;
   background-repeat: no-repeat;
 }
 

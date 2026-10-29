@@ -17,7 +17,7 @@ html[data-theme="Green"] {
   --element-grid-color: rgb(15, 50, 31) !important;
   --background-grid-size: 50px !important;
 
-  --accent-color-non-gradient: #3aea3a !important;
+  --accent-color-non-gradient: rgb(0, 160, 86) !important;
   --accent-color: var(--accent-color3) !important;
   --accent-color2: rgb(0, 197, 104) !important;
   --accent-color3: var(--matchform-sectionbox-background-color) !important;
@@ -43,9 +43,9 @@ html[data-theme="Green"] {
   --top-nav-background-color: transparent !important;
   --faded-text-color: #5f6167 !important;
 
-  --kelly-green: #4cbb17 !important;
+  --slider-green: rgb(0, 160, 86) !important;
   --error-message-color: var(--disabled-color) !important;
-  --check-background-color: #4cbb17 !important;
+  --check-background-color: rgb(0, 160, 86) !important;
   --checkbox-default-color: #eee !important;
   --checkbox-hover-color: #ccc !important;
   --border-color-faded: rgb(0, 160, 86) !important;

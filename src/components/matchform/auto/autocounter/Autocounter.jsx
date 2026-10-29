@@ -12,6 +12,7 @@ function Autocounter({ nameText, value, onChange, name }) {
         className="autocountertextarea animated-text"
         placeholder={nameText}
         type="number"
+        onWheel={(e) => e.target.blur()}
         step="1"
       ></input>
     </div>

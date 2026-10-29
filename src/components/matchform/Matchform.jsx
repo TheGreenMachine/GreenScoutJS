@@ -279,6 +279,7 @@ function Matchform() {
               <input
                 placeholder="Match #"
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 step="1"
                 className="child backgroundcolorfilled animated-text"
                 id="matchNum"
@@ -291,6 +292,7 @@ function Matchform() {
               <input
                 placeholder="Team #"
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 step="1"
                 className="child backgroundcolorfilled animated-text"
                 id="teamNum"
