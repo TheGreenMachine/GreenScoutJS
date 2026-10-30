@@ -184,3 +184,33 @@
   background: var(--accent-color2);
   color: var(--font-color-hover);
 }
+
+#mockApiButton {
+  width: var(--login-element-width);
+  height: calc(var(--login-button-height) * 1.5);
+  margin-top: 5.7vh;
+  margin-bottom: 4.4vh;
+  background: var(--accent-color3);
+  background-image: if(
+    style(--is-grid: true): var(--element-grid-pattern) ;
+      else: var(--accent-color3)
+  );
+  background-size: if(
+    style(--is-grid: true): var(--background-grid-size)
+      var(--background-grid-size) ; else: 100% 100%
+  );
+  border: 1px solid var(--accent-color4);
+  border-radius: var(--border-radius);
+  box-shadow: 0px 4px 5px var(--drop-shadow-color);
+  color: var(--font-color);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight);
+  outline: none;
+  font-size: var(--font-size-large);
+  cursor: pointer;
+}
+
+#mockApiButton:hover {
+  background: var(--accent-color2);
+  color: var(--font-color-hover);
+}
