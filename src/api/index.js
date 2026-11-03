@@ -18,7 +18,10 @@ export const {
 
 function getUseBackend() {
   if (!("USE_BACKEND" in localStorage)) {
-    localStorage.setItem("USE_BACKEND", true);
+    localStorage.setItem(
+      "USE_BACKEND",
+      import.meta.env.VITE_DEFAULT_USE_BACKEND,
+    );
   }
   return localStorage.getItem("USE_BACKEND");
 }

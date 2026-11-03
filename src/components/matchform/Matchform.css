@@ -106,6 +106,10 @@
   background-size: var(--background-grid-size) var(--background-grid-size);
 }
 
+.auto-margin-top {
+  margin-top: 1.5vh;
+}
+
 #matchNum {
   border-radius: var(--border-radius);
   color: var(--font-color-prompt-title);
@@ -352,7 +356,7 @@
   height: var(--matchform-accslider-height);
   margin-right: var(--matchform-accslider-margin-right);
   appearance: none;
-  background: var(--kelly-green);
+  background: var(--slider-green);
   border-radius: var(--border-radius);
   cursor: pointer;
 }

@@ -91,8 +91,10 @@
 .checkcontainer .checkmark:after {
   left: var(--check-mark-after-left);
   top: var(--check-mark-after-top);
-  width: var(--check-mark-after-size);
+  width: calc(var(--check-mark-after-size) * 0.5);
   height: var(--check-mark-after-size);
+  margin-left: var(--check-mark-after-margin-left);
+  margin-top: var(--check-mark-after-margin-top);
   border: solid white;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);

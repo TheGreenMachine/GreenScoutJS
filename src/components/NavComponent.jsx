@@ -9,6 +9,7 @@ function NavComponent() {
   const [checked, setChecked] = useState(false);
 
   const handleNavigation = (path) => {
+    setChecked(false);
     navigate(path);
   };
 
@@ -46,9 +47,12 @@ function NavComponent() {
         checked={checked}
         onChange={handleNavToggle}
       />
-      <label htmlFor="nav-toggle" className="hamburger animated-accent"></label>
+      <label
+        htmlFor="nav-toggle"
+        className="hamburger animated-accent"
+        aria-label="Search site"
+      ></label>
       <div className="offline animated-offline"></div>
-      <label htmlFor="nav-toggle" id="aneeshButton"></label>
       <nav className="side-nav">
         <nav className="side-nav-top">
           <button className="textp animated-accent" onClick={navHome}>

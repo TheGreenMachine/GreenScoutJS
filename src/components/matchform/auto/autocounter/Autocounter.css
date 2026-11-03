@@ -22,6 +22,10 @@
   margin: 0;
 }
 
+.autocountertextarea:focus::placeholder {
+  color: var(--background-color);
+}
+
 [data-animated="0"] .autocountertextarea {
   height: var(--counter-button-height);
 }

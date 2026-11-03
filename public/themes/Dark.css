@@ -26,7 +26,7 @@ html[data-theme="Dark"] {
   --sidenav-hover-color: var(--accent-color) !important;
   --faded-text-color: #5f6167 !important;
 
-  --kelly-green: #4cbb17 !important;
+  --slider-green: #4cbb17 !important;
   --error-message-color: var(--disabled-color) !important;
   --check-background-color: #4cbb17 !important;
   --checkbox-default-color: #eee !important;

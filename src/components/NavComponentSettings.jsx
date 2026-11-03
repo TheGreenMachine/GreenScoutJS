@@ -17,7 +17,6 @@ function NavComponent() {
   return (
     <div id="navWrapper">
       <div onClick={navBack} className="back"></div>
-      <div onClick={navBack} className="aneeshBack"></div>
       <div className="offline animated-offline"></div>
       <nav id="navbar" className="animated-accent"></nav>
     </div>
