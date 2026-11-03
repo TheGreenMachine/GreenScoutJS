@@ -271,7 +271,7 @@ function Matchform() {
       <NavComponent></NavComponent>
       <span id="form">
         <form id="formBody" className="formElement">
-          <div className="sectionBox animated-border">
+          <div className="sectionBox animated-border auto-margin-top">
             <div className="child headparent">
               <h1 className="header animated-text">Match Info</h1>
             </div>

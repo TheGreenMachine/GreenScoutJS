@@ -44,6 +44,7 @@ html {
   --accent-color2: linear-gradient(0deg, #3aea3a 0%, #59eb5a 100%);
   --accent-color3: linear-gradient(0deg, #3db43d 0%, #43c343 100%);
   --accent-color4: var(--accent-color3);
+  --reset-button-color: var(--accent-color);
 
   --hamburger-color: var(--font-color);
   --hamburger-color-checked: var(--font-color);
@@ -123,7 +124,7 @@ html {
   --login-button-height: clamp(2.5rem, 6vh, 4rem);
 
   /* Match Form Sizing Variables */
-  --matchform-sectionbox-margin-vertical: clamp(1.5rem, 5.5vh, 2rem);
+  --matchform-sectionbox-margin-vertical: clamp(3.5rem, 5vh, 6rem);
   --matchform-sectionbox-padding-top: clamp(1.5rem, 7.5vh, 2rem);
   --matchform-side-panel-width: clamp(4rem, 8vh, 5.5rem);
   --matchform-grid-template: 1fr var(--matchform-side-panel-width);

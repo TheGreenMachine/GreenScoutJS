@@ -106,6 +106,10 @@
   background-size: var(--background-grid-size) var(--background-grid-size);
 }
 
+.auto-margin-top {
+  margin-top: 1.5vh;
+}
+
 #matchNum {
   border-radius: var(--border-radius);
   color: var(--font-color-prompt-title);

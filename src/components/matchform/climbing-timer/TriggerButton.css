@@ -67,10 +67,10 @@
 }
 
 #resetbutton {
-  background: var(--accent-color);
+  background: var(--reset-button-color);
   background-image: if(
     style(--is-grid: true): var(--element-grid-pattern) ;
-      else: var(--accent-color)
+      else: var(--reset-button-color)
   );
   background-size: if(
     style(--is-grid: true): var(--background-grid-size)
@@ -88,6 +88,8 @@
   min-height: 2rem;
   box-shadow: none;
   cursor: pointer;
+  margin-top: var(--matchform-matchteam-margin-top);
+  margin-bottom: var(--matchform-matchteam-margin-top);
 }
 
 #resetbutton:hover {

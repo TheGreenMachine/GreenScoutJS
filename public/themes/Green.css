@@ -22,6 +22,7 @@ html[data-theme="Green"] {
   --accent-color2: rgb(0, 197, 104) !important;
   --accent-color3: var(--matchform-sectionbox-background-color) !important;
   --accent-color4: var(--border-color-faded) !important;
+  --reset-button-color:  rgb(23, 59, 38) !important;
 
   --matchform-sectionbox-background-color: rgb(16, 40, 26) !important;
 
