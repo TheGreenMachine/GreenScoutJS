@@ -29,7 +29,7 @@
       const link = document.createElement("link");
       link.id = "dynamic-theme";
       link.rel = "stylesheet";
-      link.href = `/GreenScoutJS/themes/${localStorage.getItem("app-theme") ?? "green"}.css`;
+      link.href = `/GreenScoutJS/themes/${localStorage.getItem("app-theme") ?? "Green"}.css`;
       document.head.appendChild(link);
 
       const offline = (getIsOffline() ? "1" : "0") ?? "0";

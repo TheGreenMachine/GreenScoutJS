@@ -271,7 +271,7 @@ function Matchform() {
       <NavComponent></NavComponent>
       <span id="form">
         <form id="formBody" className="formElement">
-          <div className="sectionBox animated-border">
+          <div className="sectionBox animated-border auto-margin-top">
             <div className="child headparent">
               <h1 className="header animated-text">Match Info</h1>
             </div>
@@ -279,6 +279,7 @@ function Matchform() {
               <input
                 placeholder="Match #"
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 step="1"
                 className="child backgroundcolorfilled animated-text"
                 id="matchNum"
@@ -291,6 +292,7 @@ function Matchform() {
               <input
                 placeholder="Team #"
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 step="1"
                 className="child backgroundcolorfilled animated-text"
                 id="teamNum"
