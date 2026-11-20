@@ -43,6 +43,6 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
 
   1. To Run:
      ```
-     npm run build:android
+     npm run build android
      npx cap open android
      ```

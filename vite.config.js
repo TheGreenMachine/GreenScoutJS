@@ -50,8 +50,6 @@ function generateThemeLinks() {
 export default defineConfig(({ mode }) => {
   const { themeNames } = generateThemeLinks();
 
-  plugins: [react()];
-
   return {
     css: {
       transformer: "lightningcss",

@@ -1,7 +1,7 @@
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser, backendToggleOn } from "../../api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import { useAuth } from "../../AuthContext";
 

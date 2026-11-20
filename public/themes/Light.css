@@ -3,6 +3,9 @@ html[data-theme="Light"] {
 }
 
 :root[data-theme="Light"] {
+  /* Boolean Variables */
+  --eye-replace-hamburger: true;
+  --is-grid: false;
   /* Color Variables */
   --background-color: white !important;
   --accent-color: #9bcbfb !important;

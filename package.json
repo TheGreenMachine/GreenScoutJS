@@ -10,6 +10,7 @@
     "deploy": "gh-pages -d dist",
     "dev": "vite --base /GreenScoutJS",
     "build": "vite build --base /GreenScoutJS",
+    "build:android": "vite build --mode android && cap sync android",
     "start": "react-scripts start",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -17,6 +18,7 @@
   "dependencies": {
     "@capacitor/android": "^8.6.2",
     "@capacitor/core": "^8.6.2",
+    "@capacitor/preferences": "^8.0.1",
     "api": "^6.1.2",
     "axios": "1.14.0",
     "gh-pages": "^6.3.0",

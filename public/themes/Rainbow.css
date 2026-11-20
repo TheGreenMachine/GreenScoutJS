@@ -3,6 +3,9 @@ html[data-theme="Rainbow"] {
 }
 
 :root[data-theme="Rainbow"] {
+  /* Boolean Variables */
+  --eye-replace-hamburger: true;
+  --is-grid: false;
   /* Color Variables */
   --animatedTheme: 1 !important;
   --loop-time: 35s !important;
