@@ -1,6 +1,6 @@
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import { authenticateUser, backendToggleOn } from "../../api";
+import { authenticateUser, backendToggleOn, mockToggleOn } from "../../api";
 import { useState } from "react";
 import NavComponentLogin from "../NavComponentLogin";
 import { useAuth } from "../../AuthContext";
@@ -12,6 +12,15 @@ const Login = ({ getUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+
+  //This is to toggle between backEnd and mockAPI
+  function apiToggle() {
+    if (localStorage.getItem("USE_BACKEND") === "true") {
+      mockToggleOn();
+    } else {
+      backendToggleOn();
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -139,6 +148,14 @@ const Login = ({ getUser }) => {
           onClick={loginGuest}
         >
           Sign In as Guest
+        </button>
+        <button
+          id="mockApiButton"
+          className="mock-api-button animated-accent"
+          onClick={apiToggle}
+        >
+          {localStorage.getItem("USE_BACKEND") === "true" ? (
+            "Switch to Mock API") : ("Switch to use Backend")}
         </button>
       </div>
     </div>
