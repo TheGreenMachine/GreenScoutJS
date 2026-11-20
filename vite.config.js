@@ -47,7 +47,7 @@ function generateThemeLinks() {
 }
 
 // https://vite.dev/config/
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
   const { themeNames } = generateThemeLinks();
 
   plugins: [react()];
@@ -60,7 +60,7 @@ export default defineConfig(() => {
       __THEME_NAMES__: JSON.stringify(themeNames),
     },
     plugins: [react()],
-    base: "/GreenScoutJS/",
+    base: mode === "android" ? "./" : "/GreenScoutJS/",
     resolve: {
       alias: {
         "@api": path.resolve(__dirname, "src/api/index.js"),
