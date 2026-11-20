@@ -32,8 +32,7 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
   1. `npm run dev`
 
   2. Open [http://localhost:5173/GreenScoutJS](http://localhost:5173/GreenScoutJS)
- 
+
 - How to push to Github pages
   1. `vite build --base /GreenScoutJS`
-     
-  3. `gh-pages -d dist`
+  2. `gh-pages -d dist`
