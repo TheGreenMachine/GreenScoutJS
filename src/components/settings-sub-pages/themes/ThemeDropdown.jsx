@@ -8,7 +8,7 @@ function applyThemeStylesheet(themeName) {
   const link = document.createElement("link");
   link.id = "dynamic-theme";
   link.rel = "stylesheet";
-  link.href = `themes/${themeName}.css`;
+  link.href = `${import.meta.env.BASE_URL}themes/${themeName}.css`;
   document.head.appendChild(link);
 }
 

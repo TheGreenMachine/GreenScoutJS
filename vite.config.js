@@ -50,7 +50,7 @@ function generateThemeLinks() {
 export default defineConfig(() => {
   const { themeNames } = generateThemeLinks();
 
-  plugins: [react(), publicFolderWatcher()];
+  plugins: [react()];
 
   return {
     css: {

@@ -19,6 +19,14 @@ import SettingsThemes from "./components/settings-sub-pages/themes/SettingsTheme
 import { useState, useEffect } from "react";
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("app-theme") ?? "Green";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("app-theme", theme);
+  }, [theme]);
+
   const getIpAddress = async () => {
     try {
       const response = await fetch("https://api.ipify.org?format=json");
