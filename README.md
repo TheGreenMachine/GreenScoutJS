@@ -30,9 +30,19 @@ FRC team 1816's Scouting application, GreenScout! (Now in JavaScript!)
 
 - How to run locally in browser (Assuming you have installed vite from above)
   1. `npm run dev`
-
   2. Open [http://localhost:5173/GreenScoutJS](http://localhost:5173/GreenScoutJS)
 
 - How to push to Github pages
   1. `vite build --base /GreenScoutJS`
   2. `gh-pages -d dist`
+
+- Capacitor
+  1. First Time:
+  1. Install Android Studio - for the sdk, can still use VS Code [https://developer.android.com/studio](https://developer.android.com/studio)
+  1. run `npm install` in the GreenScoutJS folder
+
+  1. To Run:
+     ```
+     npm run build:android
+     npx cap open android
+     ```
